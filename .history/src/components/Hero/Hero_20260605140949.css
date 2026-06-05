@@ -1,0 +1,499 @@
+/* ── BRAND TOKENS ─────────────────────────────────────────────── */
+:root {
+  --red:        #C8102E;
+  --red-light:  #E8314F;
+  --red-dark:   #9B0B22;
+  --gold:       #F5A623;
+  --gold-light: #FFBC4E;
+  --gold-dark:  #C8841A;
+  --white:      #FFFFFF;
+  --off-white:  #FFF5F5;
+}
+
+/* ── RESET ────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── HERO SHELL ───────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Georgia', serif;
+}
+
+/* ── TOP RED BAR ──────────────────────────────────────────────── */
+.hero-topbar {
+  background: var(--red);
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px 20px;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+}
+
+/* ── NAV ──────────────────────────────────────────────────────── */
+.hero-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 6vw;
+  border-bottom: 1px solid rgba(200, 16, 46, 0.10);
+}
+
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.nav-logo-main {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--red);
+  font-family: 'Georgia', serif;
+  letter-spacing: -0.5px;
+}
+
+.nav-logo-sub {
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+}
+
+.nav-contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--red);
+  font-family: 'Arial', sans-serif;
+  text-decoration: none;
+}
+
+.nav-contact-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-contact-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: #fff;
+}
+
+/* ── MAIN STAGE ───────────────────────────────────────────────── */
+.hero-stage {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  min-height: calc(100vh - 130px);
+}
+
+/* ── LEFT PANEL ───────────────────────────────────────────────── */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 6vw 60px 6vw;
+  position: relative;
+}
+
+.hero-left::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  bottom: 10%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(200,16,46,0.2), transparent);
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.hero-eyebrow-line {
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+}
+
+.hero-eyebrow-text {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+}
+
+.hero-name {
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  line-height: 0.95;
+  font-weight: 900;
+  color: #111;
+  font-family: 'Georgia', serif;
+  letter-spacing: -2px;
+  margin-bottom: 6px;
+}
+
+.hero-name-accent {
+  color: var(--red);
+  display: block;
+}
+
+.hero-name-sub {
+  font-size: clamp(1.2rem, 2.2vw, 2rem);
+  font-weight: 400;
+  color: #555;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  letter-spacing: 0px;
+  display: block;
+  margin-top: 4px;
+}
+
+.hero-tagline {
+  margin-top: 28px;
+  font-size: 1rem;
+  color: #444;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.7;
+  max-width: 400px;
+}
+
+/* ── SERVICES ROW ─────────────────────────────────────────────── */
+.hero-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.service-pill {
+  padding: 6px 14px;
+  border: 1px solid rgba(200, 16, 46, 0.22);
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--red-dark);
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  background: rgba(200,16,46,0.04);
+}
+
+/* ── STATS ────────────────────────────────────────────────────── */
+.hero-stats {
+  display: flex;
+  gap: 0;
+  margin-top: 40px;
+  border-top: 1px solid rgba(200,16,46,0.12);
+  padding-top: 28px;
+}
+
+.stat {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.stat + .stat {
+  border-left: 1px solid rgba(200,16,46,0.12);
+  padding-left: 20px;
+  padding-right: 0;
+}
+
+.stat-num {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--red);
+  font-family: 'Georgia', serif;
+  line-height: 1;
+}
+
+.stat-num sup {
+  font-size: 1rem;
+  color: var(--gold-dark);
+}
+
+.stat-lbl {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #999;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* ── CTA ROW ──────────────────────────────────────────────────── */
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+
+.btn-book {
+  padding: 14px 32px;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'Arial', sans-serif;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-book:hover {
+  background: var(--red-dark);
+  transform: translateY(-2px);
+}
+
+.btn-watch {
+  padding: 14px 32px;
+  background: transparent;
+  color: var(--red);
+  border: 1.5px solid var(--red);
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'Arial', sans-serif;
+  transition: all 0.2s;
+}
+
+.btn-watch:hover {
+  background: var(--red);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ── RIGHT PANEL ──────────────────────────────────────────────── */
+.hero-right {
+  position: relative;
+  background: var(--red);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  overflow: hidden;
+}
+
+/* decorative circles */
+.hero-right::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 60px solid rgba(255,255,255,0.06);
+  top: -100px;
+  right: -100px;
+  pointer-events: none;
+}
+
+.hero-right::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 40px solid rgba(245,166,35,0.12);
+  bottom: -60px;
+  left: -60px;
+  pointer-events: none;
+}
+
+/* ── CENTRAL EMBLEM ───────────────────────────────────────────── */
+.hero-emblem {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.emblem-ring {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.20);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 32px;
+  position: relative;
+}
+
+.emblem-ring::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(245,166,35,0.35);
+}
+
+.emblem-icon {
+  font-size: 5rem;
+  line-height: 1;
+}
+
+.emblem-title {
+  color: #fff;
+  font-size: 1.6rem;
+  font-family: 'Georgia', serif;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.emblem-title span {
+  color: var(--gold-light);
+}
+
+.emblem-since {
+  color: rgba(255,255,255,0.55);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+/* ── CONTACT CARD ─────────────────────────────────────────────── */
+.hero-contact-card {
+  position: relative;
+  z-index: 2;
+  margin-top: 36px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  padding: 20px 28px;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  backdrop-filter: blur(4px);
+}
+
+.contact-card-label {
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.contact-card-numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-num {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'Arial', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+/* ── GOLD RIBBON ──────────────────────────────────────────────── */
+.hero-ribbon {
+  background: var(--gold);
+  padding: 12px 6vw;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ribbon-item {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  color: #5C2800;
+  flex-shrink: 0;
+}
+
+.ribbon-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(92,40,0,0.35);
+  flex-shrink: 0;
+}
+
+/* ── ANIMATIONS ───────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-eyebrow  { animation: fadeUp 0.7s ease both; }
+.hero-name     { animation: fadeUp 0.8s 0.1s ease both; }
+.hero-tagline  { animation: fadeUp 0.8s 0.2s ease both; }
+.hero-services { animation: fadeUp 0.8s 0.3s ease both; }
+.hero-stats    { animation: fadeUp 0.8s 0.4s ease both; }
+.hero-cta      { animation: fadeUp 0.8s 0.5s ease both; }
+.hero-emblem   { animation: fadeUp 0.9s 0.3s ease both; }
+.hero-contact-card { animation: fadeUp 0.9s 0.5s ease both; }
+
+/* ── RESPONSIVE ───────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .hero-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-left::after { display: none; }
+
+  .hero-right {
+    min-height: 420px;
+    padding: 48px 24px;
+  }
+
+  .hero-left {
+    padding: 48px 6vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-name { font-size: 2.8rem; letter-spacing: -1px; }
+
+  .stat-num { font-size: 1.7rem; }
+
+  .btn-book,
+  .btn-watch { width: 100%; text-align: center; }
+
+  .hero-cta { flex-direction: column; }
+}

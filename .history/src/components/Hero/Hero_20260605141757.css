@@ -1,0 +1,208 @@
+:root {
+  --red: #C8102E;
+  --red-dark: #8E0A1E;
+  --gold: #F5A623;
+}
+
+/* BASE */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  font-family: "Georgia", serif;
+  background: #ffffff;
+}
+
+/* BACKGROUND LAYERS (THIS IS WHAT MAKES IT PREMIUM) */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(200,16,46,0.08), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(245,166,35,0.10), transparent 45%),
+    linear-gradient(180deg, #fff 0%, #fff7f5 100%);
+  z-index: 0;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  filter: blur(120px);
+  opacity: 0.35;
+  z-index: 0;
+}
+
+.hero-glow.red {
+  background: var(--red);
+  top: -100px;
+  left: -100px;
+}
+
+.hero-glow.gold {
+  background: var(--gold);
+  bottom: -120px;
+  right: -120px;
+}
+
+/* TOP BAR */
+.hero-topbar {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 10px;
+  background: var(--red);
+  color: white;
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+/* MAIN GRID */
+.hero-container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  min-height: calc(100vh - 40px);
+}
+
+/* LEFT */
+.hero-left {
+  padding: 80px 7vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* BADGE */
+.hero-badge {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--red);
+  background: rgba(200,16,46,0.08);
+  border: 1px solid rgba(200,16,46,0.15);
+}
+
+/* TITLE (VERY IMPORTANT PREMIUM LOOK) */
+.hero-title {
+  margin-top: 20px;
+  font-size: clamp(3rem, 6vw, 5.8rem);
+  line-height: 0.95;
+  font-weight: 900;
+  letter-spacing: -2px;
+  color: #111;
+}
+
+.hero-title span {
+  background: linear-gradient(90deg, var(--red), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* DESCRIPTION */
+.hero-desc {
+  margin-top: 20px;
+  max-width: 500px;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* SERVICES GRID (MAJOR PREMIUM UPGRADE) */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.service-card {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(0,0,0,0.06);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+}
+
+/* CTA */
+.cta-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 14px 24px;
+  font-weight: 800;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: var(--red);
+  color: white;
+  border: none;
+}
+
+.btn.outline {
+  background: transparent;
+  border: 2px solid var(--gold);
+  color: var(--red);
+}
+
+/* STATS */
+.stats {
+  display: flex;
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.stats h3 {
+  color: var(--red);
+  font-size: 2rem;
+}
+
+/* RIGHT PANEL (THIS IS WHAT MAKES IT PREMIUM) */
+.hero-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--red), var(--red-dark));
+  overflow: hidden;
+}
+
+/* FLOATING CARD */
+.floating-card {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(20px);
+  padding: 30px;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+/* CONTACT CARD */
+.contact-card {
+  position: absolute;
+  bottom: 40px;
+  background: rgba(255,255,255,0.15);
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+}
