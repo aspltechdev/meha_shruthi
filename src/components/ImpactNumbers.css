@@ -1,0 +1,467 @@
+/* ImpactNumbers.css */
+
+.in-section {
+  position: relative;
+  min-height: 100vh;
+  background: #0a0a0a;
+  padding: 120px 0 60px;
+  overflow: hidden;
+}
+
+/* Background Numbers */
+.in-bg-numbers {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.03;
+}
+
+.in-bg-row {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  white-space: nowrap;
+  transition: transform 0.3s ease-out;
+  font-size: 120px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -5px;
+  line-height: 1;
+}
+
+.in-bg-separator {
+  color: rgba(255, 180, 0, 0.5);
+  font-size: 80px;
+}
+
+/* Side Text */
+.in-side-text {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 8px;
+  color: #ffffff;
+  line-height: 2.5;
+  text-transform: uppercase;
+}
+
+.in-side-left {
+  left: 30px;
+}
+
+.in-side-right {
+  right: 30px;
+}
+
+/* Content */
+.in-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 100px;
+}
+
+/* Header */
+.in-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.in-header-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.in-strip-dash {
+  width: 30px;
+  height: 1px;
+  background: rgba(255, 180, 0, 0.4);
+}
+
+.in-strip-text {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  color: rgba(255, 180, 0, 0.6);
+}
+
+.in-headline {
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-weight: 900;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+}
+
+.in-headline-sm {
+  display: block;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.5em;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+  animation: inFadeUp 0.8s ease-out;
+}
+
+.in-headline-lg {
+  display: block;
+  background: linear-gradient(135deg, #ffb400 0%, #ff6b00 50%, #ffb400 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: inFadeUp 0.8s ease-out 0.2s both, inGoldFlow 3s linear infinite;
+}
+
+@keyframes inFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes inGoldFlow {
+  to { background-position: 200% center; }
+}
+
+/* Strips */
+.in-strips {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Individual Strip */
+.in-strip {
+  position: relative;
+  padding: 35px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.in-strip-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255, 180, 0, 0.03), rgba(255, 107, 0, 0.03));
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.in-strip-content {
+  position: relative;
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  align-items: center;
+  gap: 40px;
+  z-index: 1;
+}
+
+/* Number */
+.in-strip-number-col {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.in-strip-hash {
+  font-size: 20px;
+  color: rgba(255, 180, 0, 0.3);
+  font-weight: 300;
+  transition: color 0.3s ease;
+}
+
+.in-strip:hover .in-strip-hash,
+.in-strip-active .in-strip-hash {
+  color: #ffb400;
+}
+
+.in-strip-number {
+  font-size: 52px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -2px;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.in-strip:hover .in-strip-number,
+.in-strip-active .in-strip-number {
+  color: #ffb400;
+  transform: scale(1.05);
+}
+
+/* Label */
+.in-strip-label-col {
+  min-width: 0;
+}
+
+.in-strip-label {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: -0.5px;
+  margin-bottom: 3px;
+  transition: color 0.3s ease;
+}
+
+.in-strip:hover .in-strip-label,
+.in-strip-active .in-strip-label {
+  color: #ffffff;
+}
+
+.in-strip-suffix {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.in-strip:hover .in-strip-suffix,
+.in-strip-active .in-strip-suffix {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Arrow */
+.in-strip-arrow-col {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s ease;
+}
+
+.in-strip:hover .in-strip-arrow-col,
+.in-strip-active .in-strip-arrow-col {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.in-strip-arrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.in-arrow-line {
+  width: 20px;
+  height: 1px;
+  background: #ffb400;
+  transition: width 0.3s ease;
+}
+
+.in-strip:hover .in-arrow-line {
+  width: 30px;
+}
+
+.in-arrow-head {
+  font-size: 16px;
+  color: #ffb400;
+}
+
+/* Bottom Border */
+.in-strip-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+}
+
+.in-strip-highlight .in-strip-border {
+  background: linear-gradient(90deg, transparent, rgba(255, 180, 0, 0.15), transparent);
+}
+
+/* Counter */
+.in-strip-counter {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) translateX(60px);
+  font-size: 80px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.02);
+  letter-spacing: -3px;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+.in-strip:hover .in-strip-counter,
+.in-strip-active .in-strip-counter {
+  color: rgba(255, 180, 0, 0.06);
+  transform: translateY(-50%) translateX(50px);
+}
+
+/* Highlight Strip */
+.in-strip-highlight .in-strip-number {
+  background: linear-gradient(135deg, #ffb400, #ff6b00);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: inGoldFlow 3s linear infinite;
+}
+
+/* Footer */
+.in-footer {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.in-footer-quote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.in-quote-mark {
+  font-size: 60px;
+  color: rgba(255, 180, 0, 0.15);
+  font-family: Georgia, serif;
+  line-height: 0;
+  margin-top: 15px;
+}
+
+.in-footer-quote p {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+.in-footer-line {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffb400, transparent);
+  margin: 0 auto;
+}
+
+/* Progress Bar */
+.in-progress {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  z-index: 10;
+}
+
+.in-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffb400, #ff6b00);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 180, 0, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .in-content {
+    padding: 0 60px;
+  }
+
+  .in-side-text {
+    display: none;
+  }
+
+  .in-strip-counter {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .in-section {
+    padding: 80px 0 40px;
+  }
+
+  .in-content {
+    padding: 0 30px;
+  }
+
+  .in-headline {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+  }
+
+  .in-strip-content {
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+  }
+
+  .in-strip-number {
+    font-size: 38px;
+  }
+
+  .in-strip-label {
+    font-size: 17px;
+  }
+
+  .in-strip-arrow-col {
+    display: none;
+  }
+
+  .in-strip {
+    padding: 28px 0;
+  }
+
+  .in-bg-row {
+    font-size: 60px;
+    gap: 20px;
+  }
+
+  .in-bg-separator {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .in-content {
+    padding: 0 20px;
+  }
+
+  .in-header {
+    margin-bottom: 50px;
+  }
+
+  .in-strip-content {
+    grid-template-columns: 100px 1fr;
+    gap: 15px;
+  }
+
+  .in-strip-number {
+    font-size: 30px;
+  }
+
+  .in-strip-label {
+    font-size: 15px;
+  }
+
+  .in-strip-suffix {
+    font-size: 10px;
+  }
+
+  .in-strip-hash {
+    font-size: 16px;
+  }
+
+  .in-footer-quote p {
+    font-size: 16px;
+  }
+}

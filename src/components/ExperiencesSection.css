@@ -1,0 +1,513 @@
+/* ExperiencesSection.css */
+
+.exp-section {
+  position: relative;
+  min-height: 100vh;
+  background: #050505;
+  padding: 100px 0 80px;
+  overflow: hidden;
+}
+
+/* Dynamic Background */
+.exp-bg-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  transition: background 0.5s ease;
+}
+
+/* Ambient Elements */
+.exp-ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.exp-ambient-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  animation: expAmbientFloat 20s ease-in-out infinite;
+}
+
+.exp-ambient-circle-1 {
+  width: 500px;
+  height: 500px;
+  top: -10%;
+  right: -5%;
+  animation-delay: 0s;
+}
+
+.exp-ambient-circle-2 {
+  width: 300px;
+  height: 300px;
+  bottom: 20%;
+  left: -5%;
+  animation-delay: -10s;
+}
+
+@keyframes expAmbientFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+.exp-ambient-line {
+  position: absolute;
+  width: 1px;
+  height: 200px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  animation: expLineFloat 15s ease-in-out infinite;
+}
+
+.exp-ambient-line-1 {
+  left: 15%;
+  top: 20%;
+}
+
+.exp-ambient-line-2 {
+  right: 20%;
+  bottom: 10%;
+  animation-delay: -7s;
+}
+
+@keyframes expLineFloat {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-30px);
+    opacity: 0.7;
+  }
+}
+
+/* Header */
+.exp-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 0 20px;
+}
+
+.exp-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 25px;
+}
+
+.exp-header-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.exp-header-divider {
+  width: 40px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.exp-header-counter {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.exp-counter-current {
+  color: #ffb400;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.exp-counter-separator {
+  margin: 0 2px;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.exp-counter-total {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.exp-headline {
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 900;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+}
+
+.exp-headline-word {
+  display: inline-block;
+  margin-right: 15px;
+  color: #ffffff;
+  animation: expWordReveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.exp-headline-word:nth-child(1) { animation-delay: 0.1s; }
+.exp-headline-word:nth-child(2) { animation-delay: 0.3s; }
+.exp-headline-word:nth-child(3) { animation-delay: 0.5s; }
+
+.exp-headline-accent {
+  background: linear-gradient(135deg, #ffb400 0%, #ff6b00 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: expWordReveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) both, expGoldFlow 3s linear infinite;
+}
+
+@keyframes expWordReveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes expGoldFlow {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Container */
+.exp-container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Card */
+.exp-card {
+  position: relative;
+  background: linear-gradient(165deg, rgba(15, 15, 15, 0.9), rgba(8, 8, 8, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+  backdrop-filter: blur(20px);
+}
+
+.exp-card:hover,
+.exp-card-active {
+  transform: translateY(-12px);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(255, 180, 0, 0.05);
+}
+
+/* Card Visual */
+.exp-card-visual {
+  position: relative;
+  padding: 20px 20px 0;
+}
+
+.exp-card-image-wrap {
+  position: relative;
+  aspect-ratio: 16/10;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+}
+
+.exp-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+  filter: brightness(0.8) contrast(1.1);
+}
+
+.exp-card:hover .exp-card-image,
+.exp-card-active .exp-card-image {
+  transform: scale(1.1);
+  filter: brightness(0.9) contrast(1.1);
+}
+
+.exp-card-image-mask {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    transparent 100%
+  );
+}
+
+/* Energy Effect */
+.exp-card-energy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.exp-card:hover .exp-card-energy,
+.exp-card-active .exp-card-energy {
+  opacity: 1;
+}
+
+.exp-energy-ring {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 1px solid rgba(255, 180, 0, 0.2);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: expEnergyExpand 3s ease-out infinite;
+}
+
+.exp-energy-ring-2 {
+  animation-delay: 1.5s;
+}
+
+@keyframes expEnergyExpand {
+  0% {
+    width: 40px;
+    height: 40px;
+    opacity: 0.6;
+  }
+  100% {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+  }
+}
+
+/* Card Badge */
+.exp-card-badge {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+.exp-card:hover .exp-card-badge,
+.exp-card-active .exp-card-badge {
+  border-color: rgba(255, 180, 0, 0.5);
+  box-shadow: 0 0 30px rgba(255, 180, 0, 0.2);
+}
+
+.exp-badge-number {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  transition: color 0.4s ease;
+}
+
+/* Card Accent */
+.exp-card-accent {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  transform: scaleX(0);
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-origin: left;
+}
+
+.exp-card:hover .exp-card-accent,
+.exp-card-active .exp-card-accent {
+  transform: scaleX(1);
+}
+
+/* Card Info */
+.exp-card-info {
+  padding: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.exp-card-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.exp-card-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 25px;
+  font-weight: 300;
+}
+
+/* Card Button */
+.exp-card-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  font-family: inherit;
+}
+
+.exp-btn-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: color 0.3s ease;
+}
+
+.exp-card:hover .exp-btn-text,
+.exp-card-active .exp-btn-text {
+  color: #ffffff;
+}
+
+.exp-btn-arrow {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.exp-card:hover .exp-btn-arrow,
+.exp-card-active .exp-btn-arrow {
+  color: #ffb400;
+  transform: translateX(5px);
+}
+
+.exp-btn-underline {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  transition: width 0.4s ease;
+}
+
+.exp-card:hover .exp-btn-underline,
+.exp-card-active .exp-btn-underline {
+  width: 100%;
+}
+
+/* Card Glow */
+.exp-card-glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.exp-card:hover .exp-card-glow,
+.exp-card-active .exp-card-glow {
+  opacity: 1;
+}
+
+/* Progress Bar */
+.exp-progress {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 60px auto 0;
+  padding: 0 40px;
+}
+
+.exp-progress-track {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.exp-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffb400, #ff6b00);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 15px rgba(255, 180, 0, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .exp-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .exp-section {
+    padding: 80px 0 60px;
+  }
+
+  .exp-header {
+    margin-bottom: 40px;
+  }
+
+  .exp-headline {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: -1px;
+  }
+
+  .exp-header-top {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .exp-header-divider {
+    width: 30px;
+  }
+
+  .exp-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  .exp-card-title {
+    font-size: 20px;
+  }
+
+  .exp-card-desc {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,472 @@
+/* ClientReactions.css */
+
+.cr-section {
+  position: relative;
+  min-height: 100vh;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 80px 0;
+}
+
+/* Background */
+.cr-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Energy Waves */
+.cr-energy-field {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cr-energy-wave {
+  position: absolute;
+  border: 1px solid rgba(255, 180, 0, 0.08);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: crWaveExpand 6s ease-out infinite;
+}
+
+.cr-wave-1 {
+  width: 200px;
+  height: 200px;
+  animation-delay: 0s;
+}
+
+.cr-wave-2 {
+  width: 200px;
+  height: 200px;
+  animation-delay: 2s;
+}
+
+.cr-wave-3 {
+  width: 200px;
+  height: 200px;
+  animation-delay: 4s;
+}
+
+@keyframes crWaveExpand {
+  0% {
+    width: 200px;
+    height: 200px;
+    opacity: 0.4;
+  }
+  100% {
+    width: 800px;
+    height: 800px;
+    opacity: 0;
+  }
+}
+
+/* Particles */
+.cr-particle-field {
+  position: absolute;
+  inset: 0;
+}
+
+.cr-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #ffb400;
+  border-radius: 50%;
+  animation: crParticleDrift linear infinite;
+  box-shadow: 0 0 12px #ffb400, 0 0 24px #ffb400;
+}
+
+@keyframes crParticleDrift {
+  0% {
+    transform: translateY(0) translateX(0) scale(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-60vh) translateX(40px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Light Beams */
+.cr-light-beams {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+}
+
+.cr-beam {
+  position: absolute;
+  top: -30%;
+  bottom: -30%;
+  width: 300px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 180, 0, 0.6) 0%,
+    rgba(255, 100, 0, 0.3) 30%,
+    transparent 70%
+  );
+  clip-path: polygon(20% 0, 80% 0, 100% 100%, 0% 100%);
+  animation: crBeamSway 8s ease-in-out infinite;
+}
+
+.cr-beam-1 { left: 10%; animation-delay: 0s; }
+.cr-beam-2 { left: 40%; animation-delay: -3s; width: 200px; }
+.cr-beam-3 { left: 65%; animation-delay: -6s; width: 250px; }
+
+@keyframes crBeamSway {
+  0%, 100% { transform: rotate(-3deg); opacity: 0.3; }
+  25% { transform: rotate(2deg); opacity: 0.6; }
+  50% { transform: rotate(-1deg); opacity: 0.2; }
+  75% { transform: rotate(4deg); opacity: 0.5; }
+}
+
+/* Content */
+.cr-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Header */
+.cr-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.cr-header-top {
+  margin-bottom: 20px;
+}
+
+.cr-header-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  color: rgba(255, 180, 0, 0.6);
+  text-transform: uppercase;
+}
+
+.cr-headline {
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: 0.9;
+  text-transform: uppercase;
+  letter-spacing: -3px;
+}
+
+.cr-headline-word {
+  display: block;
+  color: #ffffff;
+  animation: crFadeUp 1s ease-out both;
+}
+
+.cr-headline-word:nth-child(1) { animation-delay: 0.1s; }
+.cr-headline-word:nth-child(2) { animation-delay: 0.3s; }
+
+.cr-headline-bold {
+  font-size: 1.4em;
+  background: linear-gradient(135deg, #ffb400 0%, #ff6b00 50%, #ffb400 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: crFadeUp 1s ease-out 0.3s both, crGoldFlow 3s linear infinite;
+}
+
+@keyframes crFadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes crGoldFlow {
+  to { background-position: 200% center; }
+}
+
+/* Display */
+.cr-display {
+  margin-bottom: 60px;
+}
+
+/* Quote Display */
+.cr-quote-display {
+  position: relative;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.cr-quote-marks {
+  font-size: 180px;
+  font-weight: 900;
+  color: rgba(255, 180, 0, 0.06);
+  line-height: 0.4;
+  font-family: Georgia, serif;
+  pointer-events: none;
+  margin-bottom: -20px;
+}
+
+.cr-quote-slider {
+  position: relative;
+  min-height: 120px;
+  margin-bottom: 30px;
+}
+
+.cr-quote-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+  pointer-events: none;
+}
+
+.cr-quote-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.cr-quote-text {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+  letter-spacing: -0.3px;
+}
+
+/* Author Display */
+.cr-author-display {
+  position: relative;
+  min-height: 40px;
+}
+
+.cr-author-info {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.5s ease;
+}
+
+.cr-author-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cr-author-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffb400;
+  letter-spacing: 0.5px;
+}
+
+.cr-author-role {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 1px;
+}
+
+/* Controls */
+.cr-controls {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Progress Bars */
+.cr-progress-bars {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cr-progress-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 0;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.cr-bar-track {
+  flex: 1;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.cr-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffb400, #ff6b00);
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(255, 180, 0, 0.3);
+}
+
+.cr-bar-active .cr-bar-track {
+  background: rgba(255, 180, 0, 0.1);
+}
+
+.cr-bar-done .cr-bar-fill {
+  background: rgba(255, 180, 0, 0.4);
+}
+
+.cr-bar-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.cr-bar-active .cr-bar-label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Nav Buttons */
+.cr-nav {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.cr-nav-btn {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cr-nav-btn:hover {
+  background: rgba(255, 180, 0, 0.1);
+  border-color: rgba(255, 180, 0, 0.3);
+  color: #ffb400;
+}
+
+.cr-nav-play {
+  font-size: 12px;
+}
+
+/* Footer */
+.cr-footer {
+  text-align: center;
+}
+
+.cr-footer-content {
+  display: inline-block;
+}
+
+.cr-footer-headline {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -1px;
+}
+
+.cr-footer-line {
+  display: block;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.cr-footer-gold {
+  font-size: 1.3em;
+  background: linear-gradient(135deg, #ffb400, #ff6b00);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: crGoldFlow 3s linear infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cr-section {
+    padding: 60px 0;
+  }
+
+  .cr-content {
+    padding: 0 25px;
+  }
+
+  .cr-headline {
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+  }
+
+  .cr-quote-marks {
+    font-size: 100px;
+  }
+
+  .cr-quote-slider {
+    min-height: 140px;
+  }
+
+  .cr-quote-text {
+    font-size: 1.2rem;
+  }
+
+  .cr-controls {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cr-progress-bars {
+    width: 100%;
+  }
+
+  .cr-nav {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .cr-headline {
+    font-size: 2rem;
+  }
+
+  .cr-quote-marks {
+    font-size: 70px;
+  }
+
+  .cr-quote-text {
+    font-size: 1.1rem;
+  }
+
+  .cr-bar-label {
+    display: none;
+  }
+}

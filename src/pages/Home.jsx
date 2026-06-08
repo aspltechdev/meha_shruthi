@@ -7,6 +7,19 @@ import Sponsors from "../components/Sponsors/Sponsors";
 import Testimonials from "../components/Testimonials/Testimonials";
 import CTA from "../components/CTA/CTA";
 import Footer from "../components/Footer/Footer";
+import LegacySection from "../components/LegacySection";
+import MeetTheVoices from "../components/MeetTheVoices";
+import ExperiencesSection from "../components/ExperiencesSection";
+import CelebrityWall from "../components/CelebrityWall";
+import MusicBeyondBorders from "../components/MusicBeyondBorders";
+import ImpactNumbers from "../components/ImpactNumbers";
+import BehindTheStage from "../components/BehindTheStage";
+import GallerySection from "../components/GallerySection";
+import EventJourney from "../components/EventJourney";
+import TrustedBy from "../components/TrustedBy";
+import ClientReactions from "../components/ClientReactions";
+import FinalCTA from "../components/FinalCTA";
+import ContactForm from "../components/ContactForm";
 
 const Home = () => {
   return (
@@ -16,8 +29,23 @@ const Home = () => {
       <section id="hero">
         <Hero />
       </section>
+      <section>
+        <LegacySection/>
+        <MeetTheVoices/>
+        <ExperiencesSection/>
+        <CelebrityWall/>
+        <MusicBeyondBorders/>
+        <ImpactNumbers/>
+        <BehindTheStage/>
+        <GallerySection/>
+        <EventJourney/>
+        <TrustedBy/>
+        <ClientReactions/>
+        <FinalCTA/>
+        <ContactForm/>
+      </section>
 
-      <section id="events">
+      {/* <section id="events">
         <FeaturedEvents />
       </section>
 
@@ -39,7 +67,7 @@ const Home = () => {
 
       <section id="contact">
         <CTA />
-      </section>
+      </section> */}
 
       <Footer />
     </>
