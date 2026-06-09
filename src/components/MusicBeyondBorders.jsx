@@ -204,7 +204,7 @@ const MusicBeyondBorders = () => {
       </div>
 
       {/* Progress Indicator */}
-      {/* <div className="mbb-progress">
+      <div className="mbb-progress">
         <div className="mbb-progress-line">
           <div className="mbb-progress-fill" style={{ width: `${scrollProgress * 100}%` }}></div>
         </div>
@@ -213,7 +213,7 @@ const MusicBeyondBorders = () => {
             <div key={i} className={`mbb-progress-dot ${i === activeIndex ? 'active' : ''}`}></div>
           ))}
         </div>
-      </div> */}
+      </div>
 
       {/* Footer Statement */}
       <div className="mbb-footer">
@@ -229,14 +229,14 @@ const MusicBeyondBorders = () => {
           <span className="mbb-quote-mark">"</span>
         </div>
 
-        {/* <div className="mbb-footer-flags">
+        <div className="mbb-footer-flags">
           {countries.map((c, i) => (
             <div key={i} className="mbb-flag-item" style={{ animationDelay: `${i * 0.03}s` }}>
               <span>{c.flag}</span>
               <span className="mbb-flag-name">{c.name}</span>
             </div>
           ))}
-        </div> */}
+        </div>
 
         <button className="mbb-cta">
           <span>Explore Full Journey</span>
@@ -246,7 +246,13 @@ const MusicBeyondBorders = () => {
         </button>
       </div>
 
-   
+      {/* Scroll Hint */}
+      <div className="mbb-scroll-hint">
+        <span>SCROLL</span>
+        <div className="mbb-scroll-mouse">
+          <div className="mbb-scroll-wheel"></div>
+        </div>
+      </div>
     </section>
   );
 };

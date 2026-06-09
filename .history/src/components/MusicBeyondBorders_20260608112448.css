@@ -1,0 +1,62 @@
+.mbb-section {
+  background: #fdf4ff;   /* ivory lavender — was #080808 */
+}
+
+.mbb-card-body {
+  background: linear-gradient(145deg, rgba(253, 244, 255, 0.95), rgba(240, 220, 255, 0.95));
+  border-color: rgba(192, 132, 252, 0.20);
+}
+
+.mbb-card-visible .mbb-card-body {
+  border-color: rgba(224, 64, 160, 0.25);
+  box-shadow: 0 20px 50px rgba(147, 51, 234, 0.12);
+}
+
+.mbb-connector-node {
+  background: #ffffff;   /* was #1a1a1a */
+}
+
+.mbb-card-country-name {
+  color: #1a0030;        /* was #ffffff */
+}
+
+.mbb-card-number {
+  color: rgba(192, 132, 252, 0.15);
+}
+
+.mbb-card-visible .mbb-card-number {
+  color: rgba(192, 132, 252, 0.28);
+}
+
+.mbb-location-city {
+  color: rgba(26, 0, 48, 0.50);   /* was rgba(255,255,255,.5) */
+}
+
+.mbb-statement-quote {
+  color: rgba(26, 0, 48, 0.70);   /* was rgba(255,255,255,.7) */
+}
+
+.mbb-metric-unit {
+  color: rgba(26, 0, 48, 0.45);   /* was rgba(255,255,255,.35) */
+}
+
+.mbb-spine-line {
+  background: rgba(26, 0, 48, 0.08);   /* was rgba(255,255,255,.05) */
+}
+
+.mbb-card-flight-info {
+  border-top: 1px solid rgba(26, 0, 48, 0.08);   /* was rgba(255,255,255,.05) */
+}
+
+.mbb-card-year {
+  background: rgba(255, 255, 255, 0.85);
+  color: #e040a0;
+}
+
+.mbb-statement-bg-text {
+  color: rgba(147, 51, 234, 0.04);
+}
+
+.mbb-dot-tooltip {
+  background: rgba(26, 0, 48, 0.90);
+}
