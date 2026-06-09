@@ -1,197 +1,228 @@
-import { useEffect, useRef, useState } from 'react';
-import './ExperiencesSection.css';
+import { useEffect, useState } from "react";
+import "./ExperiencesSection.css";
+import backgroundImage from "../assets/backgroundimage.png";
 
 const experiences = [
   {
     id: "01",
-    title: "Live Orchestra",
+    title: "Maestro Collaborations",
     description:
-      "Powerful live musical performances that create unforgettable memories for audiences of every generation.",
-    image: "/images/orchestra.jpg",
-    color: "#ffb400"
+      "Privileged to perform alongside legendary icons including Maestro Ilaiyaraaja and special celebrations honoring Kamal Haasan.",
+    image: "/assets/maestro.jpg",
   },
+
   {
     id: "02",
-    title: "Wedding Entertainment",
+    title: "500+ Global Performances",
     description:
-      "From grand entries to magical musical moments, transforming weddings into emotional celebrations.",
-    image: "/images/wedding.jpg",
-    color: "#ff6b6b"
+      "Performed across Canada, UK, Australia, Denmark, Switzerland, Singapore, Malaysia, Sri Lanka and numerous cities throughout India.",
+    image: "/assets/global-performance.jpg",
   },
+
   {
     id: "03",
-    title: "Celebrity Shows",
+    title: "Playback Singing Career",
     description:
-      "Bringing renowned artists and celebrity performers to elevate every occasion.",
-    image: "/images/celebrity.jpg",
-    color: "#c9a96e"
+      "Contributed songs to Tamil and Kannada film industries, collaborating with renowned composers and production houses.",
+    image: "/assets/playback-singer.jpg",
   },
+
   {
     id: "04",
-    title: "Corporate Events",
+    title: "Television Appearances",
     description:
-      "Professional entertainment experiences for conferences, launches, annual meets and celebrations.",
-    image: "/images/corporate.jpg",
-    color: "#4ecdc4"
+      "Recognized through reality shows and television platforms, earning accolades for melody and folk music performances.",
+    image: "/assets/tv-shows.jpg",
   },
+
   {
     id: "05",
-    title: "Fashion Shows",
+    title: "Live Orchestra & Band Shows",
     description:
-      "Runway productions with music, lighting and immersive audience experiences.",
-    image: "/images/fashion.jpg",
-    color: "#ff6b00"
+      "Lead vocalist for large-scale orchestra productions, performing with celebrated musicians and artists across South India.",
+    image: "/assets/orchestra.jpg",
   },
+
   {
     id: "06",
-    title: "Comedy & Special Acts",
+    title: "1000+ Premium Events",
     description:
-      "Stand-up comedy, mimicry, magic shows and unique performances that energize audiences.",
-    image: "/images/comedy.jpg",
-    color: "#a78bfa"
+      "Delivering unforgettable entertainment experiences through music, dance, comedy, stage productions and corporate events.",
+    image: "/assets/events.jpg",
   },
 ];
-
 const ExperiencesSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const sectionRef = useRef(null);
-  const containerRef = useRef(null);
+  const [visibleCards, setVisibleCards] =
+    useState([]);
+
+  const [heroVisible, setHeroVisible] =
+    useState(false);
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      setMousePosition({
-        x: ((e.clientX - rect.left) / rect.width) * 100,
-        y: ((e.clientY - rect.top) / rect.height) * 100
-      });
-    };
+    setTimeout(() => {
+      setHeroVisible(true);
+    }, 300);
 
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-      const cards = containerRef.current.querySelectorAll('.exp-card');
-      
-      cards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        
-        if (rect.top < windowHeight * 0.6 && rect.bottom > windowHeight * 0.4) {
-          setActiveIndex(index);
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const index = Number(
+              entry.target.getAttribute(
+                "data-index"
+              )
+            );
+
+            if (entry.isIntersecting) {
+              setVisibleCards((prev) =>
+                prev.includes(index)
+                  ? prev
+                  : [...prev, index]
+              );
+            }
+          });
+        },
+        {
+          threshold: 0.15,
         }
-      });
-    };
+      );
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('scroll', handleScroll);
-    
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', handleScroll);
-    };
+    const cards =
+      document.querySelectorAll(
+        ".exp-card"
+      );
+
+    cards.forEach((card) =>
+      observer.observe(card)
+    );
+
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="exp-section" ref={sectionRef}>
-      {/* Dynamic Background */}
-      <div 
-        className="exp-bg-glow"
-        style={{
-          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, ${experiences[activeIndex]?.color || '#ffb400'}15 0%, transparent 60%)`
-        }}
-      />
+    <section className="exp-section">
 
-      {/* Floating elements */}
-      <div className="exp-ambient">
-        <div className="exp-ambient-circle exp-ambient-circle-1"></div>
-        <div className="exp-ambient-circle exp-ambient-circle-2"></div>
-        <div className="exp-ambient-line exp-ambient-line-1"></div>
-        <div className="exp-ambient-line exp-ambient-line-2"></div>
-      </div>
+      <div className="exp-texture"></div>
 
-      {/* Header */}
+      <div className="gold-glow gold-glow-1"></div>
+      <div className="gold-glow gold-glow-2"></div>
+
+      {/* HERO */}
+
       <div className="exp-header">
-        <div className="exp-header-top">
-          <span className="exp-header-tag">EXPERIENCES WE CREATE</span>
-          <div className="exp-header-divider"></div>
-          <span className="exp-header-counter">
-            <span className="exp-counter-current">0{activeIndex + 1}</span>
-            <span className="exp-counter-separator">/</span>
-            <span className="exp-counter-total">0{experiences.length}</span>
-          </span>
+
+        <div className="hero-bg-art">
+          <img
+            src={backgroundImage}
+            alt=""
+            className="hero-bg-image"
+          />
         </div>
 
-        <h2 className="exp-headline">
-          <span className="exp-headline-word">Entertainment</span>
-          <span className="exp-headline-word exp-headline-accent">Beyond</span>
-          <span className="exp-headline-word">Expectations</span>
-        </h2>
+        <div
+          className={`header-content ${
+            heroVisible ? "show" : ""
+          }`}
+        >
+
+          <div className="header-ornament">
+            <span></span>
+            ✦
+            <span></span>
+          </div>
+
+          <div className="exp-tag">
+            CARNATIC HERITAGE FESTIVAL
+          </div>
+
+          <h2 className="exp-headline">
+            THE SOUL OF
+            <span>
+              SOUTH INDIAN MUSIC
+            </span>
+          </h2>
+
+          <p className="exp-subtitle">
+            Experience the richness of
+            Carnatic traditions through
+            timeless performances,
+            sacred rhythms and cultural
+            celebrations that connect
+            generations through music,
+            devotion and artistry.
+          </p>
+
+          <div className="header-ornament bottom">
+            <span></span>
+            ❀
+            <span></span>
+          </div>
+
+        </div>
+
       </div>
 
-      {/* Experiences Grid */}
-      <div className="exp-container" ref={containerRef}>
-        {experiences.map((item, index) => (
-          <div
-            className={`exp-card ${index === activeIndex ? 'exp-card-active' : ''}`}
-            key={item.id}
-            onMouseEnter={() => setActiveIndex(index)}
-          >
-            {/* Card Visual */}
-            <div className="exp-card-visual">
-              <div className="exp-card-image-wrap">
+      {/* CARDS */}
+
+      <div className="exp-container">
+
+        {experiences.map(
+          (item, index) => (
+            <article
+              key={item.id}
+              data-index={index}
+              className={`exp-card ${
+                visibleCards.includes(
+                  index
+                )
+                  ? "show"
+                  : ""
+              }`}
+            >
+
+             
+
+              <div className="card-image-wrap">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="exp-card-image"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                  }}
+                  className="card-image"
                 />
-                <div className="exp-card-image-mask"></div>
-                
-                {/* Hover Energy Effect */}
-                <div className="exp-card-energy">
-                  <div className="exp-energy-ring"></div>
-                  <div className="exp-energy-ring exp-energy-ring-2"></div>
+              </div>
+
+              <div className="card-content">
+
+                <h3>
+                  {item.title}
+                </h3>
+
+                <div className="card-divider">
+                  ✦
                 </div>
+
+                <p>
+                  {item.description}
+                </p>
+
+                <button className="card-link">
+                  Explore Experience
+                  <span>→</span>
+                </button>
+
               </div>
 
-              {/* Card Number Badge */}
-              <div className="exp-card-badge" style={{ borderColor: item.color }}>
-                <span className="exp-badge-number" style={{ color: item.color }}>{item.id}</span>
-              </div>
+            </article>
+          )
+        )}
 
-              {/* Color accent line */}
-              <div className="exp-card-accent" style={{ background: item.color }}></div>
-            </div>
-
-            {/* Card Content */}
-            <div className="exp-card-info">
-              <h3 className="exp-card-title">{item.title}</h3>
-              <p className="exp-card-desc">{item.description}</p>
-              
-              <button className="exp-card-btn">
-                <span className="exp-btn-text">Explore Experience</span>
-                <span className="exp-btn-arrow">→</span>
-                <div className="exp-btn-underline" style={{ background: item.color }}></div>
-              </button>
-            </div>
-
-            {/* Card glow on hover */}
-            <div className="exp-card-glow" style={{ background: `radial-gradient(circle at center, ${item.color}20, transparent 70%)` }}></div>
-          </div>
-        ))}
       </div>
 
-      {/* Progress Indicator */}
-      <div className="exp-progress">
-        <div className="exp-progress-track">
-          <div 
-            className="exp-progress-fill"
-            style={{ width: `${((activeIndex + 1) / experiences.length) * 100}%` }}
-          ></div>
-        </div>
+      <div className="exp-footer-ornament">
+        <span></span>
+        ✦ ❀ ✦
+        <span></span>
       </div>
+
     </section>
   );
 };

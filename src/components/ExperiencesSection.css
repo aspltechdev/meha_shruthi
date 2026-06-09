@@ -1,513 +1,736 @@
-/* ExperiencesSection.css */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* ==========================================
+   ROOT SECTION
+========================================== */
 
 .exp-section {
   position: relative;
-  min-height: 100vh;
-  background: #050505;
-  padding: 100px 0 80px;
   overflow: hidden;
+
+  padding: 0 0 120px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffdf9 0%,
+      #fff8f0 45%,
+      #fffaf6 100%
+    );
+
+  font-family: "Inter", sans-serif;
 }
 
-/* Dynamic Background */
-.exp-bg-glow {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  transition: background 0.5s ease;
-}
+/* ==========================================
+   TEXTURE
+========================================== */
 
-/* Ambient Elements */
-.exp-ambient {
+.exp-texture {
   position: absolute;
   inset: 0;
+
   pointer-events: none;
-  z-index: 0;
+
+  opacity: .04;
+
+  background-image:
+    radial-gradient(
+      rgba(123,45,38,.25) 1px,
+      transparent 1px
+    );
+
+  background-size: 12px 12px;
 }
 
-.exp-ambient-circle {
+/* ==========================================
+   GOLD GLOW
+========================================== */
+
+.gold-glow {
   position: absolute;
+
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  animation: expAmbientFloat 20s ease-in-out infinite;
+
+  pointer-events: none;
 }
 
-.exp-ambient-circle-1 {
-  width: 500px;
-  height: 500px;
-  top: -10%;
-  right: -5%;
-  animation-delay: 0s;
+.gold-glow-1 {
+  width: 900px;
+  height: 900px;
+
+  top: -250px;
+  left: -250px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(201,162,39,.12),
+      transparent 70%
+    );
+
+  filter: blur(100px);
 }
 
-.exp-ambient-circle-2 {
-  width: 300px;
-  height: 300px;
-  bottom: 20%;
-  left: -5%;
-  animation-delay: -10s;
+.gold-glow-2 {
+  width: 800px;
+  height: 800px;
+
+  right: -250px;
+  bottom: -250px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(201,162,39,.08),
+      transparent 70%
+    );
+
+  filter: blur(100px);
 }
 
-@keyframes expAmbientFloat {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(30px, -30px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-}
+/* ==========================================
+   HERO SECTION
+========================================== */
 
-.exp-ambient-line {
-  position: absolute;
-  width: 1px;
-  height: 200px;
-  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-  animation: expLineFloat 15s ease-in-out infinite;
-}
-
-.exp-ambient-line-1 {
-  left: 15%;
-  top: 20%;
-}
-
-.exp-ambient-line-2 {
-  right: 20%;
-  bottom: 10%;
-  animation-delay: -7s;
-}
-
-@keyframes expLineFloat {
-  0%, 100% {
-    transform: translateY(0);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translateY(-30px);
-    opacity: 0.7;
-  }
-}
-
-/* Header */
 .exp-header {
   position: relative;
-  z-index: 1;
-  text-align: center;
-  margin-bottom: 60px;
-  padding: 0 20px;
+
+  max-width: 1600px;
+
+  margin: auto;
+
+  min-height: 620px;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  padding: 20px 30px 60px;
+
+  overflow: hidden;
+
+  z-index: 5;
 }
 
-.exp-header-top {
+/* ==========================================
+   HERO IMAGE
+========================================== */
+
+.hero-bg-art {
+  position: absolute;
+
+  inset: 0;
+
   display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+.hero-bg-image {
+  width: 1800px;
+
+  max-width: none;
+
+  object-fit: contain;
+
+  opacity: .55;
+
+  mix-blend-mode: multiply;
+
+  filter:
+    saturate(1.05)
+    brightness(1.05);
+
+  animation:
+    heroFloat 14s ease-in-out infinite;
+}
+
+/* ==========================================
+   HEADER CONTENT
+========================================== */
+
+.header-content {
+  position: relative;
+
+  z-index: 20;
+
+  text-align: center;
+
+  max-width: 1100px;
+
+  top: -40px;
+
+  opacity: 0;
+
+  transform: translateY(60px);
+
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s ease;
+}
+
+.header-content.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+  
+
+/* ==========================================
+   ORNAMENTS
+========================================== */
+
+.header-ornament {
+  display: flex;
+
   align-items: center;
   justify-content: center;
-  gap: 30px;
-  margin-bottom: 25px;
+
+  gap: 18px;
+
+  margin-bottom: 28px;
+
+  color: #c9a227;
 }
 
-.exp-header-tag {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 6px;
-  color: rgba(255, 255, 255, 0.4);
+.header-ornament.bottom {
+  margin-top: 35px;
 }
 
-.exp-header-divider {
-  width: 40px;
+.header-ornament span {
+  width: 140px;
   height: 1px;
-  background: rgba(255, 255, 255, 0.15);
+
+  background:
+    rgba(201,162,39,.4);
 }
 
-.exp-header-counter {
+/* ==========================================
+   FESTIVAL TAG
+========================================== */
+
+.exp-tag {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 30px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 248, 240, 0.95);
+
+  border: 2px solid rgba(201,162,39,.4);
+
+  color: #7b2d26;
+
   font-size: 14px;
-  font-weight: 300;
-  letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.3);
-}
 
-.exp-counter-current {
-  color: #ffb400;
   font-weight: 700;
-  font-size: 18px;
-}
 
-.exp-counter-separator {
-  margin: 0 2px;
-  color: rgba(255, 255, 255, 0.2);
-}
+  letter-spacing: 5px;
 
-.exp-counter-total {
-  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 40px;
+
+  position: relative;
+
+  z-index: 9999;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.08);
 }
+/* ==========================================
+   TITLE
+========================================== */
 
 .exp-headline {
-  font-size: clamp(3rem, 6vw, 6rem);
-  font-weight: 900;
-  line-height: 1.1;
-  text-transform: uppercase;
-  letter-spacing: -2px;
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size:
+    clamp(6rem,10vw,11rem);
+
+  line-height: .82;
+
+  font-weight: 700;
+
+  color: #2b170c;
+
+  margin-bottom: 18px;
+
+  text-shadow:
+    0 4px 20px rgba(255,255,255,.8),
+    0 10px 40px rgba(255,255,255,.4);
+
+  animation:
+    titleFloat 5s ease-in-out infinite;
 }
 
-.exp-headline-word {
-  display: inline-block;
-  margin-right: 15px;
-  color: #ffffff;
-  animation: expWordReveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) both;
+.exp-headline span {
+  display: block;
+
+  color: #7b2d26;
+
+  margin-top: 8px;
 }
 
-.exp-headline-word:nth-child(1) { animation-delay: 0.1s; }
-.exp-headline-word:nth-child(2) { animation-delay: 0.3s; }
-.exp-headline-word:nth-child(3) { animation-delay: 0.5s; }
 
-.exp-headline-accent {
-  background: linear-gradient(135deg, #ffb400 0%, #ff6b00 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: expWordReveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) both, expGoldFlow 3s linear infinite;
+/* ==========================================
+   SUBTITLE
+========================================== */
+
+.exp-subtitle {
+  max-width: 1050px;
+
+  margin: 25px auto 0;
+
+  padding: 24px 32px;
+
+  border-radius: 26px;
+
+  background:
+    rgba(255,252,247,.78);
+
+  backdrop-filter: blur(10px);
+
+  border:
+    1px solid
+    rgba(201,162,39,.15);
+
+  color:
+    rgba(59,36,22,.85);
+
+  line-height: 1.9;
+
+  font-size: 1.1rem;
+
+  box-shadow:
+    0 20px 40px
+    rgba(59,36,22,.05);
 }
+/* ==========================================
+   CARDS GRID
+========================================== */
 
-@keyframes expWordReveal {
-  from {
-    opacity: 0;
-    transform: translateY(40px) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes expGoldFlow {
-  to {
-    background-position: 200% center;
-  }
-}
-
-/* Container */
 .exp-container {
   position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 1400px;
-  margin: 0 auto;
+  z-index: 5;
+
+  max-width: 1500px;
+
+  margin: auto;
+
   padding: 0 40px;
-}
 
-/* Card */
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 40px;
+}/* ==========================================
+   CARD REVEAL
+========================================== */
+
 .exp-card {
-  position: relative;
-  background: linear-gradient(165deg, rgba(15, 15, 15, 0.9), rgba(8, 8, 8, 0.95));
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #fffdf9;
+
   border-radius: 24px;
+
   overflow: hidden;
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  cursor: pointer;
-  backdrop-filter: blur(20px);
-}
 
-.exp-card:hover,
-.exp-card-active {
-  transform: translateY(-12px);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 
-    0 30px 60px rgba(0, 0, 0, 0.6),
-    0 0 60px rgba(255, 180, 0, 0.05);
-}
+  border: 1px solid rgba(201,162,39,.25);
 
-/* Card Visual */
-.exp-card-visual {
-  position: relative;
-  padding: 20px 20px 0;
-}
+  box-shadow:
+    0 12px 30px rgba(59,36,22,.06);
 
-.exp-card-image-wrap {
-  position: relative;
-  aspect-ratio: 16/10;
-  border-radius: 16px;
-  overflow: hidden;
-  background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
-}
+  transition:
+    transform .45s ease,
+    box-shadow .45s ease;
 
-.exp-card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
-  filter: brightness(0.8) contrast(1.1);
-}
+  min-height: 720px;
 
-.exp-card:hover .exp-card-image,
-.exp-card-active .exp-card-image {
-  transform: scale(1.1);
-  filter: brightness(0.9) contrast(1.1);
-}
-
-.exp-card-image-mask {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.3) 40%,
-    transparent 100%
-  );
-}
-
-/* Energy Effect */
-.exp-card-energy {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.exp-card:hover .exp-card-energy,
-.exp-card-active .exp-card-energy {
-  opacity: 1;
-}
-
-.exp-energy-ring {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  border: 1px solid rgba(255, 180, 0, 0.2);
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: expEnergyExpand 3s ease-out infinite;
-}
-
-.exp-energy-ring-2 {
-  animation-delay: 1.5s;
-}
-
-@keyframes expEnergyExpand {
-  0% {
-    width: 40px;
-    height: 40px;
-    opacity: 0.6;
-  }
-  100% {
-    width: 200px;
-    height: 200px;
-    opacity: 0;
-  }
-}
-
-/* Card Badge */
-.exp-card-badge {
-  position: absolute;
-  top: 40px;
-  left: 40px;
-  width: 50px;
-  height: 50px;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
   display: flex;
+  flex-direction: column;
+}
+
+.exp-card.show {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+/* ==========================================
+   FESTIVAL CARD
+========================================== */
+
+.exp-card {
+  background: #fffdf9;
+
+  border-radius: 20px;
+
+  overflow: visible;
+
+  border:
+    1px solid
+    rgba(201,162,39,.25);
+
+  box-shadow:
+    0 8px 24px
+    rgba(59,36,22,.05);
+
+  transition:
+    transform .45s ease,
+    box-shadow .45s ease,
+    border-color .45s ease;
+
+  min-height: 430px;
+}
+
+.exp-card:hover {
+  transform:
+    translateY(-12px);
+
+  border-color:
+    rgba(201,162,39,.45);
+
+  box-shadow:
+    0 20px 50px
+    rgba(59,36,22,.10);
+}
+
+/* ==========================================
+   NUMBER BADGE
+========================================== */
+
+.card-number-circle {
+  position: absolute;
+
+  top: -26px;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  width: 68px;
+  height: 68px;
+
+  border-radius: 50%;
+
+  background: #fffdf9;
+
+  border:
+    2px solid
+    rgba(201,162,39,.5);
+
+  display: flex;
+
   align-items: center;
   justify-content: center;
-  transition: all 0.4s ease;
-}
 
-.exp-card:hover .exp-card-badge,
-.exp-card-active .exp-card-badge {
-  border-color: rgba(255, 180, 0, 0.5);
-  box-shadow: 0 0 30px rgba(255, 180, 0, 0.2);
-}
+  font-family:
+    "Cormorant Garamond",
+    serif;
 
-.exp-badge-number {
-  font-size: 18px;
-  font-weight: 900;
-  letter-spacing: -1px;
-  transition: color 0.4s ease;
-}
+  font-size: 2rem;
 
-/* Card Accent */
-.exp-card-accent {
-  position: absolute;
-  bottom: 0;
-  left: 20px;
-  right: 20px;
-  height: 2px;
-  transform: scaleX(0);
-  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  transform-origin: left;
-}
-
-.exp-card:hover .exp-card-accent,
-.exp-card-active .exp-card-accent {
-  transform: scaleX(1);
-}
-
-/* Card Info */
-.exp-card-info {
-  padding: 25px;
-  position: relative;
-  z-index: 1;
-}
-
-.exp-card-title {
-  font-size: 24px;
   font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 10px;
-  letter-spacing: -0.5px;
+
+  color: #7b2d26;
+
+  z-index: 20;
+
+  box-shadow:
+    0 6px 18px
+    rgba(59,36,22,.08);
 }
 
-.exp-card-desc {
-  font-size: 14px;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.45);
-  margin-bottom: 25px;
-  font-weight: 300;
-}
+/* ==========================================
+   IMAGE
+========================================== */
 
-/* Card Button */
-.exp-card-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  position: relative;
-  font-family: inherit;
-}
+.card-image-wrap {
+  height: 420px;
 
-.exp-btn-text {
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: color 0.3s ease;
-}
-
-.exp-card:hover .exp-btn-text,
-.exp-card-active .exp-btn-text {
-  color: #ffffff;
-}
-
-.exp-btn-arrow {
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.4);
-  transition: all 0.3s ease;
-}
-
-.exp-card:hover .exp-btn-arrow,
-.exp-card-active .exp-btn-arrow {
-  color: #ffb400;
-  transform: translateX(5px);
-}
-
-.exp-btn-underline {
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  transition: width 0.4s ease;
-}
-
-.exp-card:hover .exp-btn-underline,
-.exp-card-active .exp-btn-underline {
-  width: 100%;
-}
-
-/* Card Glow */
-.exp-card-glow {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
-}
-
-.exp-card:hover .exp-card-glow,
-.exp-card-active .exp-card-glow {
-  opacity: 1;
-}
-
-/* Progress Bar */
-.exp-progress {
-  position: relative;
-  z-index: 1;
-  max-width: 1400px;
-  margin: 60px auto 0;
-  padding: 0 40px;
-}
-
-.exp-progress-track {
-  width: 100%;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 2px;
   overflow: hidden;
 }
 
-.exp-progress-fill {
+.card-image {
+  width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, #ffb400, #ff6b00);
-  border-radius: 2px;
-  transition: width 0.5s ease;
-  box-shadow: 0 0 15px rgba(255, 180, 0, 0.4);
+
+  object-fit: cover;
+
+  transition: transform 1s ease;
 }
 
-/* Responsive */
+.exp-card:hover .card-image {
+  transform: scale(1.06);
+}
+
+
+
+/* ==========================================
+   CONTENT
+========================================== */
+
+.card-content {
+  padding: 34px 28px 32px;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+}
+
+.card-content h3 {
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 2.4rem;
+
+  color: #7b2d26;
+
+  line-height: 1.15;
+
+  margin-bottom: 20px;
+}
+
+/* ==========================================
+   DIVIDER
+========================================== */
+
+.card-divider {
+  position: relative;
+
+  color: #c9a227;
+
+  font-size: 15px;
+
+  margin-bottom: 20px;
+}
+
+.card-divider::before,
+.card-divider::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+
+  width: 55px;
+  height: 1px;
+
+  background:
+    rgba(201,162,39,.45);
+}
+
+.card-divider::before {
+  right: calc(50% + 18px);
+}
+
+.card-divider::after {
+  left: calc(50% + 18px);
+}
+
+/* ==========================================
+   DESCRIPTION
+========================================== */
+
+.card-content p {
+  font-size: 1rem;
+
+  line-height: 2;
+
+  color: rgba(59,36,22,.78);
+
+  margin-bottom: auto;
+}
+
+/* ==========================================
+   BUTTON
+========================================== */
+
+.card-link {
+  margin-top: 30px;
+
+  justify-content: center;
+
+  border: none;
+
+  background: transparent;
+
+  color: #c9921c;
+
+  font-weight: 600;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.card-link span {
+  transition:
+    transform .3s ease;
+}
+
+.card-link:hover span {
+  transform:
+    translateX(6px);
+}
+
+/* ==========================================
+   STAGGERED LAYOUT
+========================================== */
+
+
+
+/* ==========================================
+   FOOTER ORNAMENT
+========================================== */
+
+.exp-footer-ornament {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 18px;
+
+  margin-top: 100px;
+
+  color: #c9a227;
+
+  font-size: 20px;
+}
+
+.exp-footer-ornament span {
+  width: 120px;
+  height: 1px;
+
+  background:
+    rgba(201,162,39,.4);
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes heroFloat {
+
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      scale(1.05);
+  }
+
+  50% {
+    transform:
+      translateY(-18px)
+      scale(1.05);
+  }
+}
+
+@keyframes titleFloat {
+
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-8px);
+  }
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
 @media (max-width: 1200px) {
   .exp-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
+    grid-template-columns:
+      repeat(2,1fr);
   }
 }
 
-@media (max-width: 768px) {
-  .exp-section {
-    padding: 80px 0 60px;
+  .exp-card:nth-child(2),
+  .exp-card:nth-child(3),
+  .exp-card:nth-child(5),
+  .exp-card:nth-child(6) {
+    margin-top: 0;
   }
 
-  .exp-header {
-    margin-bottom: 40px;
-  }
+  .hero-bg-image {
+  width: 1800px;
+
+  max-width: none;
+
+  object-fit: contain;
+
+  opacity: .55;
+
+  mix-blend-mode: multiply;
+
+  filter:
+    saturate(1.1)
+    brightness(1.05);
+
+  transform:
+    scale(1.1)
+    translateY(80px);
+
+  animation:
+    heroFloat 16s ease-in-out infinite;
+}
 
   .exp-headline {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    letter-spacing: -1px;
+    font-size:
+      clamp(4rem,7vw,7rem);
   }
 
-  .exp-header-top {
-    flex-direction: column;
-    gap: 15px;
-  }
 
-  .exp-header-divider {
-    width: 30px;
-  }
+/* ==========================================
+   MOBILE
+========================================== */
+@media (max-width: 768px) {
 
   .exp-container {
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 0 20px;
   }
 
-  .exp-card-title {
-    font-size: 20px;
+  .exp-card {
+    min-height: auto;
   }
 
-  .exp-card-desc {
-    font-size: 13px;
+  .card-image-wrap {
+    height: 340px;
+  }
+
+  .card-content h3 {
+    font-size: 2rem;
   }
 }
