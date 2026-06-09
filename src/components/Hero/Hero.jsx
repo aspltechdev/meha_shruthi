@@ -1,20 +1,38 @@
 import { useEffect, useRef, useState } from 'react';
 import './Hero.css';
+import hero from "../../assets/hero.png";
 
 const Hero = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [cardHover, setCardHover] = useState(false);
   const heroRef = useRef(null);
-  const artistRef = useRef(null);
+  const cardRef = useRef(null);
+  const contentRef = useRef(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
+    setIsLoaded(true);
+    
+    // Auto-play video with error handling
+    if (videoRef.current) {
+      videoRef.current.play().catch(error => {
+        console.log('Video autoplay failed, showing fallback image');
+        setVideoLoaded(false);
+      });
+    }
+
     const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-      
-      if (artistRef.current) {
-        const moveX = (e.clientX - window.innerWidth / 2) * 0.02;
-        const moveY = (e.clientY - window.innerHeight / 2) * 0.02;
-        artistRef.current.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      const x = (e.clientX / window.innerWidth - 0.5) * 30;
+      const y = (e.clientY / window.innerHeight - 0.5) * 30;
+      setMousePos({ x, y });
+
+      if (cardRef.current && !cardHover) {
+        const cardX = (e.clientX / window.innerWidth - 0.5) * 8;
+        const cardY = (e.clientY / window.innerHeight - 0.5) * 8;
+        cardRef.current.style.transform = `translate(${cardX}px, ${cardY}px)`;
       }
     };
 
@@ -22,222 +40,347 @@ const Hero = () => {
       setScrollY(window.scrollY);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [cardHover]);
+
+  const handleVideoLoaded = () => {
+    setVideoLoaded(true);
+  };
+
+  const contentParallax = {
+    transform: `translateY(${scrollY * 0.4}px)`,
+    opacity: Math.max(0, 1 - scrollY * 0.0025),
+  };
+
+  const backgroundStyle = {
+    transform: `scale(${1 + scrollY * 0.0002})`,
+  };
 
   return (
-    <section className="hero-section" ref={heroRef}>
-      {/* Video Background */}
-      <div className="hero-video-wrapper">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="hero-bg-video"
+    <section className={`hero ${isLoaded ? 'hero--loaded' : ''}`} ref={heroRef}>
+      {/* ========== CINEMATIC VIDEO BACKGROUND ========== */}
+      <div className="hero__bg" style={backgroundStyle}>
+        <div className="hero__bg-video-wrapper">
+          {/* Video Player */}
+          <video
+            ref={videoRef}
+            className={`hero__bg-video ${videoLoaded ? 'hero__bg-video--visible' : ''}`}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster="https://images.pexels.com/photos/15789084/pexels-photo-15789084.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            onLoadedData={handleVideoLoaded}
+            onCanPlay={handleVideoLoaded}
+          >
+            {/* Multiple video formats for browser compatibility */}
+            <source 
+              src="https://www.pexels.com/download/video/3636753/" 
+              type="video/mp4" 
+            />
+            <source 
+              src="https://www.pexels.com/download/video/3636753/" 
+              type="video/webm" 
+            />
+            <source 
+              src="https://www.pexels.com/download/video/3636753/" 
+              type="video/ogg" 
+            />
+            Your browser does not support the video tag.
+          </video>
+
+          {/* Fallback Image (shown while video loads or if video fails) */}
+          <img
+            src="https://images.pexels.com/photos/15789084/pexels-photo-15789084.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            alt="South Indian Classical Performance"
+            className={`hero__bg-fallback ${!videoLoaded ? 'hero__bg-fallback--visible' : ''}`}
+            loading="eager"
+          />
+        </div>
+        
+        {/* Multi-layered cinematic overlay - Maintains the warm South Indian feel */}
+        <div className="hero__bg-overlay">
+          {/* Base cream/warm overlay */}
+          <div className="hero__bg-overlay--warm" />
+          
+          {/* Depth and texture overlay */}
+          <div className="hero__bg-overlay--depth" />
+          
+          {/* Golden atmospheric glow */}
+          <div className="hero__bg-overlay--atmosphere" />
+          
+          {/* Additional overlay when video is playing to maintain text readability */}
+          <div className={`hero__bg-overlay--texture ${videoLoaded ? 'hero__bg-overlay--texture-active' : ''}`} />
+        </div>
+      </div>
+
+      {/* ========== DECORATIVE ELEMENTS ========== */}
+      
+      {/* Temple-inspired vertical lines */}
+      <div className="hero__architecture">
+        <div className="hero__arch-line hero__arch-line--1" />
+        <div className="hero__arch-line hero__arch-line--2" />
+        <div className="hero__arch-line hero__arch-line--3" />
+        <div className="hero__arch-line hero__arch-line--4" />
+      </div>
+
+      {/* Subtle golden light rays - more visible over video */}
+      <div className="hero__light-rays">
+        <div className="hero__light-ray hero__light-ray--1" />
+        <div className="hero__light-ray hero__light-ray--2" />
+        <div className="hero__light-ray hero__light-ray--3" />
+        <div className="hero__light-ray hero__light-ray--4" />
+      </div>
+
+      {/* Floating musical notes */}
+      <div className="hero__notes">
+        <span className="hero__note hero__note--1">𝄞</span>
+        <span className="hero__note hero__note--2">𝅘𝅥𝅯</span>
+        <span className="hero__note hero__note--3">𝅘𝅥𝅰</span>
+        <span className="hero__note hero__note--4">♩</span>
+      </div>
+
+      {/* Subtle particle/dust effect when video is playing */}
+      {videoLoaded && (
+        <div className="hero__particles">
+          {[...Array(8)].map((_, i) => (
+            <div 
+              key={i}
+              className="hero__particle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 10}s`,
+                animationDuration: `${8 + Math.random() * 12}s`,
+              }}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* ========== MAIN LAYOUT - Two Column ========== */}
+      <div className="hero__container">
+        
+        {/* Left Content */}
+        <div className="hero__content" ref={contentRef} style={contentParallax}>
+          <div className="hero__content-inner">
+            
+            {/* Eyebrow with decorative element */}
+            <div className="hero__eyebrow">
+              <div className="hero__eyebrow-decoration">
+                <span className="hero__eyebrow-dot" />
+                <span className="hero__eyebrow-dash" />
+              </div>
+              <span className="hero__eyebrow-text">
+                Premium Entertainment Production
+              </span>
+            </div>
+
+            {/* Headline */}
+            <h1 className="hero__headline">
+              <div className="hero__headline-line">
+                <span className="hero__word hero__word--fade">Where</span>
+              </div>
+              <div className="hero__headline-line">
+                <span className="hero__word hero__word--golden">Tradition</span>
+              </div>
+              <div className="hero__headline-line">
+                <span className="hero__word">Meets</span>
+              </div>
+              <div className="hero__headline-line">
+                <span className="hero__word hero__word--emphasis">Spectacle</span>
+              </div>
+            </h1>
+
+            {/* Description */}
+            <p className="hero__description">
+              South India's foremost production house, orchestrating extraordinary 
+              live experiences rooted in classical artistry and contemporary vision. 
+              From sacred temples to grand auditoriums, we craft moments that echo 
+              through generations.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="hero__actions">
+              <button className="hero__btn hero__btn--primary">
+                <span className="hero__btn-text">Explore Our Work</span>
+                <svg className="hero__btn-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M1 9H17M17 9L10 2M17 9L10 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              <button className="hero__btn hero__btn--secondary">
+                <span className="hero__btn-text">Begin Your Journey</span>
+              </button>
+            </div>
+
+            {/* Stats Row */}
+            <div className="hero__stats">
+              <div className="hero__stat">
+                <span className="hero__stat-number">1.2K+</span>
+                <span className="hero__stat-label">Productions</span>
+              </div>
+              <div className="hero__stat-separator">
+                <span className="hero__stat-separator-dot" />
+                <span className="hero__stat-separator-dot" />
+              </div>
+              <div className="hero__stat">
+                <span className="hero__stat-number">28</span>
+                <span className="hero__stat-label">Years Legacy</span>
+              </div>
+              <div className="hero__stat-separator">
+                <span className="hero__stat-separator-dot" />
+                <span className="hero__stat-separator-dot" />
+              </div>
+              <div className="hero__stat">
+                <span className="hero__stat-number">600+</span>
+                <span className="hero__stat-label">Shows Delivered</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Image Card */}
+        <div 
+          className="hero__card-wrapper"
+          style={{ transform: `translateY(${scrollY * 0.15}px)` }}
         >
-          <source
-            src="https://www.pexels.com/download/video/3636753/"
-            type="video/mp4"
-          />
-        </video>
-        <div className="hero-video-mask"></div>
-      </div>
+          <div 
+            className={`hero__card ${cardHover ? 'hero__card--hovered' : ''}`}
+            ref={cardRef}
+            onMouseEnter={() => setCardHover(true)}
+            onMouseLeave={() => setCardHover(false)}
+          >
+            {/* Card Frame - Temple Architecture Inspired */}
+            <div className="hero__card-frame">
+              {/* Corner ornaments */}
+              <div className="hero__card-corner hero__card-corner--tl">
+                <svg viewBox="0 0 40 40" fill="none">
+                  <path d="M0 2C0 0.895 0.895 0 2 0H15V2H2V15H0V2Z" fill="currentColor"/>
+                  <circle cx="8" cy="8" r="2" fill="currentColor" opacity="0.4"/>
+                </svg>
+              </div>
+              <div className="hero__card-corner hero__card-corner--tr">
+                <svg viewBox="0 0 40 40" fill="none">
+                  <path d="M40 2C40 0.895 39.105 0 38 0H25V2H38V15H40V2Z" fill="currentColor"/>
+                  <circle cx="32" cy="8" r="2" fill="currentColor" opacity="0.4"/>
+                </svg>
+              </div>
+              <div className="hero__card-corner hero__card-corner--bl">
+                <svg viewBox="0 0 40 40" fill="none">
+                  <path d="M0 38C0 39.105 0.895 40 2 40H15V38H2V25H0V38Z" fill="currentColor"/>
+                  <circle cx="8" cy="32" r="2" fill="currentColor" opacity="0.4"/>
+                </svg>
+              </div>
+              <div className="hero__card-corner hero__card-corner--br">
+                <svg viewBox="0 0 40 40" fill="none">
+                  <path d="M40 38C40 39.105 39.105 40 38 40H25V38H38V25H40V38Z" fill="currentColor"/>
+                  <circle cx="32" cy="32" r="2" fill="currentColor" opacity="0.4"/>
+                </svg>
+              </div>
 
-      {/* Cursor Spotlight */}
-      <div 
-        className="hero-cursor-glow"
-        style={{
-          left: mousePos.x,
-          top: mousePos.y
-        }}
-      />
+              {/* Image Container */}
+              <div className="hero__card-image-wrapper">
+                <div className="hero__card-image-mask">
+                  <img
+                    src={hero}
+                    alt="Classical Performer"
+                    className="hero__card-image"
+                  />
+                </div>
+                
+                {/* Image overlay for cinematic feel */}
+                <div className="hero__card-image-overlay" />
+                
+                {/* Decorative border lines */}
+                <div className="hero__card-border hero__card-border--top" />
+                <div className="hero__card-border hero__card-border--right" />
+                <div className="hero__card-border hero__card-border--bottom" />
+                <div className="hero__card-border hero__card-border--left" />
+              </div>
 
-      {/* Stage Light Beams */}
-      <div className="hero-light-beams">
-        <div className="hero-light-beam hero-light-beam-1"></div>
-        <div className="hero-light-beam hero-light-beam-2"></div>
-        <div className="hero-light-beam hero-light-beam-3"></div>
-        <div className="hero-light-beam hero-light-beam-4"></div>
-        <div className="hero-light-beam hero-light-beam-5"></div>
-      </div>
+              {/* Bottom Info Bar */}
+              <div className="hero__card-info">
+                <div className="hero__card-info-content">
+                  <div className="hero__card-info-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z" fill="currentColor"/>
+                      <circle cx="10" cy="10" r="3" fill="currentColor"/>
+                    </svg>
+                  </div>
+                  <div className="hero__card-info-text">
+                    <span className="hero__card-info-title">Featured Artist</span>
+                    <span className="hero__card-info-subtitle">Classical Maestro</span>
+                  </div>
+                </div>
+                <div className="hero__card-info-decoration">
+                  <span className="hero__card-info-dot" />
+                  <span className="hero__card-info-line" />
+                </div>
+              </div>
 
-      {/* Energy Rings */}
-      <div className="hero-energy-rings">
-        <div 
-          className="hero-energy-ring hero-energy-ring-1"
-          style={{
-            transform: `translate(-50%, -50%) scale(${1 + scrollY * 0.001})`
-          }}
-        ></div>
-        <div 
-          className="hero-energy-ring hero-energy-ring-2"
-          style={{
-            transform: `translate(-50%, -50%) scale(${1.2 + scrollY * 0.0005})`
-          }}
-        ></div>
-        <div 
-          className="hero-energy-ring hero-energy-ring-3"
-          style={{
-            transform: `translate(-50%, -50%) scale(${0.8 + scrollY * 0.0008})`
-          }}
-        ></div>
-      </div>
-
-      {/* Floating Particles */}
-      <div className="hero-particles-wrapper">
-        {[...Array(30)].map((_, i) => (
-          <div
-            key={i}
-            className="hero-particle-dot"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 8}s`,
-              animationDuration: `${4 + Math.random() * 6}s`,
-              width: `${1 + Math.random() * 3}px`,
-              height: `${1 + Math.random() * 3}px`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Floating Stats */}
-      <div 
-        className="hero-floating-stat hero-floating-stat-left"
-        style={{
-          transform: `translateY(${scrollY * 0.3}px)`
-        }}
-      >
-        <span className="hero-stat-number">1000+</span>
-        <span className="hero-stat-label">EVENTS</span>
-        <div className="hero-stat-shine"></div>
-      </div>
-
-      <div 
-        className="hero-floating-stat hero-floating-stat-right"
-        style={{
-          transform: `translateY(${-scrollY * 0.2}px)`
-        }}
-      >
-        <span className="hero-stat-number">25+</span>
-        <span className="hero-stat-label">YEARS</span>
-        <div className="hero-stat-shine"></div>
-      </div>
-
-      <div 
-        className="hero-floating-stat hero-floating-stat-bottom"
-        style={{
-          transform: `translateY(${-scrollY * 0.4}px)`
-        }}
-      >
-        <span className="hero-stat-number">500+</span>
-        <span className="hero-stat-label">CONCERTS</span>
-        <div className="hero-stat-shine"></div>
-      </div>
-
-      {/* Artist Image */}
-      <div className="hero-artist-wrapper" ref={artistRef}>
-        <img
-          src="https://images.pexels.com/photos/15789084/pexels-photo-15789084.jpeg"
-          alt="Performer"
-          className="hero-artist-img"
-        />
-        <div className="hero-artist-aura"></div>
-      </div>
-
-      {/* Floating Microphone */}
-      <div 
-        className="hero-mic-wrapper"
-        style={{
-          transform: `translateY(${Math.sin(scrollY * 0.01) * 20}px) rotate(${scrollY * 0.05}deg)`
-        }}
-      >
-        <img
-          src="/mic.png"
-          alt="Microphone"
-          className="hero-mic-img"
-        />
-      </div>
-
-      {/* Main Content */}
-      <div className="hero-main-content">
-        <div className="hero-content-inner">
-          {/* Badge */}
-          <div className="hero-premium-badge">
-            <span className="hero-badge-star">✦</span>
-            SOUTH INDIA'S PREMIUM ENTERTAINMENT EXPERIENCE
-            <span className="hero-badge-star">✦</span>
+              {/* Hover glow effect */}
+              <div className="hero__card-glow" />
+            </div>
           </div>
 
-          {/* Headline */}
-          <h1 className="hero-main-headline">
-            <span className="hero-headline-row">EVERY</span>
-            <span className="hero-headline-row">CELEBRATION</span>
-            <span className="hero-headline-row hero-headline-gold">DESERVES A</span>
-            <span className="hero-headline-row hero-headline-outline">STANDING</span>
-            <span className="hero-headline-row hero-headline-gold">OVATION</span>
-          </h1>
-
-          {/* Subtitle */}
-          <p className="hero-description">
-            <span className="hero-desc-divider">•</span>
-            Live Music
-            <span className="hero-desc-divider">•</span>
-            Celebrity Shows
-            <span className="hero-desc-divider">•</span>
-            Weddings
-            <span className="hero-desc-divider">•</span>
-            Corporate Events
-            <span className="hero-desc-divider">•</span>
-            Mega Productions
-            <span className="hero-desc-divider">•</span>
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="hero-action-buttons">
-            <button className="hero-btn-primary">
-              <span className="hero-btn-icon">▶</span>
-              Watch Showreel
-              <span className="hero-btn-shimmer"></span>
-            </button>
-            <button className="hero-btn-secondary">
-              <span className="hero-btn-icon">✦</span>
-              Plan My Event
-            </button>
+          {/* Floating decorative elements around card */}
+          <div className="hero__card-decoration hero__card-decoration--1">
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+              <circle cx="30" cy="30" r="28" stroke="currentColor" strokeWidth="0.5" opacity="0.3"/>
+              <circle cx="30" cy="30" r="20" stroke="currentColor" strokeWidth="0.5" opacity="0.2"/>
+              <circle cx="30" cy="30" r="12" stroke="currentColor" strokeWidth="0.5" opacity="0.15"/>
+            </svg>
+          </div>
+          <div className="hero__card-decoration hero__card-decoration--2">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path d="M20 2L22 18L38 20L22 22L20 38L18 22L2 20L18 18L20 2Z" fill="currentColor" opacity="0.2"/>
+            </svg>
           </div>
         </div>
       </div>
 
-      {/* Music Beat Bars */}
-      <div className="hero-beat-bars">
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={i}
-            className="hero-beat-single"
-            style={{
-              animationDelay: `${i * 0.15}s`,
-              height: `${15 + Math.random() * 30}px`
-            }}
-          />
-        ))}
+      {/* ========== VIDEO CONTROLS (Optional - Hidden but functional) ========== */}
+      {videoLoaded && (
+        <button 
+          className="hero__video-sound"
+          onClick={() => {
+            if (videoRef.current) {
+              videoRef.current.muted = !videoRef.current.muted;
+            }
+          }}
+          aria-label="Toggle sound"
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M2 7V13H5L10 18V2L5 7H2Z" fill="currentColor" opacity="0.4"/>
+            <path d="M13 7C14.1046 7 15 7.89543 15 9C15 10.1046 14.1046 11 13 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.4"/>
+            <path d="M16 5C18.2091 6.10457 18.2091 11.8954 16 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.3"/>
+          </svg>
+        </button>
+      )}
+
+      {/* ========== SCROLL INDICATOR ========== */}
+      <div className="hero__scroll">
+        <div className="hero__scroll-indicator">
+          <div className="hero__scroll-line">
+            <div 
+              className="hero__scroll-progress" 
+              style={{ 
+                transform: `scaleY(${Math.min(1, scrollY / 500)})` 
+              }}
+            />
+          </div>
+          <span className="hero__scroll-text">Scroll to discover</span>
+        </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="hero-scroll-hint">
-        <div className="hero-scroll-line"></div>
-        <span className="hero-scroll-text">SCROLL TO EXPERIENCE</span>
-        <div className="hero-scroll-arrow">↓</div>
-      </div>
-
-      {/* Bottom Gradient */}
-      <div className="hero-bottom-fade"></div>
+      {/* ========== BOTTOM GRADIENT ========== */}
+      <div className="hero__fade" />
     </section>
   );
 };
