@@ -99,7 +99,7 @@
 
   margin: auto;
 
-  min-height: 620px;
+  min-height: 430px;
 
   display: flex;
 
@@ -107,7 +107,7 @@
 
   justify-content: center;
 
-  padding: 20px 30px 60px;
+  padding: 60px 30px 20px;
 
   overflow: hidden;
 
@@ -165,7 +165,7 @@
 
   max-width: 1100px;
 
-  top: -40px;
+  top: -60px;
 
   opacity: 0;
 
@@ -292,9 +292,9 @@
 .exp-subtitle {
   max-width: 1050px;
 
-  margin: 25px auto 0;
+  margin-top: 15px;
 
-  padding: 24px 32px;
+  padding: 16px 24px;
 
   border-radius: 26px;
 
@@ -321,139 +321,56 @@
 /* ==========================================
    CARDS GRID
 ========================================== */
+/* ==========================================
+   CARDS GRID
+========================================== */
 
 .exp-container {
   position: relative;
   z-index: 5;
 
-  max-width: 1500px;
-
-  margin: auto;
+  max-width: 1400px;
+  margin: 80px auto 0;
 
   padding: 0 40px;
 
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
 
-  grid-template-columns:
-    repeat(3, 1fr);
+  gap: 32px;
+}
 
-  gap: 40px;
-}/* ==========================================
-   CARD REVEAL
+/* ==========================================
+   CARD
 ========================================== */
 
 .exp-card {
   background: #fffdf9;
 
-  border-radius: 24px;
+  border-radius: 28px;
 
   overflow: hidden;
 
-  border: 1px solid rgba(201,162,39,.25);
+  border: 1px solid rgba(201, 162, 39, 0.22);
 
   box-shadow:
-    0 12px 30px rgba(59,36,22,.06);
+    0 10px 30px rgba(59, 36, 22, 0.06);
 
   transition:
-    transform .45s ease,
-    box-shadow .45s ease;
-
-  min-height: 720px;
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
 
   display: flex;
   flex-direction: column;
-}
 
-.exp-card.show {
-  opacity: 1;
-
-  transform:
-    translateY(0);
-}
-
-/* ==========================================
-   FESTIVAL CARD
-========================================== */
-
-.exp-card {
-  background: #fffdf9;
-
-  border-radius: 20px;
-
-  overflow: visible;
-
-  border:
-    1px solid
-    rgba(201,162,39,.25);
-
-  box-shadow:
-    0 8px 24px
-    rgba(59,36,22,.05);
-
-  transition:
-    transform .45s ease,
-    box-shadow .45s ease,
-    border-color .45s ease;
-
-  min-height: 430px;
+  min-height: auto;
 }
 
 .exp-card:hover {
-  transform:
-    translateY(-12px);
-
-  border-color:
-    rgba(201,162,39,.45);
+  transform: translateY(-10px);
 
   box-shadow:
-    0 20px 50px
-    rgba(59,36,22,.10);
-}
-
-/* ==========================================
-   NUMBER BADGE
-========================================== */
-
-.card-number-circle {
-  position: absolute;
-
-  top: -26px;
-  left: 50%;
-
-  transform:
-    translateX(-50%);
-
-  width: 68px;
-  height: 68px;
-
-  border-radius: 50%;
-
-  background: #fffdf9;
-
-  border:
-    2px solid
-    rgba(201,162,39,.5);
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  font-family:
-    "Cormorant Garamond",
-    serif;
-
-  font-size: 2rem;
-
-  font-weight: 700;
-
-  color: #7b2d26;
-
-  z-index: 20;
-
-  box-shadow:
-    0 6px 18px
-    rgba(59,36,22,.08);
+    0 20px 50px rgba(59, 36, 22, 0.10);
 }
 
 /* ==========================================
@@ -461,53 +378,59 @@
 ========================================== */
 
 .card-image-wrap {
-  height: 420px;
+  width: 100%;
+  height: 320px;
 
   overflow: hidden;
+
+  background: #f8f2e9;
 }
 
 .card-image {
   width: 100%;
   height: 100%;
 
-  object-fit: cover;
+  display: block;
 
-  transition: transform 1s ease;
+  object-fit: cover;
+  object-position: top center;
+
+  transition: transform 0.8s ease;
 }
 
 .exp-card:hover .card-image {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
-
-
 
 /* ==========================================
    CONTENT
 ========================================== */
 
 .card-content {
-  padding: 34px 28px 32px;
+  padding: 28px 26px 30px;
 
   text-align: center;
 
   display: flex;
   flex-direction: column;
 
-  flex: 1;
+  gap: 10px;
 }
 
+/* ==========================================
+   TITLE
+========================================== */
+
 .card-content h3 {
-  font-family:
-    "Cormorant Garamond",
-    serif;
+  font-family: "Cormorant Garamond", serif;
 
   font-size: 2.4rem;
 
+  line-height: 1.1;
+
   color: #7b2d26;
 
-  line-height: 1.15;
-
-  margin-bottom: 20px;
+  margin: 0;
 }
 
 /* ==========================================
@@ -521,7 +444,7 @@
 
   font-size: 15px;
 
-  margin-bottom: 20px;
+  margin: 10px 0 16px;
 }
 
 .card-divider::before,
@@ -532,11 +455,10 @@
 
   top: 50%;
 
-  width: 55px;
+  width: 60px;
   height: 1px;
 
-  background:
-    rgba(201,162,39,.45);
+  background: rgba(201, 162, 39, 0.4);
 }
 
 .card-divider::before {
@@ -554,11 +476,11 @@
 .card-content p {
   font-size: 1rem;
 
-  line-height: 2;
+  line-height: 1.8;
 
-  color: rgba(59,36,22,.78);
+  color: rgba(59, 36, 22, 0.78);
 
-  margin-bottom: auto;
+  margin: 0;
 }
 
 /* ==========================================
@@ -566,45 +488,67 @@
 ========================================== */
 
 .card-link {
-  margin-top: 30px;
-
-  justify-content: center;
+  margin-top: 18px;
 
   border: none;
-
   background: transparent;
 
   color: #c9921c;
 
   font-weight: 600;
-
   font-size: 16px;
 
   cursor: pointer;
 
   display: inline-flex;
-
   align-items: center;
+  justify-content: center;
 
   gap: 8px;
 }
 
 .card-link span {
-  transition:
-    transform .3s ease;
+  transition: transform 0.3s ease;
 }
 
 .card-link:hover span {
-  transform:
-    translateX(6px);
+  transform: translateX(5px);
 }
 
 /* ==========================================
-   STAGGERED LAYOUT
+   TABLET
 ========================================== */
 
+@media (max-width: 1200px) {
 
+  .exp-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+
+  .exp-container {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
+
+  .card-image-wrap {
+    height: 280px;
+  }
+
+  .card-content h3 {
+    font-size: 2rem;
+  }
+
+  .card-content p {
+    font-size: 0.95rem;
+  }
+}
 /* ==========================================
    FOOTER ORNAMENT
 ========================================== */

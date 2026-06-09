@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import "./ExperiencesSection.css";
 import backgroundImage from "../assets/backgroundimage.png";
-
+import collabImage from "../assets/collab1.png";
+import global from "../assets/global-performance.jpg";
+import playback from "../assets/playback-singer.png";
 const experiences = [
   {
     id: "01",
     title: "Maestro Collaborations",
     description:
       "Privileged to perform alongside legendary icons including Maestro Ilaiyaraaja and special celebrations honoring Kamal Haasan.",
-    image: "/assets/maestro.jpg",
+    image: collabImage,
   },
 
   {
@@ -16,7 +18,7 @@ const experiences = [
     title: "500+ Global Performances",
     description:
       "Performed across Canada, UK, Australia, Denmark, Switzerland, Singapore, Malaysia, Sri Lanka and numerous cities throughout India.",
-    image: "/assets/global-performance.jpg",
+    image: global,
   },
 
   {
@@ -24,7 +26,7 @@ const experiences = [
     title: "Playback Singing Career",
     description:
       "Contributed songs to Tamil and Kannada film industries, collaborating with renowned composers and production houses.",
-    image: "/assets/playback-singer.jpg",
+    image: playback,
   },
 
   {
@@ -131,9 +133,7 @@ const ExperiencesSection = () => {
             <span></span>
           </div>
 
-          <div className="exp-tag">
-            CARNATIC HERITAGE FESTIVAL
-          </div>
+          
 
           <h2 className="exp-headline">
             THE SOUL OF
