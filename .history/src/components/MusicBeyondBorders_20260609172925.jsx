@@ -1,5 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
-import './MusicBeyondBorders.css';
 // // import { useEffect, useRef, useState } from 'react';
 // // import './MusicBeyondBorders.css';
 
@@ -555,399 +553,271 @@ import './MusicBeyondBorders.css';
 // };
 
 // export default MusicBeyondBorders;
-import { useEffect, useState } from "react";
-import "./MusicBeyondBorders.css";
+
+
+
+
+import { useEffect, useRef, useState } from 'react';
+import './MusicBeyondBorders.css';
 
 const countries = [
-  { 
-    name: "Canada", 
-    flag: "🇨🇦", 
-    city: "Toronto", 
-    year: "2019", 
-    venue: "Roy Thomson Hall",
-    image: "https://images.pexels.com/photos/1421906/pexels-photo-1421906.jpeg"
-  {
-    name: "Sri Lanka",
-    image: "/images/countries/srilanka.jpg",
-  
-    city: "Colombo",
-    year: "2017",
-    landmark: "Nelum Pokuna"
-  },
-  { 
-    name: "United Kingdom", 
-    flag: "🇬🇧", 
-    city: "London", 
-    year: "2018", 
-    venue: "Royal Albert Hall",
-    image: "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg"
-  {
-    name: "United Kingdom",
-    image: "/images/countries/uk.jpg",
-  
-    city: "London",
-    year: "2018",
-    landmark: "Royal Albert Hall"
-  },
   {
     name: "Canada",
     image: "/images/countries/canada.jpg",
-  
+    flag: "🇨🇦",
     city: "Toronto",
-    year: "2019",
-    landmark: "CN Tower"
+    year: "2019"
+  },
+  {
+    name: "United Kingdom",
+    image: "/images/countries/uk.jpg",
+    flag: "🇬🇧",
+    city: "London",
+    year: "2018"
+  },
+  {
+    name: "Australia",
+    image: "/images/countries/australia.jpg",
+    flag: "🇦🇺",
+    city: "Sydney",
+    year: "2020"
+  },
+  {
+    name: "Denmark",
+    image: "/images/countries/denmark.jpg",
+    flag: "🇩🇰",
+    city: "Copenhagen",
+    year: "2022"
+  },
+  {
+    name: "Switzerland",
+    image: "/images/countries/switzerland.jpg",
+    flag: "🇨🇭",
+    city: "Zurich",
+    year: "2021"
   },
   {
     name: "Singapore",
     image: "/images/countries/singapore.jpg",
-    
+    flag: "🇸🇬",
     city: "Marina Bay",
-    year: "2019",
-    landmark: "Esplanade"
-  },
-  { 
-    name: "Australia", 
-    flag: "🇦🇺", 
-    city: "Sydney", 
-    year: "2020", 
-    venue: "Sydney Opera House",
-    image: "https://images.pexels.com/photos/162196/sydney-opera-house-australia-sydney-ferry-162196.jpeg"
-  },
-  { 
-    name: "Denmark", 
-    flag: "🇩🇰", 
-    city: "Copenhagen", 
-    year: "2022", 
-    venue: "Koncerthuset",
-    image: "https://images.pexels.com/photos/2361032/pexels-photo-2361032.jpeg"
-  {
-    name: "Australia",
-    image: "/images/countries/australia.jpg",
-    
-    city: "Sydney",
-    year: "2020",
-    landmark: "Opera House"
-  },
-  { 
-    name: "Switzerland", 
-    flag: "🇨🇭", 
-    city: "Zurich", 
-    year: "2021", 
-    venue: "Tonhalle",
-    image: "https://images.pexels.com/photos/586627/pexels-photo-586627.jpeg"
-  {
-    name: "Switzerland",
-    image: "/images/countries/switzerland.jpg",
-    
-    city: "Zurich",
-    year: "2021",
-    landmark: "Lake Zurich"
-  },
-  { 
-    name: "Singapore", 
-    flag: "🇸🇬", 
-    city: "Marina Bay", 
-    year: "2019", 
-    venue: "Esplanade",
-    image: "https://images.pexels.com/photos/592753/pexels-photo-592753.jpeg"
-  {
-    name: "Denmark",
-    image: "/images/countries/denmark.jpg",
-    
-    city: "Copenhagen",
-    year: "2022",
-    landmark: "Tivoli Gardens"
-  },
-  { 
-    name: "Malaysia", 
-    flag: "🇲🇾", 
-    city: "Kuala Lumpur", 
-    year: "2023", 
-    venue: "PETRONAS Theatre",
-    image: "https://images.pexels.com/photos/672532/pexels-photo-672532.jpeg"
-  },
-  { 
-    name: "Sri Lanka", 
-    flag: "🇱🇰", 
-    city: "Colombo", 
-    year: "2017", 
-    venue: "Nelum Pokuna",
-    image: "https://images.pexels.com/photos/1056405/pexels-photo-1056405.jpeg"
+    year: "2019"
   },
   {
     name: "Malaysia",
     image: "/images/countries/malaysia.jpg",
-   
+    flag: "🇲🇾",
     city: "Kuala Lumpur",
-    year: "2023",
-    landmark: "Petronas Towers"
-  }
+    year: "2023"
+  },
+  {
+    name: "Sri Lanka",
+    image: "/images/countries/srilanka.jpg",
+    flag: "🇱🇰",
+    city: "Colombo",
+    year: "2017"
+  },
 ];
 
 const MusicBeyondBorders = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(-1);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [hoveredCard, setHoveredCard] = useState(null);
   const sectionRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const timelineRef = useRef(null);
+  const globeRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current) return;
+      if (!sectionRef.current || !timelineRef.current) return;
       
-      const rect = sectionRef.current.getBoundingClientRect();
-      const progress = Math.min(Math.max(-rect.top / (rect.height - window.innerHeight), 0), 1);
+      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const sectionTop = sectionRect.top;
+      const sectionHeight = sectionRect.height;
+      const windowHeight = window.innerHeight;
+      
+      const progress = Math.min(Math.max(-sectionTop / (sectionHeight - windowHeight), 0), 1);
       setScrollProgress(progress);
 
-      const cards = document.querySelectorAll('.mbb-journey-card');
-      cards.forEach((card, idx) => {
-        const cardRect = card.getBoundingClientRect();
-        if (cardRect.top < window.innerHeight * 0.6 && cardRect.bottom > window.innerHeight * 0.4) {
-          setActiveIndex(idx);
+      // Globe rotation based on scroll
+      if (globeRef.current) {
+        globeRef.current.style.transform = `rotate(${progress * 360}deg)`;
+      }
+
+      // Find active country
+      const cards = timelineRef.current.querySelectorAll('.mbb-journey-card');
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < windowHeight * 0.6 && rect.bottom > windowHeight * 0.4) {
+          setActiveIndex(index);
         }
       });
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-    if (paused) return;
-
-    const interval = setInterval(() => {
-      setActiveIndex((prev) =>
-        prev === countries.length - 1 ? 0 : prev + 1
-      );
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [paused]);
-
-  const activeCountry = countries[activeIndex];
 
   return (
     <section className="mbb-section" ref={sectionRef}>
-      {/* Light Theme Background */}
-      <div className="mbb-bg-light"></div>
-      <div className="mbb-pattern-overlay"></div>
+      {/* Rotating Globe */}
+      <div className="mbb-globe-container">
+        <div className="mbb-globe" ref={globeRef}>
+          <div className="mbb-globe-meridians">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="mbb-globe-line" style={{ transform: `rotateY(${i * 30}deg)` }}></div>
+            ))}
+          </div>
+          <div className="mbb-globe-parallels">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="mbb-globe-parallel-line" style={{ top: `${25 + i * 15}%` }}></div>
+            ))}
+          </div>
+          <div className="mbb-globe-dots">
+            {countries.map((country, i) => (
+              <div
+                key={i}
+                className={`mbb-globe-dot ${i === activeIndex ? 'mbb-dot-active' : ''}`}
+                style={{
+                  left: `${20 + (i * 8)}%`,
+                  top: `${20 + ((i % 3) * 25)}%`
+                }}
+              >
+                <span className="mbb-dot-tooltip">{country.flag} {country.city}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="mbb-globe-glow"></div>
+      </div>
 
       {/* Header */}
       <div className="mbb-header">
         <div className="mbb-header-badge">
           <span className="mbb-badge-dot"></span>
-          <span className="mbb-badge-text">GLOBAL JOURNEY</span>
+          GLOBAL TOURS
           <span className="mbb-badge-dot"></span>
         </div>
 
-        <h2 className="mbb-title">
-          <span className="mbb-title-light">Music</span>
-          <span className="mbb-title-bold">Beyond Borders</span>
+        <h2 className="mbb-headline">
+          <span className="mbb-headline-main">Music Beyond</span>
+          <span className="mbb-headline-accent">Borders</span>
         </h2>
 
-        <p className="mbb-subtitle">
-          Taking Indian classical music to prestigious venues across the globe
-        </p>
-
-        <div className="mbb-stats">
-          <div className="mbb-stat">
-            <span className="mbb-stat-num">8</span>
-            <span className="mbb-stat-label">Countries</span>
+        <div className="mbb-header-metrics">
+          <div className="mbb-metric">
+            <span className="mbb-metric-value">8</span>
+            <span className="mbb-metric-unit">Countries</span>
           </div>
-          <div className="mbb-stat-dot"></div>
-          <div className="mbb-stat">
-            <span className="mbb-stat-num">15+</span>
-            <span className="mbb-stat-label">Cities</span>
+          <div className="mbb-metric-divider">•</div>
+          <div className="mbb-metric">
+            <span className="mbb-metric-value">15+</span>
+            <span className="mbb-metric-unit">Cities</span>
           </div>
-          <div className="mbb-stat-dot"></div>
-          <div className="mbb-stat">
-            <span className="mbb-stat-num">50+</span>
-            <span className="mbb-stat-label">Performances</span>
+          <div className="mbb-metric-divider">•</div>
+          <div className="mbb-metric">
+            <span className="mbb-metric-value">50+</span>
+            <span className="mbb-metric-unit">Shows</span>
           </div>
         </div>
       </div>
-    <section className="mbb-section">
-      <div className="mbb-container">
-        
 
-        {/* RIGHT GLASS BANNER */}
-        <div className="mbb-banner">
-          <div className="mbb-left-image">
-  <img
-    src={activeCountry.image}
-    alt={activeCountry.name}
-    key={activeCountry.image}
-  />
-</div>
-          
-          {/* Background Image */}
-          <div className="mbb-banner-image">
-            <img
-              src={activeCountry.image}
-              alt={activeCountry.name}
-            />
-          </div>
+      {/* Journey Timeline */}
+      <div className="mbb-timeline" ref={timelineRef}>
+        {/* Central Spine */}
+        <div className="mbb-spine">
+          <div className="mbb-spine-line"></div>
+          <div 
+            className="mbb-spine-progress"
+            style={{ height: `${scrollProgress * 100}%` }}
+          ></div>
+          <div className="mbb-spine-pulse"></div>
+        </div>
 
-      {/* Journey Grid */}
-      <div className="mbb-grid">
-        {countries.map((country, idx) => (
+        {/* Journey Cards */}
+        {countries.map((country, index) => (
           <div
-            key={idx}
-            className={`mbb-journey-card ${activeIndex === idx ? 'active' : ''}`}
-            onMouseEnter={() => setHoveredCard(idx)}
-            onMouseLeave={() => setHoveredCard(null)}
-            style={{ animationDelay: `${idx * 0.05}s` }}
+            className={`mbb-journey-card ${index === activeIndex ? 'mbb-card-visible' : ''} ${index % 2 === 0 ? 'mbb-card-left' : 'mbb-card-right'}`}
+            key={index}
           >
-            {/* Card Media */}
-            <div className="mbb-card-media">
-              <div className="mbb-media-frame">
-                <img 
-                  src={country.image} 
-                  alt={country.name}
-                  className="mbb-card-img"
-                  onError={(e) => {
-                    e.target.src = 'https://via.placeholder.com/400x300/fdf4e3/c9a03d?text=' + country.name;
-                  }}
-                />
-                <div className="mbb-media-overlay"></div>
-                
-                {/* Flag Badge */}
-                <div className="mbb-flag-badge">
-                  <span>{country.flag}</span>
-                </div>
-                
-                {/* Year Badge */}
-                <div className="mbb-year-badge">
-                  <span>{country.year}</span>
-                </div>
-
-                {/* Hover Play Icon */}
-                <div className={`mbb-hover-icon ${hoveredCard === idx ? 'show' : ''}`}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </div>
+            {/* Connector */}
+            <div className="mbb-card-connector">
+              <div className="mbb-connector-line"></div>
+              <div className="mbb-connector-node">
+                <span className="mbb-node-flag">{country.flag}</span>
               </div>
             </div>
 
             {/* Card Content */}
-            <div className="mbb-card-content">
-              <div className="mbb-card-number">{(idx + 1).toString().padStart(2, '0')}</div>
-              <h3 className="mbb-card-title">{country.name}</h3>
-              <p className="mbb-card-location">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" strokeWidth="2"/>
-                  <circle cx="12" cy="10" r="3" strokeWidth="2"/>
-                </svg>
-                {country.city}
-              </p>
-              <p className="mbb-card-venue">{country.venue}</p>
-              <div className="mbb-card-line"></div>
-              <div className="mbb-card-tag">
-                <span>International Tour</span>
+            <div className="mbb-card-body">
+              {/* Image Section */}
+              <div className="mbb-card-image-section">
+                <div className="mbb-card-frame">
+                  <img
+                    src={country.image}
+                    alt={country.name}
+                    className="mbb-card-img"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                  <div className="mbb-card-img-overlay"></div>
+                  
+                  {/* Year Badge */}
+                  <div className="mbb-card-year">
+                    <span>{country.year}</span>
+                  </div>
+                </div>
+
+                {/* Decorative elements */}
+                <div className="mbb-card-shape mbb-shape-1"></div>
+                <div className="mbb-card-shape mbb-shape-2"></div>
+              </div>
+
+              {/* Text Section */}
+              <div className="mbb-card-text">
+                <div className="mbb-card-number">
+                  {(index + 1).toString().padStart(2, "0")}
+                </div>
+                
+                <h3 className="mbb-card-country-name">{country.name}</h3>
+                
+                <div className="mbb-card-location">
+                  <span className="mbb-location-pin">📍</span>
+                  <span className="mbb-location-city">{country.city}</span>
+                </div>
+
+                <div className="mbb-card-flight-info">
+                  <span className="mbb-flight-icon">✈️</span>
+                  <span className="mbb-flight-text">International Tour</span>
+                </div>
               </div>
             </div>
-
-            {/* Glow Effect */}
-            <div className="mbb-card-glow"></div>
-          {/* Glass Overlay */}
-          <div className="mbb-banner-overlay">
-            <div className="mbb-content">
-              
-            </div>
-          </div>
-
-          {/* Decorative Title */}
-          <div className="mbb-heading">
-            <span className="mbb-heading-small">
-              MUSIC BEYOND
-            </span>
-
-            <h1>BORDERS</h1>
-            <div className="mbb-content">
-  <span className="mbb-year">
-    {activeCountry.year}
-  </span>
-
-  <h2 className="mbb-country">
-    {activeCountry.name}
-  </h2>
-
-  <p className="mbb-city">
-    📍 {activeCountry.city}
-  </p>
-
-  <span className="mbb-landmark">
-    {activeCountry.landmark}
-  </span>
-
-  <div className="mbb-tour-tag">
-    INTERNATIONAL TOUR
-  </div>
-
-  {/* Closing */}
-  <div className="mbb-closing">
-    <div className="mbb-closing-content">
-      <div className="mbb-closing-icon"></div>
-
-      <p className="mbb-closing-text">
-        Thousands of miles traveled.
-        Millions of hearts touched.
-      </p>
-
-      <div className="mbb-closing-dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-</div>
           </div>
         ))}
       </div>
 
-      {/* Progress Indicator */}
-      {/* <div className="mbb-progress">
-        <div className="mbb-progress-line">
-          <div className="mbb-progress-fill" style={{ width: `${scrollProgress * 100}%` }}></div>
-        </div>
-        <div className="mbb-progress-dots">
-          {countries.map((_, i) => (
-            <div key={i} className={`mbb-progress-dot ${i === activeIndex ? 'active' : ''}`}></div>
-          ))}
-        </div>
-      </div> */}
-
-      {/* Footer Statement */}
-      <div className="mbb-footer">
-        <div className="mbb-footer-line"></div>
+      {/* Bottom Statement */}
+      <div className="mbb-statement">
+        <div className="mbb-statement-bg-text">WORLD TOUR</div>
         
-        <div className="mbb-footer-quote">
-          <span className="mbb-quote-mark">"</span>
-          <p>
+        <div className="mbb-statement-content">
+          <div className="mbb-statement-line"></div>
+          
+          <h3 className="mbb-statement-quote">
             Thousands of miles traveled.
             <br />
-            <strong>Millions of hearts touched.</strong>
-          </p>
-          <span className="mbb-quote-mark">"</span>
+            <span className="mbb-statement-highlight">Millions of hearts touched.</span>
+          </h3>
+          
+          <div className="mbb-statement-line"></div>
         </div>
 
-        {/* <div className="mbb-footer-flags">
-          {countries.map((c, i) => (
-            <div key={i} className="mbb-flag-item" style={{ animationDelay: `${i * 0.03}s` }}>
-              <span>{c.flag}</span>
-              <span className="mbb-flag-name">{c.name}</span>
-            </div>
+        <div className="mbb-statement-flags">
+          {countries.map((country, i) => (
+            <span key={i} className="mbb-statement-flag" style={{ animationDelay: `${i * 0.2}s` }}>
+              {country.flag}
+            </span>
           ))}
-        </div> */}
-
-        <button className="mbb-cta">
-          <span>Explore Full Journey</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M5 12h14M12 5l7 7-7 7" strokeWidth="2" strokeLinecap="round"/>
-          </svg>
-        </button>
         </div>
       </div>
 
