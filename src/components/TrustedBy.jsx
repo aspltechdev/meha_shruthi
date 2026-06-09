@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './TrustedBy.css';
 
-// Background image - replace with your actual image
-import trustedBg from "../assets/hero.png";
-
 const clients = [
   {
     name: "Rotary Club",
@@ -109,165 +106,168 @@ const TrustedBy = () => {
   }, []);
 
   return (
-    <section className="trusted-pro-section" ref={sectionRef}>
-      {/* Background Layer */}
-      <div className="trusted-pro-bg-layer">
-        <div className="trusted-pro-bg-image"></div>
-        <div className="trusted-pro-bg-overlay"></div>
-      </div>
+    <section className="trusted-light-section" ref={sectionRef}>
+      {/* Light Theme Background */}
+      <div className="trusted-light-bg"></div>
+      <div className="trusted-light-pattern"></div>
 
-      {/* Ambient Light Effects */}
-      <div className="trusted-pro-ambient">
-        <div className="trusted-pro-ambient-1"></div>
-        <div className="trusted-pro-ambient-2"></div>
-        <div className="trusted-pro-ambient-3"></div>
-      </div>
-
-      {/* Dynamic Spotlight */}
+      {/* Dynamic Spotlight - Light Theme */}
       <div 
-        className="trusted-pro-spotlight"
+        className="trusted-light-spotlight"
         style={{
-          background: `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, rgba(201, 160, 61, 0.12) 0%, rgba(201, 160, 61, 0.04) 30%, transparent 70%)`
+          background: `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, rgba(201, 160, 61, 0.08) 0%, rgba(201, 160, 61, 0.03) 40%, transparent 70%)`
         }}
       />
 
       {/* Light Rays */}
-      <div className="trusted-pro-rays">
-        <div className="trusted-pro-ray"></div>
-        <div className="trusted-pro-ray"></div>
-        <div className="trusted-pro-ray"></div>
-        <div className="trusted-pro-ray"></div>
-        <div className="trusted-pro-ray"></div>
+      <div className="trusted-light-rays">
+        <div className="trusted-light-ray"></div>
+        <div className="trusted-light-ray"></div>
+        <div className="trusted-light-ray"></div>
       </div>
 
-      {/* Main Content */}
-      <div className="trusted-pro-container">
-        {/* Header */}
-        <div className="trusted-pro-header">
-          <div className="trusted-pro-header-badge">
-            <span className="trusted-pro-badge-line"></span>
-            <span className="trusted-pro-badge-text">OUR TRUSTED PARTNERS</span>
-            <span className="trusted-pro-badge-line"></span>
-          </div>
-
-          <h2 className="trusted-pro-title">
-            <span className="trusted-pro-title-light">Trusted By</span>
-            <span className="trusted-pro-title-bold">The Best</span>
-          </h2>
-
-          <p className="trusted-pro-subtitle">
-            From intimate gatherings to grand celebrations, we've created unforgettable moments 
-            for the most discerning clients across industries
-          </p>
-
-          {/* Stats Row */}
-          <div className="trusted-pro-stats">
-            <div className="trusted-pro-stat">
-              <div className="trusted-pro-stat-number">500+</div>
-              <div className="trusted-pro-stat-label">Events</div>
-            </div>
-            <div className="trusted-pro-stat-sep"></div>
-            <div className="trusted-pro-stat">
-              <div className="trusted-pro-stat-number">100+</div>
-              <div className="trusted-pro-stat-label">Clients</div>
-            </div>
-            <div className="trusted-pro-stat-sep"></div>
-            <div className="trusted-pro-stat">
-              <div className="trusted-pro-stat-number">98%</div>
-              <div className="trusted-pro-stat-label">Satisfaction</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Client Grid */}
-        <div className="trusted-pro-grid">
-          {clients.map((client, index) => (
-            <div
-              key={index}
-              className={`trusted-pro-card ${isVisible ? 'visible' : ''} ${hoveredIndex === index ? 'hovered' : ''}`}
-              style={{ transitionDelay: `${index * 0.05}s` }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              {/* Card Image */}
-              <div className="trusted-pro-card-image">
-                <img src={client.image} alt={client.name} />
-                <div className="trusted-pro-card-overlay"></div>
-                <div className="trusted-pro-card-category">{client.category}</div>
-              </div>
-
-              {/* Card Content */}
-              <div className="trusted-pro-card-content">
-                <h3 className="trusted-pro-card-name">{client.name}</h3>
-                <p className="trusted-pro-card-desc">{client.description}</p>
-                <div className="trusted-pro-card-meta">
-                  <div className="trusted-pro-meta-item">
-                    <span className="trusted-pro-meta-label">Since</span>
-                    <span className="trusted-pro-meta-value">{client.years}</span>
-                  </div>
-                  <div className="trusted-pro-meta-divider"></div>
-                  <div className="trusted-pro-meta-item">
-                    <span className="trusted-pro-meta-label">Events</span>
-                    <span className="trusted-pro-meta-value">{client.events}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Hover Indicator */}
-              <div className="trusted-pro-card-indicator">
-                <div className="trusted-pro-indicator-line"></div>
-                <div className="trusted-pro-indicator-arrow">→</div>
-              </div>
-
-              {/* Hover Glow */}
-              <div className="trusted-pro-card-glow"></div>
-            </div>
-          ))}
-        </div>
-
-        {/* Trust Bar */}
-        <div className="trusted-pro-trustbar">
-          <div className="trusted-pro-trustbar-line"></div>
-          <div className="trusted-pro-trustbar-content">
-            <span className="trusted-pro-trustbar-quote">"</span>
-            <p className="trusted-pro-trustbar-text">
-              The trust of our clients is the foundation of every performance
-            </p>
-            <span className="trusted-pro-trustbar-quote">"</span>
-          </div>
-          <div className="trusted-pro-trustbar-line"></div>
-        </div>
-
-        {/* CTA */}
-        <div className="trusted-pro-cta">
-          <button className="trusted-pro-cta-btn">
-            <span>Partner With Us</span>
-            <span className="trusted-pro-cta-arrow">→</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Bottom Audio Visualizer */}
-      <div className="trusted-pro-audio">
-        {[...Array(24)].map((_, i) => (
+      {/* Floating Particles - Light */}
+      <div className="trusted-light-particles">
+        {[...Array(30)].map((_, i) => (
           <div
             key={i}
-            className="trusted-pro-audio-bar"
+            className="trusted-light-particle"
             style={{
-              animationDelay: `${i * 0.08}s`,
-              height: `${6 + (i % 15)}px`
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 8}s`,
+              animationDuration: `${5 + Math.random() * 8}s`,
             }}
           />
         ))}
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="trusted-pro-scroll">
-        <span className="trusted-pro-scroll-text">SCROLL</span>
-        <div className="trusted-pro-scroll-mouse">
-          <div className="trusted-pro-scroll-wheel"></div>
+      {/* Main Container */}
+      <div className="trusted-light-container">
+        {/* Header */}
+        <div className="trusted-light-header">
+          <div className="trusted-light-badge">
+            <span className="trusted-light-badge-dot"></span>
+            <span className="trusted-light-badge-text">TRUSTED PARTNERS</span>
+            <span className="trusted-light-badge-dot"></span>
+          </div>
+
+          <h2 className="trusted-light-title">
+            <span className="trusted-light-title-light">Trusted By</span>
+            <span className="trusted-light-title-bold">The Best</span>
+          </h2>
+
+          <p className="trusted-light-subtitle">
+            From intimate gatherings to grand celebrations, we've created unforgettable moments 
+            for the world's most discerning clients
+          </p>
+
+          {/* Stats */}
+          <div className="trusted-light-stats">
+            <div className="trusted-light-stat">
+              <div className="trusted-light-stat-number">500+</div>
+              <div className="trusted-light-stat-label">Events</div>
+              <div className="trusted-light-stat-line"></div>
+            </div>
+            <div className="trusted-light-stat-sep">◉</div>
+            <div className="trusted-light-stat">
+              <div className="trusted-light-stat-number">100+</div>
+              <div className="trusted-light-stat-label">Clients</div>
+              <div className="trusted-light-stat-line"></div>
+            </div>
+            <div className="trusted-light-stat-sep">◉</div>
+            <div className="trusted-light-stat">
+              <div className="trusted-light-stat-number">98%</div>
+              <div className="trusted-light-stat-label">Satisfaction</div>
+              <div className="trusted-light-stat-line"></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Image Overlay Cards Grid */}
+        <div className="trusted-light-grid">
+          {clients.map((client, index) => (
+            <div
+              key={index}
+              className={`trusted-light-card ${isVisible ? 'visible' : ''} ${hoveredIndex === index ? 'hovered' : ''}`}
+              style={{ transitionDelay: `${index * 0.05}s` }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              {/* Card Image */}
+              <div className="trusted-light-card-image">
+                <img src={client.image} alt={client.name} />
+                <div className="trusted-light-card-gradient"></div>
+              </div>
+
+              {/* Content Overlay on Image */}
+              <div className="trusted-light-card-content">
+                {/* Top Section */}
+                <div className="trusted-light-card-top">
+                  <span className="trusted-light-card-category">{client.category}</span>
+                  <span className="trusted-light-card-years">{client.years}</span>
+                </div>
+
+                {/* Bottom Section */}
+                <div className="trusted-light-card-bottom">
+                  <h3 className="trusted-light-card-name">{client.name}</h3>
+                  <p className="trusted-light-card-desc">{client.description}</p>
+                  <div className="trusted-light-card-meta">
+                    <span className="trusted-light-card-events">{client.events}</span>
+                    <span className="trusted-light-card-arrow">→</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Hover Reveal */}
+              <div className="trusted-light-card-reveal">
+                <span>View Portfolio</span>
+                <div className="trusted-light-reveal-line"></div>
+              </div>
+
+              {/* Card Border */}
+              <div className="trusted-light-card-border"></div>
+            </div>
+          ))}
+        </div>
+
+        {/* Trust Statement */}
+        <div className="trusted-light-statement">
+          <div className="trusted-light-statement-line"></div>
+          <div className="trusted-light-statement-content">
+            <span className="trusted-light-statement-quote">"</span>
+            <p className="trusted-light-statement-text">
+              The trust of our clients is the <span className="trusted-light-statement-highlight">foundation</span> of every performance
+            </p>
+            <span className="trusted-light-statement-quote">"</span>
+          </div>
+          <div className="trusted-light-statement-line"></div>
+        </div>
+
+        {/* CTA */}
+        <div className="trusted-light-cta">
+          <button className="trusted-light-cta-btn">
+            <span>Partner With Us</span>
+            <span className="trusted-light-cta-arrow">→</span>
+          </button>
         </div>
       </div>
+
+      {/* Bottom Energy Bars - Light */}
+      <div className="trusted-light-audio">
+        {[...Array(24)].map((_, i) => (
+          <div
+            key={i}
+            className="trusted-light-audio-bar"
+            style={{
+              animationDelay: `${i * 0.08}s`,
+              height: `${6 + (i % 12)}px`
+            }}
+          />
+        ))}
+      </div>
+
+  
     </section>
   );
 };
