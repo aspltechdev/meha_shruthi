@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import "./ExperiencesSection.css";
-import backgroundImage from "../assets/backgroundimage.png";
+import backgroundImage from "../assets/back2.png";
 import collabImage from "../assets/collab1.png";
 import global from "../assets/global-performance.jpg";
 import playback from "../assets/playback-singer.png";
+import tv from "../assets/tv-shows.png";
+import orchestra from "../assets/orchestra.png";
+import event from "../assets/events.png";
+
 const experiences = [
   {
     id: "01",
@@ -34,7 +38,7 @@ const experiences = [
     title: "Television Appearances",
     description:
       "Recognized through reality shows and television platforms, earning accolades for melody and folk music performances.",
-    image: "/assets/tv-shows.jpg",
+    image: tv,
   },
 
   {
@@ -42,7 +46,7 @@ const experiences = [
     title: "Live Orchestra & Band Shows",
     description:
       "Lead vocalist for large-scale orchestra productions, performing with celebrated musicians and artists across South India.",
-    image: "/assets/orchestra.jpg",
+    image: orchestra,
   },
 
   {
@@ -50,7 +54,7 @@ const experiences = [
     title: "1000+ Premium Events",
     description:
       "Delivering unforgettable entertainment experiences through music, dance, comedy, stage productions and corporate events.",
-    image: "/assets/events.jpg",
+    image: event,
   },
 ];
 const ExperiencesSection = () => {
@@ -196,18 +200,13 @@ const ExperiencesSection = () => {
                   {item.title}
                 </h3>
 
-                <div className="card-divider">
-                  ✦
-                </div>
+                
 
                 <p>
                   {item.description}
                 </p>
 
-                <button className="card-link">
-                  Explore Experience
-                  <span>→</span>
-                </button>
+                
 
               </div>
 
