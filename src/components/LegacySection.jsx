@@ -1,6 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './LegacySection.css';
-
+import music1 from '../assets/music1.jpg';
+import music2 from '../assets/music2.jpg';
+import music3 from '../assets/music3.jpg';
+import music4 from '../assets/music4.png';
+import hero from '../assets/hero.mp4';
 // Import your background video or image
 import legacyBgImage from '../assets/legbg.jpg';
 
@@ -10,7 +14,7 @@ const milestones = [
     title: "The Journey Begins",
     subtitle: "FIRST STAGE",
     description: "Started as a passionate music group with a vision to create unforgettable experiences. The first note that changed everything.",
-    image: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg",
+    image: music1,
     stats: { shows: "1", reach: "Local", impact: "Dreams" },
     gradient: "linear-gradient(135deg, #c9a03d, #b8860b)"
   },
@@ -19,7 +23,7 @@ const milestones = [
     title: "Super Singer",
     subtitle: "NATIONAL RECOGNITION",
     description: "National recognition through Vijay TV Super Singer and major stage performances, reaching millions of hearts.",
-    image: "https://images.pexels.com/photos/167491/pexels-photo-167491.jpeg",
+    image: music2,
     stats: { shows: "500+", reach: "National", impact: "Millions" },
     gradient: "linear-gradient(135deg, #daa520, #c9a03d)"
   },
@@ -28,7 +32,7 @@ const milestones = [
     title: "1000+ Events",
     subtitle: "MILESTONE ACHIEVED",
     description: "Celebrated 1000 successful events across South India, becoming a trusted name in entertainment industry.",
-    image: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg",
+    image: music3,
     stats: { shows: "1000+", reach: "Pan-India", impact: "Legacy" },
     gradient: "linear-gradient(135deg, #c9a03d, #8b7355)"
   },
@@ -37,7 +41,7 @@ const milestones = [
     title: "International",
     subtitle: "GLOBAL STAGE",
     description: "Expanding our musical legacy across international borders, taking Indian music to the world stage.",
-    image: "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg",
+    image: music4,
     stats: { shows: "1500+", reach: "Global", impact: "Worldwide" },
     gradient: "linear-gradient(135deg, #b8860b, #daa520)"
   }
@@ -66,6 +70,7 @@ const LegacySection = () => {
   // Update progress based on active index
   useEffect(() => {
     const newProgress = (activeIndex + 1) / milestones.length;
+     // eslint-disable-next-line react-hooks/set-state-in-effect
     setProgress(newProgress);
   }, [activeIndex]);
 
@@ -135,7 +140,7 @@ const LegacySection = () => {
           poster={legacyBgImage}
           onLoadedData={() => setIsVideoLoaded(true)}
         >
-          <source src="/videos/legacy-bg.mp4" type="video/mp4" />
+          <source src="" type="video/mp4" />
           <img src={legacyBgImage} alt="Background" />
         </video>
         
@@ -166,7 +171,7 @@ const LegacySection = () => {
         <div className="legacy-pro-ray"></div>
       </div>
 
-      <div className="legacy-pro-particles">
+      {/* <div className="legacy-pro-particles">
         {[...Array(50)].map((_, i) => (
           <div
             key={i}
@@ -181,7 +186,23 @@ const LegacySection = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
+      <div className="legacy-pro-particles">
+  {Array.from({ length: 50 }, (_, i) => (
+    <div
+      key={i}
+      className="legacy-pro-particle"
+      style={{
+        left: `${(i * 19) % 100}%`,
+        top: `${(i * 37) % 100}%`,
+        animationDelay: `${i * 0.25}s`,
+        animationDuration: `${8 + (i % 6)}s`,
+        width: `${2 + (i % 4)}px`,
+        height: `${2 + (i % 4)}px`,
+      }}
+    />
+  ))}
+</div>
 
       <div className="legacy-pro-grain"></div>
 
@@ -377,4 +398,4 @@ const LegacySection = () => {
   );
 };
 
-export default LegacySection;a
+export default LegacySection;
