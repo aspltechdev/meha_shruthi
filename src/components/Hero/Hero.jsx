@@ -390,6 +390,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Hero.css';
 import hero from "../../assets/hero.png";
+import herovideo from '../../assets/hero.mp4';
 
 const Hero = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -468,7 +469,7 @@ const Hero = () => {
             onCanPlay={handleVideoLoaded}
           >
             <source 
-              src="https://www.pexels.com/download/video/3636753/" 
+              src={herovideo}
               type="video/mp4" 
             />
             Your browser does not support the video tag.
