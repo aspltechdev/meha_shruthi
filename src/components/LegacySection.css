@@ -1,4 +1,4 @@
-/* LegacySection.css - Ultra Premium Production Ready */
+/* LegacySection.css - Ultra Premium Cinematic */
 
 /* ============================================
    Main Section
@@ -26,12 +26,13 @@
   height: 100%;
   object-fit: cover;
   filter: brightness(0.85) contrast(1.05);
+  transition: opacity 1s ease;
 }
 
 .legacy-pro-bg-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(10, 10, 15, 0.6) 0%, rgba(20, 20, 25, 0.4) 100%);
+  background: linear-gradient(135deg, rgba(10, 10, 15, 0.7) 0%, rgba(20, 20, 25, 0.5) 100%);
 }
 
 .legacy-pro-bg-gradient {
@@ -50,7 +51,7 @@
 .legacy-pro-bg-pattern {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle at 20% 40%, rgba(201, 160, 61, 0.05) 1px, transparent 1px);
+  background-image: radial-gradient(circle at 20% 40%, rgba(201, 160, 61, 0.08) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
 }
@@ -60,10 +61,7 @@
    ============================================ */
 .legacy-pro-loader {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: #0a0a0c;
   display: flex;
   align-items: center;
@@ -82,7 +80,7 @@
 .legacy-pro-loader-spinner {
   width: 50px;
   height: 50px;
-  border: 3px solid rgba(201, 160, 61, 0.2);
+  border: 2px solid rgba(201, 160, 61, 0.2);
   border-top-color: #c9a03d;
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -93,7 +91,7 @@
 }
 
 /* ============================================
-   Dynamic Spotlight
+   Cinematic Effects
    ============================================ */
 .legacy-pro-spotlight {
   position: absolute;
@@ -103,9 +101,6 @@
   transition: background 0.1s ease;
 }
 
-/* ============================================
-   Cinematic Light Rays
-   ============================================ */
 .legacy-pro-rays {
   position: absolute;
   inset: 0;
@@ -117,29 +112,26 @@
 .legacy-pro-ray {
   position: absolute;
   bottom: -50%;
-  width: 120px;
+  width: 100px;
   height: 150%;
   background: linear-gradient(90deg, transparent, rgba(201, 160, 61, 0.08), transparent);
   transform: skewX(-15deg) rotate(-15deg);
-  animation: rayMove 14s linear infinite;
+  animation: legacyRayMove 12s linear infinite;
 }
 
-.legacy-pro-ray:nth-child(1) { left: 5%; animation-delay: 0s; width: 150px; }
-.legacy-pro-ray:nth-child(2) { left: 25%; animation-delay: -3.5s; width: 100px; }
-.legacy-pro-ray:nth-child(3) { left: 45%; animation-delay: -7s; width: 130px; }
-.legacy-pro-ray:nth-child(4) { left: 65%; animation-delay: -10.5s; width: 110px; }
-.legacy-pro-ray:nth-child(5) { left: 85%; animation-delay: -14s; width: 140px; }
+.legacy-pro-ray:nth-child(1) { left: 5%; animation-delay: 0s; width: 120px; }
+.legacy-pro-ray:nth-child(2) { left: 25%; animation-delay: -2.5s; width: 80px; }
+.legacy-pro-ray:nth-child(3) { left: 45%; animation-delay: -5s; width: 140px; }
+.legacy-pro-ray:nth-child(4) { left: 65%; animation-delay: -7.5s; width: 100px; }
+.legacy-pro-ray:nth-child(5) { left: 85%; animation-delay: -10s; width: 110px; }
 
-@keyframes rayMove {
+@keyframes legacyRayMove {
   0% { transform: skewX(-15deg) rotate(-15deg) translateY(0); opacity: 0; }
   30% { opacity: 1; }
-  70% { opacity: 0.6; }
+  70% { opacity: 0.5; }
   100% { transform: skewX(-15deg) rotate(-15deg) translateY(-100%); opacity: 0; }
 }
 
-/* ============================================
-   Floating Particles
-   ============================================ */
 .legacy-pro-particles {
   position: absolute;
   inset: 0;
@@ -152,19 +144,16 @@
   position: absolute;
   background: rgba(201, 160, 61, 0.4);
   border-radius: 50%;
-  animation: particleFloat linear infinite;
+  animation: legacyParticleFloat linear infinite;
 }
 
-@keyframes particleFloat {
+@keyframes legacyParticleFloat {
   0% { transform: translateY(0) scale(1); opacity: 0; }
   20% { opacity: 0.6; }
   80% { opacity: 0.2; }
   100% { transform: translateY(-100vh) scale(0); opacity: 0; }
 }
 
-/* ============================================
-   Film Grain
-   ============================================ */
 .legacy-pro-grain {
   position: absolute;
   inset: 0;
@@ -355,6 +344,11 @@
   font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.4);
   transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.legacy-pro-progress-year:hover {
+  color: #c9a03d;
 }
 
 .legacy-pro-progress-year.active {
@@ -375,6 +369,7 @@
   background: rgba(201, 160, 61, 0.08);
   border-radius: 20px;
   border-left: 3px solid #c9a03d;
+  margin-bottom: 1.5rem;
 }
 
 .legacy-pro-quote-icon {
@@ -393,72 +388,73 @@
   font-style: italic;
 }
 
+/* Navigation Dots */
+.legacy-pro-nav-dots {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+.legacy-pro-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.legacy-pro-nav-dot:hover {
+  background: rgba(201, 160, 61, 0.6);
+  transform: scale(1.2);
+}
+
+.legacy-pro-nav-dot.active {
+  width: 28px;
+  border-radius: 4px;
+  background: #c9a03d;
+}
+
 /* ============================================
-   Right Side - Timeline Cards
+   Right Side - Active Card
    ============================================ */
 .legacy-pro-right {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
-.legacy-pro-timeline {
+.legacy-pro-active-card {
   position: relative;
   width: 100%;
   max-width: 500px;
-  min-height: 550px;
-}
-
-/* Vertical Line */
-.legacy-pro-timeline-line {
-  position: absolute;
-  left: -20px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(180deg, transparent, rgba(201, 160, 61, 0.3), rgba(201, 160, 61, 0.3), transparent);
-  border-radius: 2px;
-}
-
-.legacy-pro-timeline-progress {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: linear-gradient(180deg, #c9a03d, #ffd700);
-  border-radius: 2px;
-  transition: height 0.1s linear;
-}
-
-/* Cards */
-.legacy-pro-cards {
-  position: relative;
-  width: 100%;
-}
-
-.legacy-pro-card {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   background: rgba(20, 20, 25, 0.9);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   border-radius: 24px;
   overflow: hidden;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(201, 160, 61, 0.2);
-  cursor: pointer;
+  border: 1px solid rgba(201, 160, 61, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  animation: cardFadeIn 0.5s ease;
 }
 
-.legacy-pro-card.active {
-  border-color: rgba(201, 160, 61, 0.5);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Card Media */
 .legacy-pro-card-media {
   position: relative;
-  height: 200px;
+  height: 220px;
   overflow: hidden;
 }
 
@@ -469,25 +465,20 @@
   transition: transform 0.6s ease;
 }
 
-.legacy-pro-card.active .legacy-pro-card-media img {
-  transform: scale(1.08);
+.legacy-pro-active-card:hover .legacy-pro-card-media img {
+  transform: scale(1.05);
 }
 
 .legacy-pro-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
 }
 
 .legacy-pro-card-gradient {
   position: absolute;
   inset: 0;
   opacity: 0.3;
-  transition: opacity 0.4s ease;
-}
-
-.legacy-pro-card.active .legacy-pro-card-gradient {
-  opacity: 0.5;
 }
 
 /* Year Badge */
@@ -497,9 +488,9 @@
   right: 12px;
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(8px);
-  padding: 4px 12px;
+  padding: 6px 14px;
   border-radius: 20px;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #c9a03d;
   letter-spacing: 1px;
@@ -509,68 +500,63 @@
 /* Corner Accents */
 .legacy-pro-card-corner {
   position: absolute;
-  width: 20px;
-  height: 20px;
-  border-color: rgba(201, 160, 61, 0.6);
+  width: 25px;
+  height: 25px;
+  border-color: #c9a03d;
   border-style: solid;
+  opacity: 0.8;
   z-index: 3;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.legacy-pro-card.active .legacy-pro-card-corner {
-  opacity: 1;
 }
 
 .legacy-pro-card-corner.tl {
-  top: 12px;
-  left: 12px;
+  top: 15px;
+  left: 15px;
   border-width: 2px 0 0 2px;
 }
 
 .legacy-pro-card-corner.tr {
-  top: 12px;
-  right: 12px;
+  top: 15px;
+  right: 15px;
   border-width: 2px 2px 0 0;
 }
 
 .legacy-pro-card-corner.bl {
-  bottom: 12px;
-  left: 12px;
+  bottom: 15px;
+  left: 15px;
   border-width: 0 0 2px 2px;
 }
 
 .legacy-pro-card-corner.br {
-  bottom: 12px;
-  right: 12px;
+  bottom: 15px;
+  right: 15px;
   border-width: 0 2px 2px 0;
 }
 
 /* Card Content */
 .legacy-pro-card-content {
-  padding: 1.2rem;
+  padding: 1.5rem;
 }
 
 .legacy-pro-card-title {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 700;
   margin: 0 0 0.25rem;
   color: #fff;
 }
 
 .legacy-pro-card-subtitle {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: #c9a03d;
-  font-weight: 500;
-  margin: 0 0 0.5rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 .legacy-pro-card-desc {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.5;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
   margin-bottom: 1rem;
 }
 
@@ -578,9 +564,9 @@
 .legacy-pro-card-stats {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   padding-top: 0.75rem;
-  border-top: 1px solid rgba(201, 160, 61, 0.15);
+  border-top: 1px solid rgba(201, 160, 61, 0.2);
   margin-bottom: 1rem;
 }
 
@@ -591,23 +577,23 @@
 
 .legacy-pro-card-stat-value {
   display: block;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #c9a03d;
 }
 
 .legacy-pro-card-stat-label {
   display: block;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 .legacy-pro-card-stat-divider {
   width: 1px;
-  height: 20px;
-  background: rgba(201, 160, 61, 0.2);
+  height: 25px;
+  background: rgba(201, 160, 61, 0.3);
 }
 
 /* Card Link */
@@ -615,37 +601,37 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
-  opacity: 0.5;
+  color: #c9a03d;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.legacy-pro-card.active .legacy-pro-card-link {
-  opacity: 1;
+.legacy-pro-card-link:hover {
+  gap: 0.5rem;
 }
 
-.legacy-pro-card-link-text {
-  color: #c9a03d;
+.legacy-pro-card-link-text:hover {
+  opacity: 0.8;
 }
 
 .legacy-pro-card-arrow {
-  color: #c9a03d;
   transition: transform 0.3s ease;
 }
 
-.legacy-pro-card.active .legacy-pro-card-arrow {
+.legacy-pro-card-link:hover .legacy-pro-card-arrow {
   transform: translateX(5px);
 }
 
 /* Energy Rings */
 .legacy-pro-card-energy {
   position: absolute;
-  inset: -10px;
+  inset: -20px;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
 }
 
 .legacy-pro-energy-ring {
@@ -653,31 +639,67 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid rgba(201, 160, 61, 0.3);
+  border: 1px solid rgba(201, 160, 61, 0.2);
   border-radius: 50%;
   opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.legacy-pro-card.active .legacy-pro-energy-ring {
-  opacity: 1;
+  animation: energyRingPulse 3s ease-out infinite;
 }
 
 .legacy-pro-energy-ring.ring-2 {
-  width: calc(100% + 40px);
-  height: calc(100% + 40px);
-  animation: energyPulse 3s infinite;
+  width: calc(100% + 60px);
+  height: calc(100% + 60px);
+  animation-delay: 1s;
 }
 
 .legacy-pro-energy-ring.ring-3 {
-  width: calc(100% + 80px);
-  height: calc(100% + 80px);
-  animation: energyPulse 3s infinite 1s;
+  width: calc(100% + 120px);
+  height: calc(100% + 120px);
+  animation-delay: 2s;
 }
 
-@keyframes energyPulse {
-  0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.05); }
+@keyframes energyRingPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Navigation Arrows */
+.legacy-pro-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(201, 160, 61, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #c9a03d;
+  z-index: 10;
+}
+
+.legacy-pro-nav-arrow:hover {
+  background: #c9a03d;
+  color: #0a0a0c;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.legacy-pro-nav-arrow.prev {
+  left: -60px;
+}
+
+.legacy-pro-nav-arrow.next {
+  right: -60px;
 }
 
 /* ============================================
@@ -688,8 +710,8 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  margin-top: 4rem;
-  padding: 1.5rem;
+  margin-top: 5rem;
+  padding: 2rem;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
   border-radius: 60px;
@@ -856,11 +878,26 @@
   }
   
   .legacy-pro-quote {
-    max-width: 400px;
-    margin: 0 auto;
+    justify-content: center;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
-  .legacy-pro-timeline {
+  .legacy-pro-nav-dots {
+    justify-content: center;
+  }
+  
+  .legacy-pro-nav-arrow.prev {
+    left: -40px;
+  }
+  
+  .legacy-pro-nav-arrow.next {
+    right: -40px;
+  }
+  
+  .legacy-pro-active-card {
+    max-width: 450px;
     margin: 0 auto;
   }
 }
@@ -872,6 +909,38 @@
   
   .legacy-pro-stats {
     flex-direction: column;
+  }
+  
+  .legacy-pro-stat-card {
+    width: 100%;
+  }
+  
+  .legacy-pro-nav-arrow {
+    display: none;
+  }
+  
+  .legacy-pro-active-card {
+    max-width: 380px;
+  }
+  
+  .legacy-pro-card-media {
+    height: 180px;
+  }
+  
+  .legacy-pro-card-title {
+    font-size: 1.1rem;
+  }
+  
+  .legacy-pro-card-desc {
+    font-size: 0.75rem;
+  }
+  
+  .legacy-pro-card-stats {
+    gap: 1rem;
+  }
+  
+  .legacy-pro-card-stat-value {
+    font-size: 0.85rem;
   }
   
   .legacy-pro-footer {
@@ -899,12 +968,24 @@
 }
 
 @media (max-width: 480px) {
+  .legacy-pro-active-card {
+    max-width: 320px;
+  }
+  
   .legacy-pro-card-media {
     height: 160px;
   }
   
+  .legacy-pro-card-content {
+    padding: 1rem;
+  }
+  
   .legacy-pro-card-title {
     font-size: 1rem;
+  }
+  
+  .legacy-pro-card-subtitle {
+    font-size: 0.65rem;
   }
   
   .legacy-pro-card-desc {
@@ -917,6 +998,14 @@
   
   .legacy-pro-description {
     font-size: 0.85rem;
+  }
+  
+  .legacy-pro-stat-number {
+    font-size: 1.4rem;
+  }
+  
+  .legacy-pro-quote p {
+    font-size: 0.8rem;
   }
 }
 
