@@ -4,7 +4,7 @@
 /* MTV - Main Wrapper */
 .mtv-cinematic-wrapper {
   position: relative;
-  padding: 140px 0;
+  padding: 180px 120px;
   height: 120vh;
   width: 100%;
   overflow: hidden;
@@ -13,7 +13,7 @@
 }
 
 /* MTV - Audio Visualizer */
-.mtv-audio-visualizer {
+/* .mtv-audio-visualizer {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -39,7 +39,7 @@
 @keyframes mtvBarPulse {
   0% { transform: scaleY(0.5); opacity: 0.2; }
   100% { transform: scaleY(1); opacity: 0.6; }
-}
+} */
 
 /* MTV - Cinematic Spotlight */
 .mtv-cinematic-spotlight {
@@ -417,8 +417,11 @@
 
 /* MTV - Right Side Content */
 .mtv-slide-right {
+  position: relative;
+  z-index: 30;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 4rem;
   background: rgba(255, 252, 245, 0.95);
   backdrop-filter: blur(10px);
