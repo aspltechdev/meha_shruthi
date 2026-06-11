@@ -386,11 +386,13 @@
 // };
 
 // export default Hero;
-
 import React, { useEffect, useRef, useState } from 'react';
 import './Hero.css';
+
 import hero from "../../assets/hero.png";
-import herovideo from '../../assets/hero.mp4';
+import herovideo from '../../assets/videoone.mp4';
+import herovideotwo from '../../assets/videothree.mp4';
+import herovideothree from '../../assets/videotwo.mp4';
 
 const Hero = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -398,30 +400,84 @@ const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [cardHover, setCardHover] = useState(false);
+
   const heroRef = useRef(null);
   const cardRef = useRef(null);
   const contentRef = useRef(null);
+
   const videoRef = useRef(null);
+  const videoRef2 = useRef(null);
+  const videoRef3 = useRef(null);
 
   useEffect(() => {
     setIsLoaded(true);
-    
-    if (videoRef.current) {
-      videoRef.current.play().catch(error => {
-        console.log('Video autoplay failed, showing fallback image');
-        setVideoLoaded(false);
-      });
-    }
 
+    const video1 = videoRef.current;
+const video2 = videoRef2.current;
+const video3 = videoRef3.current;
+
+if (video1 && video2 && video3) {
+  const videos = [video1, video2, video3];
+
+  videos.forEach((video) => {
+    video.muted = true;
+    video.preload = "auto";
+    video.style.display = "none";
+  });
+
+  let currentIndex = 0;
+
+  const playVideo = (index) => {
+    videos.forEach((video, i) => {
+      if (i === index) {
+        video.style.display = "block";
+        video.play().catch(console.error);
+      } else {
+        video.pause();
+        video.style.display = "none";
+      }
+    });
+
+    currentIndex = index;
+  };
+
+  const handleEnded = () => {
+    const nextIndex = (currentIndex + 1) % videos.length;
+    playVideo(nextIndex);
+  };
+
+  videos.forEach((video) => {
+    video.addEventListener("ended", handleEnded);
+  });
+
+  // Start with first video
+  playVideo(0);
+
+  return () => {
+    videos.forEach((video) => {
+      video.removeEventListener("ended", handleEnded);
+      video.pause();
+    });
+  };
+}
     const handleMouseMove = (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 30;
-      const y = (e.clientY / window.innerHeight - 0.5) * 30;
+      const x =
+        (e.clientX / window.innerWidth - 0.5) * 30;
+
+      const y =
+        (e.clientY / window.innerHeight - 0.5) * 30;
+
       setMousePos({ x, y });
 
       if (cardRef.current && !cardHover) {
-        const cardX = (e.clientX / window.innerWidth - 0.5) * 8;
-        const cardY = (e.clientY / window.innerHeight - 0.5) * 8;
-        cardRef.current.style.transform = `translate(${cardX}px, ${cardY}px)`;
+        const cardX =
+          (e.clientX / window.innerWidth - 0.5) * 8;
+
+        const cardY =
+          (e.clientY / window.innerHeight - 0.5) * 8;
+
+        cardRef.current.style.transform =
+          `translate(${cardX}px, ${cardY}px)`;
       }
     };
 
@@ -429,12 +485,40 @@ const Hero = () => {
       setScrollY(window.scrollY);
     };
 
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener(
+      'mousemove',
+      handleMouseMove,
+      { passive: true }
+    );
+
+    window.addEventListener(
+      'scroll',
+      handleScroll,
+      { passive: true }
+    );
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(timeout);
+
+      window.removeEventListener(
+        'mousemove',
+        handleMouseMove
+      );
+
+      window.removeEventListener(
+        'scroll',
+        handleScroll
+      );
+
+      [
+        videoRef.current,
+        videoRef2.current,
+        videoRef3.current,
+      ].forEach((video) => {
+        if (video) {
+          video.pause();
+        }
+      });
     };
   }, [cardHover]);
 
@@ -452,49 +536,88 @@ const Hero = () => {
   };
 
   return (
-    <section className={`hero-pro ${isLoaded ? 'hero-pro--loaded' : ''}`} ref={heroRef}>
-      {/* ========== CINEMATIC VIDEO BACKGROUND ========== */}
-      <div className="hero-pro__bg" style={backgroundStyle}>
+    <section
+      className={`hero-pro ${
+        isLoaded ? 'hero-pro--loaded' : ''
+      }`}
+      ref={heroRef}
+    >
+      {/* VIDEO BACKGROUND */}
+      <div
+        className="hero-pro__bg"
+        style={backgroundStyle}
+      >
         <div className="hero-pro__bg-video-wrapper">
-          <video
-            ref={videoRef}
-            className={`hero-pro__bg-video ${videoLoaded ? 'hero-pro__bg-video--visible' : ''}`}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            poster="https://images.pexels.com/photos/15789084/pexels-photo-15789084.jpeg?auto=compress&cs=tinysrgb&w=1920"
-            onLoadedData={handleVideoLoaded}
-            onCanPlay={handleVideoLoaded}
-          >
-            <source 
-              src={herovideo}
-              type="video/mp4" 
-            />
-            Your browser does not support the video tag.
-          </video>
 
+         {/* VIDEO 1 */}
+<video
+  ref={videoRef}
+  className={`hero-pro__bg-video ${
+    videoLoaded ? 'hero-pro__bg-video--visible' : ''
+  }`}
+  muted
+  playsInline
+  preload="auto"
+  onLoadedData={handleVideoLoaded}
+>
+  <source src={herovideo} type="video/mp4" />
+</video>
+
+{/* VIDEO 2 */}
+<video
+  ref={videoRef2}
+  className={`hero-pro__bg-video ${
+    videoLoaded ? 'hero-pro__bg-video--visible' : ''
+  }`}
+  muted
+  playsInline
+  preload="auto"
+  onLoadedData={handleVideoLoaded}
+>
+  <source src={herovideotwo} type="video/mp4" />
+</video>
+
+{/* VIDEO 3 */}
+<video
+  ref={videoRef3}
+  className={`hero-pro__bg-video ${
+    videoLoaded ? 'hero-pro__bg-video--visible' : ''
+  }`}
+  muted
+  playsInline
+  preload="auto"
+  onLoadedData={handleVideoLoaded}
+>
+  <source src={herovideothree} type="video/mp4" />
+</video>
+          {/* FALLBACK IMAGE */}
           <img
-            src="https://images.pexels.com/photos/15789084/pexels-photo-15789084.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            src={hero}
             alt="South Indian Classical Performance"
-            className={`hero-pro__bg-fallback ${!videoLoaded ? 'hero-pro__bg-fallback--visible' : ''}`}
+            className={`hero-pro__bg-fallback ${
+              !videoLoaded
+                ? 'hero-pro__bg-fallback--visible'
+                : ''
+            }`}
             loading="eager"
           />
+
         </div>
-        
-        {/* Multi-layered cinematic overlay */}
+
         <div className="hero-pro__bg-overlay">
           <div className="hero-pro__bg-overlay--warm" />
           <div className="hero-pro__bg-overlay--depth" />
           <div className="hero-pro__bg-overlay--atmosphere" />
-          <div className={`hero-pro__bg-overlay--texture ${videoLoaded ? 'active' : ''}`} />
+
+          <div
+            className={`hero-pro__bg-overlay--texture ${
+              videoLoaded ? 'active' : ''
+            }`}
+          />
         </div>
       </div>
+            {/* DECORATIVE ELEMENTS */}
 
-      {/* ========== DECORATIVE ELEMENTS ========== */}
-      
-      {/* Temple-inspired architecture lines */}
       <div className="hero-pro__architecture">
         <div className="hero-pro__arch-line"></div>
         <div className="hero-pro__arch-line"></div>
@@ -503,7 +626,6 @@ const Hero = () => {
         <div className="hero-pro__arch-line"></div>
       </div>
 
-      {/* Golden light rays */}
       <div className="hero-pro__rays">
         <div className="hero-pro__ray"></div>
         <div className="hero-pro__ray"></div>
@@ -512,7 +634,6 @@ const Hero = () => {
         <div className="hero-pro__ray"></div>
       </div>
 
-      {/* Floating musical notes */}
       <div className="hero-pro__notes">
         <span className="hero-pro__note">♪</span>
         <span className="hero-pro__note">♫</span>
@@ -522,228 +643,238 @@ const Hero = () => {
         <span className="hero-pro__note">♫</span>
       </div>
 
-      {/* Ambient particles */}
       {videoLoaded && (
         <div className="hero-pro__particles">
           {[...Array(15)].map((_, i) => (
-            <div 
+            <div
               key={i}
               className="hero-pro__particle"
               style={{
                 left: `${Math.random() * 100}%`,
                 animationDelay: `${Math.random() * 10}s`,
-                animationDuration: `${8 + Math.random() * 12}s`,
+                animationDuration: `${
+                  8 + Math.random() * 12
+                }s`,
               }}
             />
           ))}
         </div>
       )}
 
-      {/* ========== MAIN CONTAINER ========== */}
+      {/* MAIN CONTAINER */}
       <div className="hero-pro__container">
-        
+
         {/* LEFT SIDE - CONTENT */}
-        <div className="hero-pro__content" ref={contentRef} style={contentParallax}>
+        <div
+          className="hero-pro__content"
+          ref={contentRef}
+          style={contentParallax}
+        >
           <div className="hero-pro__content-inner">
-            
+
             {/* Premium Badge */}
             <div className="hero-pro__badge">
               <div className="hero-pro__badge-line"></div>
-              <span className="hero-pro__badge-text">PREMIUM ENTERTAINMENT PRODUCTION</span>
+
+              <span className="hero-pro__badge-text">
+                PREMIUM ENTERTAINMENT PRODUCTION
+              </span>
+
               <div className="hero-pro__badge-line"></div>
             </div>
 
             {/* Main Headline */}
             <h1 className="hero-pro__headline">
+
               <span className="hero-pro__headline-line">
-                <span className="hero-pro__headline-word">Where</span>
+                <span className="hero-pro__headline-word">
+                  Where
+                </span>
               </span>
+
               <span className="hero-pro__headline-line">
-                <span className="hero-pro__headline-word hero-pro__headline-word--gold">Tradition</span>
+                <span className="hero-pro__headline-word hero-pro__headline-word--gold">
+                  Tradition
+                </span>
               </span>
+
               <span className="hero-pro__headline-line">
-                <span className="hero-pro__headline-word">Meets</span>
+                <span className="hero-pro__headline-word">
+                  Meets
+                </span>
               </span>
+
               <span className="hero-pro__headline-line">
-                <span className="hero-pro__headline-word hero-pro__headline-word--bold">Spectacle</span>
+                <span className="hero-pro__headline-word hero-pro__headline-word--bold">
+                  Spectacle
+                </span>
               </span>
+
             </h1>
 
             {/* Description */}
             <p className="hero-pro__description">
-              South India's foremost production house, orchestrating extraordinary 
-              live experiences rooted in classical artistry and contemporary vision. 
-              From sacred temples to grand auditoriums, we craft moments that echo 
+              South India's foremost production house,
+              orchestrating extraordinary live experiences
+              rooted in classical artistry and contemporary
+              vision. From sacred temples to grand
+              auditoriums, we craft moments that echo
               through generations.
             </p>
 
             {/* CTA Buttons */}
             <div className="hero-pro__actions">
+
               <button className="hero-pro__btn hero-pro__btn--primary">
+
                 <span>Explore Our Work</span>
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M1 9H17M17 9L10 2M17 9L10 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                >
+                  <path
+                    d="M1 9H17M17 9L10 2M17 9L10 16"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
                 </svg>
+
               </button>
+
               <button className="hero-pro__btn hero-pro__btn--secondary">
                 <span>Begin Your Journey</span>
               </button>
+
             </div>
 
-            {/* Stats Section */}
+            {/* Stats */}
             <div className="hero-pro__stats">
+
               <div className="hero-pro__stat">
-                <span className="hero-pro__stat-number">1.2K+</span>
-                <span className="hero-pro__stat-label">Productions</span>
+                <span className="hero-pro__stat-number">
+                  1.2K+
+                </span>
+
+                <span className="hero-pro__stat-label">
+                  Productions
+                </span>
               </div>
+
               <div className="hero-pro__stat-divider">
                 <span>◉</span>
               </div>
+
               <div className="hero-pro__stat">
-                <span className="hero-pro__stat-number">28</span>
-                <span className="hero-pro__stat-label">Years Legacy</span>
+                <span className="hero-pro__stat-number">
+                  28
+                </span>
+
+                <span className="hero-pro__stat-label">
+                  Years Legacy
+                </span>
               </div>
+
               <div className="hero-pro__stat-divider">
                 <span>◉</span>
               </div>
+
               <div className="hero-pro__stat">
-                <span className="hero-pro__stat-number">600+</span>
-                <span className="hero-pro__stat-label">Shows</span>
+                <span className="hero-pro__stat-number">
+                  600+
+                </span>
+
+                <span className="hero-pro__stat-label">
+                  Shows
+                </span>
               </div>
+
             </div>
+
           </div>
         </div>
 
-        {/* RIGHT SIDE - IMAGE CARD */}
-        <div className="hero-pro__card-wrapper" style={{ transform: `translateY(${scrollY * 0.15}px)` }}>
-          <div 
-            className={`hero-pro__card ${cardHover ? 'hero-pro__card--hovered' : ''}`}
-            ref={cardRef}
-            onMouseEnter={() => setCardHover(true)}
-            onMouseLeave={() => setCardHover(false)}
-          >
-            {/* Card Frame */}
-            <div className="hero-pro__card-frame">
-              
-              {/* Corner Decorations */}
-              <div className="hero-pro__card-corner hero-pro__card-corner--tl">
-                <div className="hero-pro__corner-shape"></div>
-                <div className="hero-pro__corner-dot"></div>
-              </div>
-              <div className="hero-pro__card-corner hero-pro__card-corner--tr">
-                <div className="hero-pro__corner-shape"></div>
-                <div className="hero-pro__corner-dot"></div>
-              </div>
-              <div className="hero-pro__card-corner hero-pro__card-corner--bl">
-                <div className="hero-pro__corner-shape"></div>
-                <div className="hero-pro__corner-dot"></div>
-              </div>
-              <div className="hero-pro__card-corner hero-pro__card-corner--br">
-                <div className="hero-pro__corner-shape"></div>
-                <div className="hero-pro__corner-dot"></div>
-              </div>
-
-              {/* Image Container */}
-              <div className="hero-pro__card-image-wrapper">
-                <div className="hero-pro__card-image-mask">
-                  <img
-                    src={hero}
-                    alt="Classical Performer"
-                    className="hero-pro__card-image"
-                  />
-                </div>
-                
-                {/* Image Overlays */}
-                <div className="hero-pro__card-image-overlay"></div>
-                <div className="hero-pro__card-image-gradient"></div>
-                
-                {/* Border Lines */}
-                <div className="hero-pro__card-border hero-pro__card-border--top"></div>
-                <div className="hero-pro__card-border hero-pro__card-border--right"></div>
-                <div className="hero-pro__card-border hero-pro__card-border--bottom"></div>
-                <div className="hero-pro__card-border hero-pro__card-border--left"></div>
-              </div>
-
-              {/* Bottom Info Bar */}
-              <div className="hero-pro__card-info">
-                <div className="hero-pro__card-info-icon">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <circle cx="10" cy="10" r="8" stroke="currentColor" strokeWidth="1.5"/>
-                    <circle cx="10" cy="10" r="3" fill="currentColor"/>
-                  </svg>
-                </div>
-                <div className="hero-pro__card-info-text">
-                  <span className="hero-pro__card-info-title">Featured Artist</span>
-                  <span className="hero-pro__card-info-subtitle">Classical Maestro</span>
-                </div>
-                <div className="hero-pro__card-info-decoration">
-                  <span className="hero-pro__card-info-dot"></span>
-                </div>
-              </div>
-
-              {/* Hover Glow Effect */}
-              <div className="hero-pro__card-glow"></div>
-              
-              {/* Energy Ring */}
-              <div className="hero-pro__card-energy">
-                <div className="hero-pro__energy-ring"></div>
-                <div className="hero-pro__energy-ring ring-2"></div>
-              </div>
-            </div>
-          </div>
-
-          {/* Floating Decorations around card */}
-          <div className="hero-pro__card-decor decor-1">
-            <div className="hero-pro__decor-circle"></div>
-            <div className="hero-pro__decor-circle"></div>
-            <div className="hero-pro__decor-circle"></div>
-          </div>
-          <div className="hero-pro__card-decor decor-2">
-            <div className="hero-pro__decor-diamond"></div>
-          </div>
-        </div>
       </div>
-
-      {/* ========== VIDEO SOUND CONTROL ========== */}
+            {/* SOUND CONTROL */}
       {videoLoaded && (
-        <button 
+        <button
           className="hero-pro__sound"
           onClick={() => {
-            if (videoRef.current) {
-              videoRef.current.muted = !videoRef.current.muted;
-            }
+            [
+              videoRef.current,
+              videoRef2.current,
+              videoRef3.current,
+            ].forEach((video) => {
+              if (video) {
+                video.muted = !video.muted;
+              }
+            });
           }}
           aria-label="Toggle sound"
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M2 7V13H5L10 18V2L5 7H2Z" fill="currentColor" opacity="0.6"/>
-            <path d="M13 7C14.1046 7 15 7.89543 15 9C15 10.1046 14.1046 11 13 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.4"/>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+          >
+            <path
+              d="M2 7V13H5L10 18V2L5 7H2Z"
+              fill="currentColor"
+              opacity="0.6"
+            />
+
+            <path
+              d="M13 7C14.1046 7 15 7.89543 15 9C15 10.1046 14.1046 11 13 11"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              opacity="0.4"
+            />
           </svg>
         </button>
       )}
 
-      {/* ========== SCROLL INDICATOR ========== */}
+      {/* SCROLL INDICATOR */}
       <div className="hero-pro__scroll">
+
         <div className="hero-pro__scroll-indicator">
+
           <div className="hero-pro__scroll-line">
-            <div 
-              className="hero-pro__scroll-progress" 
-              style={{ transform: `scaleY(${Math.min(1, scrollY / 500)})` }}
+
+            <div
+              className="hero-pro__scroll-progress"
+              style={{
+                transform: `scaleY(${Math.min(
+                  1,
+                  scrollY / 500
+                )})`,
+              }}
             />
+
           </div>
-          <span className="hero-pro__scroll-text">SCROLL TO DISCOVER</span>
+
+          <span className="hero-pro__scroll-text">
+            SCROLL TO DISCOVER
+          </span>
+
         </div>
+
       </div>
 
-      {/* ========== BOTTOM FADE GRADIENT ========== */}
+      {/* BOTTOM FADE */}
       <div className="hero-pro__fade"></div>
 
-      {/* ========== LOADING OVERLAY ========== */}
+      {/* LOADER */}
       {!isLoaded && (
         <div className="hero-pro__loader">
           <div className="hero-pro__loader-spinner"></div>
         </div>
       )}
+
     </section>
   );
 };
