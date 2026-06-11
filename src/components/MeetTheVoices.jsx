@@ -692,6 +692,8 @@
 import { useEffect, useRef, useState } from 'react';
 import './MeetTheVoices.css';
 import m1 from "../assets/hero.png";
+import meeraVideo from "../assets/vidone.mp4";
+import kaushikVideo from "../assets/vidtwo.mp4";
 
 const MeetTheVoices = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -791,7 +793,7 @@ const MeetTheVoices = () => {
       specialty: "Carnatic • Classical • Soul",
       description: "A voice that carries the soul of tradition, Meera transforms every performance into a spiritual journey through the depths of Indian classical music.",
       quote: "Music flows through my veins like the sacred rivers of Bharath",
-      videoUrl: "/vidone.mp4", // Classical performance vibe
+      videoUrl: kaushikVideo, // Classical performance vibe
       posterImage: m1,
       stats: [
         { value: "25+", label: "Years" },
@@ -812,7 +814,7 @@ const MeetTheVoices = () => {
       specialty: "Versatile • Energetic • Magical",
       description: "From Super Singer to international stages, Kaushik brings electrifying energy while honoring every musical tradition.",
       quote: "Every celebration under our banner becomes an eternal memory",
-      videoUrl: "/videtwo.mp4", // Energetic performance vibe
+      videoUrl: meeraVideo, // Energetic performance vibe
       posterImage: m1,
       stats: [
         { value: "500+", label: "Concerts" },
@@ -1068,12 +1070,12 @@ const MeetTheVoices = () => {
       </div>
 
       {/* MTV - Scroll Indicator */}
-      <div className="mtv-scroll-indicator">
+      {/* <div className="mtv-scroll-indicator">
         <span>SCROLL</span>
         <div className="mtv-scroll-mouse">
           <div className="mtv-scroll-wheel" style={{ background: currentSinger.accentColor }}></div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
