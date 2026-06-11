@@ -28,29 +28,46 @@
 
 .mbb-cinematic-bg-video {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.7) contrast(1.1);
-  transition: opacity 1s ease;
+  height: auto;
+  min-height: 100%;
+  object-fit: contain;
 }
 
 .mbb-cinematic-bg-overlay {
-  position: absolute;
+    position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(10, 10, 15, 0.6) 0%, rgba(20, 20, 25, 0.4) 100%);
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at top center,
+      rgba(174, 167, 66, 0.15),
+      transparent 50%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(245, 243, 232, 0.25),
+      rgba(228, 224, 144, 0.55)
+    );
 }
 
 .mbb-cinematic-bg-gradient {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 30%, transparent 30%, rgba(0, 0, 0, 0.6) 100%);
+  display: none;
 }
 
 .mbb-cinematic-bg-vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
+  z-index: 2;
   pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle,
+      transparent 45%,
+      rgba(0,0,0,0.55) 100%
+    );
 }
 
 .mbb-cinematic-bg-pattern {
@@ -158,11 +175,7 @@
 }
 
 .mbb-cinematic-grain {
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 2;
+  display: none;
 }
 
 /* ============================================
@@ -193,7 +206,7 @@
 .mbb-cinematic-badge-line {
   width: 40px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #c9a03d, transparent);
+  background: linear-gradient(90deg, transparent, #9e9348, transparent);
 }
 
 .mbb-cinematic-badge-text {
@@ -208,7 +221,7 @@
   font-size: clamp(2.8rem, 7vw, 4.5rem);
   margin: 0 0 1rem;
   font-weight: 400;
-  color: #fff;
+  color: #c9a03d;
 }
 
 .mbb-cinematic-title-light {
@@ -219,7 +232,7 @@
 }
 
 .mbb-cinematic-title-bold {
-  background: linear-gradient(135deg, #c9a03d, #ffd700);
+  background: linear-gradient(135deg, #c9a03d, #c9a03d);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -238,7 +251,7 @@
 .mbb-cinematic-divider-line {
   width: 60px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201, 160, 61, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(21, 24, 88, 0.5), transparent);
 }
 
 .mbb-cinematic-divider-diamond {
@@ -249,7 +262,7 @@
 
 .mbb-cinematic-subtitle {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: #c9a03d;
   max-width: 600px;
   margin: 0 auto 2rem;
   line-height: 1.6;
@@ -264,7 +277,7 @@
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
   border-radius: 60px;
-  border: 1px solid rgba(201, 160, 61, 0.2);
+  border: 1px solid rgba(221, 181, 87, 0.2);
 }
 
 .mbb-cinematic-stat {
@@ -275,7 +288,7 @@
 .mbb-cinematic-stat-number {
   font-size: 1.8rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #c9a03d, #ffd700);
+  background: linear-gradient(135deg, #c9a03d, #c9a03d);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -285,7 +298,7 @@
 
 .mbb-cinematic-stat-label {
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(200, 172, 96, 0.7);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -297,7 +310,7 @@
   transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #c9a03d, transparent);
+  background: linear-gradient(90deg, transparent, #465181, transparent);
   transition: width 0.3s ease;
 }
 
@@ -306,7 +319,7 @@
 }
 
 .mbb-cinematic-stat-sep {
-  color: #c9a03d;
+  color: #e0c452;
   font-size: 0.6rem;
   opacity: 0.5;
 }
@@ -344,14 +357,14 @@
 
 .mbb-cinematic-map-dot.active {
   transform: translateY(-50%) scale(1.5);
-  box-shadow: 0 0 15px rgba(201, 160, 61, 0.8);
+  box-shadow: 0 0 15px rgba(50, 82, 134, 0.8);
 }
 
 .mbb-cinematic-map-pulse {
   position: absolute;
   inset: -8px;
   border-radius: 50%;
-  background: rgba(201, 160, 61, 0.4);
+  background: rgba(63, 82, 133, 0.4);
   animation: pulseDot 2s infinite;
 }
 
@@ -394,8 +407,8 @@
 /* Card */
 .mbb-cinematic-card {
   position: relative;
-  background: rgba(20, 20, 25, 0.8);
-  backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
   border-radius: 24px;
   overflow: hidden;
   cursor: pointer;
@@ -415,13 +428,13 @@
 
 .mbb-cinematic-card.active {
   transform: scale(1.02);
-  border-color: rgba(201, 160, 61, 0.5);
+  border-color: rgba(61, 85, 143, 0.5);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .mbb-cinematic-card.hovered {
   transform: translateY(-8px);
-  border-color: rgba(201, 160, 61, 0.6);
+  border-color: rgba(68, 80, 142, 0.6);
 }
 
 /* Card Media */
@@ -487,7 +500,7 @@
   border-radius: 20px;
   font-size: 0.7rem;
   font-weight: 600;
-  color: #c9a03d;
+  color: #b8bccf;
   letter-spacing: 1px;
 }
 
@@ -513,7 +526,7 @@
   font-size: 1.1rem;
   font-weight: 700;
   margin: 0 0 0.25rem;
-  color: #fff;
+  color: #2e47ab;
 }
 
 .mbb-cinematic-card-location {
@@ -521,24 +534,24 @@
   align-items: center;
   gap: 4px;
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(2, 13, 34, 0.6);
   margin-bottom: 0.25rem;
 }
 
 .mbb-cinematic-card-location svg {
-  stroke: #c9a03d;
+  stroke: #040b24;
 }
 
 .mbb-cinematic-card-venue {
   font-size: 0.7rem;
-  color: #c9a03d;
+  color: #0e2372;
   font-weight: 500;
   margin-bottom: 0.5rem;
 }
 
 .mbb-cinematic-card-desc {
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(1, 2, 17, 0.5);
   line-height: 1.4;
   margin-bottom: 0.75rem;
 }
@@ -546,7 +559,7 @@
 .mbb-cinematic-card-line {
   width: 30px;
   height: 1px;
-  background: linear-gradient(90deg, #c9a03d, transparent);
+  background: linear-gradient(90deg, #2f2774, transparent);
   margin-bottom: 0.5rem;
 }
 
@@ -556,7 +569,7 @@
   padding: 2px 8px;
   border-radius: 12px;
   font-size: 0.6rem;
-  color: #c9a03d;
+  color: #2d2d77;
   font-weight: 500;
 }
 
@@ -586,7 +599,7 @@
 .mbb-cinematic-card-hover span {
   font-size: 0.7rem;
   font-weight: 500;
-  color: #c9a03d;
+  color: #304c78;
 }
 
 .mbb-cinematic-card-arrow {
@@ -616,7 +629,7 @@
   position: absolute;
   width: 20px;
   height: 20px;
-  border-color: rgba(201, 160, 61, 0.6);
+  border-color: rgba(65, 95, 147, 0.6);
   border-style: solid;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -660,7 +673,7 @@
   left: 0;
   top: 0;
   height: 100%;
-  background: linear-gradient(90deg, #c9a03d, #ffd700);
+  background: linear-gradient(90deg, #323576, #3a408d);
   border-radius: 2px;
   transition: width 0.1s linear;
 }
@@ -732,7 +745,7 @@
   text-align: center;
   margin-top: 4rem;
   padding: 2rem;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(255,255,255,0.08);
   backdrop-filter: blur(10px);
   border-radius: 60px;
 }
@@ -756,7 +769,7 @@
 .mbb-cinematic-quote-mark {
   font-size: 2rem;
   font-family: 'Georgia', serif;
-  color: #c9a03d;
+  color: #3a418e;
   opacity: 0.5;
   line-height: 1;
 }
@@ -768,13 +781,13 @@
 .mbb-cinematic-quote-text span {
   display: block;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(20, 51, 135, 0.7);
 }
 
 .mbb-cinematic-quote-text strong {
   display: block;
   font-size: 1rem;
-  background: linear-gradient(135deg, #c9a03d, #ffd700);
+  background: linear-gradient(135deg, #36449c, #425680);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -816,18 +829,18 @@
 
 .mbb-cinematic-flag-name {
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(8, 9, 31, 0.6);
   font-weight: 500;
 }
 
 .mbb-cinematic-cta {
   background: transparent;
-  border: 2px solid #c9a03d;
+  border: 2px solid #2e3669;
   padding: 0.8rem 2rem;
   border-radius: 50px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #c9a03d;
+  color: #344382;
   cursor: pointer;
   transition: all 0.3s ease;
   display: inline-flex;
@@ -838,7 +851,7 @@
 }
 
 .mbb-cinematic-cta:hover {
-  background: #c9a03d;
+  background: #485a97;
   color: #0a0a0c;
   transform: translateX(5px);
   gap: 1rem;
@@ -877,7 +890,7 @@
 
 .mbb-cinematic-audio-bar {
   width: 4px;
-  background: linear-gradient(180deg, #c9a03d, #ffd700);
+  background: linear-gradient(180deg, #4a769a, #3e5d96);
   border-radius: 2px;
   animation: audioPulse 0.8s ease-in-out infinite alternate;
 }
@@ -913,7 +926,7 @@
   transform: translate(-50%, -50%);
   font-size: 0.7rem;
   font-weight: 600;
-  color: #c9a03d;
+  color: #395487;
 }
 
 /* ============================================

@@ -77,7 +77,7 @@
 // //   useEffect(() => {
 // //     const handleScroll = () => {
 // //       if (!sectionRef.current) return;
-      
+
 // //       const rect = sectionRef.current.getBoundingClientRect();
 // //       const progress = Math.min(Math.max(-rect.top / (rect.height - window.innerHeight), 0), 1);
 // //       setScrollProgress(progress);
@@ -159,12 +159,12 @@
 // //                   }}
 // //                 />
 // //                 <div className="mbb-media-overlay"></div>
-                
+
 // //                 {/* Flag Badge */}
 // //                 <div className="mbb-flag-badge">
 // //                   <span>{country.flag}</span>
 // //                 </div>
-                
+
 // //                 {/* Year Badge */}
 // //                 <div className="mbb-year-badge">
 // //                   <span>{country.year}</span>
@@ -218,7 +218,7 @@
 // //       {/* Footer Statement */}
 // //       <div className="mbb-footer">
 // //         <div className="mbb-footer-line"></div>
-        
+
 // //         <div className="mbb-footer-quote">
 // //           <span className="mbb-quote-mark">"</span>
 // //           <p>
@@ -354,7 +354,7 @@
 //   useEffect(() => {
 //     const handleScroll = () => {
 //       if (!sectionRef.current) return;
-      
+
 //       const rect = sectionRef.current.getBoundingClientRect();
 //       const progress = Math.min(Math.max(-rect.top / (rect.height - window.innerHeight), 0), 1);
 //       setScrollProgress(progress);
@@ -380,7 +380,7 @@
 //     window.addEventListener('scroll', handleScroll);
 //     window.addEventListener('mousemove', handleMouseMove);
 //     handleScroll();
-    
+
 //     return () => {
 //       window.removeEventListener('scroll', handleScroll);
 //       window.removeEventListener('mousemove', handleMouseMove);
@@ -491,12 +491,12 @@
 //                 <img src={country.image} alt={country.name} />
 //                 <div className="mbb-pro-card-overlay"></div>
 //                 <div className="mbb-pro-card-gradient"></div>
-                
+
 //                 {/* Flag Badge */}
 //                 <div className="mbb-pro-flag-badge">
 //                   <span>{country.flag}</span>
 //                 </div>
-                
+
 //                 {/* Year Badge */}
 //                 <div className="mbb-pro-year-badge">
 //                   <span>{country.year}</span>
@@ -532,7 +532,7 @@
 
 //               {/* Card Glow */}
 //               <div className="mbb-pro-card-glow"></div>
-              
+
 //               {/* Corner Accent */}
 //               <div className="mbb-pro-card-corner"></div>
 //             </div>
@@ -556,7 +556,7 @@
 //         {/* Footer Section */}
 //         <div className="mbb-pro-footer">
 //           <div className="mbb-pro-footer-line"></div>
-          
+
 //           <div className="mbb-pro-footer-quote">
 //             <span className="mbb-pro-quote-mark">"</span>
 //             <p>
@@ -618,7 +618,7 @@ import './MusicBeyondBorders.css';
 
 // Import your background video or image
 import bgVideo from '../assets/hero.mp4';
-import bgImage from '../assets/legbg.jpg';
+import bgImage from '../assets/musicbeyond.png';
 import canadaImg from '../assets/borderone.jpg';
 import ukImg from '../assets/bordertwo.jpg';
 import australiaImg from '../assets/borderthree.jpg';
@@ -629,61 +629,61 @@ import malaysiaImg from '../assets/borderseven.jpg';
 import srilankaImg from '../assets/imgfour.jpg';
 
 const countries = [
-  { 
-    name: "Canada", 
-    flag: "🇨🇦", 
-    city: "Toronto", 
-    year: "2019", 
+  {
+    name: "Canada",
+    flag: "🇨🇦",
+    city: "Toronto",
+    year: "2019",
     venue: "Roy Thomson Hall",
     image: canadaImg,
     description: "North American Debut",
     coordinates: { lat: 43.6532, lng: -79.3832 }
   },
-  { 
-    name: "United Kingdom", 
-    flag: "🇬🇧", 
-    city: "London", 
-    year: "2018", 
+  {
+    name: "United Kingdom",
+    flag: "🇬🇧",
+    city: "London",
+    year: "2018",
     venue: "Royal Albert Hall",
     image: ukImg,
     description: "European Premiere",
     coordinates: { lat: 51.5074, lng: -0.1278 }
   },
-  { 
-    name: "Australia", 
-    flag: "🇦🇺", 
-    city: "Sydney", 
-    year: "2020", 
+  {
+    name: "Australia",
+    flag: "🇦🇺",
+    city: "Sydney",
+    year: "2020",
     venue: "Sydney Opera House",
     image: australiaImg,
     description: "Down Under Spectacle",
     coordinates: { lat: -33.8688, lng: 151.2093 }
   },
-  { 
-    name: "Singapore", 
-    flag: "🇸🇬", 
-    city: "Marina Bay", 
-    year: "2019", 
+  {
+    name: "Singapore",
+    flag: "🇸🇬",
+    city: "Marina Bay",
+    year: "2019",
     venue: "Esplanade",
     image: singaporeImg,
     description: "Asian Showcase",
     coordinates: { lat: 1.3521, lng: 103.8198 }
   },
-  { 
-    name: "Malaysia", 
-    flag: "🇲🇾", 
-    city: "Kuala Lumpur", 
-    year: "2023", 
+  {
+    name: "Malaysia",
+    flag: "🇲🇾",
+    city: "Kuala Lumpur",
+    year: "2023",
     venue: "PETRONAS Theatre",
     image: malaysiaImg,
     description: "Tropical Rhythms",
     coordinates: { lat: 3.1390, lng: 101.6869 }
   },
-  { 
-    name: "Sri Lanka", 
-    flag: "🇱🇰", 
-    city: "Colombo", 
-    year: "2017", 
+  {
+    name: "Sri Lanka",
+    flag: "🇱🇰",
+    city: "Colombo",
+    year: "2017",
     venue: "Nelum Pokuna",
     image: srilankaImg,
     description: "Isle of Melody",
@@ -703,7 +703,7 @@ const MusicBeyondBorders = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
-      
+
       const rect = sectionRef.current.getBoundingClientRect();
       const progress = Math.min(Math.max(-rect.top / (rect.height - window.innerHeight), 0), 1);
       setScrollProgress(progress);
@@ -745,7 +745,7 @@ const MusicBeyondBorders = () => {
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
     handleScroll();
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
@@ -757,6 +757,8 @@ const MusicBeyondBorders = () => {
     <section className="mbb-cinematic-section" ref={sectionRef}>
       {/* ========== FULLSCREEN BACKGROUND VIDEO/IMAGE ========== */}
       <div className="mbb-cinematic-bg">
+        <img src={bgImage} alt="" className="mbb-cinematic-bg-video" />
+        <div className="mbb-cinematic-bg-overlay"></div>
         <div className="mbb-cinematic-bg-video-wrapper">
           <video
             ref={videoRef}
@@ -771,7 +773,7 @@ const MusicBeyondBorders = () => {
             <source src="/videos/global-tour-bg.mp4" type="video/mp4" />
             <img src={bgImage} alt="Global Tour Background" />
           </video>
-          
+
           {/* Multi-layered overlays for cinematic feel */}
           <div className="mbb-cinematic-bg-overlay"></div>
           <div className="mbb-cinematic-bg-gradient"></div>
@@ -788,14 +790,9 @@ const MusicBeyondBorders = () => {
       )}
 
       {/* ========== CINEMATIC EFFECTS ========== */}
-      
+
       {/* Dynamic Spotlight */}
-      <div 
-        className="mbb-cinematic-spotlight"
-        style={{
-          background: `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, rgba(201, 160, 61, 0.15) 0%, rgba(201, 160, 61, 0.05) 40%, transparent 70%)`
-        }}
-      />
+
 
       {/* Golden Light Rays */}
       <div className="mbb-cinematic-rays">
@@ -807,29 +804,14 @@ const MusicBeyondBorders = () => {
       </div>
 
       {/* Floating Particles */}
-      <div className="mbb-cinematic-particles">
-        {[...Array(60)].map((_, i) => (
-          <div
-            key={i}
-            className="mbb-cinematic-particle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 15}s`,
-              animationDuration: `${8 + Math.random() * 12}s`,
-              width: `${2 + Math.random() * 4}px`,
-              height: `${2 + Math.random() * 4}px`
-            }}
-          />
-        ))}
-      </div>
+
 
       {/* Film Grain Effect */}
       <div className="mbb-cinematic-grain"></div>
 
       {/* ========== MAIN CONTENT ========== */}
       <div className="mbb-cinematic-container">
-        
+
         {/* Header Section */}
         <div className="mbb-cinematic-header">
           <div className="mbb-cinematic-badge">
@@ -879,7 +861,7 @@ const MusicBeyondBorders = () => {
         <div className="mbb-cinematic-map">
           <div className="mbb-cinematic-map-line"></div>
           {countries.map((country, idx) => (
-            <div 
+            <div
               key={idx}
               className={`mbb-cinematic-map-dot ${idx === activeIndex ? 'active' : ''}`}
               style={{
@@ -908,7 +890,7 @@ const MusicBeyondBorders = () => {
                 <img src={country.image} alt={country.name} />
                 <div className="mbb-cinematic-card-overlay"></div>
                 <div className="mbb-cinematic-card-gradient"></div>
-                
+
                 {/* Badges */}
                 <div className="mbb-cinematic-card-flag">{country.flag}</div>
                 <div className="mbb-cinematic-card-year">{country.year}</div>
@@ -922,8 +904,8 @@ const MusicBeyondBorders = () => {
                 <h3 className="mbb-cinematic-card-title">{country.name}</h3>
                 <p className="mbb-cinematic-card-location">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" strokeWidth="1.5"/>
-                    <circle cx="12" cy="10" r="3" strokeWidth="1.5"/>
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" strokeWidth="1.5" />
+                    <circle cx="12" cy="10" r="3" strokeWidth="1.5" />
                   </svg>
                   {country.city}
                 </p>
@@ -941,7 +923,7 @@ const MusicBeyondBorders = () => {
 
               {/* Card Glow */}
               <div className="mbb-cinematic-card-glow"></div>
-              
+
               {/* Corner Accents */}
               <div className="mbb-cinematic-card-corner tl"></div>
               <div className="mbb-cinematic-card-corner tr"></div>
@@ -976,7 +958,7 @@ const MusicBeyondBorders = () => {
         {/* Footer Statement */}
         <div className="mbb-cinematic-footer">
           <div className="mbb-cinematic-footer-line"></div>
-          
+
           <div className="mbb-cinematic-footer-quote">
             <div className="mbb-cinematic-quote-mark">“</div>
             <div className="mbb-cinematic-quote-text">
@@ -998,7 +980,7 @@ const MusicBeyondBorders = () => {
           <button className="mbb-cinematic-cta">
             <span>Explore Global Journey</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M5 12h14M12 5l7 7-7 7" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M5 12h14M12 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" />
             </svg>
             <div className="mbb-cinematic-cta-shine"></div>
           </button>
@@ -1022,13 +1004,13 @@ const MusicBeyondBorders = () => {
       {/* ========== SCROLL PROGRESS RING ========== */}
       <div className="mbb-cinematic-scroll-ring">
         <svg viewBox="0 0 50 50">
-          <circle cx="25" cy="25" r="22" fill="none" stroke="rgba(201,160,61,0.2)" strokeWidth="2"/>
-          <circle 
-            cx="25" 
-            cy="25" 
-            r="22" 
-            fill="none" 
-            stroke="#c9a03d" 
+          <circle cx="25" cy="25" r="22" fill="none" stroke="rgba(201,160,61,0.2)" strokeWidth="2" />
+          <circle
+            cx="25"
+            cy="25"
+            r="22"
+            fill="none"
+            stroke="#c9a03d"
             strokeWidth="2"
             strokeDasharray="138.2"
             strokeDashoffset={138.2 * (1 - scrollProgress)}
