@@ -1,0 +1,86 @@
+
+/* BehindTheStage.css */
+/* Full CSS file generated */
+
+/* Replace this file with the complete neon premium styling */
+
+.bts-premium-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 6rem 3rem;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(10,15,25,.88), rgba(10,15,25,.88)),
+    url("../assets/imgfour.jpg") center/cover no-repeat;
+  color: #fff;
+}
+
+.bts-feature-premium,
+.bts-side-premium {
+  background: rgba(18,22,35,.85);
+  backdrop-filter: blur(18px);
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  transition: .4s ease;
+}
+
+.bts-feature-premium:hover,
+.bts-side-premium:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,.4);
+}
+
+.bts-feature-image,
+.bts-side-image,
+.bts-strip-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bts-feature-content,
+.bts-side-content {
+  padding: 1.25rem;
+}
+
+.bts-feature-title,
+.bts-side-title {
+  color: #fff;
+}
+
+.bts-feature-subtitle,
+.bts-side-subtitle,
+.bts-feature-description {
+  color: rgba(255,255,255,.75);
+}
+
+.bts-film-strip {
+  overflow: hidden;
+}
+
+.bts-strip-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.bts-premium-quote {
+  background: rgba(18,22,35,.85);
+  color: white;
+  border-radius: 32px;
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .bts-premium-section {
+    padding: 4rem 1rem;
+  }
+}

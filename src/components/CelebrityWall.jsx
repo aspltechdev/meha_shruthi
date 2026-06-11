@@ -337,16 +337,7 @@ const CelebrityWall = () => {
           SCROLL INDICATOR
       ============================ */}
 
-      <div className="cw-premium-scroll">
-        <span className="cw-premium-scroll-text">
-          EXPLORE THE LEGENDS
-        </span>
-
-        <div className="cw-premium-scroll-mouse">
-          <div className="cw-premium-scroll-wheel"></div>
-        </div>
-      </div>
-    </section>
+         </section>
   );
 };
 

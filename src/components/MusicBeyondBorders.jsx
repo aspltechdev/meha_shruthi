@@ -618,7 +618,15 @@ import './MusicBeyondBorders.css';
 
 // Import your background video or image
 import bgVideo from '../assets/hero.mp4';
-import bgImage from '../assets/legbg.jpg';
+import bgImage from '../assets/lastback.png';
+import canadaImg from '../assets/borderone.jpg';
+import ukImg from '../assets/bordertwo.jpg';
+import australiaImg from '../assets/borderthree.jpg';
+import denmarkImg from '../assets/borderfour.jpg';
+import switzerlandImg from '../assets/borderfive.jpg';
+import singaporeImg from '../assets/bordersix.jpg';
+import malaysiaImg from '../assets/borderseven.jpg';
+import srilankaImg from '../assets/imgfour.jpg';
 
 const countries = [
   { 
@@ -627,7 +635,7 @@ const countries = [
     city: "Toronto", 
     year: "2019", 
     venue: "Roy Thomson Hall",
-    image: "https://images.pexels.com/photos/1421906/pexels-photo-1421906.jpeg",
+    image: canadaImg,
     description: "North American Debut",
     coordinates: { lat: 43.6532, lng: -79.3832 }
   },
@@ -637,7 +645,7 @@ const countries = [
     city: "London", 
     year: "2018", 
     venue: "Royal Albert Hall",
-    image: "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg",
+    image: ukImg,
     description: "European Premiere",
     coordinates: { lat: 51.5074, lng: -0.1278 }
   },
@@ -647,7 +655,7 @@ const countries = [
     city: "Sydney", 
     year: "2020", 
     venue: "Sydney Opera House",
-    image: "https://images.pexels.com/photos/162196/sydney-opera-house-australia-sydney-ferry-162196.jpeg",
+    image: australiaImg,
     description: "Down Under Spectacle",
     coordinates: { lat: -33.8688, lng: 151.2093 }
   },
@@ -657,7 +665,7 @@ const countries = [
     city: "Marina Bay", 
     year: "2019", 
     venue: "Esplanade",
-    image: "https://images.pexels.com/photos/592753/pexels-photo-592753.jpeg",
+    image: singaporeImg,
     description: "Asian Showcase",
     coordinates: { lat: 1.3521, lng: 103.8198 }
   },
@@ -667,7 +675,7 @@ const countries = [
     city: "Kuala Lumpur", 
     year: "2023", 
     venue: "PETRONAS Theatre",
-    image: "https://images.pexels.com/photos/672532/pexels-photo-672532.jpeg",
+    image: malaysiaImg,
     description: "Tropical Rhythms",
     coordinates: { lat: 3.1390, lng: 101.6869 }
   },
@@ -677,7 +685,7 @@ const countries = [
     city: "Colombo", 
     year: "2017", 
     venue: "Nelum Pokuna",
-    image: "https://images.pexels.com/photos/1056405/pexels-photo-1056405.jpeg",
+    image: srilankaImg,
     description: "Isle of Melody",
     coordinates: { lat: 6.9271, lng: 79.8612 }
   },
@@ -782,12 +790,7 @@ const MusicBeyondBorders = () => {
       {/* ========== CINEMATIC EFFECTS ========== */}
       
       {/* Dynamic Spotlight */}
-      <div 
-        className="mbb-cinematic-spotlight"
-        style={{
-          background: `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, rgba(201, 160, 61, 0.15) 0%, rgba(201, 160, 61, 0.05) 40%, transparent 70%)`
-        }}
-      />
+      
 
       {/* Golden Light Rays */}
       <div className="mbb-cinematic-rays">
@@ -799,22 +802,7 @@ const MusicBeyondBorders = () => {
       </div>
 
       {/* Floating Particles */}
-      <div className="mbb-cinematic-particles">
-        {[...Array(60)].map((_, i) => (
-          <div
-            key={i}
-            className="mbb-cinematic-particle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 15}s`,
-              animationDuration: `${8 + Math.random() * 12}s`,
-              width: `${2 + Math.random() * 4}px`,
-              height: `${2 + Math.random() * 4}px`
-            }}
-          />
-        ))}
-      </div>
+   
 
       {/* Film Grain Effect */}
       <div className="mbb-cinematic-grain"></div>
