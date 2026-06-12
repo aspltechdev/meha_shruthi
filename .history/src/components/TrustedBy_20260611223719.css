@@ -1,0 +1,298 @@
+/* ==========================================================
+   TrustedBy.css
+   Cinematic Concert Banner — Premium Cream & Gold Theme
+   PART 1
+   ========================================================== */
+
+:root{
+  --bg:#EFE5CC;
+  --bg-deep:#F5ECDA;
+  --gold:#C9A03D;
+  --gold-light:#E8C96A;
+  --brown:#2C1810;
+  --white:#FFFFFF;
+}
+
+/* ==========================================================
+   SECTION
+   ========================================================== */
+
+.trusted-light-section{
+  position:relative;
+  height:100vh;
+  min-height:100vh;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--bg);
+}
+
+/* ==========================================================
+   VIDEO
+   ========================================================== */
+
+.trusted-light-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+}
+
+.trusted-video-overlay{
+  position:absolute;
+  inset:0;
+  z-index:1;
+
+  background:
+  linear-gradient(
+    90deg,
+    rgba(239,229,204,.82) 0%,
+    rgba(239,229,204,.58) 35%,
+    rgba(44,24,16,.28) 100%
+  );
+}
+
+/* ==========================================================
+   MAIN BANNER
+   ========================================================== */
+
+.trusted-banner{
+  position:relative;
+  z-index:2;
+
+  width:min(92%,1400px);
+  height:78vh;
+
+  display:grid;
+  grid-template-columns:45% 55%;
+  align-items:center;
+
+  padding:4rem;
+
+  border-radius:40px;
+
+  background:
+  rgba(255,248,237,.62);
+
+  backdrop-filter:blur(28px);
+  -webkit-backdrop-filter:blur(28px);
+
+  border:1px solid rgba(255,255,255,.45);
+
+  box-shadow:
+  0 40px 120px rgba(44,24,16,.12);
+
+  overflow:hidden;
+}
+
+/* ==========================================================
+   SHINE
+   ========================================================== */
+
+.trusted-banner::before{
+  content:"";
+
+  position:absolute;
+  top:-150%;
+  left:-20%;
+
+  width:30%;
+  height:300%;
+
+  transform:rotate(25deg);
+
+  background:
+  linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.28),
+    transparent
+  );
+
+  animation:trustedShine 10s linear infinite;
+
+  pointer-events:none;
+}
+
+@keyframes trustedShine{
+
+  from{
+    transform:
+    translateX(-300%)
+    rotate(25deg);
+  }
+
+  to{
+    transform:
+    translateX(700%)
+    rotate(25deg);
+  }
+
+}
+
+/* ==========================================================
+   LEFT CONTENT
+   ========================================================== */
+
+.trusted-content{
+  position:relative;
+  z-index:5;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+  animation:
+  trustedContentEnter
+  .8s ease;
+}
+
+@keyframes trustedContentEnter{
+
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+.trusted-category{
+  display:inline-flex;
+  width:max-content;
+
+  padding:.75rem 1.5rem;
+
+  border-radius:999px;
+
+  margin-bottom:2rem;
+
+  background:
+  rgba(201,160,61,.12);
+
+  border:
+  1px solid rgba(201,160,61,.25);
+
+  color:var(--gold);
+
+  font-size:.72rem;
+  font-weight:700;
+
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.trusted-title{
+  margin:0;
+
+  color:var(--brown);
+
+  font-size:
+  clamp(4rem,6vw,5.5rem);
+
+  font-weight:700;
+
+  line-height:1.05;
+}
+
+.trusted-description{
+  margin:2rem 0;
+
+  max-width:500px;
+
+  color:#5E4D41;
+
+  font-size:1rem;
+  line-height:1.8;
+}
+
+/* ==========================================================
+   META
+   ========================================================== */
+
+.trusted-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1rem;
+
+  margin-bottom:3rem;
+}
+
+.trusted-meta span{
+
+  padding:.9rem 1.4rem;
+
+  border-radius:999px;
+
+  background:
+  rgba(255,255,255,.6);
+
+  border:
+  1px solid rgba(201,160,61,.18);
+
+  color:var(--gold);
+
+  font-size:.85rem;
+  font-weight:600;
+
+  box-shadow:
+  0 10px 30px rgba(44,24,16,.05);
+}
+
+/* ==========================================================
+   PROGRESS
+   ========================================================== */
+
+.trusted-progress-wrapper{
+  margin-bottom:2rem;
+}
+
+.trusted-slide-count{
+
+  margin-bottom:1rem;
+
+  color:var(--brown);
+
+  font-size:.95rem;
+  font-weight:700;
+
+  letter-spacing:2px;
+}
+
+.trusted-progress-track{
+
+  width:420px;
+  max-width:100%;
+
+  height:6px;
+
+  overflow:hidden;
+
+  border-radius:999px;
+
+  background:
+  rgba(44,24,16,.12);
+}
+
+.trusted-progress-fill{
+
+  height:100%;
+
+  border-radius:inherit;
+
+  background:
+  linear-gradient(
+    90deg,
+    var(--gold),
+    var(--gold-light)
+  );
+
+  transition:width .12s linear;
+}
