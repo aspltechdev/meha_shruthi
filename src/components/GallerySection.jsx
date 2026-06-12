@@ -1087,29 +1087,44 @@
 // export default GallerySection;
 
 
-
-
 import React, { useEffect, useRef, useState } from 'react';
 import './GallerySection.css';
 
 // Import background image/video
 import bgVideo from '../assets/hero.mp4';
-import bgImage from '../assets/legbg.jpg';
+import bgImage from '../assets/Background0.jpeg';
+import Performance1 from '../assets/Performance1.jpeg';
+import Performance2 from '../assets/Performance2.jpeg';
+import Performance3 from '../assets/Performance3.jpeg';
+import Stage1  from '../assets/Stage1.jpeg';
+import Stage2 from '../assets/Stage2.jpeg';
+import Artist1 from '../assets/Artist1.jpeg';
+import Artist2 from '../assets/Artist2.jpeg';
+import Design from '../assets/Design.jpeg';
+import Moments1 from '../assets/Moments1.jpeg';
+import Moments2 from '../assets/Moments2.jpeg';
+import Scenes from '../assets/Scenes.jpeg';
 
 const gallery = [
-  { src: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg", orientation: "portrait", category: "Live Performance" },
-  { src: "https://images.pexels.com/photos/167491/pexels-photo-167491.jpeg", orientation: "landscape", category: "Backstage" },
-  { src: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg", orientation: "portrait", category: "Crowd Moments" },
-  { src: "https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg", orientation: "square", category: "Artist Portrait" },
-  { src: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg", orientation: "landscape", category: "Stage Design" },
-  { src: "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg", orientation: "portrait", category: "Behind The Scenes" },
-  { src: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg", orientation: "landscape", category: "Live Performance" },
-  { src: "https://images.pexels.com/photos/2280545/pexels-photo-2280545.jpeg", orientation: "square", category: "Crowd Moments" },
-  { src: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg", orientation: "portrait", category: "Artist Portrait" },
-  { src: "https://images.pexels.com/photos/2253876/pexels-photo-2253876.jpeg", orientation: "landscape", category: "Stage Design" },
-  { src: "https://images.pexels.com/photos/15789084/pexels-photo-15789084.jpeg", orientation: "portrait", category: "Live Performance" },
-  { src: "https://images.pexels.com/photos/592753/pexels-photo-592753.jpeg", orientation: "landscape", category: "Backstage" },
+  { src: Performance1, orientation: "portrait", category: "Live Performance" },
+  { src: Performance2, orientation: "landscape", category: "Live Performance" },
+  { src: Performance3, orientation: "square", category: "Live Performance" },
+
+  { src: Stage1, orientation: "landscape", category: "Backstage" },
+  { src: Stage2, orientation: "portrait", category: "Backstage" },
+
+  {src: Artist1, orientation: "landscape", category: "Artist Portrait" },
+  {src: Artist2, orientation: "square", category: "Artist Portrait" },
+
+  { src: Design, orientation: "landscape", category: "Stage Design" },
+
+  { src: Moments1, orientation: "portrait", category: "Crowd Moments" },
+  { src: Moments2, orientation: "square", category: "Crowd Moments" },
+
+  { src: Scenes, orientation: "portrait", category: "Behind The Scenes" }
+   
 ];
+
 
 const GallerySection = () => {
   const [activeFilter, setActiveFilter] = useState('All');

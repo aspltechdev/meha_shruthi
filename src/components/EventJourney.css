@@ -1,34 +1,36 @@
-/* EventJourney.css - Ultra Premium Light Theme */
-
 /* ============================================
-   Main Section
+   EventJourney — Premium Light Theme (v2)
    ============================================ */
-.ej-premium-section {
+
+/* ── Section shell ── */
+.ej-section {
   position: relative;
   min-height: 100vh;
-  padding: 5rem 3rem;
-  background: linear-gradient(135deg, #fdf8ed 0%, #f5ecda 100%);
+  padding: 5rem 3rem 4rem;
   overflow-x: hidden;
+
 }
 
-/* Premium Background */
-.ej-premium-bg {
+/* Slightly darker overlay so content pops */
+.ej-bg-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 40%, rgba(201, 160, 61, 0.08) 0%, transparent 70%);
+  background: rgba(20, 12, 6, 0.38);
   pointer-events: none;
+  z-index: 0;
 }
 
-.ej-premium-pattern {
+.ej-bg-pattern {
   position: absolute;
   inset: 0;
   background-image: radial-gradient(circle at 20% 40%, rgba(201, 160, 61, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
+  z-index: 0;
 }
 
-/* Dynamic Spotlight */
-.ej-spotlight-premium {
+/* ── Spotlight ── */
+.ej-spotlight {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -36,8 +38,8 @@
   transition: background 0.1s ease;
 }
 
-/* Cinematic Light Beams */
-.ej-light-beams {
+/* ── Light beams ── */
+.ej-beams {
   position: absolute;
   inset: 0;
   overflow: hidden;
@@ -45,29 +47,28 @@
   z-index: 0;
 }
 
-.ej-beam-premium {
+.ej-beam {
   position: absolute;
   bottom: -50%;
-  width: 60px;
+  width: 70px;
   height: 150%;
   background: linear-gradient(90deg, transparent, rgba(201, 160, 61, 0.05), transparent);
   transform: rotate(-15deg);
-  animation: ejBeamMove 8s linear infinite;
+  animation: ejBeam 9s linear infinite;
 }
+.ej-beam:nth-child(1) { left: 10%; animation-delay: 0s;  width: 80px; }
+.ej-beam:nth-child(2) { left: 35%; animation-delay: -2s; width: 100px; }
+.ej-beam:nth-child(3) { left: 60%; animation-delay: -5s; width: 70px; }
+.ej-beam:nth-child(4) { left: 85%; animation-delay: -7s; width: 90px; }
 
-.ej-beam-premium:nth-child(1) { left: 10%; animation-delay: 0s; width: 80px; }
-.ej-beam-premium:nth-child(2) { left: 35%; animation-delay: -2s; width: 100px; }
-.ej-beam-premium:nth-child(3) { left: 60%; animation-delay: -4s; width: 70px; }
-.ej-beam-premium:nth-child(4) { left: 85%; animation-delay: -6s; width: 90px; }
-
-@keyframes ejBeamMove {
-  0% { transform: rotate(-15deg) translateY(0); opacity: 0; }
-  50% { opacity: 1; }
+@keyframes ejBeam {
+  0%   { transform: rotate(-15deg) translateY(0);     opacity: 0; }
+  50%  { opacity: 1; }
   100% { transform: rotate(-15deg) translateY(-100%); opacity: 0; }
 }
 
-/* Floating Particles */
-.ej-particle-field {
+/* ── Particles ── */
+.ej-particles {
   position: absolute;
   inset: 0;
   overflow: hidden;
@@ -75,530 +76,452 @@
   z-index: 0;
 }
 
-.ej-particle-premium {
+.ej-particle {
   position: absolute;
   width: 3px;
   height: 3px;
-  background: rgba(201, 160, 61, 0.4);
+  background: rgba(201, 160, 61, 0.45);
   border-radius: 50%;
-  animation: ejParticleFloat linear infinite;
+  animation: ejFloat linear infinite;
 }
 
-@keyframes ejParticleFloat {
-  0% { transform: translateY(0) scale(1); opacity: 0; }
-  20% { opacity: 0.6; }
-  80% { opacity: 0.3; }
+@keyframes ejFloat {
+  0%   { transform: translateY(0) scale(1);  opacity: 0; }
+  20%  { opacity: 0.6; }
+  80%  { opacity: 0.3; }
   100% { transform: translateY(-100vh) scale(0); opacity: 0; }
 }
 
 /* ============================================
-   Header Section
+   Header
    ============================================ */
-.ej-premium-header {
+.ej-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
   position: relative;
   z-index: 10;
 }
 
-.ej-premium-badge {
+.ej-badge {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  background: rgba(201, 160, 61, 0.08);
-  padding: 0.5rem 1.5rem;
+  gap: 10px;
+  background: rgba(201, 160, 61, 0.12);
+  padding: 0.45rem 1.4rem;
   border-radius: 40px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.4rem;
 }
 
 .ej-badge-dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   background: #c9a03d;
   border-radius: 50%;
 }
 
 .ej-badge-text {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   letter-spacing: 3px;
-  color: #c9a03d;
+  color: #fff;
   font-weight: 600;
   text-transform: uppercase;
 }
 
-.ej-premium-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  margin: 0 0 1rem;
+.ej-title {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  margin: 0 0 0.75rem;
   font-weight: 400;
+  line-height: 1.2;
 }
 
-.ej-title-light {
-  color: #2c1810;
-  font-weight: 500;
-  display: inline-block;
-  margin-right: 12px;
+.ej-title-plain {
+  color: #fff;
+  font-weight: 400;
+  margin-right: 10px;
 }
 
-.ej-title-gradient {
+.ej-title-gold {
   background: linear-gradient(135deg, #c9a03d, #ffd700);
-  background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   font-weight: 700;
-  display: inline-block;
 }
 
-.ej-title-decoration {
+.ej-title-rule {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-.ej-decoration-line {
+.ej-rule-line {
+  display: block;
   width: 50px;
   height: 1px;
   background: linear-gradient(90deg, transparent, #c9a03d, transparent);
 }
 
-.ej-decoration-diamond {
+.ej-rule-diamond {
   color: #c9a03d;
   font-size: 0.7rem;
-  opacity: 0.6;
+  opacity: 0.65;
 }
 
 /* ============================================
-   Main Container
+   Main Grid  — 2 equal-height columns
    ============================================ */
-.ej-premium-container {
+.ej-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 2.5rem;
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
   z-index: 10;
+  align-items: start;     
 }
 
 /* ============================================
-   Image Display
+   LEFT — image column
    ============================================ */
-.ej-image-display {
-  position: relative;
-}
 
 .ej-image-frame {
   position: relative;
-  border-radius: 32px;
+  border-radius: 28px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  aspect-ratio: 4/3;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
 }
 
-.ej-image-slide-premium {
+/* Slides */
+.ej-slide {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transform: scale(1.05);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1.04);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
 }
 
-.ej-image-slide-premium.active {
+.ej-slide.is-active {
   opacity: 1;
   transform: scale(1);
 }
 
-.ej-image-wrapper-premium {
-  width: 100%;
-  height: 100%;
-}
-
-.ej-image-premium {
+.ej-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  display: block;
 }
 
-.ej-image-slide-premium.active .ej-image-premium {
-  transform: scale(1.05);
-}
-
-.ej-image-gradient {
+.ej-img-tint {
   position: absolute;
   inset: 0;
-  opacity: 0.3;
-  transition: opacity 0.3s ease;
+  opacity: 0.22;
 }
 
-.ej-image-caption {
+.ej-img-caption {
   position: absolute;
-  bottom: 24px;
-  left: 24px;
-  z-index: 10;
+  bottom: 20px;
+  left: 20px;
+  z-index: 5;
 }
 
-.ej-caption-number {
+.ej-caption-num {
+  display: block;
   font-size: 2rem;
   font-weight: 800;
   color: #fff;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
   line-height: 1;
 }
 
-.ej-caption-title {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.9);
+.ej-caption-label {
+  display: block;
+  font-size: 0.9rem;
+  color: #fff;
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
-.ej-image-counter-premium {
+.ej-counter {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background: rgba(0, 0, 0, 0.6);
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(8px);
-  padding: 6px 12px;
+  padding: 5px 11px;
   border-radius: 20px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  color: #c9a03d;
-  z-index: 10;
+  color: #fff;
+  z-index: 5;
 }
 
 .ej-counter-sep {
-  color: rgba(255, 255, 255, 0.5);
-  margin: 0 4px;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0 3px;
 }
 
-.ej-counter-total {
-  color: rgba(255, 255, 255, 0.7);
+.ej-counter-tot {
+  color:#fff;
 }
 
 /* ============================================
-   Content Display
+   RIGHT — content column
    ============================================ */
-.ej-content-display-premium {
+.ej-col-content {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.25rem;
 }
 
-/* Step Indicator */
-.ej-step-indicator {
+/* ── Step tabs ── */
+.ej-steps {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.2rem;
 }
 
-.ej-step-premium {
+.ej-step {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.9rem;
   background: transparent;
   border: none;
-  padding: 1rem;
+  padding: 0.7rem 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  border-radius: 16px;
+  border-radius: 14px;
   text-align: left;
   position: relative;
+  transition: background 0.25s ease, transform 0.25s ease;
+  overflow: hidden;
 }
 
-.ej-step-premium:hover {
-  background: rgba(201, 160, 61, 0.05);
-  transform: translateX(5px);
-}
-
-.ej-step-premium.active {
+.ej-step:hover {
   background: rgba(201, 160, 61, 0.08);
+  transform: translateX(4px);
 }
 
-.ej-step-number {
-  font-size: 1.5rem;
+.ej-step.is-active {
+  background: rgba(201, 160, 61, 0.12);
+  transform: translateX(0);
+}
+
+.ej-step-num {
+  font-size: 1.25rem;
   font-weight: 800;
-  color: rgba(201, 160, 61, 0.3);
-  min-width: 50px;
-  transition: all 0.3s ease;
+  color: rgba(201, 160, 61, 0.35);
+  min-width: 42px;
+  transition: color 0.25s ease, transform 0.25s ease;
+  flex-shrink: 0;
 }
 
-.ej-step-premium.active .ej-step-number {
-  color: #c9a03d;
-  transform: scale(1.1);
-}
-
-.ej-step-premium.completed .ej-step-number {
-  color: #c9a03d;
-  opacity: 0.6;
-}
-
-.ej-step-title {
-  font-size: 1rem;
-  font-weight: 500;
+.ej-step.is-active .ej-step-num {
   color: #2c1810;
-  flex: 1;
+  transform: scale(1.08);
 }
 
-.ej-step-premium.active .ej-step-title {
+.ej-step.is-done .ej-step-num {
+  color: rgba(201, 160, 61, 0.55);
+}
+
+.ej-step-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  flex: 1;
+  transition: color 0.25s ease;
+}
+
+.ej-step.is-active .ej-step-label {
+  color: #fff;
   font-weight: 600;
 }
 
-.ej-step-line {
+.ej-step.is-done .ej-step-label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* bottom bar indicator */
+.ej-step-bar {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0;
   height: 2px;
   background: linear-gradient(90deg, #c9a03d, transparent);
-  transition: width 0.3s ease;
+  transition: width 0.35s ease;
 }
 
-.ej-step-premium.active .ej-step-line {
+.ej-step.is-active .ej-step-bar {
   width: 100%;
 }
 
-/* Description */
-.ej-description-premium {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border-radius: 24px;
-  padding: 2rem;
-  min-height: 200px;
-  border: 1px solid rgba(201, 160, 61, 0.1);
+/* ── Description box ── */
+.ej-desc-box {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(201, 160, 61, 0.18);
+  border-radius: 22px;
+  padding: 2rem 2rem;
+  min-height: 168px;           
+  position: relative;
+  overflow: hidden;
 }
 
-.ej-desc-premium {
+.ej-desc {
   display: none;
-  animation: ejDescFade 0.5s ease;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: #fff;
+  margin: 0;
+  animation: ejDescIn 0.45s ease;
 }
 
-.ej-desc-premium.active {
+.ej-desc.is-active {
   display: block;
 }
 
-@keyframes ejDescFade {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes ejDescIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.ej-desc-text {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #4a3728;
-  margin: 0;
-}
-
-/* Navigation */
-.ej-navigation-premium {
+/* ── Navigation ── */
+.ej-nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  padding: 1rem 0;
+  gap: 1.5rem;
+  padding: 0.25rem 0;
 }
 
-.ej-nav-premium {
-  width: 48px;
-  height: 48px;
+.ej-nav-btn {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: #fff;
-  border: 1px solid rgba(201, 160, 61, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(201, 160, 61, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  color: #c9a03d;
+  color: #2c1810;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+  flex-shrink: 0;
 }
 
-.ej-nav-premium:hover {
+.ej-nav-btn:hover {
   background: #c9a03d;
-  border-color: #c9a03d;
+  border-color: #fff;
   color: #fff;
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
-.ej-dots-premium {
+.ej-dots {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.6rem;
+  align-items: center;
 }
 
-.ej-dot-premium {
+.ej-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: rgba(201, 160, 61, 0.3);
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: width 0.3s ease, border-radius 0.3s ease, background 0.3s ease, transform 0.2s ease;
+  padding: 0;
 }
 
-.ej-dot-premium:hover {
-  transform: scale(1.2);
+.ej-dot:hover {
+  transform: scale(1.25);
 }
 
-.ej-dot-premium.active {
-  width: 24px;
+.ej-dot.is-active {
+  width: 22px;
   border-radius: 4px;
   background: #c9a03d;
-}
-
-/* Auto-play */
-.ej-autoplay-premium {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
-  border-radius: 40px;
-  border: 1px solid rgba(201, 160, 61, 0.1);
-}
-
-.ej-autoplay-btn {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #c9a03d;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: #fff;
-  transition: all 0.3s ease;
-}
-
-.ej-autoplay-btn:hover {
-  transform: scale(1.05);
-}
-
-.ej-autoplay-track {
-  flex: 1;
-  height: 2px;
-  background: rgba(201, 160, 61, 0.2);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.ej-autoplay-progress {
-  width: 0;
-  height: 100%;
-  background: linear-gradient(90deg, #c9a03d, #ffd700);
-  border-radius: 2px;
-}
-
-.ej-autoplay-progress.animating {
-  animation: ejAutoplayProgress linear forwards;
-}
-
-@keyframes ejAutoplayProgress {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-.ej-autoplay-text {
-  font-size: 0.7rem;
-  color: #8b7355;
-  font-weight: 500;
 }
 
 /* ============================================
    Footer CTA
    ============================================ */
-.ej-premium-footer {
+.ej-footer {
   text-align: center;
-  margin-top: 5rem;
-  padding: 3rem;
-  background: rgba(255, 255, 255, 0.6);
+  margin-top: 4.5rem;
+  padding: 2.5rem 2rem;
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(10px);
-  border-radius: 40px;
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(201, 160, 61, 0.12);
+  border-radius: 36px;
   position: relative;
   z-index: 10;
 }
 
-.ej-footer-decoration {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.ej-footer-line {
-  width: 50px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #c9a03d, transparent);
-}
-
-.ej-footer-diamond {
-  color: #c9a03d;
-  font-size: 0.7rem;
-  opacity: 0.6;
-}
-
 .ej-footer-text {
-  font-size: 1.1rem;
-  color: #2c1810;
-  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+  color: #fff;
+  margin: 0 0 1.25rem;
 }
 
 .ej-footer-accent {
   background: linear-gradient(135deg, #c9a03d, #ffd700);
-  background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   font-weight: 600;
-  margin-left: 8px;
 }
 
 .ej-footer-cta {
   background: transparent;
-  border: 2px solid #c9a03d;
-  padding: 0.9rem 2rem;
+  border: 1.5px solid #c9a03d;
+  padding: 0.85rem 2rem;
   border-radius: 50px;
   font-size: 0.85rem;
   font-weight: 600;
   color: #c9a03d;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, gap 0.3s ease, transform 0.3s ease;
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.7rem;
   position: relative;
   overflow: hidden;
+  letter-spacing: 0.4px;
 }
 
 .ej-footer-cta:hover {
   background: #c9a03d;
   color: #fff;
-  transform: translateX(5px);
-  gap: 1rem;
+  transform: translateX(4px);
+  gap: 0.95rem;
 }
 
 .ej-cta-shine {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+  transform: translateX(-110%);
+  transition: transform 0.55s ease;
 }
 
 .ej-footer-cta:hover .ej-cta-shine {
-  transform: translateX(100%);
+  transform: translateX(110%);
 }
 
 /* ============================================
-   Bottom Energy Bars
+   Energy bars
    ============================================ */
-.ej-energy-bars {
+.ej-energy {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -616,159 +539,71 @@
   width: 4px;
   background: linear-gradient(180deg, #c9a03d, #ffd700);
   border-radius: 2px;
-  animation: ejEnergyPulse 1s ease-in-out infinite alternate;
+  animation: ejEnergy 1s ease-in-out infinite alternate;
 }
 
-@keyframes ejEnergyPulse {
-  0% { transform: scaleY(0.3); opacity: 0.3; }
-  100% { transform: scaleY(1); opacity: 0.8; }
-}
-
-/* ============================================
-   Scroll Hint
-   ============================================ */
-.ej-scroll-hint {
-  position: fixed;
-  bottom: 30px;
-  left: 30px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.65rem;
-  letter-spacing: 2px;
-  color: #a08c6f;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(8px);
-  padding: 6px 14px;
-  border-radius: 30px;
-  pointer-events: none;
-}
-
-.ej-scroll-icon {
-  display: flex;
-  align-items: center;
-  animation: ejScrollArrow 1.5s ease infinite;
-}
-
-@keyframes ejScrollArrow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(3px); }
+@keyframes ejEnergy {
+  0%   { transform: scaleY(0.3); opacity: 0.3; }
+  100% { transform: scaleY(1);   opacity: 0.75; }
 }
 
 /* ============================================
-   Responsive Design
+   Responsive
    ============================================ */
 @media (max-width: 1024px) {
-  .ej-premium-section {
-    padding: 4rem 1.5rem;
+  .ej-section {
+    padding: 4rem 1.5rem 3.5rem;
   }
-  
-  .ej-premium-container {
+
+  .ej-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .ej-image-frame {
-    aspect-ratio: 16/9;
+    aspect-ratio: 16 / 9;
   }
-  
-  .ej-step-indicator {
+
+  .ej-steps {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 0.4rem;
   }
-  
-  .ej-step-premium {
+
+  .ej-step {
     flex: 1;
     min-width: 120px;
     justify-content: center;
   }
-  
-  .ej-step-line {
-    display: none;
-  }
+
+  .ej-step-bar { display: none; }
 }
 
 @media (max-width: 768px) {
-  .ej-premium-title {
-    flex-direction: column;
-  }
-  
-  .ej-title-light {
+  .ej-title { flex-direction: column; }
+
+  .ej-title-plain {
     display: block;
     margin-right: 0;
+    margin-bottom: 4px;
   }
-  
-  .ej-step-indicator {
+
+  .ej-steps {
     flex-direction: column;
   }
-  
-  .ej-step-premium {
-    justify-content: flex-start;
-  }
-  
-  .ej-footer-text {
-    font-size: 0.9rem;
-  }
-  
-  .ej-footer-cta {
-    padding: 0.7rem 1.5rem;
-    font-size: 0.75rem;
-  }
-  
-  .ej-scroll-hint {
-    display: none;
-  }
-  
-  .ej-energy-bars {
-    display: none;
-  }
-  
-  .ej-light-beams {
-    display: none;
-  }
+
+  .ej-step { justify-content: flex-start; }
+
+  .ej-energy { display: none; }
 }
 
 @media (max-width: 480px) {
-  .ej-caption-number {
-    font-size: 1.5rem;
-  }
-  
-  .ej-caption-title {
-    font-size: 0.8rem;
-  }
-  
-  .ej-desc-text {
-    font-size: 0.85rem;
-  }
-  
-  .ej-step-number {
-    font-size: 1.2rem;
-    min-width: 40px;
-  }
-  
-  .ej-step-title {
-    font-size: 0.85rem;
-  }
-}
-
-/* ============================================
-   Animations
-   ============================================ */
-@keyframes ejContentReveal {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.ej-description-premium {
-  animation: ejContentReveal 0.5s ease;
+  .ej-caption-num   { font-size: 1.4rem; }
+  .ej-caption-label { font-size: 0.78rem; }
+  .ej-desc          { font-size: 0.88rem; }
+  .ej-step-num      { font-size: 1rem; min-width: 34px; }
+  .ej-step-label    { font-size: 0.82rem; }
 }
 
 /* Selection */

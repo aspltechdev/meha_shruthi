@@ -4,6 +4,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import './ClientReactions.css';
+import bgVideo from "../assets/videoone.mp4";
 import client1 from '../assets/borderthree.jpg';
 import client2 from '../assets/back2.png';
 import client3 from '../assets/radisson.png';
@@ -57,7 +58,7 @@ const ClientReactions = () => {
   useEffect(() => {
     if (isAutoPlaying) {
       const duration = 6000;
-      
+
 
 
       intervalRef.current = setInterval(() => {
@@ -68,7 +69,7 @@ const ClientReactions = () => {
 
     return () => {
       clearInterval(intervalRef.current);
-      
+
     };
   }, [isAutoPlaying, activeIndex]);
 
@@ -92,8 +93,20 @@ const ClientReactions = () => {
   return (
     <section className="cr-premium-section" ref={sectionRef}>
       {/* Premium Light Background */}
-      <div className="cr-premium-bg"></div>
-      <div className="cr-premium-pattern"></div>
+      <div className="cr-video-bg">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="cr-video"
+        >
+          <source src={bgVideo} type="video/mp4" />
+        </video>
+
+        <div className="cr-video-overlay"></div>
+      </div>
+      
 
       {/* Dynamic Spotlight */}
       <div
