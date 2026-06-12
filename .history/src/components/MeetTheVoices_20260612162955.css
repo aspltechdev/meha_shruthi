@@ -217,197 +217,85 @@
 
 .mtv-slide.active { pointer-events: auto; }
 
-/* ═══════════════════════════════════════
-   LEFT — CONTENT
-   Compact spacing so everything fits in 100vh
-═══════════════════════════════════════ */
 .mtv-content {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  max-width: 480px;
-  animation: contentIn 0.9s cubic-bezier(0.4,0,0.2,1) both;
-  overflow: hidden;
-}
-
-@keyframes contentIn {
-  from { opacity: 0; transform: translateX(-24px); }
-  to   { opacity: 1; transform: translateX(0); }
+  gap: 0.6rem;   /* was 0 */
+  max-width: 540px;
 }
 
 .mtv-tag {
-  font-size: 0.55rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  opacity: 0.9;
-  margin-bottom: 90px;
-
+  font-size: 0.7rem;      /* was 0.55rem */
+  letter-spacing: 4px;
+  margin-bottom: 1.5rem;  /* was 90px */
 }
 
 .mtv-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.6rem, 3vw, 2.8rem);
+  font-size: clamp(2.6rem, 4vw, 4rem);   /* bigger */
   font-weight: 700;
   color: #f0e8d8;
   line-height: 1;
-  display: inline-block;
-  letter-spacing: -0.5px;
- margin: -1.5rem 0 0.4rem;
-  
-}
-
-.mtv-name-bar {
-  display: block;
-  height: 2px;
-  width: 48px;
-  margin-top: 5px;
-  border-radius: 1px;
-  opacity: 0.85;
+  letter-spacing: -1px;
+  margin: 0 0 0.8rem;
 }
 
 .mtv-role {
-  display: inline-flex;
-  align-self: flex-start;
-  border: 1px solid;
-  padding: 0.22rem 0.8rem;
-  border-radius: 2px;
-  font-size: 0.55rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  background: rgba(255,255,255,0.05);
-  margin-bottom: 0.4rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.7rem;
+  letter-spacing: 2.5px;
+  margin-bottom: 0.8rem;
 }
 
 .mtv-specialty {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.9rem;
-  font-style: italic;
-  color: rgba(220,200,170,0.75);
-  margin-bottom: 0.5rem;
-}
-
-.mtv-spec-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  flex-shrink: 0;
+  font-size: 1.1rem;
+  gap: 10px;
+  margin-bottom: 0.9rem;
 }
 
 .mtv-desc {
-  font-size: 0.78rem;
-  line-height: 1.65;
-  color: rgba(210,190,160,0.8);
-  margin: 0 0 0.55rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin: 0 0 1rem;
 }
 
 .mtv-quote {
-  border-left: 3px solid;
-  padding: 0.4rem 0 0.4rem 1rem;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.88rem;
-  font-style: italic;
-  color: rgba(220,200,165,0.9);
-  background: rgba(255,255,255,0.04);
-  border-radius: 0 4px 4px 0;
-  margin: 0 0 0.6rem;
-}
-
-.mtv-qmark {
-  font-size: 1.3rem;
-  line-height: 0;
-  vertical-align: -0.3em;
-  opacity: 0.3;
-  margin: 0 3px;
+  padding: 0.8rem 0 0.8rem 1.2rem;
+  font-size: 1rem;
+  margin: 0 0 1rem;
 }
 
 .mtv-stats {
-  display: flex;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 4px;
-  overflow: hidden;
-  background: rgba(0,0,0,0.3);
-  backdrop-filter: blur(8px);
-  margin-bottom: 0.55rem;
+  margin-bottom: 1rem;
 }
 
 .mtv-stat {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.6rem 0.5rem;
-  border-right: 1px solid rgba(255,255,255,0.08);
-  transition: background 0.3s ease;
+  padding: 0.9rem 0.7rem;
 }
 
-.mtv-stat:last-child { border-right: none; }
-.mtv-stat:hover { background: rgba(255,255,255,0.06); }
-
 .mtv-stat-val {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1;
-  margin-bottom: 2px;
+  font-size: 2rem;   /* was 1.5rem */
 }
 
 .mtv-stat-lbl {
-  font-size: 0.52rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(200,180,150,0.55);
+  font-size: 0.62rem;
 }
 
 .mtv-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  margin-bottom: 0.65rem;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .mtv-chip {
-  font-size: 0.55rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  padding: 0.2rem 0.6rem;
-  border: 1px solid;
-  border-radius: 2px;
-  background: rgba(0,0,0,0.3);
-  backdrop-filter: blur(6px);
-  transition: background 0.3s ease;
+  font-size: 0.65rem;
+  padding: 0.35rem 0.8rem;
 }
-
-.mtv-chip:hover { background: rgba(255,255,255,0.1); }
 
 .mtv-cta {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  border: 1.5px solid var(--accent);
-  color: var(--accent);
-  padding: 0.55rem 1.3rem;
-  border-radius: 2px;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.35s ease;
+  padding: 0.8rem 1.8rem;
+  font-size: 0.72rem;
+  letter-spacing: 2.5px;
 }
-
-.mtv-cta:hover {
-  background: var(--accent);
-  color: #0d0e1a;
-  transform: translateX(5px);
-}
-
 /* ═══════════════════════════════════════
    RIGHT — PORTRAIT CARD
 ═══════════════════════════════════════ */
@@ -459,19 +347,6 @@
     rgba(10,9,20,0.8) 100%
   );
   z-index: 2;
-}
-/* ═══════════════════════════════════════
-   RIGHT — PORTRAIT CARD
-═══════════════════════════════════════ */
-.mtv-portrait-panel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 0 0 3vw;
-  height: 100%;
-
-  /* Move card upward */
-  transform: translateY(-60px);
 }
 
 /* Live badge — top left of card */
@@ -649,216 +524,4 @@
   .mtv-subline { display: none; }
   .mtv-desc { display: none; }
   .mtv-quote { display: none; }
-}
-/* ==========================================
-   BALANCED PREMIUM LAYOUT
-   ========================================== */
-
-.mtv-slide {
-  display: grid;
-  grid-template-columns: 1.5fr 0.5fr;
-  align-items: center;
-  gap: 3rem;
-  width: 100%;
-  min-height: 100vh;
-  padding: 5rem 6rem;
-  box-sizing: border-box;
-}
-
-.mtv-content {
-  position: relative;
-  top: -60px;   /* move whole left side up */
-
-  width: 100%;
-  max-width: 760px;
-  justify-self: start;
-  align-self: center;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-
-  animation: contentIn 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
-}
-
-.mtv-tag {
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  opacity: 0.9;
-  margin-bottom: 0.8rem;
-}
-
-.mtv-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3rem, 5vw, 4.8rem);
-  font-weight: 700;
-  color: #f0e8d8;
-  line-height: 0.95;
-  letter-spacing: -0.5px;
-  margin: 0;
-}
-
-.mtv-name-bar {
-  display: block;
-  height: 3px;
-  width: 70px;
-  margin-top: 10px;
-  border-radius: 2px;
-  opacity: 0.85;
-}
-
-.mtv-role {
-  display: inline-flex;
-  align-self: flex-start;
-  border: 1px solid;
-  padding: 0.5rem 1.2rem;
-  border-radius: 2px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.mtv-specialty {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  font-style: italic;
-  color: rgba(220, 200, 170, 0.8);
-}
-
-.mtv-spec-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.mtv-desc {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: rgba(210, 190, 160, 0.85);
-  margin: 0;
-}
-
-.mtv-quote {
-  border-left: 3px solid;
-  padding: 0.8rem 0 0.8rem 1.2rem;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  font-style: italic;
-  color: rgba(220, 200, 165, 0.9);
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 0 4px 4px 0;
-}
-
-.mtv-qmark {
-  font-size: 1.6rem;
-  line-height: 0;
-  vertical-align: -0.3em;
-  opacity: 0.3;
-  margin: 0 4px;
-}
-
-.mtv-stats {
-  display: flex;
-  max-width: 760px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(8px);
-}
-
-.mtv-stat {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.6rem;
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-  transition: background 0.3s ease;
-}
-
-.mtv-stat:last-child {
-  border-right: none;
-}
-
-.mtv-stat:hover {
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.mtv-stat-val {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.8rem;
-  font-weight: 700;
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.mtv-stat-lbl {
-  font-size: 0.7rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(200, 180, 150, 0.55);
-}
-
-.mtv-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.mtv-chip {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  padding: 0.45rem 0.9rem;
-  border: 1px solid;
-  border-radius: 2px;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(6px);
-  transition: background 0.3s ease;
-}
-
-.mtv-chip:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.mtv-cta {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: transparent;
-  border: 1.5px solid var(--accent);
-  color: var(--accent);
-  padding: 0.9rem 1.8rem;
-  border-radius: 2px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.35s ease;
-  margin-top: 0rem;
-}
-
-.mtv-cta:hover {
-  background: var(--accent);
-  color: #0d0e1a;
-  transform: translateX(5px);
-}
-
-/* RIGHT PORTRAIT CARD */
-
-.mtv-portrait-card {
-  width: 320px;
-  height: 460px;
-  margin-left: auto;
 }

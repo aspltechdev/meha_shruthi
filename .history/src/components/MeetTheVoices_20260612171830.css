@@ -666,9 +666,6 @@
 }
 
 .mtv-content {
-  position: relative;
-  top: -60px;   /* move whole left side up */
-
   width: 100%;
   max-width: 760px;
   justify-self: start;

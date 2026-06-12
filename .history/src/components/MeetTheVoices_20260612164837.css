@@ -471,7 +471,7 @@
   height: 100%;
 
   /* Move card upward */
-  transform: translateY(-60px);
+  transform: translateY(-150px);
 }
 
 /* Live badge — top left of card */
@@ -666,9 +666,6 @@
 }
 
 .mtv-content {
-  position: relative;
-  top: -60px;   /* move whole left side up */
-
   width: 100%;
   max-width: 760px;
   justify-self: start;

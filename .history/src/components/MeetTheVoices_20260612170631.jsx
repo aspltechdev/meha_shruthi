@@ -59,48 +59,42 @@ const MeetTheVoices = () => {
 
   const singers = [
     {
-      id: 0,
-      uniqueId: 'meera-the-visionary',
-      name: 'MEERA SRIDHARAN',
-      fullName: 'Meera Sridharan',
-      title: 'The Visionary Voice',
-      role: 'Founder & Lead Vocalist',
-      specialty: 'Carnatic • Classical • Soul',
-      description: 'A voice that carries the soul of tradition, Meera transforms every performance into a spiritual journey through Indian classical music.',
-      quote: 'Music flows through my veins like the sacred rivers of Bharath',
-      videoUrl: meeraVideo,
-      posterImage: m2,
-      stats: [
-        { value: '25+', label: 'Years' },
-        { value: '1000+', label: 'Shows' },
-        { value: '50+', label: 'Awards' },
-      ],
-      achievements: ['Classical Prodigy', 'National Award Winner', 'International Performer'],
-      accentColor: '#c9a03d',
-      tintColor: 'rgba(20, 50, 160, 0.45)',
-    },
-    {
-      id: 1,
-      uniqueId: 'kaushik-the-performer',
-      name: 'KAUSHIK SRIDHARAN',
-      fullName: 'Kaushik Sridharan',
-      title: 'The Stage Virtuoso',
-      role: 'Lead Performer & Super Singer',
-      specialty: 'Versatile • Energetic • Magical',
-      description: 'From Super Singer to international stages, Kaushik brings electrifying energy while honoring every musical tradition.',
-      quote: 'Every celebration under our banner becomes an eternal memory',
-      videoUrl: kaushikVideo,
-      posterImage: m1,
-      stats: [
-        { value: '500+', label: 'Concerts' },
-        { value: '7+', label: 'Countries' },
-        { value: '15+', label: 'Awards' },
-      ],
-      achievements: ['Super Singer Fame', 'International Tour', 'Trendsetter Award'],
-      accentColor: '#d4a843',
-      tintColor: 'rgba(70, 15, 110, 0.45)',
-    },
-  ];
+  id: 0,
+  uniqueId: 'meera-the-visionary',
+  name: 'MEERA SRIDHARAN',
+  fullName: 'Meera Sridharan',
+  title: 'The Visionary Voice',
+  role: 'Founder & Lead Vocalist',
+  specialty: 'Carnatic • Classical • Soul',
+  description: 'A voice that carries the soul of tradition, Meera transforms every performance into a spiritual journey through the depths of Indian classical music.',
+  quote: 'Music flows through my veins like the sacred rivers of Bharath',
+
+  extraLines: [
+    'Preserving timeless Carnatic traditions through soulful performances.',
+    'Creating sacred musical experiences that unite generations.'
+  ],
+
+  videoUrl: meeraVideo,
+  posterImage: m2,
+  ...
+},
+{
+  id: 1,
+  uniqueId: 'kaushik-the-performer',
+  name: 'KAUSHIK SRIDHARAN',
+  fullName: 'Kaushik Sridharan',
+  title: 'The Stage Virtuoso',
+  role: 'Lead Performer & Super Singer',
+  specialty: 'Versatile • Energetic • Magical',
+  description: 'From Super Singer to international stages, Kaushik brings electrifying energy while honoring every musical tradition.',
+  quote: 'Every celebration under our banner becomes an eternal memory',
+
+  extraLines: [
+    'Blending contemporary charisma with classical roots.',
+    'Turning every celebration into an unforgettable spectacle.'
+  ],
+
+  
 
   const currentSinger = singers[activeIndex];
 

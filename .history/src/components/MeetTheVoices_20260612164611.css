@@ -417,6 +417,7 @@
   justify-content: center;
   padding: 0 0 0 3vw;
   height: 100%;
+  mar
 }
 
 .mtv-portrait-card {
@@ -459,19 +460,6 @@
     rgba(10,9,20,0.8) 100%
   );
   z-index: 2;
-}
-/* ═══════════════════════════════════════
-   RIGHT — PORTRAIT CARD
-═══════════════════════════════════════ */
-.mtv-portrait-panel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 0 0 3vw;
-  height: 100%;
-
-  /* Move card upward */
-  transform: translateY(-60px);
 }
 
 /* Live badge — top left of card */
@@ -666,9 +654,6 @@
 }
 
 .mtv-content {
-  position: relative;
-  top: -60px;   /* move whole left side up */
-
   width: 100%;
   max-width: 760px;
   justify-self: start;
