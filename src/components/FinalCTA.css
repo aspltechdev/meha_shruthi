@@ -41,6 +41,8 @@
   filter: blur(80px);
   pointer-events: none;
   animation: fctaGlowPulse 8s ease-in-out infinite;
+    display:none;
+     opacity:0;
 }
 
 @keyframes fctaGlowPulse {
@@ -273,32 +275,58 @@
 /* ============================================
    Services Strip
    ============================================ */
-.fcta-premium-services {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 2.5rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
-  border-radius: 60px;
-  border: 1px solid rgba(201, 160, 61, 0.1);
+/* ============================================
+   Services Strip (Like the Screenshot)
+   ============================================ */
+
+.fcta-premium-services{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:18px;
+
+    margin:2.5rem auto;
+
+    background:transparent;
+    padding:0;
 }
 
-.fcta-premium-service {
-  font-size: 0.8rem;
-  color: #4a3728;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+.fcta-premium-service{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-width:190px;
+    height:56px;
+
+    padding:0 32px;
+
+    border:1.5px solid rgba(201,160,61,0.45);
+    border-radius:999px;
+
+    background:rgba(70,65,58,0.25);
+    backdrop-filter:blur(8px);
+
+    color:#d8d8d8;
+    font-size:1.05rem;
+    font-weight:500;
+
+    transition:all .3s ease;
+    cursor:pointer;
 }
 
-.fcta-premium-service-sep {
-  font-size: 0.5rem;
-  color: #c9a03d;
-  opacity: 0.5;
+.fcta-premium-service:hover{
+    background:#c9a03d;
+    color:#111;
+    border-color:#c9a03d;
+    transform:translateY(-2px);
 }
+
+.fcta-premium-service-sep{
+    display:none;
+}
+
 
 /* ============================================
    CTA Buttons
@@ -507,9 +535,9 @@ margin-top:50px;
 
     align-items: center;
 
-    gap: 150px;          /* Increase this */
+    gap: 190px;          /* Increase this */
 
-    width: fit-content; 
+  
      /* Important */
     /* margin-top: 140px; */
 
@@ -802,35 +830,7 @@ transform:translateY(0px);
    Premium Primary Button
    =========================== */
 
-.fcta-premium-btn-primary{
-    position:relative;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
 
-    padding:16px 42px;
-
-    border:none;
-    border-radius:60px;
-
-    overflow:hidden;
-    cursor:pointer;
-
-    background:linear-gradient(
-        90deg,
-        #7d4d00 0%,
-        #b57a00 22%,
-        #dca61a 48%,
-        #eccb69 72%,
-        #fff8e5 100%
-    );
-
-    box-shadow:
-        0 12px 28px rgba(0,0,0,.35),
-        0 0 24px rgba(255,215,0,.28);
-
-    transition:all .35s ease;
-}
 
 /* .fcta-premium-btn-primary::before{
     content:"";
@@ -938,4 +938,165 @@ transform:translateY(0px);
   background-repeat: no-repeat;
   z-index: 0;
   opacity: 0.7; 
+}
+/* ==========================================
+   RESPONSIVE FIXES
+   ========================================== */
+
+@media (max-width: 1200px) {
+
+  .fcta-premium-container{
+    width:100%;
+    max-width:95%;
+  }
+
+  .fcta-premium-trust{
+    width:100%;
+    justify-content:center;
+    gap:200px;
+    flex-wrap:wrap;
+  }
+
+  .fcta-premium-stat-card{
+    width:150px;
+    height:130px;
+  }
+
+}
+
+@media (max-width: 992px){
+
+  .fcta-premium-section{
+    padding:4rem 2rem;
+  }
+
+  .fcta-premium-headline{
+    font-size:clamp(2rem,5vw,3rem);
+  }
+
+  .fcta-premium-headline-gold{
+    font-size:clamp(2.3rem,6vw,3.4rem);
+  }
+
+  .fcta-premium-services{
+    flex-wrap:wrap;
+    gap:12px;
+    padding:14px;
+  }
+
+  .fcta-premium-buttons{
+    justify-content:center;
+  }
+
+  .fcta-premium-trust{
+    gap:35px;
+  }
+
+}
+
+@media (max-width:768px){
+
+  .fcta-premium-section{
+    padding:3rem 1.2rem;
+    min-height:auto;
+  }
+
+  .fcta-premium-container{
+    transform:none;
+  }
+
+  .fcta-premium-headline-accent{
+    flex-direction:column;
+    gap:0;
+  }
+.fcta-premium-services{
+    flex-direction:column;
+    gap:12px;
+
+    background:rgba(255,255,255,.6);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(201,160,61,.1);
+
+    padding:1rem;
+    border-radius:30px;
+}
+
+}
+ 
+
+  .fcta-premium-service-sep{
+    display:none;
+  }
+
+  .fcta-premium-buttons{
+    flex-direction:column;
+    gap:25px;
+    margin-bottom:2rem;
+  }
+
+  /* Button size is NOT changed */
+
+ .fcta-premium-trust{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:100px;   /* increase as needed */
+    flex-wrap:nowrap;
+}
+
+  .fcta-premium-stat-card{
+    width:140px;
+    height:120px;
+  }
+
+  .fcta-premium-rays,
+  .fcta-premium-rings,
+  .fcta-premium-audio,
+  .fcta-premium-scroll{
+    display:none;
+  }
+
+
+
+@media (max-width:480px){
+
+  .fcta-premium-section{
+    padding:2.5rem 1rem;
+  }
+
+  .fcta-premium-badge-text{
+    font-size:.6rem;
+    letter-spacing:2px;
+  }
+
+  .fcta-premium-headline{
+    line-height:1.3;
+  }
+
+  .fcta-premium-services{
+    padding:0;
+  }
+
+  .fcta-premium-service{
+    font-size:.75rem;
+  }
+
+  .fcta-premium-trust{
+    gap:15px;
+  }
+
+  .fcta-premium-stat-card{
+    width:130px;
+    height:115px;
+  }
+
+  .fcta-premium-trust-number{
+    font-size:32px;
+  }
+
+  .fcta-premium-trust-label{
+    font-size:.65rem;
+  }
+
 }
