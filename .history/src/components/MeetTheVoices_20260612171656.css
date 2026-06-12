@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ═══════════════════════════════════════
+   ROOT
+═══════════════════════════════════════ */
+.mtv-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  background: #0d0e1a;
+}
+
+/* ═══════════════════════════════════════
+   BACKGROUND
+═══════════════════════════════════════ */
+.mtv-bg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  pointer-events: none;
+}
+
+.mtv-bg-layer.active {
+  opacity: 1;
+}
+
+.mtv-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.55);
+}
+
+.mtv-bg-tint {
+  position: absolute;
+  inset: 0;
+  background: var(--tint);
+  mix-blend-mode: color;
+}
+
+.mtv-bg-darken {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to right,
+      rgba(8,6,20,0.88) 0%,
+      rgba(8,6,20,0.55) 40%,
+      rgba(8,6,20,0.15) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(8,6,20,0.4) 0%,
+      transparent 35%,
+      transparent 70%,
+      rgba(8,6,20,0.7) 100%
+    );
+}
+
+/* ═══════════════════════════════════════
+   MOUSE SPOTLIGHT
+═══════════════════════════════════════ */
+.mtv-spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════
+   FLOATING NOTES
+═══════════════════════════════════════ */
+.mtv-ambient-notes {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mtv-ambient-note {
+  position: absolute;
+  font-size: 1.6rem;
+  opacity: 0;
+  animation: ambientFloat 8s ease-in-out infinite;
+}
+
+.mtv-ambient-note-0 {
+  top: 15%;
+  left: 5%;
+}
+
+.mtv-ambient-note-1 {
+  top: 70%;
+  left: 3%;
+}
+
+.mtv-ambient-note-2 {
+  top: 40%;
+  left: 92%;
+}
+
+.mtv-ambient-note-3 {
+  top: 80%;
+  left: 88%;
+}
+
+.mtv-ambient-note-4 {
+  top: 25%;
+  left: 48%;
+}
+
+.mtv-ambient-note-5 {
+  top: 60%;
+  left: 55%;
+}
+
+@keyframes ambientFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0) rotate(0deg);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) rotate(20deg);
+  }
+}
+
+/* ═══════════════════════════════════════
+   HEADER
+═══════════════════════════════════════ */
+.mtv-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem 2rem 1rem;
+}
+
+.mtv-overline {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.mtv-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 300;
+  color: #f0e8d8;
+  margin: 0;
+}
+
+.mtv-headline em {
+  font-style: italic;
+  font-weight: 700;
+  color: #c9a03d;
+}
+
+.mtv-subline {
+  margin-top: 0.4rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(220, 200, 170, 0.7);
+}
+
+/* ═══════════════════════════════════════
+   DOT NAVIGATION
+═══════════════════════════════════════ */
+.mtv-dots {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 40px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+}
+
+.mtv-dot {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: 30px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.mtv-dot::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+}
+
+.mtv-dot.active {
+  border-color: var(--accent);
+  background: rgba(255,255,255,0.08);
+}
+
+.mtv-dot.active::before {
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.mtv-dot-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(220,200,170,0.65);
+}
+
+.mtv-dot.active .mtv-dot-label {
+  color: var(--accent);
+}

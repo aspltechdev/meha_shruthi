@@ -1,0 +1,721 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ── ROOT ── */
+.mtv-cinematic-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0d0e1a 0%, #12102a 30%, #1a1230 55%, #0f0c1e 80%, #080610 100%);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ── AMBIENT GLOW BLOBS ── */
+.mtv-cinematic-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 60%;
+  height: 70%;
+  background: radial-gradient(ellipse, rgba(140, 40, 80, 0.22) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+  animation: blobDrift 12s ease-in-out infinite;
+}
+
+.mtv-cinematic-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  right: -5%;
+  width: 50%;
+  height: 60%;
+  background: radial-gradient(ellipse, rgba(60, 30, 120, 0.2) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+  animation: blobDrift 16s ease-in-out infinite reverse;
+}
+
+@keyframes blobDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(4%, 3%) scale(1.05); }
+}
+
+/* ── SPOTLIGHT ── */
+.mtv-cinematic-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: background 0.12s ease;
+}
+
+/* ── AMBIENT FLOATING NOTES ── */
+.mtv-ambient-notes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.mtv-ambient-note {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0;
+  animation: ambientFloat 8s ease-in-out infinite;
+}
+
+.mtv-ambient-note-0 { top: 15%; left: 5%;  animation-duration: 7s; }
+.mtv-ambient-note-1 { top: 70%; left: 3%;  animation-duration: 9s; animation-delay: 1.5s; }
+.mtv-ambient-note-2 { top: 40%; left: 92%; animation-duration: 8s; animation-delay: 3s;   }
+.mtv-ambient-note-3 { top: 80%; left: 88%; animation-duration: 7.5s; animation-delay: 0.8s; }
+.mtv-ambient-note-4 { top: 25%; left: 48%; animation-duration: 10s; animation-delay: 2s;  }
+.mtv-ambient-note-5 { top: 60%; left: 55%; animation-duration: 8.5s; animation-delay: 4s; }
+
+@keyframes ambientFloat {
+  0%   { opacity: 0; transform: translateY(0) rotate(0deg);    }
+  20%  { opacity: 1; }
+  80%  { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-120px) rotate(20deg); }
+}
+
+/* ── SCROLL PROGRESS ── */
+.mtv-scroll-progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: rgba(255,255,255,0.06);
+  z-index: 200;
+}
+.mtv-progress-bar {
+  height: 100%;
+  transform-origin: left;
+  transition: transform 0.1s ease;
+}
+
+/* ═══════════════════════════════════════
+   SECTION HEADER
+═══════════════════════════════════════ */
+.mtv-theep-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 5rem 2rem 2rem;
+}
+
+.mtv-theep-overline {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  opacity: 0.85;
+}
+
+.mtv-theep-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-weight: 300;
+  color: #f0e8d8;
+  line-height: 1;
+  margin: 0 0 0.5rem;
+  letter-spacing: -1px;
+}
+
+.mtv-theep-headline em {
+  font-style: italic;
+  font-weight: 700;
+  color: #c9a03d;
+}
+
+.mtv-theep-subline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: rgba(220, 200, 170, 0.6);
+  margin: 0 0 2rem;
+}
+
+/* ── DOT NAV CONTROLS ── */
+.mtv-theep-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 40px;
+  padding: 8px 16px;
+  backdrop-filter: blur(10px);
+}
+
+.mtv-theep-dot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 14px 6px 8px;
+  border-radius: 30px;
+  transition: all 0.35s ease;
+  border: 1.5px solid transparent;
+}
+
+.mtv-theep-dot::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  flex-shrink: 0;
+  transition: all 0.35s ease;
+}
+
+.mtv-theep-dot.active {
+  border-color: var(--accent);
+  background: rgba(255,255,255,0.06);
+}
+
+.mtv-theep-dot.active::before {
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.mtv-theep-dot-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(220,200,170,0.5);
+  transition: color 0.3s ease;
+}
+
+.mtv-theep-dot.active .mtv-theep-dot-label {
+  color: var(--accent);
+}
+
+/* ═══════════════════════════════════════
+   STAGE (slide container)
+═══════════════════════════════════════ */
+.mtv-theep-stage {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  z-index: 5;
+  min-height: calc(100vh - 220px);
+}
+
+/* ═══════════════════════════════════════
+   SLIDE
+═══════════════════════════════════════ */
+.mtv-theep-slide {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.mtv-theep-slide.active {
+  pointer-events: auto;
+}
+
+/* ═══════════════════════════════════════
+   LEFT — CONTENT
+═══════════════════════════════════════ */
+.mtv-theep-left {
+  display: flex;
+  align-items: center;
+  padding: 2rem 3rem 2rem 5vw;
+  overflow: hidden;
+}
+
+.mtv-theep-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 520px;
+  animation: slideContentIn 0.9s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+@keyframes slideContentIn {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Spacing rhythm */
+.mtv-theep-content .mtv-theep-tag      { margin-bottom: 0.5rem; }
+.mtv-theep-content .mtv-theep-name     { margin-bottom: 0.55rem; }
+.mtv-theep-content .mtv-theep-role     { margin-bottom: 0.55rem; }
+.mtv-theep-content .mtv-theep-specialty{ margin-bottom: 0.7rem; }
+.mtv-theep-content .mtv-theep-desc     { margin-bottom: 0.8rem; }
+.mtv-theep-content .mtv-theep-quote    { margin-bottom: 0.9rem; }
+.mtv-theep-content .mtv-theep-stats    { margin-bottom: 0.8rem; }
+.mtv-theep-content .mtv-theep-chips    { margin-bottom: 1rem; }
+
+/* Tag */
+.mtv-theep-tag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* Name */
+.mtv-theep-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 700;
+  color: #f0e8d8;
+  line-height: 1;
+  position: relative;
+  display: inline-block;
+  letter-spacing: -0.5px;
+}
+
+.mtv-theep-name-bar {
+  display: block;
+  height: 2px;
+  width: 56px;
+  margin-top: 6px;
+  border-radius: 1px;
+  opacity: 0.85;
+}
+
+/* Role */
+.mtv-theep-role {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  border: 1px solid;
+  padding: 0.28rem 0.9rem;
+  border-radius: 2px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.04);
+}
+
+/* Specialty */
+.mtv-theep-specialty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(220, 200, 170, 0.7);
+}
+
+.mtv-theep-spec-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Description */
+.mtv-theep-desc {
+  font-size: 0.83rem;
+  line-height: 1.75;
+  color: rgba(210, 190, 160, 0.75);
+  margin: 0;
+}
+
+/* Quote */
+.mtv-theep-quote {
+  border-left: 3px solid;
+  padding: 0.5rem 0 0.5rem 1.2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.98rem;
+  font-style: italic;
+  color: rgba(220, 200, 165, 0.85);
+  background: rgba(255,255,255,0.03);
+  border-radius: 0 4px 4px 0;
+  margin: 0;
+}
+
+.mtv-theep-qmark {
+  font-size: 1.5rem;
+  line-height: 0;
+  vertical-align: -0.3em;
+  opacity: 0.3;
+  margin: 0 3px;
+}
+
+/* Stats */
+.mtv-theep-stats {
+  display: flex;
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.03);
+}
+
+.mtv-theep-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.85rem 0.5rem;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.3s ease;
+}
+
+.mtv-theep-stat:last-child { border-right: none; }
+.mtv-theep-stat:hover { background: rgba(255,255,255,0.05); }
+
+.mtv-theep-stat-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.mtv-theep-stat-lbl {
+  font-size: 0.56rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(200, 180, 150, 0.55);
+}
+
+/* Achievement chips */
+.mtv-theep-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.mtv-theep-chip {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.04);
+  transition: background 0.3s ease;
+}
+
+.mtv-theep-chip:hover { background: rgba(255,255,255,0.08); }
+
+/* CTA */
+.mtv-theep-cta {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  padding: 0.7rem 1.6rem;
+  border-radius: 2px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.mtv-theep-cta:hover {
+  background: var(--accent);
+  color: #0d0e1a;
+  transform: translateX(5px);
+}
+
+/* ═══════════════════════════════════════
+   RIGHT — TWO TILTED CARDS
+═══════════════════════════════════════ */
+.mtv-theep-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  padding: 2rem;
+}
+
+/* ── GLOW BLOB behind cards ── */
+.mtv-theep-card-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.12; transform: translate(-50%,-50%) scale(1);   }
+  50%       { opacity: 0.22; transform: translate(-50%,-50%) scale(1.1); }
+}
+
+/* ── CARD BASE ── */
+.mtv-theep-card {
+  position: absolute;
+  width: 300px;
+  height: 420px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.05) inset;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  z-index: 5;
+}
+
+.mtv-theep-card:hover {
+  box-shadow:
+    0 40px 100px rgba(0,0,0,0.7),
+    0 0 0 1px rgba(255,255,255,0.12) inset,
+    0 0 40px rgba(201,160,61,0.15);
+}
+
+.mtv-theep-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── VIDEO CARD (back-right, tilted clockwise) ── */
+.mtv-theep-card-video {
+  transform: rotate(6deg) translate(80px, 20px);
+  z-index: 4;
+  background: #0a0914;
+}
+
+.mtv-theep-card-video:hover {
+  transform: rotate(4deg) translate(80px, 10px);
+}
+
+/* ── PORTRAIT CARD (front-left, tilted counter-clockwise) ── */
+.mtv-theep-card-portrait {
+  transform: rotate(-4deg) translate(-40px, -10px);
+  z-index: 6;
+  background: #100c22;
+}
+
+.mtv-theep-card-portrait:hover {
+  transform: rotate(-2deg) translate(-40px, -20px);
+}
+
+/* ── CARD MEDIA (video / img fill) ── */
+.mtv-theep-card-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.75) saturate(0.9);
+  transition: filter 0.4s ease;
+}
+
+.mtv-theep-card:hover .mtv-theep-card-media {
+  filter: brightness(0.85) saturate(1.0);
+}
+
+/* ── CARD OVERLAY gradient ── */
+.mtv-theep-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10,9,20,0.1) 0%,
+    rgba(10,9,20,0.0) 40%,
+    rgba(10,9,20,0.75) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── LIVE BADGE ── */
+.mtv-theep-live-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+.mtv-theep-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff3b3b;
+  animation: liveBlink 1.2s infinite;
+}
+
+@keyframes liveBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+/* ── CARD LABEL (bottom info) ── */
+.mtv-theep-card-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.mtv-theep-card-label > span:first-child {
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+.mtv-theep-card-label-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ── CARD BADGE (specialty tag top-right of portrait) ── */
+.mtv-theep-card-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  border: 1px solid;
+  border-radius: 2px;
+  padding: 4px 10px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(6px);
+}
+
+/* ═══════════════════════════════════════
+   BOTTOM NAV ARROWS
+═══════════════════════════════════════ */
+.mtv-nav-arrows {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 100;
+}
+
+.mtv-nav-arrow {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: rgba(220,200,170,0.8);
+}
+
+.mtv-nav-arrow:hover:not(.disabled) {
+  background: rgba(201,160,61,0.2);
+  border-color: rgba(201,160,61,0.5);
+  color: #c9a03d;
+  transform: scale(1.1);
+}
+
+.mtv-nav-arrow.disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .mtv-theep-left { padding: 2rem 2rem 2rem 3vw; }
+  .mtv-theep-card { width: 250px; height: 350px; }
+  .mtv-theep-card-video { transform: rotate(6deg) translate(60px, 15px); }
+  .mtv-theep-card-portrait { transform: rotate(-4deg) translate(-30px, -8px); }
+}
+
+@media (max-width: 860px) {
+  .mtv-theep-slide {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    overflow-y: auto;
+    position: relative;
+    height: auto;
+    min-height: 100%;
+  }
+
+  .mtv-theep-stage { min-height: auto; height: auto; position: relative; }
+
+  .mtv-theep-left {
+    padding: 2rem 1.5rem;
+    justify-content: center;
+  }
+
+  .mtv-theep-content { max-width: 100%; }
+
+  .mtv-theep-right {
+    height: 380px;
+    padding: 1rem;
+  }
+
+  .mtv-theep-card { width: 200px; height: 290px; }
+  .mtv-theep-card-video { transform: rotate(5deg) translate(50px, 10px); }
+  .mtv-theep-card-portrait { transform: rotate(-3deg) translate(-25px, -5px); }
+
+  .mtv-theep-header { padding: 4rem 1.5rem 1.5rem; }
+  .mtv-nav-arrows { bottom: 16px; }
+}
+
+@media (max-width: 520px) {
+  .mtv-theep-name { font-size: 2rem; }
+  .mtv-theep-right { height: 300px; }
+  .mtv-theep-card { width: 160px; height: 230px; border-radius: 14px; }
+  .mtv-theep-card-video { transform: rotate(5deg) translate(38px, 8px); }
+  .mtv-theep-card-portrait { transform: rotate(-3deg) translate(-18px, -4px); }
+  .mtv-theep-dots { flex-direction: column; gap: 6px; }
+  .mtv-theep-card-glow { width: 200px; height: 200px; }
+}

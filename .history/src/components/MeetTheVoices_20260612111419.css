@@ -1,0 +1,950 @@
+/* MeetTheVoices.css - Complete with Unique Classnames */
+/* MTV = MeetTheVoices prefix for unique identification */
+
+/* MTV - Main Wrapper */
+.mtv-cinematic-wrapper {
+  position: relative;
+  padding: 120px 0; /* FIXED: removed 140px top/bottom padding — with absolute-positioned slides inside a fixed-height container, outer padding was pushing the container off-screen and wasting viewport space */
+  height: auto; /* FIXED: was `height: 120vh` — a fixed vh height clipped content; auto lets the section size to its container */
+  min-height: 100vh; /* FIXED: added so the section still fills the screen on short content */
+  width: 100%;
+  overflow: hidden; /* keep — needed to clip slides during transition */
+  background: linear-gradient(135deg, #fdf8ed 0%, #f5ecda 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* MTV - Audio Visualizer */
+/* .mtv-audio-visualizer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  z-index: 0;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.mtv-viz-bar {
+  width: 3px;
+  background: linear-gradient(180deg, #c9a03d, #ffd700);
+  border-radius: 2px;
+  animation: mtvBarPulse 0.5s ease-in-out infinite alternate;
+  transform-origin: bottom;
+}
+
+@keyframes mtvBarPulse {
+  0% { transform: scaleY(0.5); opacity: 0.2; }
+  100% { transform: scaleY(1); opacity: 0.6; }
+} */
+
+/* MTV - Cinematic Spotlight */
+.mtv-cinematic-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: background 0.1s ease;
+}
+
+/* MTV - Subtle Vignette */
+.mtv-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.05) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* MTV - Scroll Progress Bar */
+.mtv-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(212, 175, 55, 0.2);
+  z-index: 100;
+}
+
+.mtv-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #c9a03d, #ffd700);
+  transform-origin: left;
+  transition: transform 0.1s ease;
+}
+
+.mtv-progress-dots {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+}
+
+.mtv-progress-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.mtv-progress-dot.active {
+  width: 20px;
+  border-radius: 4px;
+}
+
+/* MTV - Main Container */
+.mtv-cinematic-container {
+  position: relative;
+  width: 100%;
+  height: calc(120vh - 10px); /* FIXED: subtract navbar height so slides never sit behind the nav */
+  /* margin-top: 80px;  */
+  overflow: hidden;
+}
+
+/* MTV - Cinematic Slide */
+.mtv-cinematic-slide {
+  position: absolute; /* keep — slides must stack for the translateX transition to work */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* keep — fills the container */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+  will-change: transform;
+  pointer-events: auto;
+}
+
+.mtv-cinematic-slide.active {
+  pointer-events: auto;
+}
+
+/* MTV - Left Side Visual */
+.mtv-slide-left {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* FIXED: no padding-top needed — container margin-top handles navbar clearance */
+}
+
+.mtv-visual-atmosphere {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* MTV - Particle Field */
+.mtv-particle-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.mtv-music-particle {
+  position: absolute;
+  bottom: -20px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  animation: mtvFloatParticle linear infinite;
+  opacity: 0.4;
+}
+
+@keyframes mtvFloatParticle {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(50px);
+    opacity: 0;
+  }
+}
+
+/* MTV - Cinematic Video Frame */
+.mtv-cinematic-frame {
+  position: relative;
+  width: 65%;
+  max-width: 550px;
+  aspect-ratio: 3/4;
+  z-index: 10;
+}
+
+.mtv-frame-glow {
+  position: absolute;
+  inset: -20px;
+  filter: blur(40px);
+  opacity: 0.2;
+  border-radius: 20px;
+  animation: mtvPulse 2s ease-in-out infinite;
+}
+
+@keyframes mtvPulse {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.05); }
+}
+
+.mtv-video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 3px solid #fff;
+  background: #000;
+}
+
+.mtv-singer-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(10%) contrast(1.05);
+}
+
+.mtv-video-loading {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #fff;
+  font-size: 0.8rem;
+  z-index: 5;
+}
+
+.mtv-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: mtvSpin 1s linear infinite;
+}
+
+@keyframes mtvSpin {
+  to { transform: rotate(360deg); }
+}
+
+.mtv-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 30%, rgba(0,0,0,0.2) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.mtv-video-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mtv-video-container:hover .mtv-video-controls {
+  opacity: 1;
+}
+
+.mtv-video-play-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  color: #2c1810;
+}
+
+.mtv-video-play-btn:hover {
+  transform: scale(1.1);
+}
+
+/* MTV - Live Badge */
+.mtv-live-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #2c1810;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 15;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.mtv-live-dot {
+  width: 8px;
+  height: 8px;
+  background: #ff3b3b;
+  border-radius: 50%;
+  animation: mtvBlink 1s infinite;
+}
+
+@keyframes mtvBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* MTV - Sound Waves */
+.mtv-sound-waves {
+  position: absolute;
+  inset: -30px;
+  z-index: 0;
+}
+
+.mtv-wave-ring {
+  position: absolute;
+  inset: 0;
+  border: 2px solid;
+  border-radius: 30px;
+  opacity: 0;
+  animation: mtvExpand 3s ease-out infinite;
+}
+
+.mtv-wave-ring.delay-1 {
+  animation-delay: 1s;
+}
+
+.mtv-wave-ring.delay-2 {
+  animation-delay: 2s;
+}
+
+@keyframes mtvExpand {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* MTV - Floating Notes */
+.mtv-floating-notes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.mtv-note {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: mtvFloatNote 4s ease-out infinite;
+  filter: drop-shadow(0 0 5px rgba(201, 160, 61, 0.3));
+}
+
+.mtv-note.note-0 { top: 20%; left: 10%; animation-duration: 3s; }
+.mtv-note.note-1 { top: 60%; left: 85%; animation-duration: 4s; animation-delay: 1s; }
+.mtv-note.note-2 { top: 30%; left: 90%; animation-duration: 3.5s; animation-delay: 2s; }
+.mtv-note.note-3 { top: 70%; left: 15%; animation-duration: 4.5s; animation-delay: 0.5s; }
+.mtv-note.note-4 { top: 80%; left: 75%; animation-duration: 3.8s; animation-delay: 1.5s; }
+.mtv-note.note-5 { top: 45%; left: 5%; animation-duration: 4.2s; animation-delay: 2.5s; }
+
+@keyframes mtvFloatNote {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-150px) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+/* MTV - Kolam Dots */
+.mtv-kolam-dots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 15;
+}
+
+.mtv-kolam-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: mtvDotPulse 2s infinite;
+}
+
+@keyframes mtvDotPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.5); }
+}
+
+/* MTV - Right Side Content */
+.mtv-slide-right {
+  display: flex;
+  align-items: flex-start;
+  padding: 3rem 3.5rem 3rem; /* FIXED: even padding all round — navbar offset now handled by container margin-top */
+  background: rgba(255, 252, 245, 0.95);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* MTV - Content Wrapper */
+.mtv-content-wrapper {
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* MTV - Content Reveal — reset gap, use margin-top per element instead */
+.mtv-content-reveal {
+  display: flex;
+  flex-direction: column;
+  animation: mtvSlideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* FIXED: each element gets its own top margin for precise, readable spacing */
+.mtv-content-reveal .mtv-singer-name      { margin-top: 0.15rem; }
+.mtv-content-reveal .mtv-singer-fullname  { margin-top: 0.15rem; }
+.mtv-content-reveal .mtv-role-badge       { margin-top: 0.6rem;  }
+.mtv-content-reveal .mtv-specialty        { margin-top: 0.5rem;  }
+.mtv-content-reveal .mtv-description      { margin-top: 0.6rem;  }
+.mtv-content-reveal .mtv-quote-block      { margin-top: 0.6rem;  }
+.mtv-content-reveal .mtv-stats-grid       { margin-top: 0.7rem;  }
+.mtv-content-reveal .mtv-achievements     { margin-top: 0.5rem;  }
+.mtv-content-reveal .mtv-cta-button       { margin-top: 0.7rem;  }
+
+/* mtv-content-reveal animation handled in the targeted block above */
+
+/* MTV - Singer Tag */
+.mtv-singer-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem; /* FIXED: pulls name closer to tag so they read as one unit */
+  opacity: 0.8;
+}
+
+/* MTV - Singer Name */
+.mtv-singer-name {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  line-height: 1.05;
+  background: linear-gradient(135deg, #2c1810, #8b4513);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  position: relative;
+  display: inline-block;
+}
+
+.mtv-name-glow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  width: 60px;
+  filter: blur(2px);
+  animation: mtvWidthExpand 0.8s ease-out;
+}
+
+@keyframes mtvWidthExpand {
+  from { width: 0; }
+  to { width: 60px; }
+}
+
+
+
+/* MTV - Role Badge */
+.mtv-role-badge {
+  display: inline-block;
+  border: 1px solid;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 20px; /* FIXED: removed margin */
+}
+
+/* MTV - Specialty */
+.mtv-specialty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #6b4423;
+  margin-bottom: 20px;
+
+}
+
+.mtv-specialty-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* MTV - Description */
+.mtv-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #4a3728;
+  margin-bottom: 20px; /* FIXED: removed margin */
+}
+
+/* MTV - Quote Block */
+.mtv-quote-block {
+  position: relative;
+  border-left: 3px solid;
+  padding: 0.5rem 0 0.5rem 1.5rem; /* FIXED: minimal internal padding */
+  margin-bottom: 20px;
+  font-size: 1rem;
+  font-style: italic;
+  color: #5c3d2e;
+}
+
+.mtv-quote-mark {
+  font-size: 1.5rem;
+  font-family: 'Georgia', serif;
+  opacity: 0.4;
+  margin: 0 4px;
+}
+
+/* MTV - Stats Grid */
+.mtv-stats-grid {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 20px;
+}
+
+.mtv-stat-card {
+  text-align: center;
+}
+
+.mtv-stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.mtv-stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8b7355;
+}
+
+/* MTV - Achievements */
+.mtv-achievements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0; /* FIXED: removed margin */
+}
+
+.mtv-achievement-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201, 160, 61, 0.08);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  border: 1px solid;
+}
+
+.mtv-achievement-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+
+/* MTV - CTA Button */
+.mtv-cta-button {
+  position: relative;
+  z-index: 10;
+  background: transparent;
+  border: 2px solid;
+  padding: 0.8rem 1.5rem;
+  border-radius: 40px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0; /* FIXED: removed margin — space-between positions CTA at the bottom naturally */
+  pointer-events: auto;
+  align-self: flex-start; /* FIXED: keeps button left-aligned, not stretched */
+}
+
+.mtv-cta-button:hover {
+  background: currentColor;
+  color: #fff !important;
+  transform: translateX(5px);
+}
+
+/* MTV - Navigation Arrows */
+.mtv-nav-arrows {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  gap: 10px;
+  z-index: 100;
+}
+
+.mtv-nav-arrow {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(201, 160, 61, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #2c1810;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.mtv-nav-arrow:hover:not(.disabled) {
+  background: #c9a03d;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.mtv-nav-arrow.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* MTV - Scroll Indicator */
+.mtv-scroll-indicator {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 100;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: #8b7355;
+}
+
+.mtv-scroll-mouse {
+  width: 24px;
+  height: 38px;
+  border: 2px solid rgba(201, 160, 61, 0.3);
+  border-radius: 12px;
+  position: relative;
+}
+
+.mtv-scroll-wheel {
+  width: 4px;
+  height: 8px;
+  border-radius: 2px;
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: mtvScrollWheel 2s infinite;
+}
+
+@keyframes mtvScrollWheel {
+  0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+  100% { transform: translateX(-50%) translateY(15px); opacity: 0; }
+}
+
+/* MTV - Video Hint Tooltip */
+.mtv-video-hint {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  padding: 8px 16px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  color: #fff;
+  z-index: 100;
+  opacity: 0;
+  animation: mtvHintFade 3s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes mtvHintFade {
+  0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-10px); visibility: hidden; }
+}
+
+.mtv-hint-icon {
+  font-size: 1rem;
+}
+
+/* MTV - Responsive Design */
+@media (max-width: 1024px) {
+  .mtv-cinematic-slide {
+    grid-template-columns: 1fr;
+    overflow-y: auto; /* FIXED: single-column stacked layout needs the slide itself to scroll on tablet */
+  }
+
+  .mtv-cinematic-container {
+    height: auto; /* FIXED: on tablet the stacked layout is taller than 100vh; let the container grow */
+    min-height: 100vh;
+  }
+
+  .mtv-slide-right {
+    padding: 2rem 2rem 5rem; /* FIXED: keep generous bottom pad so CTA clears the nav arrows */
+    background: rgba(255, 252, 245, 0.98);
+    overflow-y: visible; /* column is no longer height-constrained on tablet; no need for internal scroll */
+  }
+  
+  .mtv-singer-name {
+    font-size: 3rem;
+  }
+  
+  .mtv-cinematic-frame {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .mtv-cinematic-frame {
+    width: 70%;
+  }
+  
+  .mtv-singer-name {
+    font-size: 2.5rem;
+  }
+  
+  .mtv-stats-grid {
+    gap: 1rem;
+  }
+  
+  .mtv-stat-value {
+    font-size: 1.3rem;
+  }
+  
+  .mtv-nav-arrows {
+    bottom: 80px;
+  }
+  
+  .mtv-scroll-indicator {
+    display: none;
+  }
+  
+  .mtv-video-hint {
+    display: none;
+  }
+
+  .mtv-slide-right {
+    padding-bottom: 6rem; /* FIXED: extra space on mobile so CTA is never hidden under nav arrows */
+  }
+}
+
+/* MTV - Video Specific Styles */
+.mtv-singer-video::-webkit-media-controls {
+  display: none;
+}
+
+.mtv-singer-video::-webkit-media-controls-enclosure {
+  display: none;
+}
+
+/* MTV - Video Background */
+.mtv-video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.mtv-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7) sepia(0.1);
+}
+
+.mtv-video-overlay-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 248, 240, 0.3), rgba(253, 244, 227, 0.5));
+  pointer-events: none;
+}
+
+/* MTV - Singer Portrait */
+.mtv-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  z-index: 5;
+}
+
+.mtv-singer-portrait {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+}
+
+.mtv-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 30%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+/* MTV - Play/Pause Button */
+.mtv-play-pause-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mtv-play-pause-btn:hover {
+  transform: scale(1.1);
+  background: #fff;
+}
+
+/* MTV - Cinematic Frame (portrait mode) */
+.mtv-cinematic-frame {
+  position: relative;
+  width: 65%;
+  max-width: 550px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* MTV - Slide Left (video/portrait side) */
+.mtv-slide-left {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.mtv-visual-atmosphere {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .mtv-cinematic-frame {
+    width: 50%;
+  }
+  
+  .mtv-image-container {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mtv-cinematic-frame {
+    width: 70%;
+  }
+  
+  .mtv-image-container {
+    max-width: 200px;
+  }
+  
+  .mtv-play-pause-btn {
+    width: 40px;
+    height: 40px;
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .mtv-play-pause-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+}

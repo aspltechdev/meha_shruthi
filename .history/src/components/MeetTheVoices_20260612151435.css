@@ -1,0 +1,1049 @@
+/* ============================================================
+   MeetTheVoices.css — Meha Sruthi Entertainers
+   Premium South Indian Luxury · Cinematic Editorial
+   MTV = MeetTheVoices prefix
+   ============================================================ */
+
+/* ── Google Fonts import ── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
+
+/* ── CSS Custom Properties ── */
+:root {
+  --mtv-cream:        #fdf8ed;
+  --mtv-cream-deep:   #f5ecda;
+  --mtv-cream-warm:   #f0e4cc;
+  --mtv-gold:         #c9a03d;
+  --mtv-gold-light:   #e8c060;
+  --mtv-gold-pale:    #ffd700;
+  --mtv-gold-muted:   #b8903a;
+  --mtv-brown-dark:   #2c1810;
+  --mtv-brown-mid:    #5c3d2e;
+  --mtv-brown-light:  #8b7355;
+  --mtv-brown-soft:   #6b4423;
+  --mtv-white-glass:  rgba(255, 252, 245, 0.95);
+  --mtv-gold-glass:   rgba(201, 160, 61, 0.12);
+  --mtv-serif:        'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --mtv-sans:         'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mtv-transition:   cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   WRAPPER
+   ============================================================ */
+.mtv-cinematic-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--mtv-cream) 0%, var(--mtv-cream-deep) 50%, #ede0c8 100%);
+  font-family: var(--mtv-sans);
+}
+
+/* ── Ambient texture overlay ── */
+.mtv-cinematic-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 20% 30%, rgba(201,160,61,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 80% 70%, rgba(201,160,61,0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   SPOTLIGHT & VIGNETTE
+   ============================================================ */
+.mtv-cinematic-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: background 0.15s ease;
+}
+
+.mtv-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(44,24,16,0.06) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ============================================================
+   SCROLL PROGRESS
+   ============================================================ */
+.mtv-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(201, 160, 61, 0.15);
+  z-index: 200;
+}
+
+.mtv-progress-bar {
+  height: 100%;
+  transform-origin: left;
+  transition: transform 0.1s ease;
+  background: linear-gradient(90deg, var(--mtv-gold), var(--mtv-gold-light), var(--mtv-gold-pale));
+}
+
+.mtv-progress-dots {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.mtv-progress-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  transition: all 0.4s var(--mtv-transition);
+  background: rgba(201,160,61,0.3);
+}
+
+.mtv-progress-dot.active {
+  width: 24px;
+  border-radius: 3px;
+}
+
+/* ============================================================
+   MAIN CINEMATIC CONTAINER
+   ============================================================ */
+.mtv-cinematic-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 3;
+}
+
+/* ============================================================
+   CINEMATIC SLIDE
+   ============================================================ */
+.mtv-cinematic-slide {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 48% 52%;
+  transition:
+    transform 0.9s var(--mtv-transition),
+    opacity   0.6s ease;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.mtv-cinematic-slide.active {
+  pointer-events: auto;
+}
+
+/* ============================================================
+   LEFT PANEL — Portrait / Video
+   ============================================================ */
+.mtv-slide-left {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Warm gradient skin behind video ── */
+.mtv-slide-left::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(44,24,16,0.0) 0%,
+    rgba(44,24,16,0.0) 60%,
+    rgba(44,24,16,0.55) 100%);
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* ── VIDEO BACKGROUND ── */
+.mtv-video-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.mtv-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.72) sepia(0.15) contrast(1.05);
+}
+
+.mtv-video-overlay-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(253,244,227,0.25) 0%,
+    rgba(201,160,61,0.08)  100%);
+  pointer-events: none;
+}
+
+/* ── ATMOSPHERE LAYER ── */
+.mtv-visual-atmosphere {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+/* ── PARTICLE FIELD ── */
+.mtv-particle-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mtv-music-particle {
+  position: absolute;
+  bottom: -10px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: mtvFloatParticle linear infinite;
+}
+
+@keyframes mtvFloatParticle {
+  0%   { transform: translateY(0) translateX(0) scale(1);    opacity: 0; }
+  10%  { opacity: 0.5; }
+  90%  { opacity: 0.2; }
+  100% { transform: translateY(-100vh) translateX(40px) scale(0); opacity: 0; }
+}
+
+/* ── CINEMATIC FRAME ── */
+.mtv-cinematic-frame {
+  position: relative;
+  width: 58%;
+  max-width: 480px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mtv-frame-glow {
+  position: absolute;
+  inset: -24px;
+  filter: blur(48px);
+  opacity: 0.18;
+  border-radius: 24px;
+  animation: mtvPulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes mtvPulse {
+  0%, 100% { opacity: 0.12; transform: scale(1);    }
+  50%       { opacity: 0.28; transform: scale(1.04); }
+}
+
+/* ── EDITORIAL CORNER LABEL ── */
+.mtv-editorial-label {
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 6px 12px;
+  border: 1px solid;
+  border-radius: 4px;
+  background: rgba(253,248,237,0.92);
+  backdrop-filter: blur(6px);
+  z-index: 20;
+  line-height: 1.2;
+}
+
+.mtv-editorial-issue {
+  font-family: var(--mtv-sans);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.mtv-editorial-season {
+  font-family: var(--mtv-serif);
+  font-size: 0.6rem;
+  font-style: italic;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+/* ── PORTRAIT IMAGE ── */
+.mtv-image-container {
+  position: relative;
+  width: 100%;
+  border-radius: 4px 24px 4px 24px; /* asymmetric — editorial */
+  overflow: hidden;
+  box-shadow:
+    0 4px 16px rgba(44,24,16,0.12),
+    0 20px 60px rgba(44,24,16,0.20),
+    0 0   0 3px rgba(255,255,255,0.6);
+  z-index: 5;
+  background: var(--mtv-brown-dark);
+}
+
+.mtv-singer-portrait {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+  filter: sepia(8%) contrast(1.05) brightness(0.96);
+  transition: transform 0.6s ease, filter 0.4s ease;
+}
+
+.mtv-image-container:hover .mtv-singer-portrait {
+  transform: scale(1.03);
+  filter: sepia(4%) contrast(1.08) brightness(1.0);
+}
+
+.mtv-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent          50%,
+    rgba(44,24,16,0.45) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── VERTICAL DECORATIVE NAME ── */
+.mtv-vertical-name-deco {
+  position: absolute;
+  right: -28px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  font-family: var(--mtv-serif);
+  font-size: 0.55rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 15;
+}
+
+/* ── PORTRAIT STAT STRIP ── */
+.mtv-portrait-stat-strip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 14px 12px 12px;
+  background: rgba(253,248,237,0.88);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(201,160,61,0.2);
+  z-index: 18;
+}
+
+.mtv-portrait-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.mtv-portrait-stat-value {
+  font-family: var(--mtv-serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.mtv-portrait-stat-label {
+  font-family: var(--mtv-sans);
+  font-size: 0.55rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--mtv-brown-light);
+}
+
+/* ── SOUND WAVES ── */
+.mtv-sound-waves {
+  position: absolute;
+  inset: -32px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mtv-wave-ring {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid;
+  border-radius: 4px 24px 4px 24px;
+  opacity: 0;
+  animation: mtvExpand 3.6s ease-out infinite;
+}
+
+.mtv-wave-ring.delay-1 { animation-delay: 1.2s; }
+.mtv-wave-ring.delay-2 { animation-delay: 2.4s; }
+
+@keyframes mtvExpand {
+  0%   { transform: scale(0.92); opacity: 0.28; }
+  100% { transform: scale(1.18); opacity: 0;    }
+}
+
+/* ── FLOATING MUSICAL NOTES ── */
+.mtv-floating-notes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.mtv-note {
+  position: absolute;
+  font-size: 1.3rem;
+  opacity: 0;
+  animation: mtvFloatNote 4.5s ease-out infinite;
+  font-family: var(--mtv-serif);
+}
+
+.mtv-note.note-0 { top: 18%; left: 8%;  animation-duration: 3.2s; }
+.mtv-note.note-1 { top: 58%; left: 88%; animation-duration: 4.1s; animation-delay: 1.1s; }
+.mtv-note.note-2 { top: 28%; left: 92%; animation-duration: 3.7s; animation-delay: 2.2s; }
+.mtv-note.note-3 { top: 72%; left: 12%; animation-duration: 4.6s; animation-delay: 0.6s; }
+.mtv-note.note-4 { top: 82%; left: 78%; animation-duration: 3.9s; animation-delay: 1.8s; }
+.mtv-note.note-5 { top: 42%; left: 4%;  animation-duration: 4.3s; animation-delay: 2.8s; }
+
+@keyframes mtvFloatNote {
+  0%   { transform: translateY(0)     rotate(0deg);  opacity: 0;   }
+  20%  { opacity: 0.55; }
+  80%  { opacity: 0.25; }
+  100% { transform: translateY(-140px) rotate(12deg); opacity: 0;  }
+}
+
+/* ── KOLAM DOTS ── */
+.mtv-kolam-dots {
+  position: absolute;
+  bottom: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+  z-index: 15;
+  pointer-events: none;
+}
+
+.mtv-kolam-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: mtvDotPulse 2.4s infinite;
+}
+
+.mtv-kolam-dot:nth-child(even) { animation-delay: 0.4s; }
+.mtv-kolam-dot:nth-child(3n)   { animation-delay: 0.8s; }
+
+@keyframes mtvDotPulse {
+  0%, 100% { opacity: 0.25; transform: scale(1);   }
+  50%       { opacity: 0.7;  transform: scale(1.6); }
+}
+
+/* ============================================================
+   RIGHT PANEL — Editorial Content
+   ============================================================ */
+.mtv-slide-right {
+  display: flex;
+  align-items: center;
+  padding: 0 4rem 0 3.5rem;
+  background: var(--mtv-white-glass);
+  backdrop-filter: blur(16px);
+  box-shadow: inset 1px 0 0 rgba(201,160,61,0.12);
+  overflow: hidden;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* subtle warm diagonal texture on right panel */
+.mtv-slide-right::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,160,61,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── CONTENT WRAPPER ── */
+.mtv-content-wrapper {
+  width: 100%;
+  max-width: 580px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── CONTENT REVEAL ── */
+.mtv-content-reveal {
+  display: flex;
+  flex-direction: column;
+  animation: mtvSlideInRight 0.9s var(--mtv-transition) both;
+}
+
+@keyframes mtvSlideInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+/* ── PER-ELEMENT SPACING (tight editorial rhythm) ── */
+.mtv-content-reveal .mtv-eyebrow-row  { margin-bottom: 0.6rem;  }
+.mtv-content-reveal .mtv-singer-name  { margin-bottom: 0.5rem;  }
+.mtv-content-reveal .mtv-role-badge   { margin-bottom: 0.75rem; }
+.mtv-content-reveal .mtv-specialty    { margin-bottom: 0.8rem;  }
+.mtv-content-reveal .mtv-description  { margin-bottom: 0.9rem;  }
+.mtv-content-reveal .mtv-quote-block  { margin-bottom: 1rem;    }
+.mtv-content-reveal .mtv-stats-grid   { margin-bottom: 0.9rem;  }
+.mtv-content-reveal .mtv-milestones   { margin-bottom: 0.85rem; }
+.mtv-content-reveal .mtv-achievements { margin-bottom: 0.9rem;  }
+
+/* ── EYEBROW ROW ── */
+.mtv-eyebrow-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mtv-eyebrow-line {
+  flex: 0 0 36px;
+  height: 1px;
+  opacity: 0.6;
+}
+
+/* ── SINGER TAG ── */
+.mtv-singer-tag {
+  font-family: var(--mtv-sans);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+/* ── STATEMENT NAME ── */
+.mtv-singer-name {
+  font-family: var(--mtv-serif);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, var(--mtv-brown-dark) 0%, #7a3820 60%, var(--mtv-gold-muted) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  display: inline-block;
+}
+
+.mtv-name-glow {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  height: 2px;
+  width: 60px;
+  filter: blur(1px);
+  opacity: 0.8;
+  animation: mtvWidthExpand 1s ease-out both;
+}
+
+@keyframes mtvWidthExpand {
+  from { width: 0; }
+  to   { width: 60px; }
+}
+
+/* ── ROLE BADGE ── */
+.mtv-role-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid;
+  padding: 0.35rem 1.1rem;
+  border-radius: 2px;
+  font-family: var(--mtv-sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  background: var(--mtv-gold-glass);
+  align-self: flex-start;
+}
+
+/* ── SPECIALTY ── */
+.mtv-specialty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mtv-serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--mtv-brown-soft);
+  letter-spacing: 0.5px;
+}
+
+.mtv-specialty-dot {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+/* ── EDITORIAL DESCRIPTION ── */
+.mtv-description {
+  font-family: var(--mtv-sans);
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--mtv-brown-mid);
+  font-weight: 400;
+  border-left: 2px solid transparent;
+  padding-left: 0;
+}
+
+/* ── SIGNATURE QUOTE ── */
+.mtv-quote-block {
+  position: relative;
+  border-left: 3px solid;
+  padding: 0.6rem 0 0.6rem 1.4rem;
+  background: linear-gradient(90deg, var(--mtv-gold-glass), transparent);
+  border-radius: 0 4px 4px 0;
+}
+
+.mtv-quote-block::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: -3px;
+  width: 3px;
+  border-radius: 2px;
+}
+
+.mtv-quote-mark {
+  font-family: var(--mtv-serif);
+  font-size: 1.8rem;
+  font-style: italic;
+  line-height: 0;
+  vertical-align: -0.3em;
+  opacity: 0.35;
+  margin: 0 3px;
+}
+
+.mtv-quote-block {
+  font-family: var(--mtv-serif);
+  font-size: 0.98rem;
+  font-style: italic;
+  color: var(--mtv-brown-mid);
+  line-height: 1.6;
+}
+
+/* ── STATS GRID ── */
+.mtv-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid rgba(201,160,61,0.18);
+  border-radius: 4px;
+  overflow: hidden;
+  background: rgba(253,248,237,0.6);
+}
+
+.mtv-stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  gap: 4px;
+  border-right: 1px solid rgba(201,160,61,0.15);
+  transition: background 0.3s ease;
+}
+
+.mtv-stat-card:last-child { border-right: none; }
+
+.mtv-stat-card:hover {
+  background: rgba(201,160,61,0.08);
+}
+
+.mtv-stat-value {
+  font-family: var(--mtv-serif);
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.mtv-stat-label {
+  font-family: var(--mtv-sans);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--mtv-brown-light);
+}
+
+/* ── MILESTONES (Experience Timeline) ── */
+.mtv-milestones {}
+
+.mtv-milestones-heading {
+  font-family: var(--mtv-sans);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mtv-milestones-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-left: 1px solid rgba(201,160,61,0.2);
+  padding-left: 1rem;
+}
+
+.mtv-milestone-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.mtv-milestone-year {
+  font-family: var(--mtv-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  min-width: 38px;
+  line-height: 1;
+}
+
+.mtv-milestone-dot {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-top: 2px;
+  position: relative;
+}
+
+.mtv-milestone-dot::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  opacity: 0.3;
+}
+
+.mtv-milestone-event {
+  font-family: var(--mtv-sans);
+  font-size: 0.78rem;
+  color: var(--mtv-brown-mid);
+  line-height: 1.4;
+}
+
+/* ── ACHIEVEMENTS ── */
+.mtv-achievements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.mtv-achievement-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201,160,61,0.07);
+  padding: 0.28rem 0.75rem;
+  border-radius: 2px;
+  font-family: var(--mtv-sans);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  border: 1px solid;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.mtv-achievement-tag:hover {
+  background: rgba(201,160,61,0.14);
+  transform: translateY(-1px);
+}
+
+.mtv-achievement-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── CTA BUTTON ── */
+.mtv-cta-button {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: transparent;
+  border: 1.5px solid;
+  padding: 0.75rem 1.8rem;
+  border-radius: 2px;
+  font-family: var(--mtv-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.35s ease,
+    color      0.35s ease,
+    transform  0.3s ease,
+    box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.mtv-cta-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  transform: translateX(-101%);
+  transition: transform 0.35s var(--mtv-transition);
+  z-index: -1;
+  opacity: 0.1;
+}
+
+.mtv-cta-button:hover::before {
+  transform: translateX(0);
+}
+
+.mtv-cta-button:hover {
+  transform: translateX(6px);
+  box-shadow: 0 4px 20px rgba(201,160,61,0.2);
+}
+
+/* ============================================================
+   NAVIGATION ARROWS
+   ============================================================ */
+.mtv-nav-arrows {
+  position: absolute;
+  bottom: 32px;
+  right: 36px;
+  display: flex;
+  gap: 10px;
+  z-index: 100;
+}
+
+.mtv-nav-arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(253,248,237,0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(201,160,61,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background  0.3s ease,
+    color       0.3s ease,
+    transform   0.3s ease,
+    box-shadow  0.3s ease;
+  color: var(--mtv-brown-dark);
+  box-shadow: 0 2px 12px rgba(44,24,16,0.08);
+}
+
+.mtv-nav-arrow:hover:not(.disabled) {
+  background: var(--mtv-gold);
+  color: var(--mtv-cream);
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(201,160,61,0.35);
+}
+
+.mtv-nav-arrow.disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   AUDIO VISUALIZER (commented out in JSX but kept ready)
+   ============================================================ */
+.mtv-audio-visualizer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+  z-index: 0;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.mtv-viz-bar {
+  width: 2px;
+  border-radius: 1px 1px 0 0;
+  animation: mtvBarPulse 0.6s ease-in-out infinite alternate;
+  transform-origin: bottom;
+}
+
+@keyframes mtvBarPulse {
+  0%   { transform: scaleY(0.4); opacity: 0.15; }
+  100% { transform: scaleY(1);   opacity: 0.5;  }
+}
+
+/* ============================================================
+   VIDEO UTILITY
+   ============================================================ */
+.mtv-singer-video::-webkit-media-controls,
+.mtv-singer-video::-webkit-media-controls-enclosure {
+  display: none;
+}
+
+.mtv-image-container .mtv-singer-portrait {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET 1024px
+   ============================================================ */
+@media (max-width: 1024px) {
+  .mtv-cinematic-container {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .mtv-cinematic-slide {
+    position: relative;
+    grid-template-columns: 1fr;
+    grid-template-rows: 56vh auto;
+  }
+
+  .mtv-slide-right {
+    padding: 2.5rem 2rem 6rem;
+    height: auto;
+    overflow-y: visible;
+  }
+
+  .mtv-content-wrapper {
+    justify-content: flex-start;
+    padding-top: 0;
+  }
+
+  .mtv-singer-name {
+    font-size: 2.8rem;
+  }
+
+  .mtv-cinematic-frame {
+    width: 48%;
+  }
+
+  .mtv-stats-grid {
+    grid-template-columns: repeat(3,1fr);
+  }
+
+  .mtv-portrait-stat-strip {
+    padding: 10px 8px 8px;
+  }
+
+  .mtv-portrait-stat-value { font-size: 1.1rem; }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE 768px
+   ============================================================ */
+@media (max-width: 768px) {
+  .mtv-cinematic-slide {
+    grid-template-rows: 50vh auto;
+  }
+
+  .mtv-cinematic-frame { width: 65%; }
+
+  .mtv-singer-name { font-size: 2.2rem; }
+
+  .mtv-slide-right {
+    padding: 2rem 1.5rem 7rem;
+  }
+
+  .mtv-stats-grid { gap: 0; }
+  .mtv-stat-value { font-size: 1.4rem; }
+
+  .mtv-nav-arrows {
+    bottom: 90px;
+    right: 20px;
+  }
+
+  .mtv-vertical-name-deco { display: none; }
+
+  .mtv-editorial-label { display: none; }
+
+  .mtv-milestones-list { padding-left: 0.7rem; }
+
+  .mtv-milestone-year  { min-width: 32px; font-size: 0.8rem; }
+  .mtv-milestone-event { font-size: 0.72rem; }
+
+  .mtv-cta-button { padding: 0.65rem 1.4rem; }
+
+  .mtv-eyebrow-line { flex: 0 0 20px; }
+
+  .mtv-quote-block { padding-left: 1rem; }
+}
+
+/* ============================================================
+   RESPONSIVE — SMALL 480px
+   ============================================================ */
+@media (max-width: 480px) {
+  .mtv-singer-name { font-size: 1.9rem; }
+
+  .mtv-stats-grid {
+    grid-template-columns: repeat(3,1fr);
+    border-radius: 2px;
+  }
+
+  .mtv-stat-card { padding: 0.7rem 0.3rem; }
+  .mtv-stat-value { font-size: 1.2rem; }
+
+  .mtv-achievements { gap: 0.3rem; }
+  .mtv-achievement-tag { font-size: 0.58rem; padding: 0.22rem 0.6rem; }
+
+  .mtv-portrait-stat-strip {
+    padding: 8px 4px 6px;
+    gap: 4px;
+  }
+
+  .mtv-portrait-stat-value { font-size: 0.95rem; }
+  .mtv-portrait-stat-label { font-size: 0.48rem; letter-spacing: 1px; }
+
+  .mtv-nav-arrows { bottom: 100px; }
+}

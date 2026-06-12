@@ -1,51 +1,56 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './ImpactNumbers.css';
-
+import event from '../assets/imgfour.jpg';
+import concert from '../assets/legbg.jpg';
+import cities from '../assets/tv-shows.png';
+import years from '../assets/orchestra.png';
+import countries from '../assets/radisson.png';
+import awards from '../assets/borderthree.jpg';
 const impactData = [
   {
     number: "1000+",
     label: "Events",
     description: "produced across South India",
-    image: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg",
+    image: event,
     highlight: true,
-    gradient: "linear-gradient(135deg, #c9a03d, #b8860b)"
+    gradient: "linear-gradient(135deg, #8d7a4e, #584b27)"
   },
   {
     number: "500+",
     label: "Concerts",
     description: "electrifying live performances",
-    image: "https://images.pexels.com/photos/167491/pexels-photo-167491.jpeg",
-    gradient: "linear-gradient(135deg, #2c1810, #8b4513)"
+    image: concert,
+    gradient: "linear-gradient(135deg, #e2a790, #896155)"
   },
   {
     number: "60+",
     label: "Cities",
     description: "from metros to cultural hubs",
-    image: "https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg",
-    gradient: "linear-gradient(135deg, #c9a03d, #daa520)"
+    image: cities,
+    gradient: "linear-gradient(135deg, #dda523, #786943)"
   },
   {
     number: "25+",
     label: "Years",
     description: "of creating magical moments",
-    image: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg",
-    gradient: "linear-gradient(135deg, #8b7355, #2c1810)"
+    image: years,
+    gradient: "linear-gradient(135deg, #ef8b11, #684545)"
   },
   {
     number: "7+",
     label: "Countries",
     description: "taking Indian music global",
-    image: "https://images.pexels.com/photos/210243/pexels-photo-210243.jpeg",
+    image: countries,
     highlight: true,
-    gradient: "linear-gradient(135deg, #c9a03d, #ffd700)"
+    gradient: "linear-gradient(135deg, #ecaf22, #5d5636)"
   },
   {
     number: "85+",
     label: "Awards",
     description: "national & international recognitions",
-    image: "https://images.pexels.com/photos/261949/pexels-photo-261949.jpeg",
+    image: awards,
     highlight: false,
-    gradient: "linear-gradient(135deg, #daa520, #c9a03d)"
+    gradient: "linear-gradient(135deg, #dc6262, #3f351f)"
   }
 ];
 
@@ -98,7 +103,7 @@ const ImpactNumbers = () => {
     const steps = 60;
     const increment = cleanNumber / steps;
     let currentStep = 0;
-    
+
     const timer = setInterval(() => {
       currentStep++;
       start += increment;
@@ -117,7 +122,21 @@ const ImpactNumbers = () => {
       <div className="in-premium-bg"></div>
       <div className="in-premium-pattern"></div>
       <div className="in-premium-glow"></div>
-
+      <div className="in-cinematic-spotlight"></div>
+      <div className="in-vignette"></div>
+      <div className="in-particle-field">
+        {[...Array(25)].map((_, i) => (
+          <div
+            key={i}
+            className="in-particle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDuration: `${6 + Math.random() * 8}s`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          />
+        ))}
+      </div>
       {/* Cinematic Light Rays */}
       <div className="in-light-rays">
         <div className="in-ray"></div>
@@ -179,7 +198,7 @@ const ImpactNumbers = () => {
               <div className="in-card-number-section">
                 <span className="in-card-hash">#</span>
                 <div className="in-card-number-wrapper">
-                  <span 
+                  <span
                     className="in-impact-number"
                     data-index={index}
                     data-number={item.number}
@@ -199,7 +218,7 @@ const ImpactNumbers = () => {
               {/* Decorative Element */}
               <div className="in-card-decoration">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5"/>
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" />
                 </svg>
               </div>
             </div>
@@ -243,13 +262,13 @@ const ImpactNumbers = () => {
       {/* Scroll Progress Ring */}
       <div className="in-scroll-ring">
         <svg viewBox="0 0 50 50">
-          <circle cx="25" cy="25" r="22" fill="none" stroke="rgba(201,160,61,0.1)" strokeWidth="2"/>
-          <circle 
-            cx="25" 
-            cy="25" 
-            r="22" 
-            fill="none" 
-            stroke="#c9a03d" 
+          <circle cx="25" cy="25" r="22" fill="none" stroke="rgba(201,160,61,0.1)" strokeWidth="2" />
+          <circle
+            cx="25"
+            cy="25"
+            r="22"
+            fill="none"
+            stroke="#c9a03d"
             strokeWidth="2"
             strokeDasharray="138.2"
             strokeDashoffset={138.2 * (1 - scrollProgress)}
