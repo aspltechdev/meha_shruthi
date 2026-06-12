@@ -276,15 +276,15 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import './TrustedBy.css';
-import backgroundImg from '../assets/Background8.jpeg';
+import backgroundImg from '../assets/Background2.png';
 import trust1 from '../assets/trust1.jpeg';
 import trust2 from '../assets/trust2.jpeg';
 import trust3 from '../assets/trust3.jpeg';
 import trust4 from '../assets/trust4.jpeg';
 import trust5 from '../assets/trust5.jpeg';
 import trust6 from '../assets/trust6.jpeg';
-import trust7 from '../assets/trust7.jpeg';
-import trust8 from '../assets/trust8.jpeg';
+import trust7 from '../assets/trust7.png';
+import trust8 from '../assets/trust8.png';
 
 const clients = [
   {

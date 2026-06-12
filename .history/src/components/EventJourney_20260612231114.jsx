@@ -300,7 +300,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import './EventJourney.css';
-import backgroundImg from '../assets/Background8.jpeg';
+import backgroundImg from '../assets/Background8.png';
 import journey1 from '../assets/journey1.jpeg';
 import journey2 from '../assets/journey2.jpeg';
 import journey3 from '../assets/journey3.jpeg';
@@ -634,49 +634,3 @@ const EventJourney = () => {
 
         </div>
       </div>
-            {/* ── FOOTER CTA ── */}
-      <footer className="ej-footer">
-        <p className="ej-footer-text">
-          Every event has a story.
-          <span className="ej-footer-accent">
-            {" "}Let's create yours.
-          </span>
-        </p>
-
-        <button className="ej-footer-cta">
-          <span>Start Your Journey</span>
-
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-          >
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-
-          <span
-            className="ej-cta-shine"
-            aria-hidden="true"
-          />
-        </button>
-      </footer>
-
-      {/* Energy bars */}
-      <div className="ej-energy" aria-hidden="true">
-        {energyBarsRef.current.map((bar, i) => (
-          <div
-            key={i}
-            className="ej-energy-bar"
-            style={bar}
-          />
-        ))}
-      </div>
-    </section>
-  );
-};
-
-export default EventJourney;

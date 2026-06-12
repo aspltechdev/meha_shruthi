@@ -308,12 +308,12 @@ const MeetTheVoices = () => {
       </div>
 
       {/* ── PROGRESS BAR ── */}
-      <div className="mtv-scroll-progress">
+      {/* <div className="mtv-scroll-progress">
         <div
           className="mtv-progress-bar"
           style={{ transform: `scaleX(${progress})`, background: currentSinger.accentColor }}
         />
-      </div>
+      </div> */}
 
     </section>
   );

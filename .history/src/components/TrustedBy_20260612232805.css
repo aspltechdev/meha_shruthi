@@ -1,4 +1,29 @@
+[10:27 pm, 12/06/2026] Vasiga: import React, { useEffect, useRef, useState } from 'react';
+import './TrustedBy.css';
+import backgroundImg from '../assets/Background2.png';
+import trust1 from '../assets/trust1.jpg';
+import trust2 from '../assets/trust2.jpg';
+import trust3 from '../assets/trust3.png';
+import trust4 from '../assets/trust4.png';
+import trust5 from '../assets/trust5.png';
+import trust6 from '../assets/trust6.jpg';
+import trust7 from '../assets/trust7.png';
+import trust8 from '../assets/trust8.png';
 
+const clients = [
+  {
+    name: "Rotary Club",
+    category: "Service Organization",
+    years: "5+ Years",
+    image: trust1,
+    description: "International service organization",
+    events: "25+ Events"
+  },
+  {
+    name: "Cosmopolitan Club",
+    category: "Premium Club",
+    y…
+[10:28 pm, 12/06/2026] Vasiga: /* TrustedBy.css - Premium Light Theme with Image Overlay */
 
 /* ============================================
    Main Section

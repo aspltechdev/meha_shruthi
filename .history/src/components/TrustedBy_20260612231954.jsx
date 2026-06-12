@@ -276,15 +276,15 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import './TrustedBy.css';
-import backgroundImg from '../assets/Background8.jpeg';
-import trust1 from '../assets/trust1.jpeg';
-import trust2 from '../assets/trust2.jpeg';
-import trust3 from '../assets/trust3.jpeg';
-import trust4 from '../assets/trust4.jpeg';
-import trust5 from '../assets/trust5.jpeg';
-import trust6 from '../assets/trust6.jpeg';
-import trust7 from '../assets/trust7.jpeg';
-import trust8 from '../assets/trust8.jpeg';
+import backgroundImg from '../assets/Background2.png';
+import trust1 from '../assets/trust1.jpg';
+import trust2 from '../assets/trust2.jpg';
+import trust3 from '../assets/trust3.png';
+import trust4 from '../assets/trust4.png';
+import trust5 from '../assets/trust5.png';
+import trust6 from '../assets/trust6.jpg';
+import trust7 from '../assets/trust7.png';
+import trust8 from '../assets/trust8.png';
 
 const clients = [
   {
@@ -379,9 +379,7 @@ const TrustedBy = () => {
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (!sectionRef.current) return;
-
       const rect = sectionRef.current.getBoundingClientRect();
-
       setMousePos({
         x: ((e.clientX - rect.left) / rect.width) * 100,
         y: ((e.clientY - rect.top) / rect.height) * 100
@@ -389,7 +387,6 @@ const TrustedBy = () => {
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
@@ -400,10 +397,10 @@ const TrustedBy = () => {
       <div className="trusted-light-pattern"></div>
 
       {/* Dynamic Spotlight - Light Theme */}
-      <div
+      <div 
         className="trusted-light-spotlight"
         style={{
-          background: `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, #2A3140)`
+          background: radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, #2A3140)
         }}
       />
 
@@ -421,10 +418,10 @@ const TrustedBy = () => {
             key={i}
             className="trusted-light-particle"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 8}s`,
-              animationDuration: `${5 + Math.random() * 8}s`,
+              left: ${Math.random() * 100}%,
+              top: ${Math.random() * 100}%,
+              animationDelay: ${Math.random() * 8}s,
+              animationDuration: ${5 + Math.random() * 8}s,
             }}
           />
         ))}
@@ -432,75 +429,41 @@ const TrustedBy = () => {
 
       {/* Main Container */}
       <div className="trusted-light-container">
-                {/* Header */}
+        {/* Header */}
         <div className="trusted-light-header">
           <div className="trusted-light-badge">
             <span className="trusted-light-badge-dot"></span>
-            <span className="trusted-light-badge-text">
-              TRUSTED PARTNERS
-            </span>
+            <span className="trusted-light-badge-text">TRUSTED PARTNERS</span>
             <span className="trusted-light-badge-dot"></span>
           </div>
 
           <h2 className="trusted-light-title">
-            <span className="trusted-light-title-light">
-              Trusted By
-            </span>
-
-            <span className="trusted-light-title-bold">
-              The Best
-            </span>
+            <span className="trusted-light-title-light">Trusted By</span>
+            <span className="trusted-light-title-bold">The Best</span>
           </h2>
 
           <p className="trusted-light-subtitle">
-            From intimate gatherings to grand celebrations, we've
-            created unforgettable moments for the world's most
-            discerning clients
+            From intimate gatherings to grand celebrations, we've created unforgettable moments 
+            for the world's most discerning clients
           </p>
 
           {/* Stats */}
           <div className="trusted-light-stats">
             <div className="trusted-light-stat">
-              <div className="trusted-light-stat-number">
-                500+
-              </div>
-
-              <div className="trusted-light-stat-label">
-                Events
-              </div>
-
+              <div className="trusted-light-stat-number">500+</div>
+              <div className="trusted-light-stat-label">Events</div>
               <div className="trusted-light-stat-line"></div>
             </div>
-
-            <div className="trusted-light-stat-sep">
-              ◉
-            </div>
-
+            <div className="trusted-light-stat-sep">◉</div>
             <div className="trusted-light-stat">
-              <div className="trusted-light-stat-number">
-                100+
-              </div>
-
-              <div className="trusted-light-stat-label">
-                Clients
-              </div>
-
+              <div className="trusted-light-stat-number">100+</div>
+              <div className="trusted-light-stat-label">Clients</div>
               <div className="trusted-light-stat-line"></div>
             </div>
-
-            <div className="trusted-light-stat-sep">
-              ◉
-            </div>
-
+            <div className="trusted-light-stat-sep">◉</div>
             <div className="trusted-light-stat">
-              <div className="trusted-light-stat-number">
-                98%
-              </div>
-
-              <div className="trusted-light-stat-label">
-                Satisfaction
-              </div>
-
+              <div className="trusted-light-stat-number">98%</div>
+              <div className="trusted-light-stat-label">Satisfaction</div>
               <div className="trusted-light-stat-line"></div>
             </div>
           </div>
@@ -511,28 +474,14 @@ const TrustedBy = () => {
           {clients.map((client, index) => (
             <div
               key={index}
-              className={`trusted-light-card ${
-                isVisible ? 'visible' : ''
-              } ${
-                hoveredIndex === index ? 'hovered' : ''
-              }`}
-              style={{
-                transitionDelay: `${index * 0.05}s`,
-              }}
-              onMouseEnter={() =>
-                setHoveredIndex(index)
-              }
-              onMouseLeave={() =>
-                setHoveredIndex(null)
-              }
+              className={trusted-light-card ${isVisible ? 'visible' : ''} ${hoveredIndex === index ? 'hovered' : ''}}
+              style={{ transitionDelay: ${index * 0.05}s }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Card Image */}
               <div className="trusted-light-card-image">
-                <img
-                  src={client.image}
-                  alt={client.name}
-                />
-
+                <img src={client.image} alt={client.name} />
                 <div className="trusted-light-card-gradient"></div>
               </div>
 
@@ -540,33 +489,17 @@ const TrustedBy = () => {
               <div className="trusted-light-card-content">
                 {/* Top Section */}
                 <div className="trusted-light-card-top">
-                  <span className="trusted-light-card-category">
-                    {client.category}
-                  </span>
-
-                  <span className="trusted-light-card-years">
-                    {client.years}
-                  </span>
+                  <span className="trusted-light-card-category">{client.category}</span>
+                  <span className="trusted-light-card-years">{client.years}</span>
                 </div>
 
                 {/* Bottom Section */}
                 <div className="trusted-light-card-bottom">
-                  <h3 className="trusted-light-card-name">
-                    {client.name}
-                  </h3>
-
-                  <p className="trusted-light-card-desc">
-                    {client.description}
-                  </p>
-
+                  <h3 className="trusted-light-card-name">{client.name}</h3>
+                  <p className="trusted-light-card-desc">{client.description}</p>
                   <div className="trusted-light-card-meta">
-                    <span className="trusted-light-card-events">
-                      {client.events}
-                    </span>
-
-                    <span className="trusted-light-card-arrow">
-                      →
-                    </span>
+                    <span className="trusted-light-card-events">{client.events}</span>
+                    <span className="trusted-light-card-arrow">→</span>
                   </div>
                 </div>
               </div>
@@ -574,7 +507,6 @@ const TrustedBy = () => {
               {/* Hover Reveal */}
               <div className="trusted-light-card-reveal">
                 <span>View Portfolio</span>
-
                 <div className="trusted-light-reveal-line"></div>
               </div>
 
@@ -583,28 +515,17 @@ const TrustedBy = () => {
             </div>
           ))}
         </div>
-                {/* Trust Statement */}
+
+        {/* Trust Statement */}
         <div className="trusted-light-statement">
           <div className="trusted-light-statement-line"></div>
-
           <div className="trusted-light-statement-content">
-            <span className="trusted-light-statement-quote">
-              "
-            </span>
-
+            <span className="trusted-light-statement-quote">"</span>
             <p className="trusted-light-statement-text">
-              The trust of our clients is the{" "}
-              <span className="trusted-light-statement-highlight">
-                foundation
-              </span>{" "}
-              of every performance
+              The trust of our clients is the <span className="trusted-light-statement-highlight">foundation</span> of every performance
             </p>
-
-            <span className="trusted-light-statement-quote">
-              "
-            </span>
+            <span className="trusted-light-statement-quote">"</span>
           </div>
-
           <div className="trusted-light-statement-line"></div>
         </div>
 
@@ -612,10 +533,7 @@ const TrustedBy = () => {
         <div className="trusted-light-cta">
           <button className="trusted-light-cta-btn">
             <span>Partner With Us</span>
-
-            <span className="trusted-light-cta-arrow">
-              →
-            </span>
+            <span className="trusted-light-cta-arrow">→</span>
           </button>
         </div>
       </div>
@@ -627,12 +545,14 @@ const TrustedBy = () => {
             key={i}
             className="trusted-light-audio-bar"
             style={{
-              animationDelay: `${i * 0.08}s`,
-              height: `${6 + (i % 12)}px`,
+              animationDelay: ${i * 0.08}s,
+              height: ${6 + (i % 12)}px
             }}
           />
         ))}
       </div>
+
+  
     </section>
   );
 };

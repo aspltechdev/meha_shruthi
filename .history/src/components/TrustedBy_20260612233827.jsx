@@ -276,7 +276,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import './TrustedBy.css';
-import backgroundImg from '../assets/Background8.jpeg';
+// import backgroundImg from '../assets/Background8.jpeg';
 import trust1 from '../assets/trust1.jpeg';
 import trust2 from '../assets/trust2.jpeg';
 import trust3 from '../assets/trust3.jpeg';

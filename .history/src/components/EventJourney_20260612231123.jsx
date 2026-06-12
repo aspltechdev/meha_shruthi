@@ -300,7 +300,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import './EventJourney.css';
-import backgroundImg from '../assets/Background8.jpeg';
+import backgroundImg from '../assets/Background8.png';
 import journey1 from '../assets/journey1.jpeg';
 import journey2 from '../assets/journey2.jpeg';
 import journey3 from '../assets/journey3.jpeg';

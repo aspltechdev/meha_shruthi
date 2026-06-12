@@ -276,15 +276,15 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import './TrustedBy.css';
-import backgroundImg from '../assets/Background8.jpeg';
-import trust1 from '../assets/trust1.jpeg';
-import trust2 from '../assets/trust2.jpeg';
-import trust3 from '../assets/trust3.jpeg';
-import trust4 from '../assets/trust4.jpeg';
-import trust5 from '../assets/trust5.jpeg';
-import trust6 from '../assets/trust6.jpeg';
-import trust7 from '../assets/trust7.jpeg';
-import trust8 from '../assets/trust8.jpeg';
+import backgroundImg from '../assets/Background2.png';
+import trust1 from '../assets/trust1.jpg';
+import trust2 from '../assets/trust2.jpg';
+import trust3 from '../assets/trust3.png';
+import trust4 from '../assets/trust4.png';
+import trust5 from '../assets/trust5.png';
+import trust6 from '../assets/trust6.jpg';
+import trust7 from '../assets/trust7.png';
+import trust8 from '../assets/trust8.png';
 
 const clients = [
   {
@@ -431,8 +431,7 @@ const TrustedBy = () => {
       </div>
 
       {/* Main Container */}
-      <div className="trusted-light-container">
-                {/* Header */}
+      <div className="trusted-light-container">        {/* Header */}
         <div className="trusted-light-header">
           <div className="trusted-light-badge">
             <span className="trusted-light-badge-dot"></span>
@@ -582,59 +581,4 @@ const TrustedBy = () => {
               <div className="trusted-light-card-border"></div>
             </div>
           ))}
-        </div>
-                {/* Trust Statement */}
-        <div className="trusted-light-statement">
-          <div className="trusted-light-statement-line"></div>
-
-          <div className="trusted-light-statement-content">
-            <span className="trusted-light-statement-quote">
-              "
-            </span>
-
-            <p className="trusted-light-statement-text">
-              The trust of our clients is the{" "}
-              <span className="trusted-light-statement-highlight">
-                foundation
-              </span>{" "}
-              of every performance
-            </p>
-
-            <span className="trusted-light-statement-quote">
-              "
-            </span>
-          </div>
-
-          <div className="trusted-light-statement-line"></div>
-        </div>
-
-        {/* CTA */}
-        <div className="trusted-light-cta">
-          <button className="trusted-light-cta-btn">
-            <span>Partner With Us</span>
-
-            <span className="trusted-light-cta-arrow">
-              →
-            </span>
-          </button>
-        </div>
-      </div>
-
-      {/* Bottom Energy Bars - Light */}
-      <div className="trusted-light-audio">
-        {[...Array(24)].map((_, i) => (
-          <div
-            key={i}
-            className="trusted-light-audio-bar"
-            style={{
-              animationDelay: `${i * 0.08}s`,
-              height: `${6 + (i % 12)}px`,
-            }}
-          />
-        ))}
-      </div>
-    </section>
-  );
-};
-
-export default TrustedBy;
+        </div></div>

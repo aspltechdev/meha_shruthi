@@ -122,7 +122,7 @@
 .ej-badge-text {
   font-size: 0.68rem;
   letter-spacing: 3px;
-  color: #2c1810;
+  color: #fff;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -135,7 +135,7 @@
 }
 
 .ej-title-plain {
-  color: #2c1810;
+  color: #fff;
   font-weight: 400;
   margin-right: 10px;
 }
@@ -172,13 +172,14 @@
    Main Grid  — 2 equal-height columns
    ============================================ */
 .ej-grid {
-  max-width: 1300px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  max-width: 1400px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
   position: relative;
   z-index: 10;
+  align-items: start;     
 }
 
 /* ============================================
@@ -187,28 +188,22 @@
 
 .ej-image-frame {
   position: relative;
-
-  width: min(950px, 90%);
-  height: 500px;
-
-  margin: 0 auto;
-
   border-radius: 28px;
   overflow: hidden;
-
-  border: 1px solid rgba(201,160,61,.2);
-
-  box-shadow:
-    0 25px 60px rgba(0,0,0,.45),
-    0 0 50px rgba(201,160,61,.08);
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
 }
 
+/* Slides */
 .ej-slide {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transform: scale(1.05);
-  transition: all .8s ease;
+  transform: scale(1.04);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
 }
 
 .ej-slide.is-active {
@@ -220,48 +215,50 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
-
 
 .ej-img-tint {
   position: absolute;
   inset: 0;
   opacity: 0.22;
 }
-/* 
+
 .ej-img-caption {
   position: absolute;
-  left: 30px;
-  bottom: 30px;
+  bottom: 20px;
+  left: 20px;
   z-index: 5;
-} */
+}
 
 .ej-caption-num {
-  font-size: 3rem;
+  display: block;
+  font-size: 2rem;
   font-weight: 800;
   color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  line-height: 1;
 }
 
 .ej-caption-label {
-  color: rgba(255,255,255,.9);
-  font-size: 1rem;
+  display: block;
+  font-size: 0.9rem;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
-
 
 .ej-counter {
   position: absolute;
-  top: 25px;
-  right: 25px;
-
-  background: rgba(0,0,0,.55);
-  backdrop-filter: blur(10px);
-
-  padding: 8px 16px;
-  border-radius: 30px;
-
-  color: white;
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  padding: 5px 11px;
+  border-radius: 20px;
+  font-size: 0.78rem;
   font-weight: 600;
-
+  color: #fff;
   z-index: 5;
 }
 
@@ -277,87 +274,68 @@
 /* ============================================
    RIGHT — content column
    ============================================ */
-/* .ej-col-content {
+.ej-col-content {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-} */
+}
 
 /* ── Step tabs ── */
 .ej-steps {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-
-  flex-wrap: wrap;
-
-  width: 100%;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .ej-step {
-  position: relative;
-
   display: flex;
   align-items: center;
-  gap: .8rem;
-
-  padding: 1rem 1.5rem;
-
-  background: rgba(255,255,255,.04);
-
-  border: 1px solid rgba(201,160,61,.12);
-
-  border-radius: 16px;
-
+  gap: 0.9rem;
+  background: transparent;
+  border: none;
+  padding: 0.7rem 1rem;
   cursor: pointer;
-
-  transition: all .35s ease;
+  border-radius: 14px;
+  text-align: left;
+  position: relative;
+  transition: background 0.25s ease, transform 0.25s ease;
+  overflow: hidden;
 }
 
 .ej-step:hover {
-  transform: translateY(-4px);
-
-  background: rgba(201,160,61,.08);
-
-  border-color: rgba(201,160,61,.35);
+  background: rgba(201, 160, 61, 0.08);
+  transform: translateX(4px);
 }
 
 .ej-step.is-active {
-  background: linear-gradient(
-    135deg,
-    rgba(201,160,61,.25),
-    rgba(201,160,61,.08)
-  );
-
-  border-color: #c9a03d;
+  background: rgba(201, 160, 61, 0.12);
+  transform: translateX(0);
 }
 
 .ej-step-num {
-  display: none;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: rgba(201, 160, 61, 0.35);
+  min-width: 42px;
+  transition: color 0.25s ease, transform 0.25s ease;
+  flex-shrink: 0;
 }
 
-/* .ej-step.is-active .ej-step-num {
+.ej-step.is-active .ej-step-num {
   color: #2c1810;
   transform: scale(1.08);
 }
 
 .ej-step.is-done .ej-step-num {
   color: rgba(201, 160, 61, 0.55);
-} */
+}
 
 .ej-step-label {
-  font-size: .95rem;
-  color: rgba(255,255,255,.85);
+  font-size: 0.95rem;
   font-weight: 500;
-}
-
-.ej-step.is-active .ej-step-label {
-  color: #fff;
-}
-
-.ej-step-bar {
-  display: none;
+  color: rgba(255, 255, 255, 0.7);
+  flex: 1;
+  transition: color 0.25s ease;
 }
 
 .ej-step.is-active .ej-step-label {
@@ -386,78 +364,64 @@
 
 /* ── Description box ── */
 .ej-desc-box {
-    padding: 2rem;
-  }
-  
-
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(201, 160, 61, 0.18);
+  border-radius: 22px;
+  padding: 2rem 2rem;
+  min-height: 168px;           
+  position: relative;
+  overflow: hidden;
+}
 
 .ej-desc {
   display: none;
-
-  color: #2c1810;
-
-  font-size: 1rem;
-
-  line-height: 1.9;
-
-  text-align: center;
-
-  animation: fadeUp .4s ease;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: #fff;
+  margin: 0;
+  animation: ejDescIn 0.45s ease;
 }
 
 .ej-desc.is-active {
   display: block;
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes ejDescIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+
 /* ── Navigation ── */
 .ej-nav {
   display: flex;
-  justify-content: center;
   align-items: center;
-
+  justify-content: center;
   gap: 1.5rem;
+  padding: 0.25rem 0;
 }
 
 .ej-nav-btn {
-  width: 48px;
-  height: 48px;
-
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-
-  border: 1px solid rgba(201,160,61,.25);
-
-  background: rgba(255,255,255,.05);
-
-  color: white;
-
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(201, 160, 61, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-
-  transition: .3s;
+  color: #2c1810;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+  flex-shrink: 0;
 }
 
 .ej-nav-btn:hover {
   background: #c9a03d;
+  border-color: #fff;
   color: #fff;
-}
-
-.ej-dot {
-  width: 10px;
-  height: 10px;
-
-  border-radius: 50%;
-
-  background: rgba(201,160,61,.3);
+  transform: scale(1.06);
 }
 
 .ej-dots {
@@ -482,12 +446,11 @@
 }
 
 .ej-dot.is-active {
-  width: 24px;
-
-  border-radius: 20px;
-
+  width: 22px;
+  border-radius: 4px;
   background: #c9a03d;
 }
+
 /* ============================================
    Footer CTA
    ============================================ */
@@ -506,7 +469,7 @@
 
 .ej-footer-text {
   font-size: 1.05rem;
-  color: #2c1810;
+  color: #fff;
   margin: 0 0 1.25rem;
 }
 
@@ -597,15 +560,9 @@
     gap: 2rem;
   }
 
-   .ej-image-frame {
-  max-width: 900px ;
-  width: 90%;
-  height: 400px ;
-
-  margin: 0 auto;
-
-  aspect-ratio: unset ;
-}
+  .ej-image-frame {
+    aspect-ratio: 16 / 9;
+  }
 
   .ej-steps {
     flex-direction: row;

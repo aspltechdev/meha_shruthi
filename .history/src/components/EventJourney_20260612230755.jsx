@@ -296,11 +296,9 @@
 // };
 
 // export default EventJourney;
-
-
 import { useEffect, useRef, useState } from 'react';
 import './EventJourney.css';
-import backgroundImg from '../assets/Background8.jpeg';
+import backgroundImg from '../assets/Background8.png';
 import journey1 from '../assets/journey1.jpeg';
 import journey2 from '../assets/journey2.jpeg';
 import journey3 from '../assets/journey3.jpeg';
@@ -349,23 +347,20 @@ const EventJourney = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
-
   const intervalRef = useRef(null);
   const sectionRef = useRef(null);
-
   const particlesRef = useRef(
     [...Array(25)].map(() => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      animationDelay: `${Math.random() * 10}s`,
-      animationDuration: `${5 + Math.random() * 8}s`,
+      left: ${Math.random() * 100}%,
+      top: ${Math.random() * 100}%,
+      animationDelay: ${Math.random() * 10}s,
+      animationDuration: ${5 + Math.random() * 8}s,
     }))
   );
-
   const energyBarsRef = useRef(
     [...Array(20)].map((_, i) => ({
-      animationDelay: `${i * 0.1}s`,
-      height: `${8 + Math.floor(Math.random() * 24)}px`,
+      animationDelay: ${i * 0.1}s,
+      height: ${8 + Math.floor(Math.random() * 24)}px,
     }))
   );
 
@@ -375,52 +370,38 @@ const EventJourney = () => {
         setActiveStep((prev) => (prev + 1) % journeySteps.length);
       }, 6000);
     }
-
     return () => clearInterval(intervalRef.current);
   }, [isPlaying]);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (!sectionRef.current) return;
-
       const rect = sectionRef.current.getBoundingClientRect();
-
       setMousePos({
         x: ((e.clientX - rect.left) / rect.width) * 100,
         y: ((e.clientY - rect.top) / rect.height) * 100,
       });
     };
-
     window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const goToStep = (index) => {
     setActiveStep(index);
     setIsPlaying(false);
-
     clearInterval(intervalRef.current);
-
-    setTimeout(() => {
-      setIsPlaying(true);
-    }, 8000);
+    setTimeout(() => setIsPlaying(true), 8000);
   };
 
-  const nextStep = () =>
-    goToStep((activeStep + 1) % journeySteps.length);
-
-  const prevStep = () =>
-    goToStep((activeStep - 1 + journeySteps.length) % journeySteps.length);
+  const nextStep = () => goToStep((activeStep + 1) % journeySteps.length);
+  const prevStep = () => goToStep((activeStep - 1 + journeySteps.length) % journeySteps.length);
 
   return (
     <section
       className="ej-section"
       ref={sectionRef}
       style={{
-        backgroundImage: `url(${backgroundImg})`,
+        backgroundImage: url(${backgroundImg}),
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -434,12 +415,7 @@ const EventJourney = () => {
       <div
         className="ej-spotlight"
         style={{
-          background: `radial-gradient(
-            circle at ${mousePos.x}% ${mousePos.y}%,
-            rgba(201,160,61,0.09) 0%,
-            rgba(201,160,61,0.03) 35%,
-            transparent 65%
-          )`,
+          background: radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, rgba(201,160,61,0.09) 0%, rgba(201,160,61,0.03) 35%, transparent 65%),
         }}
       />
 
@@ -481,7 +457,8 @@ const EventJourney = () => {
           <span className="ej-rule-line" />
         </div>
       </header>
-            {/* ── MAIN GRID ── */}
+
+      {/* ── MAIN GRID ── */}
       <div className="ej-grid">
 
         {/* LEFT — image */}
@@ -490,41 +467,21 @@ const EventJourney = () => {
             {journeySteps.map((step, i) => (
               <div
                 key={i}
-                className={`ej-slide ${i === activeStep ? 'is-active' : ''}`}
+                className={ej-slide ${i === activeStep ? 'is-active' : ''}}
               >
-                <img
-                  src={step.image}
-                  alt={step.title}
-                  className="ej-img"
-                />
-
-                <div
-                  className="ej-img-tint"
-                  style={{ background: step.gradient }}
-                />
-
+                <img src={step.image} alt={step.title} className="ej-img" />
+                <div className="ej-img-tint" style={{ background: step.gradient }} />
                 <div className="ej-img-caption">
-                  <span className="ej-caption-num">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-
-                  <span className="ej-caption-label">
-                    {step.title}
-                  </span>
+                  <span className="ej-caption-num">{step.number}</span>
+                  <span className="ej-caption-label">{step.title}</span>
                 </div>
               </div>
             ))}
 
             <div className="ej-counter" aria-live="polite">
-              <span className="ej-counter-cur">
-                {String(activeStep + 1).padStart(2, '0')}
-              </span>
-
+              <span className="ej-counter-cur">0{activeStep + 1}</span>
               <span className="ej-counter-sep">/</span>
-
-              <span className="ej-counter-tot">
-                {String(journeySteps.length).padStart(2, '0')}
-              </span>
+              <span className="ej-counter-tot">0{journeySteps.length}</span>
             </div>
           </div>
         </div>
@@ -537,24 +494,12 @@ const EventJourney = () => {
             {journeySteps.map((step, i) => (
               <button
                 key={i}
-                className={`ej-step ${
-                  i === activeStep ? 'is-active' : ''
-                } ${
-                  i < activeStep ? 'is-done' : ''
-                }`}
+                className={ej-step ${i === activeStep ? 'is-active' : ''} ${i < activeStep ? 'is-done' : ''}}
                 onClick={() => goToStep(i)}
-                aria-current={
-                  i === activeStep ? 'step' : undefined
-                }
+                aria-current={i === activeStep ? 'step' : undefined}
               >
-                <span className="ej-step-num">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-
-                <span className="ej-step-label">
-                  {step.title}
-                </span>
-
+                <span className="ej-step-num">{step.number}</span>
+                <span className="ej-step-label">{step.title}</span>
                 <span className="ej-step-bar" />
               </button>
             ))}
@@ -565,9 +510,7 @@ const EventJourney = () => {
             {journeySteps.map((step, i) => (
               <p
                 key={i}
-                className={`ej-desc ${
-                  i === activeStep ? 'is-active' : ''
-                }`}
+                className={ej-desc ${i === activeStep ? 'is-active' : ''}}
               >
                 {step.description}
               </p>
@@ -576,57 +519,27 @@ const EventJourney = () => {
 
           {/* Navigation */}
           <div className="ej-nav">
-            <button
-              className="ej-nav-btn"
-              onClick={prevStep}
-              aria-label="Previous step"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              >
+            <button className="ej-nav-btn" onClick={prevStep} aria-label="Previous step">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <path d="M15 18l-6-6 6-6" />
               </svg>
             </button>
 
-            <div
-              className="ej-dots"
-              role="tablist"
-              aria-label="Step indicators"
-            >
+            <div className="ej-dots" role="tablist" aria-label="Step indicators">
               {journeySteps.map((_, i) => (
                 <button
                   key={i}
                   role="tab"
                   aria-selected={i === activeStep}
-                  className={`ej-dot ${
-                    i === activeStep ? 'is-active' : ''
-                  }`}
+                  className={ej-dot ${i === activeStep ? 'is-active' : ''}}
                   onClick={() => goToStep(i)}
-                  aria-label={`Go to step ${i + 1}`}
+                  aria-label={Go to step ${i + 1}}
                 />
               ))}
             </div>
 
-            <button
-              className="ej-nav-btn"
-              onClick={nextStep}
-              aria-label="Next step"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              >
+            <button className="ej-nav-btn" onClick={nextStep} aria-label="Next step">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <path d="M9 18l6-6-6-6" />
               </svg>
             </button>
@@ -634,34 +547,19 @@ const EventJourney = () => {
 
         </div>
       </div>
-            {/* ── FOOTER CTA ── */}
+
+      {/* ── FOOTER CTA ── */}
       <footer className="ej-footer">
         <p className="ej-footer-text">
           Every event has a story.
-          <span className="ej-footer-accent">
-            {" "}Let's create yours.
-          </span>
+          <span className="ej-footer-accent"> Let's create yours.</span>
         </p>
-
         <button className="ej-footer-cta">
           <span>Start Your Journey</span>
-
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-          >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
-
-          <span
-            className="ej-cta-shine"
-            aria-hidden="true"
-          />
+          <span className="ej-cta-shine" aria-hidden="true" />
         </button>
       </footer>
 

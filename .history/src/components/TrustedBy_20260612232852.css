@@ -1,4 +1,4 @@
-
+/* TrustedBy.css - Premium Light Theme with Image Overlay */
 
 /* ============================================
    Main Section
@@ -128,7 +128,7 @@
 .trusted-light-badge-text {
   font-size: 0.7rem;
   letter-spacing: 3px;
-  color: #fff;
+  color: #c9a03d;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -140,7 +140,7 @@
 }
 
 .trusted-light-title-light {
-  color: #fff;
+  color: #2c1810;
   font-weight: 500;
   display: inline-block;
   margin-right: 12px;
@@ -183,7 +183,7 @@
 .trusted-light-stat-number {
   font-size: 1.8rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #000000);
+  background: linear-gradient(135deg, #2c1810, #c9a03d);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -193,7 +193,7 @@
 
 .trusted-light-stat-label {
   font-size: 0.7rem;
-  color: #000000;
+  color: #8b7355;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -460,7 +460,7 @@
 
 .trusted-light-statement-text {
   font-size: 0.9rem;
-  color: #fff;
+  color: #2c1810;
   margin: 0;
 }
 
@@ -487,7 +487,7 @@
   border-radius: 50px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #fff;
+  color: #c9a03d;
   cursor: pointer;
   transition: all 0.3s ease;
   display: inline-flex;
@@ -576,7 +576,7 @@
 .trusted-light-scroll-wheel {
   width: 3px;
   height: 6px;
-  background: #fff;
+  background: #c9a03d;
   border-radius: 2px;
   position: absolute;
   top: 5px;
