@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './Header.css';
-import logo from "../../assets/logo.png";
+import logo from "../assets/logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -77,22 +77,58 @@ const Header = () => {
       <div className="header__container">
         {/* Logo - Meha Sruthi Entertainers */}
         <a href="#" className="header__logo" aria-label="Meha Sruthi Entertainers - Home">
-  <div className="header__logo-mark">
-    <img
-      src={logo}
-      alt="Meha Sruthi Entertainers"
-      className="header__logo-img"
-    />
-  </div>
+          {/* Logo Mark - Temple Bell / Veena inspired */}
+          <div className="header__logo-mark">
+  <img
+    src={logo}
+    alt="Meha Sruthi Entertainers"
+    className="header__logo-img"
+  />
+</div>
+              {/* Outer Ring - Mandala inspired */}
+              <circle 
+                cx="24" cy="24" r="22" 
+                stroke="currentColor" 
+                strokeWidth="0.5" 
+                opacity="0.3"
+                className="header__logo-ring header__logo-ring--outer"
+              />
+              
+              {/* Inner decorative ring */}
+              <circle 
+                cx="24" cy="24" r="18" 
+                stroke="currentColor" 
+                strokeWidth="0.3" 
+                opacity="0.25"
+                strokeDasharray="2 3"
+                className="header__logo-ring header__logo-ring--inner"
+              />
+              
+              {/* Central Diamond / Star - Kolam inspired */}
+              <path 
+                d="M24 6L26 22L42 24L26 26L24 42L22 26L6 24L22 22L24 6Z" 
+                fill="currentColor"
+                opacity="0.85"
+                className="header__logo-star"
+              />
+              
+              {/* Small accent dots */}
+              <circle cx="24" cy="12" r="1.5" fill="currentColor" opacity="0.4" />
+              <circle cx="24" cy="36" r="1.5" fill="currentColor" opacity="0.4" />
+              <circle cx="12" cy="24" r="1.5" fill="currentColor" opacity="0.4" />
+              <circle cx="36" cy="24" r="1.5" fill="currentColor" opacity="0.4" />
+            </svg>
+          </div>
 
-  {/* <div className="header__logo-text">
-    <div className="header__logo-name">
-      <span className="header__logo-name--meha">Meha</span>
-      <span className="header__logo-name--sruthi">Sruthi</span>
-    </div>
-    <span className="header__logo-tagline">Entertainers</span>
-  </div> */}
-</a>
+          {/* Logo Text */}
+          <div className="header__logo-text">
+            <div className="header__logo-name">
+              <span className="header__logo-name--meha">Meha</span>
+              <span className="header__logo-name--sruthi">Sruthi</span>
+            </div>
+            <span className="header__logo-tagline">Entertainers</span>
+          </div>
+        </a>
 
         {/* Navigation */}
         <nav 

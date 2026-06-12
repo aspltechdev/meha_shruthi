@@ -171,9 +171,9 @@
 }
 .header__logo-img {
   width: 100px;
-  height: 100px;
+  height: 90px;
   object-fit: contain;
-  margin-top: -26px;
+  margin-top: -20px;
 }
 /* Logo Mark */
 .header__logo-mark {

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './Header.css';
-import logo from "../../assets/logo.png";
+import logo from "../assets/logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -85,13 +85,13 @@ const Header = () => {
     />
   </div>
 
-  {/* <div className="header__logo-text">
+  <div className="header__logo-text">
     <div className="header__logo-name">
       <span className="header__logo-name--meha">Meha</span>
       <span className="header__logo-name--sruthi">Sruthi</span>
     </div>
     <span className="header__logo-tagline">Entertainers</span>
-  </div> */}
+  </div>
 </a>
 
         {/* Navigation */}

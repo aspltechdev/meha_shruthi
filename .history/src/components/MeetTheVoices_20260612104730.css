@@ -4,7 +4,7 @@
 /* MTV - Main Wrapper */
 .mtv-cinematic-wrapper {
   position: relative;
-  padding: 120px 0; /* FIXED: removed 140px top/bottom padding — with absolute-positioned slides inside a fixed-height container, outer padding was pushing the container off-screen and wasting viewport space */
+  padding: 0; /* FIXED: removed 140px top/bottom padding — with absolute-positioned slides inside a fixed-height container, outer padding was pushing the container off-screen and wasting viewport space */
   height: auto; /* FIXED: was `height: 120vh` — a fixed vh height clipped content; auto lets the section size to its container */
   min-height: 100vh; /* FIXED: added so the section still fills the screen on short content */
   width: 100%;
@@ -103,9 +103,8 @@
 .mtv-cinematic-container {
   position: relative;
   width: 100%;
-  height: calc(120vh - 10px); /* FIXED: subtract navbar height so slides never sit behind the nav */
-  /* margin-top: 80px;  */
-  overflow: hidden;
+  height: 100vh; /* FIXED: was `height: 100%` which collapsed to nothing because the wrapper had no explicit height; 100vh gives slides an actual surface to fill */
+  overflow: hidden; /* keep — clips outgoing/incoming slides during nav transition */
 }
 
 /* MTV - Cinematic Slide */
@@ -133,7 +132,6 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* FIXED: no padding-top needed — container margin-top handles navbar clearance */
 }
 
 .mtv-visual-atmosphere {
@@ -422,10 +420,10 @@
 .mtv-slide-right {
   display: flex;
   align-items: flex-start;
-  padding: 3rem 3.5rem 3rem; /* FIXED: even padding all round — navbar offset now handled by container margin-top */
+  padding: 1.5rem 3rem 4rem; /* FIXED: controlled padding — top/bottom balanced so content has room */
   background: rgba(255, 252, 245, 0.95);
   backdrop-filter: blur(10px);
-  overflow: hidden;
+  overflow: hidden; /* FIXED: no scroll — content must fit within the viewport */
   height: 100%;
   box-sizing: border-box;
 }
@@ -434,31 +432,26 @@
 .mtv-content-wrapper {
   width: 100%;
   max-width: 600px;
-  height: 100%;
-  display: flex;
+  height: 100%; /* FIXED: take full column height */
+  display: flex; /* FIXED: flex column so children distribute evenly without fixed margins */
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between; /* FIXED: spreads all content blocks to fill height — no clipping, no scroll */
 }
 
-/* MTV - Content Reveal — reset gap, use margin-top per element instead */
 .mtv-content-reveal {
-  display: flex;
-  flex-direction: column;
   animation: mtvSlideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* FIXED: each element gets its own top margin for precise, readable spacing */
-.mtv-content-reveal .mtv-singer-name      { margin-top: 0.15rem; }
-.mtv-content-reveal .mtv-singer-fullname  { margin-top: 0.15rem; }
-.mtv-content-reveal .mtv-role-badge       { margin-top: 0.6rem;  }
-.mtv-content-reveal .mtv-specialty        { margin-top: 0.5rem;  }
-.mtv-content-reveal .mtv-description      { margin-top: 0.6rem;  }
-.mtv-content-reveal .mtv-quote-block      { margin-top: 0.6rem;  }
-.mtv-content-reveal .mtv-stats-grid       { margin-top: 0.7rem;  }
-.mtv-content-reveal .mtv-achievements     { margin-top: 0.5rem;  }
-.mtv-content-reveal .mtv-cta-button       { margin-top: 0.7rem;  }
-
-/* mtv-content-reveal animation handled in the targeted block above */
+@keyframes mtvSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
 /* MTV - Singer Tag */
 .mtv-singer-tag {
@@ -466,16 +459,15 @@
   font-size: 0.7rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  margin-bottom: 0.6rem; /* FIXED: pulls name closer to tag so they read as one unit */
+  margin: 0; /* FIXED: removed margin — space-between handles spacing */
   opacity: 0.8;
 }
 
 /* MTV - Singer Name */
 .mtv-singer-name {
-  font-size: 3.5rem;
+  font-size: 3.5rem; /* FIXED: slightly smaller so all content fits in one viewport height */
   font-weight: 800;
-  margin-bottom: 20px;
-  line-height: 1.05;
+  margin: 0; /* FIXED: removed margin */
   background: linear-gradient(135deg, #2c1810, #8b4513);
   background-clip: text;
   -webkit-background-clip: text;
@@ -500,7 +492,13 @@
   to { width: 60px; }
 }
 
-
+/* MTV - Full Name */
+.mtv-singer-fullname {
+  font-size: 1rem;
+  color: #8b7355;
+  margin: 0; /* FIXED: removed margin — space-between handles gaps */
+  letter-spacing: 1px;
+}
 
 /* MTV - Role Badge */
 .mtv-role-badge {
@@ -511,7 +509,7 @@
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
-  margin-bottom: 20px; /* FIXED: removed margin */
+  margin: 0; /* FIXED: removed margin */
 }
 
 /* MTV - Specialty */
@@ -521,8 +519,7 @@
   gap: 8px;
   font-size: 0.9rem;
   color: #6b4423;
-  margin-bottom: 20px;
-
+  margin: 0; /* FIXED: removed margin */
 }
 
 .mtv-specialty-dot {
@@ -536,7 +533,7 @@
   font-size: 0.95rem;
   line-height: 1.5;
   color: #4a3728;
-  margin-bottom: 20px; /* FIXED: removed margin */
+  margin: 0; /* FIXED: removed margin */
 }
 
 /* MTV - Quote Block */
@@ -544,7 +541,7 @@
   position: relative;
   border-left: 3px solid;
   padding: 0.5rem 0 0.5rem 1.5rem; /* FIXED: minimal internal padding */
-  margin-bottom: 20px;
+  margin: 0; /* FIXED: removed margin */
   font-size: 1rem;
   font-style: italic;
   color: #5c3d2e;
@@ -561,7 +558,7 @@
 .mtv-stats-grid {
   display: flex;
   gap: 2rem;
-  margin-bottom: 20px;
+  margin: 0; /* FIXED: removed margin */
 }
 
 .mtv-stat-card {
@@ -586,7 +583,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 20px;
+  margin: 0; /* FIXED: removed margin */
 }
 
 .mtv-achievement-tag {

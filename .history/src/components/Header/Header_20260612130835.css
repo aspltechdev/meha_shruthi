@@ -170,10 +170,10 @@
   transform: scale(1.02);
 }
 .header__logo-img {
-  width: 100px;
-  height: 100px;
+  width: 48px;
+  height: px;
   object-fit: contain;
-  margin-top: -26px;
+  display: block;
 }
 /* Logo Mark */
 .header__logo-mark {

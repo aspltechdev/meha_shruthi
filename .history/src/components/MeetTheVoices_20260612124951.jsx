@@ -691,7 +691,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import './MeetTheVoices.css';
-import m1 from "../assets/sridaran.png";
+import m1 from "../assets/hero.png";
 import m2 from "../assets/meeramam.png";
 import meeraVideo from "../assets/meeramam.mp4";
 import kaushikVideo from "../assets/vidtwo.mp4";

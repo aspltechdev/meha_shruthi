@@ -691,9 +691,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import './MeetTheVoices.css';
-import m1 from "../assets/sridaran.png";
-import m2 from "../assets/meeramam.png";
-import meeraVideo from "../assets/meeramam.mp4";
+import m1 from "../assets/hero.png";
+import meeraVideo from "../assets/vidone.mp4";
 import kaushikVideo from "../assets/vidtwo.mp4";
 
 const MeetTheVoices = () => {
@@ -794,8 +793,8 @@ const MeetTheVoices = () => {
       specialty: "Carnatic • Classical • Soul",
       description: "A voice that carries the soul of tradition, Meera transforms every performance into a spiritual journey through the depths of Indian classical music.",
       quote: "Music flows through my veins like the sacred rivers of Bharath",
-      videoUrl: meeraVideo, // Classical performance vibe
-      posterImage: m2,
+      videoUrl: kaushikVideo, // Classical performance vibe
+      posterImage: m1,
       stats: [
         { value: "25+", label: "Years" },
         { value: "1000+", label: "Performances" },
@@ -815,7 +814,7 @@ const MeetTheVoices = () => {
       specialty: "Versatile • Energetic • Magical",
       description: "From Super Singer to international stages, Kaushik brings electrifying energy while honoring every musical tradition.",
       quote: "Every celebration under our banner becomes an eternal memory",
-      videoUrl: kaushikVideo, // Energetic performance vibe
+      videoUrl: meeraVideo, // Energetic performance vibe
       posterImage: m1,
       stats: [
         { value: "500+", label: "Concerts" },
@@ -977,74 +976,115 @@ const MeetTheVoices = () => {
             {/* MTV - Right Side Content */}
             <div className="mtv-slide-right">
               <div className="mtv-content-wrapper">
-                <div className="mtv-content-reveal">
-                  
-                  {/* MTV - Singer Tag */}
-                  <span className="mtv-singer-tag" style={{ color: singer.accentColor }}>
-                    ◉ {singer.title} ◉
-                  </span>
-                  
-                  {/* MTV - Singer Name */}
-                  <h1 className="mtv-singer-name">
-                    {singer.name}
-                    <span className="mtv-name-glow" style={{ background: singer.accentColor }}></span>
-                  </h1>
-                  
-                  {/* MTV - Full Name */}
-                  {/* <p className="mtv-singer-fullname">{singer.fullName}</p> */}
-                  
-                  {/* MTV - Role Badge */}
-                  <div className="mtv-role-badge" style={{ borderColor: singer.accentColor, color: singer.accentColor }}>
-                    {singer.role}
-                  </div>
-                  
-                  {/* MTV - Specialty */}
-                  <div className="mtv-specialty">
-                    <span className="mtv-specialty-dot" style={{ background: singer.accentColor }}></span>
-                    {singer.specialty}
-                  </div>
+  <div className="mtv-content-reveal">
 
-                  {/* MTV - Description */}
-                  <p className="mtv-description">{singer.description}</p>
+    <span
+      className="mtv-singer-tag"
+      style={{ color: singer.accentColor }}
+    >
+      ◉ {singer.title} ◉
+    </span>
 
-                  {/* MTV - Quote Block */}
-                  <div className="mtv-quote-block" style={{ borderLeftColor: singer.accentColor }}>
-                    <span className="mtv-quote-mark">"</span>
-                    {singer.quote}
-                    <span className="mtv-quote-mark">"</span>
-                  </div>
+    <h1 className="mtv-singer-name">
+      {singer.name}
+      <span
+        className="mtv-name-glow"
+        style={{ background: singer.accentColor }}
+      ></span>
+    </h1>
 
-                  {/* MTV - Stats Grid */}
-                  <div className="mtv-stats-grid">
-                    {singer.stats.map((stat, i) => (
-                      <div key={i} className="mtv-stat-card">
-                        <div className="mtv-stat-value" style={{ color: singer.accentColor }}>
-                          {stat.value}
-                        </div>
-                        <div className="mtv-stat-label">{stat.label}</div>
-                      </div>
-                    ))}
-                  </div>
+    <p className="mtv-singer-fullname">{singer.fullName}</p>
 
-                  {/* MTV - Achievements */}
-                  <div className="mtv-achievements">
-                    {singer.achievements.map((achievement, i) => (
-                      <div key={i} className="mtv-achievement-tag" style={{ borderColor: singer.accentColor }}>
-                        <span className="mtv-achievement-dot" style={{ background: singer.accentColor }}></span>
-                        {achievement}
-                      </div>
-                    ))}
-                  </div>
+    <div
+      className="mtv-role-badge"
+      style={{
+        borderColor: singer.accentColor,
+        color: singer.accentColor,
+      }}
+    >
+      {singer.role}
+    </div>
 
-                  {/* MTV - CTA Button */}
-                  <button className="mtv-cta-button" style={{ borderColor: singer.accentColor, color: singer.accentColor }}>
-                    <span>Experience The Magic</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                      <path d="M5 12h14M12 5l7 7-7 7" strokeWidth="2" strokeLinecap="round"/>
-                    </svg>
-                  </button>
-                </div>
-              </div>
+    <div className="mtv-specialty">
+      <span
+        className="mtv-specialty-dot"
+        style={{ background: singer.accentColor }}
+      ></span>
+      {singer.specialty}
+    </div>
+
+    <p className="mtv-description">{singer.description}</p>
+
+    <div
+      className="mtv-quote-block"
+      style={{ borderLeftColor: singer.accentColor }}
+    >
+      <span className="mtv-quote-mark">"</span>
+      {singer.quote}
+      <span className="mtv-quote-mark">"</span>
+    </div>
+
+    <div className="mtv-stats-grid">
+      {singer.stats.map((stat, i) => (
+        <div key={i} className="mtv-stat-card">
+          <div
+            className="mtv-stat-value"
+            style={{ color: singer.accentColor }}
+          >
+            {stat.value}
+          </div>
+
+          <div className="mtv-stat-label">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div className="mtv-achievements">
+      {singer.achievements.map((achievement, i) => (
+        <div
+          key={i}
+          className="mtv-achievement-tag"
+          style={{ borderColor: singer.accentColor }}
+        >
+          <span
+            className="mtv-achievement-dot"
+            style={{ background: singer.accentColor }}
+          ></span>
+
+          {achievement}
+        </div>
+      ))}
+    </div>
+
+    <button
+      type="button"
+      className="mtv-cta-button"
+      style={{
+        borderColor: singer.accentColor,
+        color: singer.accentColor,
+      }}
+    >
+      <span>Experience The Magic</span>
+
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+      >
+        <path
+          d="M5 12h14M12 5l7 7-7 7"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+      </svg>
+    </button>
+
+  </div>
+</div>
             </div>
           </div>
         ))}

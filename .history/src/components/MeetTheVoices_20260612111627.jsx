@@ -691,9 +691,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import './MeetTheVoices.css';
-import m1 from "../assets/sridaran.png";
-import m2 from "../assets/meeramam.png";
-import meeraVideo from "../assets/meeramam.mp4";
+import m1 from "../assets/hero.png";
+import meeraVideo from "../assets/vidone.mp4";
 import kaushikVideo from "../assets/vidtwo.mp4";
 
 const MeetTheVoices = () => {
@@ -794,8 +793,8 @@ const MeetTheVoices = () => {
       specialty: "Carnatic • Classical • Soul",
       description: "A voice that carries the soul of tradition, Meera transforms every performance into a spiritual journey through the depths of Indian classical music.",
       quote: "Music flows through my veins like the sacred rivers of Bharath",
-      videoUrl: meeraVideo, // Classical performance vibe
-      posterImage: m2,
+      videoUrl: kaushikVideo, // Classical performance vibe
+      posterImage: m1,
       stats: [
         { value: "25+", label: "Years" },
         { value: "1000+", label: "Performances" },

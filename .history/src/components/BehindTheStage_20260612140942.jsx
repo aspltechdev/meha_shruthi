@@ -216,7 +216,7 @@ import './BehindTheStage.css';
 
 import imageo from '../assets/imgone.jpg';
 import imaget from '../assets/imgtwo.jpg';
-import imageth from '../assets/imgthreea.png';
+import imageth from '../assets/imgthreea.pg';
 import imagef from '../assets/imgfour.jpg';
 
 const moments = [

@@ -173,7 +173,7 @@
   width: 100px;
   height: 100px;
   object-fit: contain;
-  margin-top: -26px;
+  display: block;
 }
 /* Logo Mark */
 .header__logo-mark {
