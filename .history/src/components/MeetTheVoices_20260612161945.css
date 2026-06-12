@@ -241,8 +241,7 @@
   letter-spacing: 3px;
   text-transform: uppercase;
   opacity: 0.9;
-  margin-bottom: 90px;
-
+  margin-bottom: 0.35rem;
 }
 
 .mtv-name {
@@ -253,8 +252,7 @@
   line-height: 1;
   display: inline-block;
   letter-spacing: -0.5px;
- margin: -1.5rem 0 0.4rem;
-  
+  margin: 0 0 0.4rem;
 }
 
 .mtv-name-bar {
@@ -533,12 +531,12 @@
   color: rgba(255,255,255,0.45);
 } */
 
-.mtv-portrait-name {
+/* .mtv-portrait-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1rem, 1.6vw, 1.3rem);
   font-weight: 700;
   line-height: 1;
-}
+} */
 
 /* ═══════════════════════════════════════
    NAV ARROWS

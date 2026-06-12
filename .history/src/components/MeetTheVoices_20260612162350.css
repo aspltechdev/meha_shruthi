@@ -241,7 +241,7 @@
   letter-spacing: 3px;
   text-transform: uppercase;
   opacity: 0.9;
-  margin-bottom: 90px;
+  margin-bottom: 20px;
 
 }
 
@@ -253,8 +253,7 @@
   line-height: 1;
   display: inline-block;
   letter-spacing: -0.5px;
- margin: -1.5rem 0 0.4rem;
-  
+  margin: 0 0 0.4rem;
 }
 
 .mtv-name-bar {
