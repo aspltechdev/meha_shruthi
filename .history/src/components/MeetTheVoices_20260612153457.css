@@ -1,0 +1,82 @@
+/* ─────────────────────────────────────────────
+   ADD THESE RULES TO YOUR MeetTheVoices.css
+   (keep all your existing rules — just append)
+──────────────────────────────────────────────── */
+
+/* Background video layer */
+.mtv-bg-videos {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.mtv-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+.mtv-bg-video.active {
+  opacity: 1;
+}
+
+/* Dark scrim so text stays legible over video */
+.mtv-bg-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.55) 50%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  z-index: 1;
+}
+
+/* Subtle accent colour tint per singer */
+.mtv-bg-tint {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  transition: background 0.8s ease;
+  pointer-events: none;
+}
+
+/* Make sure all foreground content sits above the bg layer */
+.mtv-cinematic-spotlight,
+.mtv-ambient-notes,
+.mtv-theep-header,
+.mtv-theep-stage,
+.mtv-nav-arrows,
+.mtv-scroll-progress {
+  position: relative;
+  z-index: 3;
+}
+
+/* Single portrait card — centre it nicely now that video card is gone */
+.mtv-theep-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mtv-theep-card-portrait {
+  /* Reset any stacked-card offset from the old two-card layout */
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  transform: rotate(-3deg);
+  width: clamp(240px, 28vw, 360px);
+  transition: transform 0.4s ease;
+}
+
+.mtv-theep-card-portrait:hover {
+  transform: rotate(0deg) scale(1.03);
+}

@@ -10,10 +10,8 @@ const MeetTheVoices = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [progress, setProgress] = useState(0);
   const sectionRef = useRef(null);
-  const bgRefMeera = useRef(null);
-  const bgRefKaushik = useRef(null);
-  const portraitRefMeera = useRef(null);
-  const portraitRefKaushik = useRef(null);
+  const videoRefMeera = useRef(null);
+  const videoRefKaushik = useRef(null);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -45,15 +43,11 @@ const MeetTheVoices = () => {
 
   useEffect(() => {
     if (activeIndex === 0) {
-      bgRefMeera.current?.play().catch(() => {});
-      portraitRefMeera.current?.play().catch(() => {});
-      bgRefKaushik.current?.pause();
-      portraitRefKaushik.current?.pause();
+      videoRefMeera.current?.play().catch(() => {});
+      videoRefKaushik.current?.pause();
     } else {
-      bgRefKaushik.current?.play().catch(() => {});
-      portraitRefKaushik.current?.play().catch(() => {});
-      bgRefMeera.current?.pause();
-      portraitRefMeera.current?.pause();
+      videoRefKaushik.current?.play().catch(() => {});
+      videoRefMeera.current?.pause();
     }
   }, [activeIndex]);
 
@@ -66,13 +60,14 @@ const MeetTheVoices = () => {
       title: 'The Visionary Voice',
       role: 'Founder & Lead Vocalist',
       specialty: 'Carnatic • Classical • Soul',
-      description: 'A voice that carries the soul of tradition, Meera transforms every performance into a spiritual journey through Indian classical music.',
+      description:
+        'A voice that carries the soul of tradition, Meera transforms every performance into a spiritual journey through the depths of Indian classical music.',
       quote: 'Music flows through my veins like the sacred rivers of Bharath',
       videoUrl: meeraVideo,
       posterImage: m2,
       stats: [
         { value: '25+', label: 'Years' },
-        { value: '1000+', label: 'Shows' },
+        { value: '1000+', label: 'Performances' },
         { value: '50+', label: 'Awards' },
       ],
       achievements: ['Classical Prodigy', 'National Award Winner', 'International Performer'],
@@ -87,7 +82,8 @@ const MeetTheVoices = () => {
       title: 'The Stage Virtuoso',
       role: 'Lead Performer & Super Singer',
       specialty: 'Versatile • Energetic • Magical',
-      description: 'From Super Singer to international stages, Kaushik brings electrifying energy while honoring every musical tradition.',
+      description:
+        'From Super Singer to international stages, Kaushik brings electrifying energy while honoring every musical tradition.',
       quote: 'Every celebration under our banner becomes an eternal memory',
       videoUrl: kaushikVideo,
       posterImage: m1,
@@ -115,15 +111,19 @@ const MeetTheVoices = () => {
           style={{ '--tint': singer.tintColor }}
         >
           <video
-            ref={idx === 0 ? bgRefMeera : bgRefKaushik}
+            ref={idx === 0 ? videoRefMeera : videoRefKaushik}
             className="mtv-bg-video"
             poster={singer.posterImage}
-            loop muted playsInline
+            loop
+            muted
+            playsInline
             autoPlay={idx === 0}
           >
             <source src={singer.videoUrl} type="video/mp4" />
           </video>
+          {/* colour tint */}
           <div className="mtv-bg-tint" />
+          {/* dark gradient so text stays readable */}
           <div className="mtv-bg-darken" />
         </div>
       ))}
@@ -158,6 +158,7 @@ const MeetTheVoices = () => {
           Meet the <em>Voices</em>
         </h2>
         <p className="mtv-subline">Two artists. One legacy. Infinite celebrations.</p>
+
         <div className="mtv-dots">
           {singers.map((s, i) => (
             <button
@@ -183,8 +184,9 @@ const MeetTheVoices = () => {
               transform: `translateX(${(idx - activeIndex) * 100}%)`,
               opacity: activeIndex === idx ? 1 : 0,
             }}
+            
           >
-            {/* LEFT — text content */}
+            
             <div className="mtv-content">
               <span className="mtv-tag" style={{ color: singer.accentColor }}>
                 ◉ {singer.title} ◉
@@ -231,56 +233,22 @@ const MeetTheVoices = () => {
 
               <button className="mtv-cta" style={{ '--accent': singer.accentColor }}>
                 <span>Experience The Magic</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </button>
             </div>
 
-            {/* RIGHT — portrait card */}
-<div className="mtv-portrait-panel">
-  <div
-    className="mtv-portrait-card"
-    style={{ '--accent': singer.accentColor }}
-  >
-    <img
-      src={singer.posterImage}
-      alt={singer.fullName}
-      className="mtv-portrait-media"
-    />
+            {/* Live badge bottom-right */}
+            <div className="mtv-live-badge">
+              <span className="mtv-live-dot" />
+              LIVE
+            </div>
 
-    <div className="mtv-portrait-overlay" />
-
-    <div className="mtv-portrait-live">
-      <span className="mtv-live-dot" />
-      LIVE
-    </div>
-
-    <div className="mtv-portrait-bottom">
-      <span className="mtv-portrait-sublabel">
-        Now Performing
-      </span>
-
-      <span
-        className="mtv-portrait-name"
-        style={{ color: singer.accentColor }}
-      >
-        {singer.fullName}
-      </span>
-    </div>
-
-    <div
-      className="mtv-portrait-badge"
-      style={{
-        borderColor: singer.accentColor,
-        color: singer.accentColor,
-      }}
-    >
-      {singer.specialty.split('•')[0].trim()}
-    </div>
-  </div>
-</div>
-            {/* Specialty badge top-right corner of screen */}
+            {/* Specialty badge top-right */}
+            <div className="mtv-vid-badge" style={{ borderColor: singer.accentColor, color: singer.accentColor }}>
+              {singer.specialty.split('•')[0].trim()}
+            </div>
           </div>
         ))}
       </div>

@@ -241,8 +241,7 @@
   letter-spacing: 3px;
   text-transform: uppercase;
   opacity: 0.9;
-  margin-bottom: 90px;
-
+  margin-bottom: 0.35rem;
 }
 
 .mtv-name {
@@ -253,8 +252,7 @@
   line-height: 1;
   display: inline-block;
   letter-spacing: -0.5px;
- margin: -1.5rem 0 0.4rem;
-  
+  margin: 0 0 0.4rem;
 }
 
 .mtv-name-bar {
@@ -461,8 +459,8 @@
   z-index: 2;
 }
 
-/* Live badge — top left of card */
-/* .mtv-portrait-live {
+Live badge — top left of card
+.mtv-portrait-live {
   position: absolute;
   top: 14px;
   left: 14px;
@@ -493,10 +491,10 @@
 @keyframes liveBlink {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.2; }
-} */
+}
 
 /* Specialty badge — top right of card */
-/* .mtv-portrait-badge {
+.mtv-portrait-badge {
   position: absolute;
   top: 14px;
   right: 14px;
@@ -510,7 +508,7 @@
   text-transform: uppercase;
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(8px);
-} */
+}
 
 /* Name block — bottom of card */
 .mtv-portrait-bottom {
@@ -525,13 +523,13 @@
   gap: 3px;
 }
 
-/* .mtv-portrait-sublabel {
+.mtv-portrait-sublabel {
   font-size: 0.5rem;
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: rgba(255,255,255,0.45);
-} */
+}
 
 .mtv-portrait-name {
   font-family: 'Cormorant Garamond', serif;

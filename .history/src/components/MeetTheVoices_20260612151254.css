@@ -1,0 +1,223 @@
+/* ============================================================
+   MeetTheVoices.css — Meha Sruthi Entertainers
+   Premium South Indian Luxury · Cinematic Editorial
+   MTV = MeetTheVoices prefix
+   ============================================================ */
+
+/* ── Google Fonts import ── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
+
+/* ── CSS Custom Properties ── */
+:root {
+  --mtv-cream:        #fdf8ed;
+  --mtv-cream-deep:   #f5ecda;
+  --mtv-cream-warm:   #f0e4cc;
+  --mtv-gold:         #c9a03d;
+  --mtv-gold-light:   #e8c060;
+  --mtv-gold-pale:    #ffd700;
+  --mtv-gold-muted:   #b8903a;
+  --mtv-brown-dark:   #2c1810;
+  --mtv-brown-mid:    #5c3d2e;
+  --mtv-brown-light:  #8b7355;
+  --mtv-brown-soft:   #6b4423;
+  --mtv-white-glass:  rgba(255, 252, 245, 0.95);
+  --mtv-gold-glass:   rgba(201, 160, 61, 0.12);
+  --mtv-serif:        'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --mtv-sans:         'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mtv-transition:   cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   WRAPPER
+   ============================================================ */
+.mtv-cinematic-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--mtv-cream) 0%, var(--mtv-cream-deep) 50%, #ede0c8 100%);
+  font-family: var(--mtv-sans);
+}
+
+/* ── Ambient texture overlay ── */
+.mtv-cinematic-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 20% 30%, rgba(201,160,61,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 80% 70%, rgba(201,160,61,0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   SPOTLIGHT & VIGNETTE
+   ============================================================ */
+.mtv-cinematic-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: background 0.15s ease;
+}
+
+.mtv-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(44,24,16,0.06) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ============================================================
+   SCROLL PROGRESS
+   ============================================================ */
+.mtv-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(201, 160, 61, 0.15);
+  z-index: 200;
+}
+
+.mtv-progress-bar {
+  height: 100%;
+  transform-origin: left;
+  transition: transform 0.1s ease;
+  background: linear-gradient(90deg, var(--mtv-gold), var(--mtv-gold-light), var(--mtv-gold-pale));
+}
+
+.mtv-progress-dots {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.mtv-progress-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  transition: all 0.4s var(--mtv-transition);
+  background: rgba(201,160,61,0.3);
+}
+
+.mtv-progress-dot.active {
+  width: 24px;
+  border-radius: 3px;
+}
+
+/* ============================================================
+   MAIN CINEMATIC CONTAINER
+   ============================================================ */
+.mtv-cinematic-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 3;
+}
+
+/* ============================================================
+   CINEMATIC SLIDE
+   ============================================================ */
+.mtv-cinematic-slide {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 48% 52%;
+  transition:
+    transform 0.9s var(--mtv-transition),
+    opacity   0.6s ease;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.mtv-cinematic-slide.active {
+  pointer-events: auto;
+}
+
+/* ============================================================
+   LEFT PANEL — Portrait / Video
+   ============================================================ */
+.mtv-slide-left {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Warm gradient skin behind video ── */
+.mtv-slide-left::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(44,24,16,0.0) 0%,
+    rgba(44,24,16,0.0) 60%,
+    rgba(44,24,16,0.55) 100%);
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* ── VIDEO BACKGROUND ── */
+.mtv-video-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.mtv-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.72) sepia(0.15) contrast(1.05);
+}
+
+.mtv-video-overlay-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(253,244,227,0.25) 0%,
+    rgba(201,160,61,0.08)  100%);
+  pointer-events: none;
+}
+
+/* ── ATMOSPHERE LAYER ── */
+.mtv-visual-atmosphere {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+/* ── PARTICLE FIELD ── */
+.mtv-particle-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mtv-music-particle {
+  position: absolute;
+  bottom: -10px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: mtvFloatParticle linear infinite;
+}
+
+@keyframes mtvFloatParticle {
+  0%   { transform: translateY(0) translateX(0) scale(1);

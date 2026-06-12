@@ -58,49 +58,59 @@ const MeetTheVoices = () => {
   }, [activeIndex]);
 
   const singers = [
-    {
-      id: 0,
-      uniqueId: 'meera-the-visionary',
-      name: 'MEERA SRIDHARAN',
-      fullName: 'Meera Sridharan',
-      title: 'The Visionary Voice',
-      role: 'Founder & Lead Vocalist',
-      specialty: 'Carnatic • Classical • Soul',
-      description: 'A voice that carries the soul of tradition, Meera transforms every performance into a spiritual journey through Indian classical music.',
-      quote: 'Music flows through my veins like the sacred rivers of Bharath',
-      videoUrl: meeraVideo,
-      posterImage: m2,
-      stats: [
-        { value: '25+', label: 'Years' },
-        { value: '1000+', label: 'Shows' },
-        { value: '50+', label: 'Awards' },
-      ],
-      achievements: ['Classical Prodigy', 'National Award Winner', 'International Performer'],
-      accentColor: '#c9a03d',
-      tintColor: 'rgba(20, 50, 160, 0.45)',
-    },
-    {
-      id: 1,
-      uniqueId: 'kaushik-the-performer',
-      name: 'KAUSHIK SRIDHARAN',
-      fullName: 'Kaushik Sridharan',
-      title: 'The Stage Virtuoso',
-      role: 'Lead Performer & Super Singer',
-      specialty: 'Versatile • Energetic • Magical',
-      description: 'From Super Singer to international stages, Kaushik brings electrifying energy while honoring every musical tradition.',
-      quote: 'Every celebration under our banner becomes an eternal memory',
-      videoUrl: kaushikVideo,
-      posterImage: m1,
-      stats: [
-        { value: '500+', label: 'Concerts' },
-        { value: '7+', label: 'Countries' },
-        { value: '15+', label: 'Awards' },
-      ],
-      achievements: ['Super Singer Fame', 'International Tour', 'Trendsetter Award'],
-      accentColor: '#d4a843',
-      tintColor: 'rgba(70, 15, 110, 0.45)',
-    },
-  ];
+  {
+    id: 0,
+    uniqueId: 'meera-the-visionary',
+    name: 'MEERA SRIDHARAN',
+    fullName: 'Meera Sridharan',
+    title: 'The Visionary Voice',
+    role: 'Founder & Lead Vocalist',
+    specialty: 'Carnatic • Classical • Soul',
+    description:
+      'A voice that carries the soul of tradition, Meera transforms every performance into a spiritual journey through Indian classical music.',
+    quote:
+      'Music flows through my veins like the sacred rivers of Bharath',
+    posterImage: m2,
+    stats: [
+      { value: '25+', label: 'Years' },
+      { value: '1000+', label: 'Shows' },
+      { value: '50+', label: 'Awards' },
+    ],
+    achievements: [
+      'Classical Prodigy',
+      'National Award Winner',
+      'International Performer',
+    ],
+    accentColor: '#c9a03d',
+    tintColor: 'rgba(20, 50, 160, 0.45)',
+  },
+  {
+    id: 1,
+    uniqueId: 'kaushik-the-performer',
+    name: 'KAUSHIK SRIDHARAN',
+    fullName: 'Kaushik Sridharan',
+    title: 'The Stage Virtuoso',
+    role: 'Lead Performer & Super Singer',
+    specialty: 'Versatile • Energetic • Magical',
+    description:
+      'From Super Singer to international stages, Kaushik brings electrifying energy while honoring every musical tradition.',
+    quote:
+      'Every celebration under our banner becomes an eternal memory',
+    posterImage: m1,
+    stats: [
+      { value: '500+', label: 'Concerts' },
+      { value: '7+', label: 'Countries' },
+      { value: '15+', label: 'Awards' },
+    ],
+    achievements: [
+      'Super Singer Fame',
+      'International Tour',
+      'Trendsetter Award',
+    ],
+    accentColor: '#d4a843',
+    tintColor: 'rgba(70, 15, 110, 0.45)',
+  },
+];
 
   const currentSinger = singers[activeIndex];
 
@@ -238,48 +248,34 @@ const MeetTheVoices = () => {
             </div>
 
             {/* RIGHT — portrait card */}
-<div className="mtv-portrait-panel">
-  <div
-    className="mtv-portrait-card"
-    style={{ '--accent': singer.accentColor }}
-  >
-    <img
-      src={singer.posterImage}
-      alt={singer.fullName}
-      className="mtv-portrait-media"
-    />
+            <div className="mtv-portrait-panel">
+              <div className="mtv-portrait-card" style={{ '--accent': singer.accentColor }}>
+                <video
+                  ref={idx === 0 ? portraitRefMeera : portraitRefKaushik}
+                  className="mtv-portrait-media"
+                  poster={singer.posterImage}
+                  loop muted playsInline
+                  autoPlay={idx === 0}
+                >
+                  <source src={singer.videoUrl} type="video/mp4" />
+                </video>
+                <div className="mtv-portrait-overlay" />
+                <div className="mtv-portrait-live">
+                  <span className="mtv-live-dot" />
+                  LIVE
+                </div>
+                <div className="mtv-portrait-bottom">
+                  <span className="mtv-portrait-sublabel">Now Performing</span>
+                  <span className="mtv-portrait-name" style={{ color: singer.accentColor }}>
+                    {singer.fullName}
+                  </span>
+                </div>
+                <div className="mtv-portrait-badge" style={{ borderColor: singer.accentColor, color: singer.accentColor }}>
+                  {singer.specialty.split('•')[0].trim()}
+                </div>
+              </div>
+            </div>
 
-    <div className="mtv-portrait-overlay" />
-
-    <div className="mtv-portrait-live">
-      <span className="mtv-live-dot" />
-      LIVE
-    </div>
-
-    <div className="mtv-portrait-bottom">
-      <span className="mtv-portrait-sublabel">
-        Now Performing
-      </span>
-
-      <span
-        className="mtv-portrait-name"
-        style={{ color: singer.accentColor }}
-      >
-        {singer.fullName}
-      </span>
-    </div>
-
-    <div
-      className="mtv-portrait-badge"
-      style={{
-        borderColor: singer.accentColor,
-        color: singer.accentColor,
-      }}
-    >
-      {singer.specialty.split('•')[0].trim()}
-    </div>
-  </div>
-</div>
             {/* Specialty badge top-right corner of screen */}
           </div>
         ))}
