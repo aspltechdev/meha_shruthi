@@ -799,7 +799,7 @@ if (video1 && video2 && video3) {
 
       </div>
             {/* SOUND CONTROL */}
-      {videoLoaded && (
+      {/* {videoLoaded && (
         <button
           className="hero-pro__sound"
           onClick={() => {
@@ -836,7 +836,7 @@ if (video1 && video2 && video3) {
             />
           </svg>
         </button>
-      )}
+      )} */}
 
       {/* SCROLL INDICATOR */}
       <div className="hero-pro__scroll">

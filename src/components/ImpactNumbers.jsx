@@ -260,7 +260,7 @@ const ImpactNumbers = () => {
       </div>
 
       {/* Scroll Progress Ring */}
-      <div className="in-scroll-ring">
+      {/* <div className="in-scroll-ring">
         <svg viewBox="0 0 50 50">
           <circle cx="25" cy="25" r="22" fill="none" stroke="rgba(201,160,61,0.1)" strokeWidth="2" />
           <circle
@@ -276,7 +276,7 @@ const ImpactNumbers = () => {
           />
         </svg>
         <span className="in-ring-text">{Math.floor(scrollProgress * 100)}%</span>
-      </div>
+      </div> */}
     </section>
   );
 };

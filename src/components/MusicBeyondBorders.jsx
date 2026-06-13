@@ -1001,7 +1001,7 @@ const MusicBeyondBorders = () => {
         ))}
       </div>
 
-      {/* ========== SCROLL PROGRESS RING ========== */}
+      ========== SCROLL PROGRESS RING ==========
       <div className="mbb-cinematic-scroll-ring">
         <svg viewBox="0 0 50 50">
           <circle cx="25" cy="25" r="22" fill="none" stroke="rgba(201,160,61,0.2)" strokeWidth="2" />

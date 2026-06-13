@@ -378,7 +378,7 @@ const LegacySection = () => {
       </div>
 
       <div className="legacy-pro-scroll-ring">
-        <svg viewBox="0 0 50 50">
+        {/* <svg viewBox="0 0 50 50">
           <circle cx="25" cy="25" r="22" fill="none" stroke="rgba(201,160,61,0.15)" strokeWidth="2"/>
           <circle 
             cx="25" 
@@ -391,8 +391,8 @@ const LegacySection = () => {
             strokeDashoffset={138.2 * (1 - progress)}
             transform="rotate(-90 25 25)"
           />
-        </svg>
-        <span className="legacy-pro-ring-text">{Math.floor(progress * 100)}%</span>
+        </svg> */}
+        {/* <span className="legacy-pro-ring-text">{Math.floor(progress * 100)}%</span> */}
       </div>
     </section>
   );

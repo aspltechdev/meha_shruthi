@@ -319,7 +319,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Audio Visualizer */}
-      <div className="footer-pro-audio">
+      {/* <div className="footer-pro-audio">
         {[...Array(24)].map((_, i) => (
           <div
             key={i}
@@ -330,7 +330,7 @@ const Footer = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
  
     </footer>

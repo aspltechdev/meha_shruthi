@@ -578,7 +578,7 @@
   cursor: pointer;
 }
 
-.in-scroll-ring svg {
+/* .in-scroll-ring svg {
   width: 100%;
   height: 100%;
   transform: rotate(-90deg);
@@ -592,7 +592,7 @@
   font-size: 0.7rem;
   font-weight: 600;
   color: #c9a03d;
-}
+} */
 .in-premium-section::before {
   content: "";
   position: absolute;
