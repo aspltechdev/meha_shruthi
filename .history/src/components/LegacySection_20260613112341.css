@@ -1,0 +1,1018 @@
+/* LegacySection.css - Ultra Premium Cinematic */
+
+/* ============================================
+   Main Section
+   ============================================ */
+.legacy-pro-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 6rem 3rem;
+  overflow-x: hidden;
+  isolation: isolate;
+}
+
+/* ============================================
+   Background Video Layer
+   ============================================ */
+.legacy-pro-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.legacy-pro-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.00) contrast(1.05) saturate(1.2);
+  transition: opacity 1s ease;
+}
+
+.legacy-pro-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10, 10, 15, 0.7) 0%, rgba(20, 20, 25, 0.5) 100%);
+}
+
+.legacy-pro-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, transparent 30%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.legacy-pro-bg-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
+  pointer-events: none;
+}
+
+.legacy-pro-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 40%, rgba(201, 160, 61, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* ============================================
+   Loader
+   ============================================ */
+.legacy-pro-loader {
+  position: fixed;
+  inset: 0;
+  background: #0a0a0c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeOut 0.5s ease 1s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.legacy-pro-loader-spinner {
+  width: 50px;
+  height: 50px;
+  border: 2px solid rgba(201, 160, 61, 0.2);
+  border-top-color: #c9a03d;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   Cinematic Effects
+   ============================================ */
+.legacy-pro-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: background 0.1s ease;
+}
+
+.legacy-pro-rays {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.legacy-pro-ray {
+  position: absolute;
+  bottom: -50%;
+  width: 100px;
+  height: 150%;
+  background: linear-gradient(90deg, transparent, rgba(201, 160, 61, 0.08), transparent);
+  transform: skewX(-15deg) rotate(-15deg);
+  animation: legacyRayMove 12s linear infinite;
+}
+
+.legacy-pro-ray:nth-child(1) { left: 5%; animation-delay: 0s; width: 120px; }
+.legacy-pro-ray:nth-child(2) { left: 25%; animation-delay: -2.5s; width: 80px; }
+.legacy-pro-ray:nth-child(3) { left: 45%; animation-delay: -5s; width: 140px; }
+.legacy-pro-ray:nth-child(4) { left: 65%; animation-delay: -7.5s; width: 100px; }
+.legacy-pro-ray:nth-child(5) { left: 85%; animation-delay: -10s; width: 110px; }
+
+@keyframes legacyRayMove {
+  0% { transform: skewX(-15deg) rotate(-15deg) translateY(0); opacity: 0; }
+  30% { opacity: 1; }
+  70% { opacity: 0.5; }
+  100% { transform: skewX(-15deg) rotate(-15deg) translateY(-100%); opacity: 0; }
+}
+
+.legacy-pro-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.legacy-pro-particle {
+  position: absolute;
+  background: rgba(201, 160, 61, 0.4);
+  border-radius: 50%;
+  animation: legacyParticleFloat linear infinite;
+}
+
+@keyframes legacyParticleFloat {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  20% { opacity: 0.6; }
+  80% { opacity: 0.2; }
+  100% { transform: translateY(-100vh) scale(0); opacity: 0; }
+}
+
+.legacy-pro-grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ============================================
+   Main Container
+   ============================================ */
+.legacy-pro-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+/* ============================================
+   Left Side - Hero Content
+   ============================================ */
+.legacy-pro-left {
+  display: flex;
+  align-items: center;
+}
+
+.legacy-pro-content {
+  width: 100%;
+}
+
+.legacy-pro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.legacy-pro-badge-line {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9a03d, transparent);
+}
+
+.legacy-pro-badge-text {
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  color: #c9a03d;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.legacy-pro-headline {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin: 0 0 1rem;
+  font-weight: 400;
+  color: #fff;
+}
+
+.legacy-pro-headline-light {
+  display: block;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.legacy-pro-headline-gold {
+  display: block;
+  background: linear-gradient(135deg, #c9a03d, #ffd700);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+
+.legacy-pro-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.legacy-pro-divider-line {
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 160, 61, 0.5), transparent);
+}
+
+.legacy-pro-divider-diamond {
+  color: #c9a03d;
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+.legacy-pro-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+}
+
+/* Stats Cards */
+.legacy-pro-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.legacy-pro-stat-card {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(201, 160, 61, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.legacy-pro-stat-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(201, 160, 61, 0.5);
+}
+
+.legacy-pro-stat-number {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #c9a03d, #ffd700);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.legacy-pro-stat-label {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.legacy-pro-stat-glow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c9a03d, transparent);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.legacy-pro-stat-card:hover .legacy-pro-stat-glow {
+  transform: scaleX(1);
+}
+
+/* Progress Section */
+.legacy-pro-progress {
+  margin-bottom: 2rem;
+}
+
+.legacy-pro-progress-track {
+  height: 2px;
+  background: rgba(201, 160, 61, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.legacy-pro-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #c9a03d, #ffd700);
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+.legacy-pro-progress-years {
+  display: flex;
+  justify-content: space-between;
+}
+
+.legacy-pro-progress-year {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.legacy-pro-progress-year:hover {
+  color: #c9a03d;
+}
+
+.legacy-pro-progress-year.active {
+  color: #c9a03d;
+  font-weight: 600;
+}
+
+.legacy-pro-progress-year.completed {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Quote */
+.legacy-pro-quote {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(201, 160, 61, 0.08);
+  border-radius: 20px;
+  border-left: 3px solid #c9a03d;
+  margin-bottom: 1.5rem;
+}
+
+.legacy-pro-quote-icon {
+  font-size: 1.5rem;
+  font-family: 'Georgia', serif;
+  color: #c9a03d;
+  opacity: 0.5;
+  line-height: 1;
+}
+
+.legacy-pro-quote p {
+  flex: 1;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  font-style: italic;
+}
+
+/* Navigation Dots */
+.legacy-pro-nav-dots {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+.legacy-pro-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.legacy-pro-nav-dot:hover {
+  background: rgba(201, 160, 61, 0.6);
+  transform: scale(1.2);
+}
+
+.legacy-pro-nav-dot.active {
+  width: 28px;
+  border-radius: 4px;
+  background: #c9a03d;
+}
+
+/* ============================================
+   Right Side - Active Card
+   ============================================ */
+.legacy-pro-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.legacy-pro-active-card {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  background: rgba(20, 20, 25, 0.9);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 160, 61, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  animation: cardFadeIn 0.5s ease;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card Media */
+.legacy-pro-card-media {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.legacy-pro-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.legacy-pro-active-card:hover .legacy-pro-card-media img {
+  transform: scale(1.05);
+}
+
+.legacy-pro-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.legacy-pro-card-gradient {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+}
+
+/* Year Badge */
+.legacy-pro-card-year {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #c9a03d;
+  letter-spacing: 1px;
+  z-index: 2;
+}
+
+/* Corner Accents */
+.legacy-pro-card-corner {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-color: #c9a03d;
+  border-style: solid;
+  opacity: 0.8;
+  z-index: 3;
+}
+
+.legacy-pro-card-corner.tl {
+  top: 15px;
+  left: 15px;
+  border-width: 2px 0 0 2px;
+}
+
+.legacy-pro-card-corner.tr {
+  top: 15px;
+  right: 15px;
+  border-width: 2px 2px 0 0;
+}
+
+.legacy-pro-card-corner.bl {
+  bottom: 15px;
+  left: 15px;
+  border-width: 0 0 2px 2px;
+}
+
+.legacy-pro-card-corner.br {
+  bottom: 15px;
+  right: 15px;
+  border-width: 0 2px 2px 0;
+}
+
+/* Card Content */
+.legacy-pro-card-content {
+  padding: 1.5rem;
+}
+
+.legacy-pro-card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+  color: #fff;
+}
+
+.legacy-pro-card-subtitle {
+  font-size: 0.75rem;
+  color: #c9a03d;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.legacy-pro-card-desc {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Card Stats */
+.legacy-pro-card-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(201, 160, 61, 0.2);
+  margin-bottom: 1rem;
+}
+
+.legacy-pro-card-stat {
+  flex: 1;
+  text-align: center;
+}
+
+.legacy-pro-card-stat-value {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #c9a03d;
+}
+
+.legacy-pro-card-stat-label {
+  display: block;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.legacy-pro-card-stat-divider {
+  width: 1px;
+  height: 25px;
+  background: rgba(201, 160, 61, 0.3);
+}
+
+/* Card Link */
+.legacy-pro-card-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #c9a03d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.legacy-pro-card-link:hover {
+  gap: 0.5rem;
+}
+
+.legacy-pro-card-link-text:hover {
+  opacity: 0.8;
+}
+
+.legacy-pro-card-arrow {
+  transition: transform 0.3s ease;
+}
+
+.legacy-pro-card-link:hover .legacy-pro-card-arrow {
+  transform: translateX(5px);
+}
+
+/* Energy Rings */
+.legacy-pro-card-energy {
+  position: absolute;
+  inset: -20px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.legacy-pro-energy-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(201, 160, 61, 0.2);
+  border-radius: 50%;
+  opacity: 0;
+  animation: energyRingPulse 3s ease-out infinite;
+}
+
+.legacy-pro-energy-ring.ring-2 {
+  width: calc(100% + 60px);
+  height: calc(100% + 60px);
+  animation-delay: 1s;
+}
+
+.legacy-pro-energy-ring.ring-3 {
+  width: calc(100% + 120px);
+  height: calc(100% + 120px);
+  animation-delay: 2s;
+}
+
+@keyframes energyRingPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Navigation Arrows */
+.legacy-pro-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(201, 160, 61, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #c9a03d;
+  z-index: 10;
+}
+
+.legacy-pro-nav-arrow:hover {
+  background: #c9a03d;
+  color: #0a0a0c;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.legacy-pro-nav-arrow.prev {
+  left: -60px;
+}
+
+.legacy-pro-nav-arrow.next {
+  right: -60px;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.legacy-pro-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 5rem;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 60px;
+  position: relative;
+  z-index: 10;
+}
+
+.legacy-pro-footer-line {
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 160, 61, 0.4), transparent);
+}
+
+.legacy-pro-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.legacy-pro-footer-diamond {
+  color: #c9a03d;
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+.legacy-pro-footer-text {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* ============================================
+   Audio Visualizer
+   ============================================ */
+.legacy-pro-audio {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3px;
+  height: 50px;
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* .legacy-pro-audio-bar {
+  width: 4px;
+  background: linear-gradient(180deg, #c9a03d, #ffd700);
+  border-radius: 2px;
+  animation: audioPulse 0.8s ease-in-out infinite alternate;
+} */
+
+@keyframes audioPulse {
+  0% { transform: scaleY(0.3); opacity: 0.3; }
+  100% { transform: scaleY(1); opacity: 0.9; }
+}
+
+/* ============================================
+   Scroll Progress Ring
+   ============================================ */
+.legacy-pro-scroll-ring {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.legacy-pro-scroll-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.legacy-pro-ring-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #c9a03d;
+}
+
+/* ============================================
+   Scroll Hint
+   ============================================ */
+.legacy-pro-scroll-hint {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  padding: 8px 16px;
+  border-radius: 40px;
+}
+
+.legacy-pro-scroll-text {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.legacy-pro-scroll-mouse {
+  width: 22px;
+  height: 34px;
+  border: 1.5px solid rgba(201, 160, 61, 0.6);
+  border-radius: 12px;
+  position: relative;
+}
+
+.legacy-pro-scroll-wheel {
+  width: 3px;
+  height: 6px;
+  background: #c9a03d;
+  border-radius: 2px;
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollWheel 2s infinite;
+}
+
+@keyframes scrollWheel {
+  0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+  100% { transform: translateX(-50%) translateY(12px); opacity: 0; }
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 1024px) {
+  .legacy-pro-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .legacy-pro-left {
+    text-align: center;
+  }
+  
+  .legacy-pro-badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .legacy-pro-divider {
+    justify-content: center;
+  }
+  
+  .legacy-pro-stats {
+    justify-content: center;
+  }
+  
+  .legacy-pro-quote {
+    justify-content: center;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .legacy-pro-nav-dots {
+    justify-content: center;
+  }
+  
+  .legacy-pro-nav-arrow.prev {
+    left: -40px;
+  }
+  
+  .legacy-pro-nav-arrow.next {
+    right: -40px;
+  }
+  
+  .legacy-pro-active-card {
+    max-width: 450px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .legacy-pro-section {
+    padding: 4rem 1.5rem;
+  }
+  
+  .legacy-pro-stats {
+    flex-direction: column;
+  }
+  
+  .legacy-pro-stat-card {
+    width: 100%;
+  }
+  
+  .legacy-pro-nav-arrow {
+    display: none;
+  }
+  
+  .legacy-pro-active-card {
+    max-width: 380px;
+  }
+  
+  .legacy-pro-card-media {
+    height: 180px;
+  }
+  
+  .legacy-pro-card-title {
+    font-size: 1.1rem;
+  }
+  
+  .legacy-pro-card-desc {
+    font-size: 0.75rem;
+  }
+  
+  .legacy-pro-card-stats {
+    gap: 1rem;
+  }
+  
+  .legacy-pro-card-stat-value {
+    font-size: 0.85rem;
+  }
+  
+  .legacy-pro-footer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .legacy-pro-footer-line {
+    width: 100%;
+    max-width: 150px;
+  }
+  
+  .legacy-pro-scroll-ring,
+  .legacy-pro-scroll-hint {
+    display: none;
+  }
+  
+  .legacy-pro-audio {
+    display: none;
+  }
+  
+  .legacy-pro-rays {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .legacy-pro-active-card {
+    max-width: 320px;
+  }
+  
+  .legacy-pro-card-media {
+    height: 160px;
+  }
+  
+  .legacy-pro-card-content {
+    padding: 1rem;
+  }
+  
+  .legacy-pro-card-title {
+    font-size: 1rem;
+  }
+  
+  .legacy-pro-card-subtitle {
+    font-size: 0.65rem;
+  }
+  
+  .legacy-pro-card-desc {
+    font-size: 0.7rem;
+  }
+  
+  .legacy-pro-headline {
+    font-size: 2rem;
+  }
+  
+  .legacy-pro-description {
+    font-size: 0.85rem;
+  }
+  
+  .legacy-pro-stat-number {
+    font-size: 1.4rem;
+  }
+  
+  .legacy-pro-quote p {
+    font-size: 0.8rem;
+  }
+}
+
+/* ============================================
+   Selection
+   ============================================ */
+::selection {
+  background: #c9a03d;
+  color: #0a0a0c;
+}

@@ -1,0 +1,134 @@
+.mbb-layout-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 60px 24px;
+  overflow: hidden;
+  background: #0f0f0f;
+}
+
+.mbb-layout-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.mbb-layout-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mbb-layout-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10,10,10,0.92), rgba(20,10,5,0.88));
+}
+
+.mbb-layout-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* ===== TWO-COLUMN LAYOUT ===== */
+.mbb-layout-main {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  align-items: stretch;
+  min-height: calc(100vh - 120px);
+}
+
+/* ===== LEFT: STACKED IMAGE CARDS ===== */
+.mbb-layout-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.mbb-layout-card {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  border-radius: 18px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: mbbFadeUp 0.55s ease forwards;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  background: #111;
+}
+
+.mbb-layout-card.active {
+  transform: translateY(0) scale(1.01);
+}
+
+.mbb-layout-card-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+}
+
+.mbb-layout-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.mbb-layout-card:hover .mbb-layout-card-image img {
+  transform: scale(1.05);
+}
+
+.mbb-layout-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85) 0%,
+    rgba(0,0,0,0.35) 45%,
+    rgba(0,0,0,0.05) 100%
+  );
+}
+
+.mbb-layout-card-flag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 3;
+  font-size: 22px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(6px);
+}
+
+.mbb-layout-card-year {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  padding: 7px 11px;
+  border-radius: 10px;
+  background: #c9a03d;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.mbb-layout-card-content {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  left: 22px;
+  z-index: 3;
+  text-align: right;
+  color: #fff;
+}
+
+.mbb-layout-card-number {
+  color:

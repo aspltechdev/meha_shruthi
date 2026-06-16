@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+.mbb-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f8f2e7 0%, #efe5d2 100%);
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+}
+
+.mbb-hero-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.mbb-hero-left {
+  max-width: 620px;
+}
+
+.mbb-hero-kicker {
+  margin: 0 0 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b8872f;
+}
+
+.mbb-hero-title {
+  margin: 0;
+  font-size: clamp(3rem, 5.5vw, 5.8rem);
+  line-height: 0.95;
+  font-weight: 800;
+  color: #1f1b17;
+  letter-spacing: -0.05em;
+}
+
+.mbb-hero-desc {
+  margin: 22px 0 34px;
+  max-width: 560px;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(31, 27, 23, 0.72);
+}
+
+.mbb-hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 34px;
+}
+
+.mbb-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 14px 26px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.mbb-btn:hover {
+  transform: translateY(-2px);
+}
+
+.mbb-btn-primary {
+  background: #111;
+  color: #fff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.mbb-btn-primary:hover {
+  background: #000;
+}
+
+.mbb-btn-secondary {
+  background: transparent;
+  color: #111;
+  border: 1px solid rgba(17, 17, 17, 0.18);
+}
+
+.mbb-hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.mbb-stat-number {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #1f1b17;
+}
+
+.mbb-hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mbb-collage {
+  position: relative;
+  width: min(100%, 560px);
+  height: 520px;
+}
+
+.mbb-collage-card {
+  position: absolute;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
+  background: #ddd;
+}
+
+.mbb-collage-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mbb-card-1 {
+  width: 300px;
+  height: 210px;
+  top: 48px;
+  right: 56px;
+  transform: rotate(4deg);
+  z-index: 2;
+}
+
+.mbb-card-2 {
+  width: 330px;
+  height: 230px;
+  top: 190px;
+  right: 0;
+  transform: rotate(-6deg);
+  z-index: 3;
+}
+
+.mbb-collage-ring {
+  position: absolute;
+  top: 118px;
+  right: 265px;
+  width: 28px;
+  height: 28px;
+  border: 3px solid #111;
+  border-radius: 50%;
+  background: transparent;
+  z-index: 4;
+}
+
+@media (max-width: 1024px) {
+  .mbb-hero-container {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .mbb-hero-left {
+    max-width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .mbb-hero-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mbb-hero-actions,
+  .mbb-hero-stats {
+    justify-content: center;
+  }
+
+  .mbb-hero-right {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .mbb-hero {
+    padding: 28px 16px;
+  }
+
+  .mbb-hero-title {
+    font-size: 2.5rem;
+  }
+
+  .mbb-collage {
+    height: 380px;
+  }
+
+  .mbb-card-1 {
+    width: 230px;
+    height: 165px;
+    right: 28px;
+  }
+
+  .mbb-card-2 {
+    width: 250px;
+    height: 175px;
+    top: 145px;
+  }
+
+  .mbb-collage-ring {
+    right: 180px;
+    top: 100px;
+  }
+}

@@ -621,7 +621,7 @@ const TrustedBy = () => {
       </div>
 
       {/* Bottom Energy Bars - Light */}
-      <div className="trusted-light-audio">
+      {/* <div className="trusted-light-audio">
         {[...Array(24)].map((_, i) => (
           <div
             key={i}
@@ -632,7 +632,7 @@ const TrustedBy = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
     </section>
   );
 };

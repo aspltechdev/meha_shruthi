@@ -1104,11 +1104,18 @@ import Design from '../assets/Design.jpeg';
 import Moments1 from '../assets/Moments1.jpeg';
 import Moments2 from '../assets/Moments2.jpeg';
 import Scenes from '../assets/Scenes.jpeg';
+import imageo from '../assets/music.jpeg';
+import nandhini from "../assets/nandini.png";
+import julie from "../assets/julie.png";
+import magic from "../assets/magic.png";
+import anchor1 from "../assets/anchor2.png";
+import anchor2 from "../assets/anchortwo.png";
 
 const gallery = [
   { src: Performance1, orientation: "portrait", category: "Live Performance" },
   { src: Performance2, orientation: "landscape", category: "Live Performance" },
   { src: Performance3, orientation: "square", category: "Live Performance" },
+  
 
   { src: Stage1, orientation: "landscape", category: "Backstage" },
   { src: Stage2, orientation: "portrait", category: "Backstage" },
@@ -1121,7 +1128,15 @@ const gallery = [
   { src: Moments1, orientation: "portrait", category: "Crowd Moments" },
   { src: Moments2, orientation: "square", category: "Crowd Moments" },
 
-  { src: Scenes, orientation: "portrait", category: "Behind The Scenes" }
+  { src: Scenes, orientation: "portrait", category: "Behind The Scenes" },
+  { src: imageo, orientation: "portrait", category: "Live Performance" },
+  { src: nandhini, orientation: "portrait", category: "Artist Portrait" },
+  {src: julie, orientation: "square", category: "Artist Portrait" },
+  {src: magic, orientation: "landscape", category: "Artist Portrait" },
+    {src: anchor1, orientation: "square", category: "Artist Portrait" },
+
+      {src: anchor2, orientation: "square", category: "Artist Portrait" },
+
    
 ];
 

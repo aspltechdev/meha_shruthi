@@ -364,7 +364,7 @@ const LegacySection = () => {
         <div className="legacy-pro-footer-line"></div>
       </div>
 
-      <div className="legacy-pro-audio">
+      {/* <div className="legacy-pro-audio">
         {[...Array(24)].map((_, i) => (
           <div
             key={i}
@@ -375,7 +375,7 @@ const LegacySection = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
       <div className="legacy-pro-scroll-ring">
         <svg viewBox="0 0 50 50">

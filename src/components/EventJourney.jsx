@@ -486,6 +486,7 @@ const EventJourney = () => {
 
         {/* LEFT — image */}
         <div className="ej-col-image">
+          
           <div className="ej-image-frame">
             {journeySteps.map((step, i) => (
               <div
@@ -666,7 +667,7 @@ const EventJourney = () => {
       </footer>
 
       {/* Energy bars */}
-      <div className="ej-energy" aria-hidden="true">
+      {/* <div className="ej-energy" aria-hidden="true">
         {energyBarsRef.current.map((bar, i) => (
           <div
             key={i}
@@ -674,7 +675,7 @@ const EventJourney = () => {
             style={bar}
           />
         ))}
-      </div>
+      </div> */}
     </section>
   );
 };

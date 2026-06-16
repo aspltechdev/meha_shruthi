@@ -1,0 +1,755 @@
+/* =========================================================
+   MUSIC BEYOND BORDERS — PREMIUM EXPERIENCES STYLE
+========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* =========================================================
+   ROOT SECTION
+========================================================= */
+
+.mbb-cinematic-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  padding: 0 0 120px;
+  background: linear-gradient(
+    180deg,
+    #54524d 0%,
+    #c7bc80 45%,
+    #212017 100%
+  );
+  font-family: "Inter", sans-serif;
+  isolation: isolate;
+}
+
+/* =========================================================
+   TEXTURE
+========================================================= */
+
+.mbb-cinematic-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: radial-gradient(rgba(201, 160, 61, 0.25) 1px, transparent 1px);
+  background-size: 12px 12px;
+  z-index: 0;
+}
+
+/* =========================================================
+   GOLD GLOWS
+========================================================= */
+
+.mbb-cinematic-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at left top, rgba(201, 160, 61, 0.12), transparent 35%),
+    radial-gradient(circle at right bottom, rgba(201, 160, 61, 0.08), transparent 35%);
+  filter: blur(90px);
+  z-index: 0;
+}
+
+/* =========================================================
+   BACKGROUND HERO
+========================================================= */
+
+.mbb-cinematic-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.mbb-cinematic-bg-video-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Static fallback image — hidden when video loads */
+.mbb-cinematic-bg > img.mbb-cinematic-bg-video {
+  display: none;
+}
+
+.mbb-cinematic-bg-video {
+  width: 1800px;
+  max-width: none;
+  object-fit: contain;
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  filter: saturate(1.05) brightness(1.05);
+  transform: scale(1.08) translateY(80px);
+  animation: heroFloat 16s ease-in-out infinite;
+}
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.mbb-cinematic-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(63, 63, 59, 0.35), rgba(37, 36, 30, 0.45));
+  z-index: 2;
+}
+
+.mbb-cinematic-bg-gradient,
+.mbb-cinematic-bg-vignette,
+.mbb-cinematic-bg-pattern {
+  display: none;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.mbb-cinematic-container {
+  position: relative;
+  z-index: 20;
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 40px;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.mbb-cinematic-header {
+  position: relative;
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+  padding-top: 90px;
+  z-index: 20;
+}
+
+/* =========================================================
+   BADGE
+========================================================= */
+
+.mbb-cinematic-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.mbb-cinematic-badge-line {
+  width: 140px;
+  height: 1px;
+  background: rgba(201, 160, 61, 0.4);
+}
+
+.mbb-cinematic-badge-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  border-radius: 999px;
+  background: rgba(23, 22, 21, 0.92);
+  border: 1px solid rgba(201, 160, 61, 0.18);
+  color: #c9a03d;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.mbb-cinematic-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(3.8rem, 7vw, 7rem);
+  line-height: 0.9;
+  font-weight: 700;
+  color: #2c1a12;
+  margin-bottom: 18px;
+  animation: titleFloat 5s ease-in-out infinite;
+}
+
+.mbb-cinematic-title-light {
+  display: block;
+  color: #c9a03d;
+}
+
+.mbb-cinematic-title-bold {
+  display: block;
+  color: #c9a03d;
+  margin-top: 8px;
+  background: none;
+  -webkit-text-fill-color: unset;
+}
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.mbb-cinematic-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.mbb-cinematic-divider-line {
+  width: 120px;
+  height: 1px;
+  background: rgba(201, 160, 61, 0.4);
+}
+
+.mbb-cinematic-divider-diamond {
+  color: #c9a03d;
+}
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.mbb-cinematic-subtitle {
+  max-width: 900px;
+  margin: 20px auto 0;
+  padding: 16px 24px;
+  border-radius: 18px;
+  background: rgba(255, 248, 240, 0.52);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(201, 160, 61, 0.12);
+  color: #4f382b;
+  line-height: 1.8;
+  font-size: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.mbb-cinematic-stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 40px;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  border-radius: 60px;
+  border: 1px solid rgba(201, 160, 61, 0.18);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.mbb-cinematic-stat {
+  text-align: center;
+  position: relative;
+}
+
+.mbb-cinematic-stat-number {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #c9a03d;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.mbb-cinematic-stat-label {
+  font-size: 0.7rem;
+  color: rgba(59, 36, 22, 0.75);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.mbb-cinematic-stat-sep {
+  color: #c9a03d;
+  opacity: 0.6;
+}
+
+.mbb-cinematic-stat-glow {
+  display: none;
+}
+
+/* =========================================================
+   MAP (hidden)
+========================================================= */
+
+.mbb-cinematic-map {
+  display: none;
+}
+
+/* =========================================================
+   SPLIT LAYOUT — Left: stacked images | Right: all text
+========================================================= */
+
+.mbb-split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 4rem auto 0;
+  align-items: start;
+}
+
+/* LEFT: stacked image cards */
+.mbb-split-images {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Image-only card */
+.mbb-image-only-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(201, 160, 61, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  animation: cardAppear 0.6s ease forwards;
+  opacity: 0;
+}
+
+.mbb-image-only-card .mbb-cinematic-card-media {
+  height: 260px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mbb-image-only-card .mbb-cinematic-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.mbb-image-only-card:hover .mbb-cinematic-card-media img,
+.mbb-image-only-card.hovered .mbb-cinematic-card-media img {
+  transform: scale(1.06);
+}
+
+.mbb-image-only-card.active {
+  border-color: rgba(201, 160, 61, 0.55);
+  box-shadow: 0 0 30px rgba(201, 160, 61, 0.3);
+}
+
+.mbb-image-only-card.hovered {
+  transform: translateY(-5px);
+  border-color: rgba(201, 160, 61, 0.6);
+}
+
+/* Image card glow on hover */
+.mbb-image-only-card .mbb-cinematic-card-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(201, 160, 61, 0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.mbb-image-only-card:hover .mbb-cinematic-card-glow,
+.mbb-image-only-card.hovered .mbb-cinematic-card-glow {
+  opacity: 1;
+}
+
+/* Corner accents */
+.mbb-cinematic-card-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.mbb-cinematic-card-corner.tl { top: 8px;  left: 8px;  border-top: 1.5px solid #c9a03d; border-left: 1.5px solid #c9a03d; }
+.mbb-cinematic-card-corner.tr { top: 8px;  right: 8px; border-top: 1.5px solid #c9a03d; border-right: 1.5px solid #c9a03d; }
+.mbb-cinematic-card-corner.bl { bottom: 8px; left: 8px;  border-bottom: 1.5px solid #c9a03d; border-left: 1.5px solid #c9a03d; }
+.mbb-cinematic-card-corner.br { bottom: 8px; right: 8px; border-bottom: 1.5px solid #c9a03d; border-right: 1.5px solid #c9a03d; }
+
+.mbb-image-only-card.active .mbb-cinematic-card-corner,
+.mbb-image-only-card.hovered .mbb-cinematic-card-corner {
+  opacity: 1;
+}
+
+/* RIGHT: stacked text blocks */
+.mbb-split-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.mbb-text-block {
+  padding: 2rem 0;
+  opacity: 0.45;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateX(12px);
+}
+
+.mbb-text-block.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mbb-text-block-sep {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(201, 160, 61, 0.35), transparent);
+  margin: 0.25rem 0;
+}
+
+/* Text block — number */
+.mbb-text-block .mbb-cinematic-card-number {
+  position: static;           /* override absolute from base card style */
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: #c9a03d;
+  font-weight: 700;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: unset;
+  margin-bottom: 0.5rem;
+}
+
+/* Text block — title */
+.mbb-text-block .mbb-cinematic-card-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff8f0;
+  margin: 0 0 0.5rem;
+  line-height: 1.1;
+}
+
+/* Text block — location */
+.mbb-text-block .mbb-cinematic-card-location {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(255, 248, 240, 0.6);
+  font-size: 0.82rem;
+  margin: 0 0 0.35rem;
+}
+
+/* Text block — venue */
+.mbb-text-block .mbb-cinematic-card-venue {
+  color: #d4af37;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  font-style: normal;
+}
+
+/* Text block — description */
+.mbb-text-block .mbb-cinematic-card-desc {
+  color: rgba(255, 248, 240, 0.78);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+/* Text block — divider line */
+.mbb-text-block .mbb-cinematic-card-line {
+  width: 40px;
+  height: 1.5px;
+  background: linear-gradient(90deg, #c9a03d, transparent);
+  margin-bottom: 0.75rem;
+}
+
+/* Text block — tag */
+.mbb-text-block .mbb-cinematic-card-tag {
+  display: inline-block;
+  padding: 4px 14px;
+  border: 1px solid rgba(201, 160, 61, 0.38);
+  border-radius: 50px;
+  color: #f0d06a;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(201, 160, 61, 0.08);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.mbb-cinematic-footer {
+  position: relative;
+  margin-top: 100px;
+  padding: 50px 40px;
+  border-radius: 32px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 162, 39, 0.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+}
+
+.mbb-cinematic-footer-line {
+  width: 120px;
+  height: 1px;
+  margin: 0 auto 30px;
+  background: rgba(201, 162, 39, 0.4);
+}
+
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.mbb-cinematic-footer-quote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.mbb-cinematic-quote-mark {
+  font-size: 3rem;
+  line-height: 1;
+  color: #c9a03d;
+  opacity: 0.6;
+}
+
+.mbb-cinematic-quote-text {
+  text-align: center;
+}
+
+.mbb-cinematic-quote-text span {
+  display: block;
+  font-size: 1rem;
+  color: #6c5a4d;
+}
+
+.mbb-cinematic-quote-text strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.2rem;
+  color: #7b2d26;
+  font-weight: 700;
+}
+
+/* =========================================================
+   FLAGS
+========================================================= */
+
+.mbb-cinematic-footer-flags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.mbb-cinematic-flag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(201, 162, 39, 0.18);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.03);
+}
+
+.mbb-cinematic-flag-icon {
+  font-size: 1rem;
+}
+
+.mbb-cinematic-flag-name {
+  font-size: 0.8rem;
+  color: #5c4a3e;
+  font-weight: 600;
+}
+
+/* =========================================================
+   CTA BUTTON
+========================================================= */
+
+.mbb-cinematic-cta {
+  position: relative;
+  border: none;
+  padding: 16px 34px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #c9a03d, #d8b55a);
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 10px 25px rgba(201, 160, 61, 0.35);
+}
+
+.mbb-cinematic-cta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px rgba(201, 160, 61, 0.45);
+}
+
+.mbb-cinematic-cta svg {
+  transition: transform 0.3s ease;
+}
+
+.mbb-cinematic-cta:hover svg {
+  transform: translateX(6px);
+}
+
+.mbb-cinematic-cta-shine {
+  display: none;
+}
+
+/* =========================================================
+   HIDDEN COMPONENTS
+========================================================= */
+
+.mbb-cinematic-audio,
+.mbb-cinematic-scroll-ring,
+.mbb-cinematic-scroll-hint,
+.mbb-cinematic-timeline,
+.mbb-cinematic-rays,
+.mbb-cinematic-loader,
+.mbb-cinematic-grid {   /* old grid no longer used */
+  display: none;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(80px) scale(1.08); }
+  50%       { transform: translateY(60px) scale(1.08); }
+}
+
+@keyframes titleFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes cardAppear {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1200px) {
+  .mbb-split-layout {
+    max-width: 900px;
+    gap: 2rem;
+  }
+
+  .mbb-cinematic-title {
+    font-size: clamp(3rem, 5vw, 5rem);
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .mbb-cinematic-section {
+    padding-bottom: 80px;
+  }
+
+  .mbb-cinematic-container {
+    padding: 0 20px;
+  }
+
+  .mbb-cinematic-header {
+    padding-top: 60px;
+  }
+
+  .mbb-split-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  /* On mobile show text blocks fully opaque and unshifted */
+  .mbb-text-block {
+    opacity: 1;
+    transform: none;
+    padding: 1.25rem 0;
+  }
+
+  .mbb-image-only-card .mbb-cinematic-card-media {
+    height: 200px;
+  }
+
+  .mbb-cinematic-title {
+    font-size: 3rem;
+    line-height: 0.95;
+  }
+
+  .mbb-cinematic-subtitle {
+    font-size: 0.95rem;
+    padding: 14px 18px;
+  }
+
+  .mbb-cinematic-stats {
+    gap: 1rem;
+    padding: 0.9rem 1.3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .mbb-cinematic-footer {
+    margin: 80px 0 0;
+    padding: 40px 24px;
+  }
+
+  .mbb-cinematic-footer-quote {
+    gap: 10px;
+  }
+
+  .mbb-cinematic-quote-mark {
+    font-size: 2rem;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .mbb-image-only-card .mbb-cinematic-card-media {
+    height: 180px;
+  }
+
+  .mbb-text-block .mbb-cinematic-card-title {
+    font-size: 1.8rem;
+  }
+
+  .mbb-cinematic-flag-name {
+    display: none;
+  }
+}
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+  background: #c9a03d;
+  color: white;
+}

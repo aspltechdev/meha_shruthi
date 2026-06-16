@@ -278,7 +278,7 @@ const Footer = () => {
                 <span>YouTube</span>
                 <span className="footer-pro-social-arrow">→</span>
               </a>
-              <a href="#" className="footer-pro-social-link">
+              {/* <a href="#" className="footer-pro-social-link">
                 <FacebookIcon />
                 <span>Facebook</span>
                 <span className="footer-pro-social-arrow">→</span>
@@ -287,7 +287,7 @@ const Footer = () => {
                 <TwitterIcon />
                 <span>Twitter</span>
                 <span className="footer-pro-social-arrow">→</span>
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

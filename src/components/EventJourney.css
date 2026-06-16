@@ -654,3 +654,24 @@
   background: #c9a03d;
   color: #fff;
 }
+.blobs {
+  
+  width: 500px;
+  height: 500px;
+  background-color: #ef2f0d; 
+  border-radius: 40% 60% 65% 35% / 40% 35% 65% 60%;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  z-index: 0;
+}
+.blobs {
+  position: relative;
+}
+
+.blobs img {
+  position: absolute;
+  left: 10%;
+  top: 15%;           
+  
+}

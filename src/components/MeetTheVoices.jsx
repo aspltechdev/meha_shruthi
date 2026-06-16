@@ -4,16 +4,109 @@ import m1 from "../assets/sridaran.png";
 import m2 from "../assets/meeramam.png";
 import meeraVideo from "../assets/meeramam.mp4";
 import kaushikVideo from "../assets/vidtwo.mp4";
+import julie from "../assets/julie.png";
+import nandini from "../assets/nandini.png";
+import nandiniVideo from "../assets/nandini.mp4";
+import julieVideo from "../assets/julie.mp4";
+import Suresh from "../assets/suresh.png";
+import voice from "../assets/voice.png";
+import sureshvideo from "../assets/suresh.mp4";
 
 const MeetTheVoices = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [progress, setProgress] = useState(0);
   const sectionRef = useRef(null);
-  const bgRefMeera = useRef(null);
-  const bgRefKaushik = useRef(null);
-  const portraitRefMeera = useRef(null);
-  const portraitRefKaushik = useRef(null);
+
+  const bgRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
+  const portraitRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
+
+  const singers = [
+    {
+      id: 0,
+      uniqueId: 'kaushik-the-performer',
+      name: 'KAUSHIK SRIDHARAN',
+      fullName: 'Kaushik Sridharan',
+      title: 'The Stage Virtuoso',
+      role: 'Lead Performer & Super Singer',
+      specialty: 'Versatile • Energetic • Magical',
+      description: 'From Super Singer to international stages, Kaushik brings electrifying energy while honoring every musical tradition.',
+      quote: 'Every celebration under our banner becomes an eternal memory',
+      videoUrl: kaushikVideo,
+      posterImage: voice,
+      stats: [
+        { value: '500+', label: 'Concerts' },
+        { value: '7+', label: 'Countries' },
+        { value: '15+', label: 'Awards' },
+      ],
+      achievements: ['Super Singer Fame', 'International Tour', 'Trendsetter Award'],
+      accentColor: '#d4a843',
+      tintColor: 'rgba(255, 255, 255, 0.08)',
+    },
+    {
+      id: 1,
+      uniqueId: 'nandini-the-melodist',
+      name: 'NANDINI SAGAR',
+      fullName: 'Nandini Sagar',
+      title: 'The Melody Maestro',
+      role: 'Playback Vocalist & Media Celebrity',
+      specialty: 'Classical • Fusion • Contemporary',
+      description: 'Captivates audiences with powerful vocals and unforgettable live performances.',
+      quote: 'Music is the language my soul speaks to the world',
+      videoUrl: nandiniVideo,
+      posterImage: nandini,
+      stats: [
+        { value: '15+', label: 'Years' },
+        { value: '500+', label: 'Shows' },
+        { value: '25+', label: 'Awards' },
+      ],
+      achievements: ['Media Celebrity', 'Playback Artist', 'Concert Performer'],
+      accentColor: '#d4a843',
+      tintColor: 'rgba(255, 255, 255, 0.08)',
+    },
+    {
+      id: 2,
+      uniqueId: 'julie-the-songstress',
+      name: 'JULIE DALE MARINE',
+      fullName: 'Julie Dale Marine',
+      title: 'The Stage Songstress',
+      role: 'Vocalist & Live Performer',
+      specialty: 'Pop • Soul • Live Performance',
+      description: 'Energizes every stage with powerful vocals and charisma.',
+      quote: 'The stage is where my music truly comes alive',
+      videoUrl: julieVideo,
+      posterImage: julie,
+      stats: [
+        { value: '12+', label: 'Years' },
+        { value: '400+', label: 'Shows' },
+        { value: '20+', label: 'Awards' },
+      ],
+      achievements: ['Live Performer', 'Vocalist', 'Stage Artist'],
+      accentColor: '#d4a843',
+      tintColor: 'rgba(255, 255, 255, 0.08)',
+    },
+    {
+      id: 3,
+      uniqueId: 'vanathi-the-virtuoso',
+      name: 'VANATHI SURESH',
+      fullName: 'Vanathi Suresh',
+      title: 'The Classical Crescendo',
+      role: 'Vocalist & Carnatic Fusion Artist',
+      specialty: 'Carnatic • Fusion • Devotional',
+      description: 'Weaves classical depth into every performance, bringing tradition and soul together on stage.',
+      quote: 'In every raga, I find a new way to connect hearts',
+      videoUrl: sureshvideo,
+      posterImage: Suresh,
+      stats: [
+        { value: '10+', label: 'Years' },
+        { value: '300+', label: 'Shows' },
+        { value: '18+', label: 'Awards' },
+      ],
+      achievements: ['Carnatic Virtuoso', 'Fusion Artist', 'Stage Performer'],
+      accentColor: '#d4a843',
+      tintColor: 'rgba(255, 255, 255, 0.08)',
+    },
+  ];
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -30,8 +123,12 @@ const MeetTheVoices = () => {
       const rect = sectionRef.current.getBoundingClientRect();
       const scrollProgress = -rect.top / (rect.height - window.innerHeight);
       setProgress(Math.min(1, Math.max(0, scrollProgress)));
-      if (scrollProgress < 0.5) setActiveIndex(0);
-      else setActiveIndex(1);
+      const total = singers.length;
+      const segment = 1 / total;
+      const index = Math.min(total - 1, Math.floor(scrollProgress / segment));
+      if (scrollProgress >= 0 && scrollProgress <= 1) {
+        setActiveIndex(index);
+      }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -44,63 +141,15 @@ const MeetTheVoices = () => {
   }, []);
 
   useEffect(() => {
-    if (activeIndex === 0) {
-      bgRefMeera.current?.play().catch(() => {});
-      portraitRefMeera.current?.play().catch(() => {});
-      bgRefKaushik.current?.pause();
-      portraitRefKaushik.current?.pause();
-    } else {
-      bgRefKaushik.current?.play().catch(() => {});
-      portraitRefKaushik.current?.play().catch(() => {});
-      bgRefMeera.current?.pause();
-      portraitRefMeera.current?.pause();
-    }
+    bgRefs.forEach((ref, i) => {
+      if (i === activeIndex) ref.current?.play().catch(() => {});
+      else ref.current?.pause();
+    });
+    portraitRefs.forEach((ref, i) => {
+      if (i === activeIndex) ref.current?.play().catch(() => {});
+      else ref.current?.pause();
+    });
   }, [activeIndex]);
-
-  const singers = [
-    {
-      id: 0,
-      uniqueId: 'meera-the-visionary',
-      name: 'MEERA SRIDHARAN',
-      fullName: 'Meera Sridharan',
-      title: 'The Visionary Voice',
-      role: 'Founder & Lead Vocalist',
-      specialty: 'Carnatic • Classical • Soul',
-      description: 'A voice that carries the soul of tradition, Meera transforms every performance into a spiritual journey through Indian classical music.',
-      quote: 'Music flows through my veins like the sacred rivers of Bharath',
-      videoUrl: meeraVideo,
-      posterImage: m2,
-      stats: [
-        { value: '25+', label: 'Years' },
-        { value: '1000+', label: 'Shows' },
-        { value: '50+', label: 'Awards' },
-      ],
-      achievements: ['Classical Prodigy', 'National Award Winner', 'International Performer'],
-      accentColor: '#c9a03d',
-      tintColor: 'rgba(20, 50, 160, 0.45)',
-    },
-    {
-      id: 1,
-      uniqueId: 'kaushik-the-performer',
-      name: 'KAUSHIK SRIDHARAN',
-      fullName: 'Kaushik Sridharan',
-      title: 'The Stage Virtuoso',
-      role: 'Lead Performer & Super Singer',
-      specialty: 'Versatile • Energetic • Magical',
-      description: 'From Super Singer to international stages, Kaushik brings electrifying energy while honoring every musical tradition.',
-      quote: 'Every celebration under our banner becomes an eternal memory',
-      videoUrl: kaushikVideo,
-      posterImage: m1,
-      stats: [
-        { value: '500+', label: 'Concerts' },
-        { value: '7+', label: 'Countries' },
-        { value: '15+', label: 'Awards' },
-      ],
-      achievements: ['Super Singer Fame', 'International Tour', 'Trendsetter Award'],
-      accentColor: '#d4a843',
-      tintColor: 'rgba(70, 15, 110, 0.45)',
-    },
-  ];
 
   const currentSinger = singers[activeIndex];
 
@@ -115,7 +164,7 @@ const MeetTheVoices = () => {
           style={{ '--tint': singer.tintColor }}
         >
           <video
-            ref={idx === 0 ? bgRefMeera : bgRefKaushik}
+            ref={bgRefs[idx]}
             className="mtv-bg-video"
             poster={singer.posterImage}
             loop muted playsInline
@@ -157,7 +206,7 @@ const MeetTheVoices = () => {
         <h2 className="mtv-headline">
           Meet the <em>Voices</em>
         </h2>
-        <p className="mtv-subline">Two artists. One legacy. Infinite celebrations.</p>
+        <p className="mtv-subline">Four artists. One legacy. Infinite celebrations.</p>
         <div className="mtv-dots">
           {singers.map((s, i) => (
             <button
@@ -221,14 +270,6 @@ const MeetTheVoices = () => {
                 ))}
               </div>
 
-              <div className="mtv-chips">
-                {singer.achievements.map((a, i) => (
-                  <span key={i} className="mtv-chip" style={{ borderColor: singer.accentColor, color: singer.accentColor }}>
-                    {a}
-                  </span>
-                ))}
-              </div>
-
               <button className="mtv-cta" style={{ '--accent': singer.accentColor }}>
                 <span>Experience The Magic</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -238,51 +279,44 @@ const MeetTheVoices = () => {
             </div>
 
             {/* RIGHT — portrait card */}
-<div className="mtv-portrait-panel">
-  <div
-    className="mtv-portrait-card"
-    style={{ '--accent': singer.accentColor }}
-  >
-    <img
-  src={singer.posterImage}
-  alt={singer.fullName}
-  className={`mtv-portrait-media ${
-    singer.id === 0 ? 'mtv-meera-img' : ''
-  }`}
-/>
+            <div className="mtv-portrait-panel">
+              <div
+                className="mtv-portrait-card"
+                style={{ '--accent': singer.accentColor }}
+              >
+                <img
+                  src={singer.posterImage}
+                  alt={singer.fullName}
+                  className={`mtv-portrait-media ${singer.id === 1 || singer.id === 2 ? 'mtv-meera-img' : ''}`}
+                />
 
-    <div className="mtv-portrait-overlay" />
+                <div className="mtv-portrait-overlay" />
 
-    <div className="mtv-portrait-live">
-      <span className="mtv-live-dot" />
-      LIVE
-    </div>
+                <div className="mtv-portrait-live">
+                  <span className="mtv-live-dot" />
+                  LIVE
+                </div>
 
-    <div className="mtv-portrait-bottom">
-      {/* <span className="mtv-portrait-sublabel">
-        Now Performing
-      </span> */}
+                <div className="mtv-portrait-bottom">
+                  <span
+                    className="mtv-portrait-name"
+                    style={{ color: singer.accentColor }}
+                  >
+                    {singer.fullName}
+                  </span>
+                </div>
 
-      <span
-        className="mtv-portrait-name"
-        style={{ color: singer.accentColor }}
-      >
-        {singer.fullName}
-      </span>
-    </div>
-
-    <div
-      className="mtv-portrait-badge"
-      style={{
-        borderColor: singer.accentColor,
-        color: singer.accentColor,
-      }}
-    >
-      {singer.specialty.split('•')[0].trim()}
-    </div>
-  </div>
-</div>
-            {/* Specialty badge top-right corner of screen */}
+                <div
+                  className="mtv-portrait-badge"
+                  style={{
+                    borderColor: singer.accentColor,
+                    color: singer.accentColor,
+                  }}
+                >
+                  {singer.specialty.split('•')[0].trim()}
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -306,14 +340,6 @@ const MeetTheVoices = () => {
           </svg>
         </button>
       </div>
-
-      {/* ── PROGRESS BAR ── */}
-      {/* <div className="mtv-scroll-progress">
-        <div
-          className="mtv-progress-bar"
-          style={{ transform: `scaleX(${progress})`, background: currentSinger.accentColor }}
-        />
-      </div> */}
 
     </section>
   );

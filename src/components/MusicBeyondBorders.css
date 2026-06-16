@@ -425,9 +425,10 @@
 
 .mbb-cinematic-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin: 4rem 0;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 7rem;
+
+  margin: 5rem 6rem; /* top-bottom | left-right */
 }
 
 /* =========================================================
@@ -764,8 +765,8 @@
 
   text-align: center;
 
-  background:
-    rgba(255,255,255,.55);
+  /* background:
+    rgba(255,255,255,.55); */
 
   backdrop-filter: blur(12px);
 

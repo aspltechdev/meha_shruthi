@@ -296,7 +296,7 @@ const ClientReactions = () => {
       </div>
 
       {/* Bottom Energy Bars */}
-      <div className="cr-premium-audio">
+      {/* <div className="cr-premium-audio">
         {[...Array(24)].map((_, i) => (
           <div
             key={i}
@@ -307,7 +307,7 @@ const ClientReactions = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
 
     </section>

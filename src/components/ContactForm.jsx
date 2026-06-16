@@ -598,7 +598,7 @@ const ContactForm = () => {
       </div>
 
       {/* Bottom Audio Visualizer */}
-      <div className="cf-premium-audio">
+      {/* <div className="cf-premium-audio">
         {[...Array(24)].map((_, i) => (
           <div
             key={i}
@@ -609,7 +609,7 @@ const ContactForm = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
    
     </section>

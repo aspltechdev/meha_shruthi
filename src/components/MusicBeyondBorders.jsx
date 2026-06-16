@@ -630,55 +630,16 @@ import srilankaImg from '../assets/imgfour.jpg';
 
 const countries = [
   {
-    name: "Canada",
-    flag: "🇨🇦",
-    city: "Toronto",
-    year: "2019",
-    venue: "Roy Thomson Hall",
+     name: "Qatar",
+  flag: "🇶🇦",
+  city: "Doha",
+  year: "2019", // Change if needed
+  venue: "Katara Cultural Village",
     image: canadaImg,
-    description: "North American Debut",
-    coordinates: { lat: 43.6532, lng: -79.3832 }
+    description: "Middle East Performance",
+  coordinates: { lat: 25.2854, lng: 51.5310 }
   },
-  {
-    name: "United Kingdom",
-    flag: "🇬🇧",
-    city: "London",
-    year: "2018",
-    venue: "Royal Albert Hall",
-    image: ukImg,
-    description: "European Premiere",
-    coordinates: { lat: 51.5074, lng: -0.1278 }
-  },
-  {
-    name: "Australia",
-    flag: "🇦🇺",
-    city: "Sydney",
-    year: "2020",
-    venue: "Sydney Opera House",
-    image: australiaImg,
-    description: "Down Under Spectacle",
-    coordinates: { lat: -33.8688, lng: 151.2093 }
-  },
-  {
-    name: "Singapore",
-    flag: "🇸🇬",
-    city: "Marina Bay",
-    year: "2019",
-    venue: "Esplanade",
-    image: singaporeImg,
-    description: "Asian Showcase",
-    coordinates: { lat: 1.3521, lng: 103.8198 }
-  },
-  {
-    name: "Malaysia",
-    flag: "🇲🇾",
-    city: "Kuala Lumpur",
-    year: "2023",
-    venue: "PETRONAS Theatre",
-    image: malaysiaImg,
-    description: "Tropical Rhythms",
-    coordinates: { lat: 3.1390, lng: 101.6869 }
-  },
+  
   {
     name: "Sri Lanka",
     flag: "🇱🇰",
@@ -838,7 +799,7 @@ const MusicBeyondBorders = () => {
           {/* Stats with animated counters */}
           <div className="mbb-cinematic-stats">
             <div className="mbb-cinematic-stat">
-              <div className="mbb-cinematic-stat-number" data-target="8">8</div>
+              <div className="mbb-cinematic-stat-number" data-target="8">2</div>
               <div className="mbb-cinematic-stat-label">Countries</div>
               <div className="mbb-cinematic-stat-glow"></div>
             </div>
@@ -892,8 +853,8 @@ const MusicBeyondBorders = () => {
                 <div className="mbb-cinematic-card-gradient"></div>
 
                 {/* Badges */}
-                <div className="mbb-cinematic-card-flag">{country.flag}</div>
-                <div className="mbb-cinematic-card-year">{country.year}</div>
+                {/* <div className="mbb-cinematic-card-flag">{country.flag}</div> */}
+                {/* <div className="mbb-cinematic-card-year">{country.year}</div> */}
               </div>
 
               {/* Card Content */}
@@ -956,39 +917,39 @@ const MusicBeyondBorders = () => {
         </div> */}
 
         {/* Footer Statement */}
-        <div className="mbb-cinematic-footer">
-          <div className="mbb-cinematic-footer-line"></div>
+        {/* <div className="mbb-cinematic-footer"> */}
+          {/* <div className="mbb-cinematic-footer-line"></div> */}
 
-          <div className="mbb-cinematic-footer-quote">
-            <div className="mbb-cinematic-quote-mark">“</div>
-            <div className="mbb-cinematic-quote-text">
-              <span>Thousands of miles traveled.</span>
-              <strong>Millions of hearts touched.</strong>
+          {/* <div className="mbb-cinematic-footer-quote"> */}
+            {/* <div className="mbb-cinematic-quote-mark">“</div> */}
+            {/* <div className="mbb-cinematic-quote-text"> */}
+              {/* <span>Thousands of miles traveled.</span> */}
+              {/* <strong>Millions of hearts touched.</strong> */}
             </div>
-            <div className="mbb-cinematic-quote-mark">”</div>
-          </div>
+            {/* <div className="mbb-cinematic-quote-mark">”</div> */}
+          {/* </div> */}
 
-          <div className="mbb-cinematic-footer-flags">
+          {/* <div className="mbb-cinematic-footer-flags">
             {countries.map((c, i) => (
               <div key={i} className="mbb-cinematic-flag" style={{ animationDelay: `${i * 0.04}s` }}>
                 <span className="mbb-cinematic-flag-icon">{c.flag}</span>
                 <span className="mbb-cinematic-flag-name">{c.name}</span>
               </div>
             ))}
-          </div>
+          </div> */}
 
-          <button className="mbb-cinematic-cta">
+          {/* <button className="mbb-cinematic-cta">
             <span>Explore Global Journey</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M5 12h14M12 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" />
             </svg>
             <div className="mbb-cinematic-cta-shine"></div>
-          </button>
-        </div>
-      </div>
+          </button> */}
+        {/* </div> */}
+      {/* </div> */}
 
       {/* ========== BOTTOM AUDIO VISUALIZER ========== */}
-      <div className="mbb-cinematic-audio">
+      {/* <div className="mbb-cinematic-audio">
         {[...Array(30)].map((_, i) => (
           <div
             key={i}
@@ -999,7 +960,7 @@ const MusicBeyondBorders = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
       ========== SCROLL PROGRESS RING ==========
       <div className="mbb-cinematic-scroll-ring">

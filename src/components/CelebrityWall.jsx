@@ -9,6 +9,9 @@ import stephenImg from "../assets/stephan.jpg";
 import rajeshImg from "../assets/rajesh.jpg";
 import saindhaviImg from "../assets/saindhavi.jpg";
 import devanImg from "../assets/devan.jpg";
+import anchor from "../assets/anchor2.png";
+import anchortwo from "../assets/anchortwo.png";
+import charan from "../assets/charan.png";
 
 const celebrities = [
   {
@@ -57,6 +60,12 @@ const celebrities = [
     name: "Devan Ekambaram",
     role: "Playback Singer",
     image: devanImg,
+    accent: "#d4af37",
+  },
+  {
+    name: "SPB Charan",
+    role: "Playback Singer",
+    image: charan,
     accent: "#d4af37",
   },
 ];
@@ -264,7 +273,107 @@ const CelebrityWall = () => {
             </div>
           ))}
         </div>
+        
+{/* ===========================
+    ANCHORS
+=========================== */}
 
+<div className="cw-anchor-section">
+
+  {/* Left Text */}
+  <div className="cw-anchor-content">
+    <span className="cw-anchor-tag">
+      HOSTING EXCELLENCE
+    </span>
+
+    <h2 className="cw-anchor-heading">
+    Beyond Hosting,
+    <br />
+    <span>Creating Connections</span>
+  </h2>
+
+    <p className="cw-anchor-description">
+    Charismatic anchors who brought energy, elegance, and warmth to every celebration.
+  </p>
+
+    <div className="cw-anchor-line"></div>
+  </div>
+
+  {/* Anchor Card 1 */}
+  <div className="cw-premium-card cw-anchor-card">
+    <div className="cw-card-border"></div>
+
+    <div className="cw-card-shimmer"></div>
+
+    <div className="cw-premium-card-image">
+      <img src={anchortwo} alt="Anchor 1" />
+
+      <div className="cw-premium-card-overlay"></div>
+      <div className="cw-premium-card-gradient"></div>
+      <div className="cw-image-reflection"></div>
+    </div>
+
+    <div className="cw-premium-card-info">
+      <span className="cw-card-label">
+        FEATURED ANCHOR
+      </span>
+
+      <h3 className="cw-premium-card-name">
+        Bavana
+      </h3>
+
+      <p className="cw-premium-card-role">
+        Celebrity Anchor
+      </p>
+
+      <div
+        className="cw-premium-card-accent"
+        style={{
+          background:
+            "linear-gradient(90deg, #c9a03d, transparent)",
+        }}
+      ></div>
+    </div>
+  </div>
+
+  {/* Anchor Card 2 */}
+  <div className="cw-premium-card cw-anchor-card">
+    <div className="cw-card-border"></div>
+
+    <div className="cw-card-shimmer"></div>
+
+    <div className="cw-premium-card-image">
+      <img src={anchor} alt="Anchor 2" />
+
+      <div className="cw-premium-card-overlay"></div>
+      <div className="cw-premium-card-gradient"></div>
+      <div className="cw-image-reflection"></div>
+    </div>
+
+    <div className="cw-premium-card-info">
+      <span className="cw-card-label">
+        FEATURED ANCHOR
+      </span>
+
+      <h3 className="cw-premium-card-name">
+        Azar
+      </h3>
+
+      <p className="cw-premium-card-role">
+        Event Host & Anchor
+      </p>
+
+      <div
+        className="cw-premium-card-accent"
+        style={{
+          background:
+            "linear-gradient(90deg, #d4af37, transparent)",
+        }}
+      ></div>
+    </div>
+  </div>
+
+</div>
         {/* ===========================
             STATEMENT PANEL
         ============================ */}
@@ -319,7 +428,7 @@ const CelebrityWall = () => {
       {/* ===========================
           AUDIO VISUALIZER
       ============================ */}
-
+{/* 
       <div className="cw-premium-audio">
         {[...Array(28)].map((_, i) => (
           <div
@@ -331,7 +440,7 @@ const CelebrityWall = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
       {/* ===========================
           SCROLL INDICATOR

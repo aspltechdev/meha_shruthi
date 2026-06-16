@@ -4,9 +4,10 @@ import backgroundImage from "../assets/back2.png";
 import collabImage from "../assets/collab1.png";
 import global from "../assets/global-performance.jpg";
 import playback from "../assets/playback-singer.png";
-import tv from "../assets/tv-shows.png";
+import tv from "../assets/tv.png";
 import orchestra from "../assets/orchestra.png";
 import event from "../assets/events.png";
+
 
 const experiences = [
   {
