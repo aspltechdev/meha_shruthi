@@ -43,17 +43,13 @@ const Home = () => {
 
       <ImpactNumbers />
 
-      <section id="behind-stage">
-  <BehindTheStage />
-</section>
+      <BehindTheStage />
 
       <section id="gallery">
         <GallerySection />
       </section>
 
-     <section id="event-journey">
-  <EventJourney />
-</section>
+      <EventJourney />
 
       <TrustedBy />
 

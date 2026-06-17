@@ -51,9 +51,7 @@ const Home = () => {
         <GallerySection />
       </section>
 
-     <section id="event-journey">
-  <EventJourney />
-</section>
+      <EventJourney />
 
       <TrustedBy />
 

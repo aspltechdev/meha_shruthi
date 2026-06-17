@@ -191,18 +191,10 @@ const FinalCTA = () => {
         </div>
 
         <div className="fcta-premium-buttons">
-          <button
-  className="fcta-premium-btn-primary"
-  onClick={() => {
-    document.getElementById("contact")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }}
->
-  <span className="fcta-premium-btn-text">Book Consultation</span>
-  <span className="fcta-premium-btn-arrow">→</span>
-</button>
+          <button className="fcta-premium-btn-primary">
+            <span className="fcta-premium-btn-text">Book Consultation</span>
+            <span className="fcta-premium-btn-arrow">→</span>
+          </button>
         </div>
       </div>
     </section>

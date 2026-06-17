@@ -342,7 +342,9 @@ const ContactForm = () => {
   return (
     <section className="cf-premium-section" ref={sectionRef}>
       {/* Premium Light Background */}
-      
+       id="contact"
+  className="cf-premium-section"
+  ref={sectionRef}
       <div className="cf-premium-bg"></div>
       <div className="cf-premium-pattern"></div>
       <div className="cf-premium-glow"></div>

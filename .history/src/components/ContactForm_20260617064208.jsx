@@ -342,7 +342,6 @@ const ContactForm = () => {
   return (
     <section className="cf-premium-section" ref={sectionRef}>
       {/* Premium Light Background */}
-      
       <div className="cf-premium-bg"></div>
       <div className="cf-premium-pattern"></div>
       <div className="cf-premium-glow"></div>
@@ -354,7 +353,11 @@ const ContactForm = () => {
           background: `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, rgba(201, 160, 61, 0.1) 0%, rgba(201, 160, 61, 0.04) 40%, transparent 70%)`
         }}
       />
-
+<section
+  id="contact"
+  className="cf-premium-section"
+  ref={sectionRef}
+></section>
       {/* Cinematic Light Rays */}
       <div className="cf-premium-rays">
         <div className="cf-premium-ray"></div>

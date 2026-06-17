@@ -270,11 +270,14 @@ const MeetTheVoices = () => {
                 ))}
               </div>
 
-         <button
+             <button
   className="mtv-cta"
   style={{ '--accent': singer.accentColor }}
   onClick={() => {
-    window.location.href = "#experiences";
+    document.getElementById("experiences")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   }}
 >
   <span>Experience The Magic</span>

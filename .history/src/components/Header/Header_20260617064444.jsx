@@ -131,16 +131,7 @@ const Header = () => {
           <div className="header__mobile-cta">
             <button
   className="header__btn header__btn--mobile"
-  onClick={() => {
-    const contact = document.getElementById("contact");
-    if (contact) {
-      contact.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  }}
->
+
   <span className="header__btn-text">Begin Your Journey</span>
   <span className="header__btn-icon">→</span>
 </button>
@@ -149,23 +140,11 @@ const Header = () => {
 
         {/* Right Actions */}
         <div className="header__actions">
-          <button
-  className="header__btn header__btn--desktop"
-  onClick={() => {
-    const contact = document.getElementById("contact");
-
-    if (contact) {
-      contact.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  }}
->
-  <span className="header__btn-text">Begin Your Journey</span>
-  <span className="header__btn-icon">→</span>
-  <div className="header__btn-glow" />
-</button>
+          <button className="header__btn header__btn--desktop">
+            <span className="header__btn-text">Begin Your Journey</span>
+            <span className="header__btn-icon">→</span>
+            <div className="header__btn-glow" />
+          </button>
 
           {/* Hamburger Menu */}
           <button 

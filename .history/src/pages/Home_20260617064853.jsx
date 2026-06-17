@@ -43,17 +43,13 @@ const Home = () => {
 
       <ImpactNumbers />
 
-      <section id="behind-stage">
-  <BehindTheStage />
-</section>
+      <BehindTheStage />
 
       <section id="gallery">
         <GallerySection />
       </section>
 
-     <section id="event-journey">
-  <EventJourney />
-</section>
+      <EventJourney />
 
       <TrustedBy />
 
@@ -66,7 +62,12 @@ const Home = () => {
       <section id="contact">
         <ContactForm />
       </section>
-
+<section
+  id="contact"
+  style={{ border: "5px solid red" }}
+>
+  <ContactForm />
+</section>
       <Footer />
     </>
   );

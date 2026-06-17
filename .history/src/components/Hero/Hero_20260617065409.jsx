@@ -751,17 +751,9 @@ if (video1 && video2 && video3) {
   </svg>
 </button>
 
-              <button
-  className="hero-pro__btn hero-pro__btn--secondary"
-  onClick={() => {
-    document.getElementById("contact")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }}
->
-  <span>Begin Your Journey</span>
-</button>
+              <button className="hero-pro__btn hero-pro__btn--secondary">
+                <span>Begin Your Journey</span>
+              </button>
 
             </div>
 

@@ -205,10 +205,10 @@ const LegacySection = () => {
 
             {/* CTA */}
             <div className="legacy-pro-cta-wrap">
-          <button
+              <button
   className="legacy-pro-cta-btn"
   onClick={() => {
-    document.getElementById("event-journey")?.scrollIntoView({
+    document.getElementById("experiences")?.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
