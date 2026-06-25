@@ -425,7 +425,7 @@ const ContactForm = () => {
             </div>
 
             <p className="cf-premium-description">
-              Every great performance starts with a conversation. 
+              Every great performance starts with a conversation.
               Tell us about your event, and we'll make it unforgettable.
             </p>
 

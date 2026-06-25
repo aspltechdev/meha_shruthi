@@ -303,9 +303,7 @@ const Footer = () => {
         <div className="footer-pro-bottom">
           <p className="footer-pro-copyright">
             © {currentYear} Meha Sruthi Entertainments. All rights reserved.
-             <span className="crafted-by">
-    Crafted by Aspl Tech Solutions Pvt Ltd
-  </span>
+            
           </p>
           
           <button className="footer-pro-backtop" onClick={scrollToTop}>

@@ -303,9 +303,9 @@ const Footer = () => {
         <div className="footer-pro-bottom">
           <p className="footer-pro-copyright">
             © {currentYear} Meha Sruthi Entertainments. All rights reserved.
-             <span className="crafted-by">
-    Crafted by Aspl Tech Solutions Pvt Ltd
-  </span>
+            .crafted-by {
+  margin-left: 20px; /* increase to 30px or 40px if needed */
+}
           </p>
           
           <button className="footer-pro-backtop" onClick={scrollToTop}>
