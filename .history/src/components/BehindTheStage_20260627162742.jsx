@@ -15,7 +15,7 @@ const services = [
   { title: 'Music', subtitle: 'Live bands & musical performances', image: imageo },
 { title: 'Dance', subtitle: 'Professional dance troupes & acts', image: imaget },
 { title: 'Mimicry', subtitle: 'Celebrity voice impressions & acts', image: imageth },
-{ title: 'Crystal Act', subtitle: 'Witness the Art of Crystal Manipulation', image: imageMagic },
+{ title: 'Crystal Act', subtitle: 'Mind-blowing illusions & magic', image: imageMagic },
 
 { title: 'Stand-Up Comedy', subtitle: 'Interactive comedy performances', image: imageDance },
 { title: 'DJ', subtitle: 'High-energy sets for celebrations', image: imageDJ },

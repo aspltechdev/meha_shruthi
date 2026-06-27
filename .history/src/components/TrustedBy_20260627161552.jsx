@@ -296,7 +296,7 @@ const clients = [
     events: "25+ Events"
   },
   {
-    name: "Ramco Cements Pvt Ltd",
+    name: "",
     category: "Premium Club",
     years: "7+ Years",
     image: trust2,
