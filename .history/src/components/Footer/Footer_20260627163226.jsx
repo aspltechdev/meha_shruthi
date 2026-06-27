@@ -42,7 +42,7 @@ const Footer = () => {
       'Private Functions'
     ],
     contact: {
-      email: 'info@mehasruthi.com',
+      email: 'hello@mehasruthi.com',
       phone: '+91 98765 43210',
       location: 'Chennai, Tamil Nadu, India'
     },
@@ -247,7 +247,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="tel:+919442657611" className="footer-pro-link footer-pro-link-icon">
+                <a href="tel:+919442657" className="footer-pro-link footer-pro-link-icon">
                   <PhoneIcon />
                   <span>{footerLinks.contact.phone}</span>
                 </a>
