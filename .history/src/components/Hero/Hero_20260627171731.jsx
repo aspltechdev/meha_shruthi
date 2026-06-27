@@ -591,7 +591,16 @@ if (video1 && video2 && video3) {
   <source src={herovideothree} type="video/mp4" />
 </video>
           {/* FALLBACK IMAGE */}
-          
+          <img
+            src={hero}
+            alt="South Indian Classical Performance"
+            className={`hero-pro__bg-fallback ${
+              !videoLoaded
+                ? 'hero-pro__bg-fallback--visible'
+                : ''
+            }`}
+            loading="eager"
+          />
 
         </div>
 
