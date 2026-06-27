@@ -324,7 +324,7 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     const payload = {
-      access_key: "cfa4bada-b5c9-4ff9-a05d-5a0c6de2e1df", // 🔁 Replace with your key
+      access_key: "cfa4bada-b5c9-4ff9-a05d-5a0c6de2e1df", 
       subject: "New Inquiry from Meha Sruthi Website",
       from_name: "Meha Sruthi Website",
       ...formData,
@@ -440,7 +440,7 @@ const ContactForm = () => {
                 </div>
                 <div className="cf-premium-detail-info">
                   <span className="cf-premium-detail-label">Email</span>
-                  <span className="cf-premium-detail-value">hello@mehasruthi.com</span>
+                  <span className="cf-premium-detail-value">info@mehasruthi.com</span>
                 </div>
               </div>
 

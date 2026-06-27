@@ -234,7 +234,7 @@ const LegacySection = () => {
               <span className="presenter-label-tag">Proudly Presented By</span>
               <span className="presenter-label-line"></span>
             </div>
-            <p className="presenter-label-name"> Meera Sridharan &amp Joseph; </p>
+            <p className="presenter-label-name"> &amp; </p>
           </div>
 
           {/* Image wrapper */}

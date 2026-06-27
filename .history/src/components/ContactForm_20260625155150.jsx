@@ -440,7 +440,7 @@ const ContactForm = () => {
                 </div>
                 <div className="cf-premium-detail-info">
                   <span className="cf-premium-detail-label">Email</span>
-                  <span className="cf-premium-detail-value">hello@mehasruthi.com</span>
+                  <span className="cf-premium-detail-value">info@mehasruthi.com</span>
                 </div>
               </div>
 

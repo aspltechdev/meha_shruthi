@@ -127,7 +127,7 @@ export default function SocialWall() {
           <p className="sw-subtitle">
             Explore behind-the-scenes moments, live performances,
             artist spotlights and concert highlights from
-            Meha Shruthi's world.
+            Meha SRUTHI's world.
           </p>
 
           {/* Social Tabs */}
@@ -190,7 +190,7 @@ export default function SocialWall() {
 
                 <div className="sw-card-top sw-card-top--instagram">
                   <FaInstagram size={16} />
-                  <span>Meha Shruthi</span>
+                  <span>Meha SRUTHI</span>
                 </div>
 
                 <div className="sw-embed-wrapper">
@@ -230,7 +230,7 @@ export default function SocialWall() {
               <div key={`li-${index}`} className="sw-card">
                 <div className="sw-card-top sw-card-top--linkedin">
                   <FaLinkedin size={16} />
-                  <span>Meha Shruthi</span>
+                  <span>Meha SRUTHI</span>
                 </div>
                 <div className="sw-embed-wrapper sw-embed-linkedin">
                   <iframe
@@ -255,7 +255,7 @@ export default function SocialWall() {
               <div key={`fb-${index}`} className="sw-card sw-card--wide">
                 <div className="sw-card-top sw-card-top--facebook">
                   <FaFacebook size={16} />
-                  <span>Meha Shruthi</span>
+                  <span>Meha SRUTHI</span>
                 </div>
                 <div className="sw-embed-wrapper sw-embed-facebook">
                   <iframe
