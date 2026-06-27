@@ -43,7 +43,7 @@ const Footer = () => {
     ],
     contact: {
       email: 'info@mehasruthi.com',
-      phone: '+91 9442657611',
+      phone: '+91 9442657',
       location: 'Chennai, Tamil Nadu, India'
     },
     social: [
