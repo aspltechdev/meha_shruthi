@@ -452,7 +452,7 @@ const ContactForm = () => {
                 </div>
                 <div className="cf-premium-detail-info">
                   <span className="cf-premium-detail-label">Phone</span>
-                  <span className="cf-premium-detail-value">+91 9442657611</span>
+                  <span className="cf-premium-detail-value">+91 98765 43210</span>
                 </div>
               </div>
 
