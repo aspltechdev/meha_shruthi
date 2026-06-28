@@ -24,17 +24,6 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Scrolls to the contact section instead of the top of the page
-  const scrollToContact = () => {
-    const el = document.querySelector('#contact');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-      // fallback in case #contact isn't on this page
-      window.location.hash = '#contact';
-    }
-  };
-
   const footerLinks = {
     navigation: [
       { name: 'Home', href: '#home' },
@@ -58,10 +47,10 @@ const Footer = () => {
       location: 'Chennai, Tamil Nadu, India'
     },
     social: [
-      { name: 'Instagram', url: 'https://www.instagram.com/mehasruthi.entertainers/' },
-      { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61590883787626' },
-      { name: 'LinkedIn', url: 'https://www.linkedin.com/company/meha-sruthi-entertainers/' },
-      { name: 'YouTube', url: 'https://www.youtube.com/@MehaSruthiEntertainers-o5s' }
+      { name: 'Instagram', url: '#' },
+      { name: 'YouTube', url: '#' },
+      { name: 'Facebook', url: '#' },
+      { name: 'Twitter', url: '#' }
     ]
   };
 
@@ -112,12 +101,10 @@ const Footer = () => {
     </svg>
   );
 
-  // LinkedIn Icon SVG
-  const LinkedinIcon = () => (
+  // Twitter Icon SVG
+  const TwitterIcon = () => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8h4v1.5A4 4 0 0 1 16 8z"/>
-      <rect x="2" y="9" width="4" height="12"/>
-      <circle cx="4" cy="4" r="2"/>
+      <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
     </svg>
   );
 
@@ -144,7 +131,7 @@ const Footer = () => {
       <div className="footer-pro-bg-glow"></div>
 
       {/* Dynamic Interactive Spotlight */}
-      <div
+      <div 
         className="footer-pro-spotlight"
         style={{
           background: `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, rgba(201, 160, 61, 0.12) 0%, rgba(201, 160, 61, 0.04) 40%, transparent 70%)`
@@ -193,7 +180,7 @@ const Footer = () => {
 
           <div className="footer-pro-cta">
             <p className="footer-pro-cta-label">Ready to create magic?</p>
-            <button className="footer-pro-cta-btn" onClick={scrollToContact}>
+            <button className="footer-pro-cta-btn" onClick={scrollToTop}>
               <span>Start Your Journey</span>
               <ArrowIcon />
               <div className="footer-pro-cta-shine"></div>
@@ -237,7 +224,7 @@ const Footer = () => {
             <ul className="footer-pro-list">
               {footerLinks.services.map((service, i) => (
                 <li key={i}>
-                  <a href="#contact" className="footer-pro-link">
+                  <a href="#" className="footer-pro-link">
                     <span className="footer-pro-link-dot">◉</span>
                     {service}
                   </a>
@@ -254,7 +241,7 @@ const Footer = () => {
             </h4>
             <ul className="footer-pro-list">
               <li>
-                <a href="mailto:info@mehasruthi.com" className="footer-pro-link footer-pro-link-icon">
+                <a href="mailto:hello@mehasruthi.com" className="footer-pro-link footer-pro-link-icon">
                   <EmailIcon />
                   <span>{footerLinks.contact.email}</span>
                 </a>
@@ -281,46 +268,26 @@ const Footer = () => {
               Follow
             </h4>
             <div className="footer-pro-social">
-              <a
-                href={footerLinks.social[0].url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-pro-social-link"
-              >
+              <a href="#" className="footer-pro-social-link">
                 <InstagramIcon />
                 <span>Instagram</span>
                 <span className="footer-pro-social-arrow">→</span>
               </a>
-              <a
-                href={footerLinks.social[1].url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-pro-social-link"
-              >
-                <FacebookIcon />
-                <span>Facebook</span>
-                <span className="footer-pro-social-arrow">→</span>
-              </a>
-              <a
-                href={footerLinks.social[2].url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-pro-social-link"
-              >
-                <LinkedinIcon />
-                <span>LinkedIn</span>
-                <span className="footer-pro-social-arrow">→</span>
-              </a>
-              <a
-                href={footerLinks.social[3].url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-pro-social-link"
-              >
+              <a href="#" className="footer-pro-social-link">
                 <YoutubeIcon />
                 <span>YouTube</span>
                 <span className="footer-pro-social-arrow">→</span>
               </a>
+              {/* <a href="#" className="footer-pro-social-link">
+                <FacebookIcon />
+                <span>Facebook</span>
+                <span className="footer-pro-social-arrow">→</span>
+              </a>
+              <a href="#" className="footer-pro-social-link">
+                <TwitterIcon />
+                <span>Twitter</span>
+                <span className="footer-pro-social-arrow">→</span>
+              </a> */}
             </div>
           </div>
         </div>
@@ -336,11 +303,11 @@ const Footer = () => {
         <div className="footer-pro-bottom">
           <p className="footer-pro-copyright">
             © {currentYear} Meha Sruthi Entertainments. All rights reserved.
-            <span className="crafted-by">
-              Crafted by Aspl Tech Solutions Pvt Ltd
-            </span>
+             <span className="crafted-by">
+    Crafted by Aspl Tech Solutions Pvt Ltd
+  </span>
           </p>
-
+          
           <button className="footer-pro-backtop" onClick={scrollToTop}>
             <span>Back to Top</span>
             <UpArrowIcon />
@@ -353,6 +320,22 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      {/* Bottom Audio Visualizer */}
+      {/* <div className="footer-pro-audio">
+        {[...Array(24)].map((_, i) => (
+          <div
+            key={i}
+            className="footer-pro-audio-bar"
+            style={{
+              animationDelay: `${i * 0.08}s`,
+              height: `${6 + (i % 12)}px`
+            }}
+          />
+        ))}
+      </div> */}
+
+ 
     </footer>
   );
 };

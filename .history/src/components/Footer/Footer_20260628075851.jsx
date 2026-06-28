@@ -24,7 +24,7 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Scrolls to the contact section instead of the top of the page
+  // NEW: scrolls to the contact section instead of the top of the page
   const scrollToContact = () => {
     const el = document.querySelector('#contact');
     if (el) {
@@ -57,6 +57,7 @@ const Footer = () => {
       phone: '+91 9442657611',
       location: 'Chennai, Tamil Nadu, India'
     },
+    // NEW: real social URLs
     social: [
       { name: 'Instagram', url: 'https://www.instagram.com/mehasruthi.entertainers/' },
       { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61590883787626' },
@@ -112,7 +113,7 @@ const Footer = () => {
     </svg>
   );
 
-  // LinkedIn Icon SVG
+  // LinkedIn Icon SVG (NEW)
   const LinkedinIcon = () => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8h4v1.5A4 4 0 0 1 16 8z"/>
@@ -144,7 +145,7 @@ const Footer = () => {
       <div className="footer-pro-bg-glow"></div>
 
       {/* Dynamic Interactive Spotlight */}
-      <div
+      <div 
         className="footer-pro-spotlight"
         style={{
           background: `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, rgba(201, 160, 61, 0.12) 0%, rgba(201, 160, 61, 0.04) 40%, transparent 70%)`
@@ -281,7 +282,7 @@ const Footer = () => {
               Follow
             </h4>
             <div className="footer-pro-social">
-              <a
+              
                 href={footerLinks.social[0].url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -291,7 +292,7 @@ const Footer = () => {
                 <span>Instagram</span>
                 <span className="footer-pro-social-arrow">→</span>
               </a>
-              <a
+              
                 href={footerLinks.social[1].url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -301,7 +302,7 @@ const Footer = () => {
                 <span>Facebook</span>
                 <span className="footer-pro-social-arrow">→</span>
               </a>
-              <a
+              
                 href={footerLinks.social[2].url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -311,7 +312,7 @@ const Footer = () => {
                 <span>LinkedIn</span>
                 <span className="footer-pro-social-arrow">→</span>
               </a>
-              <a
+              
                 href={footerLinks.social[3].url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -336,11 +337,11 @@ const Footer = () => {
         <div className="footer-pro-bottom">
           <p className="footer-pro-copyright">
             © {currentYear} Meha Sruthi Entertainments. All rights reserved.
-            <span className="crafted-by">
-              Crafted by Aspl Tech Solutions Pvt Ltd
-            </span>
+             <span className="crafted-by">
+    Crafted by Aspl Tech Solutions Pvt Ltd
+  </span>
           </p>
-
+          
           <button className="footer-pro-backtop" onClick={scrollToTop}>
             <span>Back to Top</span>
             <UpArrowIcon />
