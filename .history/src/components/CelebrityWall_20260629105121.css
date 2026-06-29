@@ -899,13 +899,6 @@
   .cw-premium-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  /* Safety net: if the scroll observer never fires a card into
-     .visible at this breakpoint, force it visible anyway after
-     a short delay so it never gets stuck at opacity:0 */
-  .cw-premium-card {
-    animation: cwForceVisible 0s 1.2s forwards;
-  }
 }
 
 @media (max-width: 768px) {
@@ -930,16 +923,11 @@
   .cw-premium-title {
     font-size: 3rem;
   }
-
-  .cw-premium-card {
-    animation: cwForceVisible 0s 1.2s forwards;
-  }
 }
 
 @media (max-width: 480px) {
   .cw-premium-card {
     height: 450px;
-    animation: cwForceVisible 0s 1.2s forwards;
   }
 
   .cw-premium-card-name {
@@ -948,19 +936,6 @@
 
   .cw-premium-statement-headline {
     font-size: 2rem;
-  }
-}
-
-/* Fallback keyframe — kicks the card to its final visible state
-   if JS never adds the .visible class in time (or threshold isn't
-   met because of layout differences at smaller breakpoints).
-   Cards that DO get .visible from JS are unaffected since both
-   end up at the same opacity:1 / translateY(0) state, and one
-   already-finished transition stays put. */
-@keyframes cwForceVisible {
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 

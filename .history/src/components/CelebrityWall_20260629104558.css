@@ -892,19 +892,12 @@
 }
 
 /* ==================================================
-   RESPONSIVE — MAIN GRID
+   RESPONSIVE
 ================================================== */
 
 @media (max-width: 1200px) {
   .cw-premium-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* Safety net: if the scroll observer never fires a card into
-     .visible at this breakpoint, force it visible anyway after
-     a short delay so it never gets stuck at opacity:0 */
-  .cw-premium-card {
-    animation: cwForceVisible 0s 1.2s forwards;
   }
 }
 
@@ -930,16 +923,11 @@
   .cw-premium-title {
     font-size: 3rem;
   }
-
-  .cw-premium-card {
-    animation: cwForceVisible 0s 1.2s forwards;
-  }
 }
 
 @media (max-width: 480px) {
   .cw-premium-card {
     height: 450px;
-    animation: cwForceVisible 0s 1.2s forwards;
   }
 
   .cw-premium-card-name {
@@ -951,37 +939,98 @@
   }
 }
 
-/* Fallback keyframe — kicks the card to its final visible state
-   if JS never adds the .visible class in time (or threshold isn't
-   met because of layout differences at smaller breakpoints).
-   Cards that DO get .visible from JS are unaffected since both
-   end up at the same opacity:1 / translateY(0) state, and one
-   already-finished transition stays put. */
-@keyframes cwForceVisible {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 ::selection {
   background: #d4af37;
   color: #0f1117;
 }
-
+.cw-anchor-section {
+    margin-top: 50px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 /* ==========================================
    ANCHOR SECTION
-   (single source of truth — every duplicate
-   block from before has been merged into this
-   one set of rules, nothing else changed)
 ========================================== */
 
+.cw-anchor-section {
+  margin-top: 50px;
+
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+
+  flex-wrap: wrap;
+}
+
+/* Anchor cards only */
+.cw-anchor-card {
+  width: 320px;
+  height: 420px;
+}
+
+/* Smaller image */
+.cw-anchor-card .cw-premium-card-image {
+  height: 100%;
+}
+
+/* Slightly smaller typography */
+.cw-anchor-card .cw-premium-card-name {
+  font-size: 1.7rem;
+}
+
+.cw-anchor-card .cw-premium-card-role {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.cw-anchor-card .cw-card-label {
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+}
+
+/* Same hover effect */
+.cw-anchor-card.hovered,
+.cw-anchor-card:hover {
+  transform: translateY(-15px);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.55),
+    0 0 60px rgba(212, 175, 55, 0.18);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .cw-anchor-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cw-anchor-card {
+    width: 100%;
+    max-width: 380px;
+  }
+}
+.cw-anchor-section {
+  margin-top: 50px;
+  display: flex;
+  justify-content: flex-start;   /* move left */
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.cw-anchor-card {
+  width: 320px;
+  height: 500px;
+
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
 .cw-anchor-section {
   margin-top: 50px;
   display: flex;
   align-items: center;
   gap: 30px;
-  flex-wrap: wrap;
 }
 
 .cw-anchor-content {
@@ -1026,94 +1075,14 @@
 
 .cw-anchor-card {
   width: 320px;
-  height: 350px;
+  height: 500px;
   flex-shrink: 0;
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
+.cw-anchor-card {
+  height: 350px;   /* reduce only height */
 
-.cw-anchor-card .cw-premium-card-image {
-  height: 100%;
-}
-
-.cw-anchor-card .cw-premium-card-name {
-  font-size: 1.7rem;
-}
-
-.cw-anchor-card .cw-premium-card-role {
-  font-size: 0.85rem;
-  line-height: 1.5;
-}
-
-.cw-anchor-card .cw-card-label {
-  font-size: 0.65rem;
-  letter-spacing: 3px;
-}
-
-.cw-anchor-card.hovered,
-.cw-anchor-card:hover {
-  transform: translateY(-15px) !important;
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.55),
-    0 0 60px rgba(212, 175, 55, 0.18);
-}
-
-/* ==========================================
-   ANCHOR SECTION — RESPONSIVE
-========================================== */
-
-@media (max-width: 1200px) {
-  .cw-anchor-section {
-    gap: 24px;
-  }
-
-  .cw-anchor-content {
-    max-width: 400px;
-  }
-
-  .cw-anchor-heading {
-    font-size: 2.5rem;
-  }
-
-  .cw-anchor-card {
-    width: 280px;
-  }
-}
-
-@media (max-width: 768px) {
-  .cw-anchor-section {
-    flex-direction: column;
-    align-items: stretch;
-    text-align: center;
-    gap: 28px;
-  }
-
-  .cw-anchor-content {
-    max-width: 100%;
-  }
-
-  .cw-anchor-line {
-    margin: 0 auto;
-  }
-
-  .cw-anchor-card {
-    width: 100%;
-    max-width: 380px;
-    height: 420px;
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 480px) {
-  .cw-anchor-heading {
-    font-size: 2rem;
-  }
-
-  .cw-anchor-card {
-    height: 380px;
-  }
-
-  .cw-anchor-card .cw-premium-card-name {
-    font-size: 1.5rem;
-  }
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }

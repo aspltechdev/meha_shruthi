@@ -1,0 +1,116 @@
+/* ==========================================
+   ANCHOR SECTION (deduped + responsive)
+========================================== */
+
+.cw-anchor-section {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.cw-anchor-content {
+  flex: 1;
+  max-width: 450px;
+}
+
+.cw-anchor-tag {
+  display: inline-block;
+  color: #e6c76a;
+  letter-spacing: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.cw-anchor-heading {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 3rem;
+  line-height: 1.1;
+  color: #f5f3ef;
+  margin-bottom: 25px;
+}
+
+.cw-anchor-heading span {
+  color: #d4af37;
+}
+
+.cw-anchor-description {
+  color: #c7c2b8;
+  line-height: 1.9;
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+.cw-anchor-line {
+  width: 80px;
+  height: 3px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #d4af37, transparent);
+}
+
+.cw-anchor-card {
+  width: 320px;
+  height: 350px;
+  flex-shrink: 0;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.cw-anchor-card .cw-premium-card-image {
+  height: 100%;
+}
+
+.cw-anchor-card .cw-premium-card-name {
+  font-size: 1.7rem;
+}
+
+.cw-anchor-card .cw-premium-card-role {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.cw-anchor-card .cw-card-label {
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+}
+
+.cw-anchor-card.hovered,
+.cw-anchor-card:hover {
+  transform: translateY(-15px) !important;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.55),
+    0 0 60px rgba(212, 175, 55, 0.18);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1200px) {
+  .cw-anchor-section { gap: 24px; }
+  .cw-anchor-content { max-width: 400px; }
+  .cw-anchor-heading { font-size: 2.5rem; }
+  .cw-anchor-card { width: 280px; }
+}
+
+@media (max-width: 768px) {
+  .cw-anchor-section {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 28px;
+  }
+  .cw-anchor-content { max-width: 100%; }
+  .cw-anchor-line { margin: 0 auto; }
+  .cw-anchor-card {
+    width: 100%;
+    max-width: 380px;
+    height: 420px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .cw-anchor-heading { font-size: 2rem; }
+  .cw-anchor-card { height: 380px; }
+  .cw-anchor-card .cw-premium-card-name { font-size: 1.5rem; }
+}

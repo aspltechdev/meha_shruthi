@@ -559,7 +559,7 @@ const ContactForm = () => {
                   onBlur={() => setFocusedField(null)}
                   required
                   className="cf-premium-input"
-                  placeholder="Enter your phone number"
+                  placeholder=""
                 />
                 <div className="cf-premium-field-line"></div>
               </div>
