@@ -1,0 +1,510 @@
+/* ============================================================
+   ROOT VARIABLES
+   ============================================================ */
+
+:root {
+  --bg: #EFE5CC;
+  --bg-deep: #E8DCC0;
+
+  --gold: #9A6F1E;
+  --gold-light: #C9A96E;
+  --gold-dim: rgba(154,111,30,0.22);
+
+  --brown-dark: #1E0E00;
+  --brown-mid: #4A2800;
+
+  --text-dim: rgba(50,28,0,0.48);
+  --text-mid: rgba(50,28,0,0.70);
+
+  --ivory: #FAF7F2;
+
+  --ease-silk: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================================
+   GLOBAL
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: var(--bg);
+}
+
+/* ============================================================
+   SECTION
+   ============================================================ */
+
+.bts-bento-section {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--brown-dark);
+}
+
+.bts-bento-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   LIGHT RAYS
+   ============================================================ */
+
+.bts-light-rays {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 40%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bts-ray {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  transform-origin: top center;
+}
+
+.bts-ray:nth-child(1) {
+  left: 36%;
+  opacity: 0.10;
+  transform: rotate(-14deg);
+}
+
+.bts-ray:nth-child(2) {
+  left: 50%;
+  width: 2px;
+  opacity: 0.16;
+}
+
+.bts-ray:nth-child(3) {
+  left: 64%;
+  opacity: 0.10;
+  transform: rotate(14deg);
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.bts-premium-header {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+}
+
+.bts-premium-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 16px;
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  background: rgba(160, 120, 48, 0.07);
+}
+
+.bts-badge-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.8;
+}
+
+.bts-badge-text {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.bts-premium-title {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 14px;
+  line-height: 1.1;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(34px, 5vw, 64px);
+  font-weight: 400;
+}
+
+.bts-title-light {
+  color: var(--brown-dark);
+}
+
+.bts-title-gradient {
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 60%, #D4A84B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bts-premium-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--text-dim);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+}
+
+.bts-subtitle-line {
+  width: 44px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+
+/* ============================================================
+   BENTO GRID — REDESIGNED (single source of truth)
+   ============================================================ */
+
+.bts-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 220px);
+  gap: 20px;
+}
+
+.bts-bento-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+  transition: transform 0.35s var(--ease-silk), box-shadow 0.35s ease;
+}
+
+.bts-bento-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.20);
+}
+
+.bts-bento-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bts-bento-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.bts-bento-card:hover .bts-bento-image {
+  transform: scale(1.06);
+}
+
+.bts-bento-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.25) 45%, transparent 75%);
+  transition: opacity 0.35s ease;
+}
+
+.bts-bento-card:hover .bts-bento-overlay {
+  opacity: 0.85;
+}
+
+.bts-bento-content {
+  position: relative;
+  z-index: 1;
+  padding: 1.5rem;
+}
+
+.bts-bento-title {
+  margin: 0 0 4px;
+  color: #fff;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.bts-bento-subtitle {
+  margin: 0;
+  color: rgba(255,255,255,0.78);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* Layout — 4 cols x 3 rows, balanced hierarchy */
+
+.bts-bento-1 { grid-column: 1 / 3; grid-row: 1 / 3; }   /* Music — large */
+.bts-bento-2 { grid-column: 3 / 4; grid-row: 1 / 2; }   /* Dance */
+.bts-bento-3 { grid-column: 4 / 5; grid-row: 1 / 2; }   /* Mimicry */
+.bts-bento-4 { grid-column: 3 / 4; grid-row: 2 / 3; }   /* Crystal Ball */
+.bts-bento-5 { grid-column: 4 / 5; grid-row: 2 / 3; }   /* Stand-Up Comedy */
+.bts-bento-6 { grid-column: 1 / 2; grid-row: 3 / 4; }   /* DJ */
+.bts-bento-7 { grid-column: 2 / 4; grid-row: 3 / 4; }   /* Fashion Shows — wide */
+.bts-bento-8 { grid-column: 4 / 5; grid-row: 3 / 4; }   /* Juggling */
+
+/* Magic banner — full width below the grid, in normal flow, no dangling cell */
+.bts-bento-9 {
+  width: 100%;
+  min-height: 260px;
+  margin-top: 20px;
+  border-radius: 24px;
+}
+
+/* Overlay accent colors per card */
+.bts-bento-1 .bts-bento-overlay { background: linear-gradient(to top, rgba(74,33,8,0.75) 0%, transparent 70%); }
+.bts-bento-2 .bts-bento-overlay { background: linear-gradient(to top, rgba(137,96,32,0.75) 0%, transparent 70%); }
+.bts-bento-3 .bts-bento-overlay { background: linear-gradient(to top, rgba(30,14,0,0.75) 0%, transparent 70%); }
+.bts-bento-4 .bts-bento-overlay { background: linear-gradient(to top, rgba(191,140,40,0.75) 0%, transparent 70%); }
+.bts-bento-5 .bts-bento-overlay { background: linear-gradient(to top, rgba(74,33,8,0.75) 0%, transparent 70%); }
+.bts-bento-6 .bts-bento-overlay { background: linear-gradient(to top, rgba(30,14,0,0.75) 0%, transparent 70%); }
+.bts-bento-7 .bts-bento-overlay { background: linear-gradient(to top, rgba(137,96,32,0.75) 0%, transparent 70%); }
+.bts-bento-8 .bts-bento-overlay { background: linear-gradient(to top, rgba(191,140,40,0.75) 0%, transparent 70%); }
+.bts-bento-9 .bts-bento-overlay { background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 70%); }
+
+.bts-bento-9 .bts-bento-image {
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+/* Special crop for Juggling image */
+.bts-bento-8 .bts-bento-image {
+  object-position: center 30%;
+}
+
+/* Mimicry hooks (kept for future tuning) */
+.bts-bento-mimicry {
+  /* container-level tweaks for the Mimicry card go here if needed */
+}
+
+.bts-bento-image-mimicry {
+  object-position: center 30%;
+}
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .bts-bento-section {
+    padding: 32px 28px;
+  }
+
+  .bts-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 200px);
+    gap: 16px;
+  }
+
+  .bts-bento-1 { grid-column: 1 / 3; grid-row: 1 / 2; }
+  .bts-bento-2 { grid-column: 1 / 2; grid-row: 2 / 3; }
+  .bts-bento-3 { grid-column: 2 / 3; grid-row: 2 / 3; }
+  .bts-bento-4 { grid-column: 1 / 2; grid-row: 3 / 4; }
+  .bts-bento-5 { grid-column: 2 / 3; grid-row: 3 / 4; }
+  .bts-bento-6 { grid-column: 1 / 2; grid-row: 4 / 5; }
+  .bts-bento-7 { grid-column: 2 / 3; grid-row: 4 / 5; }
+  .bts-bento-8 { grid-column: 1 / 3; grid-row: 5 / 6; }
+
+  .bts-bento-9 {
+    min-height: 220px;
+  }
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .bts-bento-section {
+    padding: 24px 16px;
+  }
+
+  .bts-premium-header {
+    padding: 0 0 30px;
+  }
+
+  .bts-bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(8, 220px);
+    gap: 16px;
+  }
+
+  .bts-bento-1, .bts-bento-2, .bts-bento-3, .bts-bento-4,
+  .bts-bento-5, .bts-bento-6, .bts-bento-7, .bts-bento-8 {
+    grid-column: 1 / 2;
+    grid-row: span 1;
+  }
+
+  .bts-bento-9 {
+    min-height: 220px;
+  }
+}
+
+/* ============================================================
+   MARQUEE STRIP
+   ============================================================ */
+
+.bts-marquee-wrapper {
+  position: relative;
+  margin-top: 28px;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 14px;
+  border: 1px solid rgba(160,120,48,0.18);
+  background: var(--bg-deep);
+  box-shadow: 0 4px 20px rgba(100,60,10,0.12);
+}
+
+.bts-marquee-wrapper::before,
+.bts-marquee-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.bts-marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-deep), transparent);
+}
+
+.bts-marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-deep), transparent);
+}
+
+.bts-marquee-track {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  animation: bts-scroll 24s linear infinite;
+}
+
+.bts-marquee-wrapper:hover .bts-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes bts-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% / 3)); }
+}
+
+.bts-marquee-card {
+  position: relative;
+  width: 260px;
+  height: 160px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 10px rgba(100,60,10,0.12);
+}
+
+.bts-marquee-card:hover {
+  transform: scale(1.03);
+}
+
+.bts-marquee-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.55) saturate(0.75);
+  transition: filter 0.35s ease;
+}
+
+.bts-marquee-card:hover .bts-marquee-image {
+  filter: brightness(0.42) saturate(0.65);
+}
+
+.bts-marquee-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(40,20,5,0.88) 0%, transparent 55%);
+}
+
+.bts-marquee-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px 14px 14px;
+}
+
+.bts-marquee-content h4 {
+  margin: 0 0 3px;
+  color: #FFFCF5;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.bts-marquee-content p {
+  margin: 0;
+  color: rgba(255, 252, 245, 0.65);
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .bts-marquee-card {
+    width: 220px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bts-marquee-card {
+    width: 200px;
+    height: 140px;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .bts-marquee-track {
+    animation: none;
+  }
+
+  .bts-bento-card,
+  .bts-bento-image {
+    transition: none;
+  }
+}
