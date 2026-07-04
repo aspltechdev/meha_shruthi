@@ -91,7 +91,7 @@ const MeetTheVoices = () => {
       name: 'VANATHI SURESH',
       fullName: 'Vanathi Suresh',
       title: 'The Classical Crescendo',
-      role: 'Vijay TV Super Singer, Stage Performer',
+      role: 'Vijay TV Super Singer, Stage Performer'
       specialty: 'Carnatic • Fusion • Devotional',
       description: 'Weaves classical depth into every performance, bringing tradition and soul together on stage.',
       quote: 'In every raga, I find a new way to connect hearts',

@@ -70,7 +70,7 @@ const MeetTheVoices = () => {
       name: 'JULIE DALE MARINE',
       fullName: 'Julie Dale Marine',
       title: 'The Stage Songstress',
-      role: 'Jaya TV, Star Singer & Orchestra Performer',
+      role: Jaya TV, Star Singer & Orchestra Performer
       specialty: 'Pop • Soul • Live Performance',
       description: 'Energizes every stage with powerful vocals and charisma.',
       quote: 'The stage is where my music truly comes alive',
@@ -91,7 +91,7 @@ const MeetTheVoices = () => {
       name: 'VANATHI SURESH',
       fullName: 'Vanathi Suresh',
       title: 'The Classical Crescendo',
-      role: 'Vijay TV Super Singer, Stage Performer',
+      role: 'Vocalist & Carnatic Fusion Artist',
       specialty: 'Carnatic • Fusion • Devotional',
       description: 'Weaves classical depth into every performance, bringing tradition and soul together on stage.',
       quote: 'In every raga, I find a new way to connect hearts',
