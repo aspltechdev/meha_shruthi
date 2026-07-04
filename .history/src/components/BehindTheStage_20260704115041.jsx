@@ -3,9 +3,9 @@ import './BehindTheStage.css';
 
 import imageo from '../assets/music.jpeg';
 import imaget from '../assets/imgone.png';
-import imageth from '../assets/mimicry1.jpeg';
+import imageth from '../assets/mimic.png';
 import imagef from '../assets/fashion.png';
-import imageDance from '../assets/comedy1.jpeg';
+import imageDance from '../assets/mimicry.jpeg';
 import imageComedy from '../assets/mimicry.jpeg';
 import imageDJ from '../assets/dj.png';
 import imageMagic from '../assets/magic.png';
