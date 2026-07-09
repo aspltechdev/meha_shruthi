@@ -1208,7 +1208,7 @@
 
 @media (max-width: 540px) {
   .legacy-pro-hero-image-wrap {
-    max-width: 600px;   /* 240 → 300 */
+    width: 600px;   /* 240 → 300 */
     padding: 0.3rem;
   }
 
@@ -1216,4 +1216,8 @@
     width: 260px;
     height: 320px;
   }
+}
+.legacy-pro-container {
+  max-width: 1600px;
+  grid-template-columns: 0.9fr 1.1fr;
 }

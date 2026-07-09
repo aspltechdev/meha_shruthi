@@ -1208,7 +1208,7 @@
 
 @media (max-width: 540px) {
   .legacy-pro-hero-image-wrap {
-    max-width: 600px;   /* 240 → 300 */
+    max-width: 100px;   /* 240 → 300 */
     padding: 0.3rem;
   }
 

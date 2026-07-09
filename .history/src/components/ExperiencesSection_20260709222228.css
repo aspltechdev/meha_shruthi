@@ -722,9 +722,3 @@
     width: 70px;
   }
 }
-@media (max-width: 768px) {
-  .card-image {
-    object-fit: contain;
-    object-position: center;
-  }
-}

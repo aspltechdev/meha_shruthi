@@ -1146,27 +1146,31 @@
   }
 }
 /* ============================================
-   FIX: Bigger Image on Mobile + Less Gap
+   FIX: Mobile Gap + Small Image Issue
    ============================================ */
 @media (max-width: 1024px) {
   .legacy-pro-container {
-    gap: 1.5rem;
+    gap: 1.5rem; /* 3rem → 1.5rem, Left-Right Gap குறையும் */
+  }
+
+  .legacy-pro-cta-wrap {
+    margin-bottom: 0.5rem; /* Button-க்கும் கீழேயும் Extra Space குறையும் */
   }
 
   .legacy-pro-right {
-    min-height: 420px;
+    min-height: 360px; /* Big empty area குறையும் */
     margin-top: 0;
   }
 
   .legacy-pro-hero-image-wrap {
-    max-width: 420px;   /* 400 → 420, பெரிதாக்கு */
-    padding: 0.5rem;    /* Padding குறைச்சு Image-க்கு Space கொடு */
+    max-width: 340px;
+    padding: 0.5rem;      /* 2.5rem → 0.5rem, Image பெரிசா தெரியும் */
     margin: 0 auto;
   }
 
   .legacy-pro-hero-blob {
-    width: 360px;       /* Blob-ஐயும் பெரிதாக்கு */
-    height: 440px;
+    width: 300px;
+    height: 360px;
   }
 
   .legacy-pro-hero-img-frame {
@@ -1176,17 +1180,17 @@
 
 @media (max-width: 768px) {
   .legacy-pro-right {
-    min-height: 400px;
+    min-height: 320px;
   }
 
   .legacy-pro-hero-image-wrap {
-    max-width: 380px;   /* 280 → 380, Big-ஆ இருக்கும் */
+    max-width: 280px;
     padding: 0.4rem;
   }
 
   .legacy-pro-hero-blob {
-    width: 320px;
-    height: 390px;
+    width: 250px;
+    height: 300px;
   }
 
   .legacy-pro-headline {
@@ -1208,12 +1212,12 @@
 
 @media (max-width: 540px) {
   .legacy-pro-hero-image-wrap {
-    max-width: 600px;   /* 240 → 300 */
+    max-width: 240px;
     padding: 0.3rem;
   }
 
   .legacy-pro-hero-blob {
-    width: 260px;
-    height: 320px;
+    width: 220px;
+    height: 260px;
   }
 }
