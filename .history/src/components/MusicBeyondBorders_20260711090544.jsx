@@ -632,7 +632,7 @@ const countries = [
   {
      name: "kuwait",
   flag: "🇶🇦",
-  city: "kuwait",
+  city: "Doha",
   year: "2019", // Change if needed
   venue: "Katara Cultural Village",
     image: canadaImg,
